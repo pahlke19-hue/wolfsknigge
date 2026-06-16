@@ -1,82 +1,57 @@
 # Wolfsknigge Website — Claude Code Instructions
 
-## Projekt
-Mobile Hundeschule, Schwerpunkt Problemverhalten (Aggression, Angst, Stress).
-Einzugsgebiet 35km um 24796 Bredenbek (Kiel, Rendsburg, Neumünster, Eckernförde).
-Ziel der Site: Vertrauen → Expertise → Kontaktaufnahme.
-Hauptzielgruppe öffnet die Seite **mobil**, oft unterwegs.
+## Quick Start Commands
+- **Dev Server**: `npm run dev` (Runs Astro dev server at localhost:4321)
+- **Production Build**: `npm run build` (Builds production bundle to ./dist/)
+- **Preview Build**: `npm run preview` (Previews production build locally)
+- **Astro Check**: `npx astro check` (Runs TypeScript and Astro checks)
 
-## Stack
-<!-- TODO: ergänzen sobald entschieden -->
-- Framework: …
-- Styling: …
-- Hosting: …
-- Domain: wolfsknigge.de
+## Project Context
+- **Business**: Mobile dog school ("Wolfsknigge"), focusing on dog behavior issues (aggression, anxiety, stress).
+- **Service Area**: 35km radius around 24796 Bredenbek (Kiel, Rendsburg, Neumünster, Eckernförde).
+- **Primary Goal**: Trust -> Expertise -> Contact (Focus on mobile conversions).
+- **Audience**: Primary target group accesses the site via mobile devices, often while on-the-go on dog training fields.
 
----
-
-## Arbeitsweise
-
-### Suche zuerst, lies dann
-- **`Grep`** für Inhalt, **`Glob`** für Dateinamen — immer zuerst.
-- **`Read`** mit `offset`/`limit` sobald Datei > ~200 Zeilen. Keine kompletten 2000-Zeilen-Stylesheets dumpen.
-- **`Edit`** statt Datei neu schreiben. Auch bei größeren Änderungen: chirurgisch.
-- **`Bash`** nur wenn die nativen Tools nicht passen (Build, Git-Status etc.) — nicht für `cat`/`grep`/`find`.
-
-### Output
-- Nur den geänderten Block + 1 Satz wo er hingehört. Keine Erklärung außer auf Nachfrage.
-- Keine „Hier ist die komplette Datei mit deiner Änderung"-Antworten.
-- Kein Pre-/Postamble, kein „Lass mich wissen, wenn…", keine Zusammenfassung der Änderung.
-
-### Scope
-- Mach exakt das, was gefragt ist. Nichts dazudichten.
-- Keine ungefragten Refactorings, keine „Bonus-Fixes", keine Tests/Kommentare ohne Auftrag.
-- Wenn dir nebenbei was auffällt: ein Satz, kein Side-Quest.
-- Bei fehlendem Kontext: nach Snippet fragen, nicht eigenständig durchs Repo wandern.
+## Tech Stack
+- **Framework**: Astro (v6.x) - static routing, `.astro` components.
+- **Styling**: Tailwind CSS v4 (configured via `@tailwindcss/vite` in `astro.config.mjs`).
+- **SEO & Sitemap**: `@astrojs/sitemap` (excludes `/danke`, `/thanks-formular`, `/404`).
+- **Domain**: `https://wolfsknigge.de`
 
 ---
 
-## Code-Standards
+## Coding Guidelines & Standards
 
-### HTML
-- Semantisch: `<main>`, `<article>`, `<section>`, `<nav>`, saubere Heading-Hierarchie (genau ein `<h1>` pro Seite).
-- A11y: aussagekräftige `alt`-Texte, sichtbarer Fokus, Tastaturnavigation funktioniert. ARIA nur wo nötig.
-- `<html lang="de">`.
+### 1. Code Style & Patterns
+- **Tailwind CSS v4**: Use utility classes for styling. Put global adjustments in `src/styles/global.css`.
+- **Responsive Layout**: Mobile-first design. Use CSS `clamp()` for fluid typography and responsive spacing.
+- **Semantic HTML**: Use semantic tags (`<main>`, `<article>`, `<section>`, `<nav>`). Exactly one `<h1>` per page.
+- **Accessibility (A11y)**: Semantic focus styles, meaningful `alt` attributes, keyboard navigable elements.
+- **Progressive Enhancement**: Keep JavaScript minimal. Ensure site is fully functional and readable without JS.
 
-### CSS
-- Modern: Grid, Flexbox, `clamp()`, Custom Properties, `:has()` wo sinnvoll.
-- **Mobile-first.** Breakpoints nach Inhalt, nicht nach Geräten.
-- Keine Utility-Frameworks im Custom-Build außer ich frage. Lesbares CSS schlägt cleveres CSS.
-- Keine externen Font-CDNs (DSGVO) — self-host oder System-Fonts.
+### 2. DSGVO / GDPR Compliance (German Legal Requirements)
+- **Self-Hosted Assets Only**: No Google Fonts, Google Maps, or external analytics/reCAPTCHA from third-party CDNs.
+- **Privacy Wrappers**: Use double-click / consent wrappers for external embeds (YouTube, Vimeo, maps, social media).
+- **Legal Pages**: Mandatory links to Impressum and Datenschutzerklärung in the footer.
 
-### JS
-- So wenig wie möglich. Vanilla für statische Inhalte.
-- Keine Library für ein 20-Zeilen-Problem.
-- Progressive Enhancement: Basis-Inhalte funktionieren ohne JS.
-
-### Performance (mobile Kunden auf dem Hundeplatz!)
-- Bilder: AVIF/WebP, `loading="lazy"` außer above-the-fold, `width`/`height` gesetzt.
-- Lighthouse Performance ≥ 90 mobile = Latte.
-- Kein Render-Blocking im `<head>`. Kritisches CSS inline, Rest defer.
-
-### DSGVO (deutsche Business-Site, nicht verhandelbar)
-- **Keine** Google Fonts/Maps/Analytics/reCAPTCHA via Drittanbieter-CDN ohne Consent.
-- YouTube/Vimeo/Instagram-Embeds nur mit Consent-Wrapper.
-- Impressum + Datenschutzerklärung sind Pflicht-Routes, im Footer verlinkt.
-- Externe Skripte/Pixel: erst fragen.
-
-### Lokale SEO
-- `schema.org/LocalBusiness` JSON-LD mit Adresse, `areaServed`, `geo`, Öffnungszeiten.
-- Pro Seite: eindeutiger `<title>`, Meta-Description, kanonische URL.
-- Lokale Keywords im Content: Kiel, Rendsburg, Neumünster, Eckernförde, Bredenbek, Schleswig-Holstein.
-- Open Graph + Twitter Card für Facebook/Instagram-Sharing.
+### 3. Local SEO
+- **Structured Data**: `schema.org/LocalBusiness` JSON-LD configuration for the home page (coordinates, service area, address).
+- **Metadata**: Unique `<title>` and `<meta name="description">` on every page.
+- **Local Keywords**: Natural integration of geo-keywords: Kiel, Rendsburg, Neumünster, Eckernförde, Bredenbek.
 
 ---
 
-## Ohne explizite Freigabe NICHT
-- `npm install` / neue Dependencies hinzufügen
-- `git commit`, `git push`, Branches anlegen
-- Dateien löschen oder umbenennen
-- Build/Deploy ausführen
-- Bestehende Configs (`package.json`, `vite.config.*`, `astro.config.*` etc.) umstrukturieren
-- Auf externe APIs/Services neu zugreifen
+## AI Execution Rules (Karpathy-Style Developer Setup)
+
+### 1. Interaction & Output
+- **Be Concise**: Provide direct code solutions. Avoid long preambles, summaries, or conversational fluff unless asked.
+- **Full Code Blocks**: Do not output lazy code placeholders (e.g. `// ... rest of the code`). Output the complete changed block.
+- **Surgical Edits**: Use precise code replacements. Never rewrite entire files when only a few lines change.
+
+### 2. Search & Context
+- **Search First**: Always use `grep` or file listings before reading large files.
+- **Minimal Token Reading**: Only read relevant sections of files. If a file is > 200 lines, read only the target lines.
+
+### 3. Verification & Guardrails
+- **Build Checks**: Run `npm run build` or `npx astro check` to verify compilation before declaring a task done.
+- **Strict Consents**: Do NOT run `npm install` for new dependencies, do NOT create Git commits/branches, and do NOT delete files without explicit user approval.
