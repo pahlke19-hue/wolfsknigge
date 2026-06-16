@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CityPage from "../components/CityPage.astro";
+
+const features = [
+  { bold: "Mobil & Flexibel", text: "Ich komme zu dir nach Hause: Rendsburg, Büdelsdorf, Fockbek, Osterrönfeld, Westerrönfeld und das gesamte Umland." },
+  { bold: 'Experte für "schwierige Felle"', text: "Echte Hilfe bei Aggression & Leinenpöbelei (kein Hundeplatz-Schema-F)." },
+  { bold: "Training im realen Umfeld", text: "Wir üben dort, wo du lebst: am Kanal, in der Stadt oder im Park." },
+  { bold: "Welpenstart mit Plan", text: "Sozialisierung im echten Leben statt nur im eingezäunten Auslauf." },
+  { bold: "Fit für den Rendsburger Alltag", text: "In kleinen Gruppen Leinenführigkeit, Rückruf & Co. meistern." },
+];
+
+const introParagraphs = [
+  'Wohnst du in <strong>Rendsburg</strong> oder Umgebung und jeder Spaziergang fühlt sich an wie ein Spießrutenlauf? Vielleicht zieht dein Hund an der Leine, sobald ihr in Richtung <strong>Nord-Ostsee-Kanal</strong> aufbrecht, oder er reagiert aggressiv auf andere Hunde, wenn es in der <strong>Innenstadt</strong> oder am Paradeplatz eng wird.',
+  'Ich bin <strong>René Pahlke</strong> von WolfsKnigge. Als dein mobiler <strong>Hundetrainer für Rendsburg</strong> weiß ich: Echte Verhaltensprobleme lassen sich nicht auf einem eingezäunten Hundeplatz "wegtrainieren". Sitz und Platz funktionieren dort oft perfekt, aber sobald der Alltag beginnt, ist der Gehorsam weg. <em>Genau hier setze ich an.</em>',
+  'Mit meiner Erfahrung aus über <strong>200 erfolgreich betreuten Kunden-Teams</strong> habe ich mich auf das spezialisiert, was viele andere Hundeschulen an ihre Grenzen bringt: <strong>Problemverhalten</strong>. Egal ob Leinenaggression, Angst, Stress oder fehlende Beißhemmung, ich arbeite mit dir fair, gewaltfrei und nach den neuesten Erkenntnissen der Lerntheorie (alle 4 Quadranten).',
+  'Ich komme aus Bredenbek direkt zu dir. Wir trainieren in deinem realen Umfeld in Rendsburg, damit dein Hund lernt, genau dort entspannt zu bleiben, wo du lebst.',
+];
+---
+
+<Layout title="Mobiles Hundetraining Rendsburg | WolfsKnigge">
+  <CityPage
+    city="Rendsburg"
+    title="Mobiles Hundetraining Rendsburg. Dein Experte für <span>Problemverhalten</span> & Alltagstauglichkeit"
+    heroSubtitle="Schluss mit Stress an der Leine. Ich komme zu dir nach Rendsburg und wir lösen das Problem dort, wo es entsteht."
+    heroImage="/images/hundeschule_in_rendsburg_kanal.webp"
+    features={features}
+    introH2="Dein erfahrener mobiler Hundetrainer in Rendsburg"
+    introParagraphs={introParagraphs}
+    routeImage="/images/hundetraining_am_nok.webp"
+    routeImageAlt="Welpen trainieren am Kanal in Rendsburg"
+    anamneseText="Der erste Schritt: ausführliche Bestandsaufnahme & individuelle Trainingsplanung. Direkt in Fockbek, Büdelsdorf & Umgebung."
+    anamneseAlt="Hundetraining in Rendsburg an Aggressionsverhalten"
+    einzelAlt="Leinenführig durch den Park in Büdelsdorf"
+    welpenText="Der beste Start für dich und deinen Welpen: Sozialisierung, Grunderziehung und Gewöhnung z.B. an den Nord-Ostsee-Kanal, Schiffe usw."
+    welpenAlt="Welpenschule am Nord-Ostsee-Kanal"
+    grundAlt="Gruppentraining in der Altstadt und im Stadtpark Rendsburg"
+  />
+</Layout>

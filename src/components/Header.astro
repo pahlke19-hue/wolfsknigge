@@ -1,0 +1,187 @@
+---
+interface Props {
+  landingPage?: boolean;
+}
+
+const { landingPage = false } = Astro.props;
+
+const nav = [
+  { label: "Startseite", href: "/" },
+  { label: "Über mich", href: "/ueber-mich" },
+  { label: "Verhaltensanalyse", href: "/anamnesegesprach" },
+  { label: "Einzelstunde", href: "/einzelstunde" },
+  { label: "Social Walk", href: "/social-walk" },
+  { label: "Welpengruppe", href: "/welpengruppe" },
+  { label: "Grunderziehung", href: "/grunderziehungsgruppe" },
+  { label: "Preise", href: "/preise" },
+  { label: "FAQ", href: "/faq" },
+];
+---
+
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 border-b border-transparent transition-all duration-500">
+  <div class="max-w-[1280px] mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-[72px]">
+      {landingPage ? (
+        <div class="flex items-center gap-2 cursor-default select-none">
+          <img src="/images/logo.svg" alt="WolfsKnigge Logo" class="h-10 w-auto invert brightness-200" />
+        </div>
+      ) : (
+        <a href="/" class="flex items-center gap-2">
+          <img src="/images/logo.svg" alt="WolfsKnigge Logo" class="h-10 w-auto invert brightness-200" />
+        </a>
+      )}
+
+      {!landingPage && (
+        <nav class="hidden lg:flex items-center gap-8">
+          <a href="/" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Startseite</a>
+          <a href="/ueber-mich" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Über mich</a>
+
+          <!-- Angebote Dropdown -->
+          <div class="relative group">
+            <button aria-haspopup="true" class="text-sm font-medium text-white/70 hover:text-white transition-colors inline-flex items-center gap-1">
+              Angebote
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="absolute left-0 top-full pt-2 w-52 hidden group-hover:block group-focus-within:block">
+              <div class="bg-anthrazit-3 backdrop-blur-xl rounded-xl shadow-2xl border border-white/10 py-2">
+                <a href="/anamnesegesprach" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Verhaltensanalyse</a>
+                <a href="/einzelstunde" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Einzelstunde</a>
+                <a href="/social-walk" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Social Walk</a>
+                <a href="/welpengruppe" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Welpengruppe</a>
+                <a href="/grunderziehungsgruppe" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Grunderziehung</a>
+              </div>
+            </div>
+          </div>
+
+          <a href="/preise" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Preise</a>
+          <a href="/faq" class="text-sm font-medium text-white/70 hover:text-white transition-colors">FAQ</a>
+          <a href="/blog" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Blog</a>
+
+          <!-- Standorte Dropdown -->
+          <div class="relative group">
+            <button aria-haspopup="true" class="text-sm font-medium text-white/70 hover:text-white transition-colors inline-flex items-center gap-1">
+              Standorte
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="absolute right-0 top-full pt-2 w-52 hidden group-hover:block group-focus-within:block">
+              <div class="bg-anthrazit-3 backdrop-blur-xl rounded-xl shadow-2xl border border-white/10 py-2">
+                <a href="/hundeschule-kiel" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Hundeschule Kiel</a>
+                <a href="/hundeschule-rendsburg" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Hundeschule Rendsburg</a>
+                <a href="/hundeschule-eckernfoerde" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Hundeschule Eckernförde</a>
+                <a href="/hundeschule-neumuenster" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Hundeschule Neumünster</a>
+              </div>
+            </div>
+          </div>
+
+          <a href="/kontakt" class="shine inline-flex items-center rounded-full bg-orange hover:bg-orange-dark text-white text-sm font-semibold font-display px-6 py-2.5 transition-all hover:scale-[1.04]">
+            Jetzt starten
+          </a>
+        </nav>
+      )}
+
+      {!landingPage && (
+        <button id="mobile-menu-toggle" class="lg:hidden p-2 text-white" aria-label="Menu">
+          <svg id="menu-icon-open" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="menu-icon-close" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6l-12 12" />
+          </svg>
+        </button>
+      )}
+    </div>
+
+    {!landingPage && (
+      <nav id="mobile-menu" class="hidden lg:hidden pb-6 border-t border-white/6">
+        <div class="pt-4 space-y-1">
+          <a href="/" class="block px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:bg-white/5 hover:text-orange">Startseite</a>
+          <a href="/ueber-mich" class="block px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:bg-white/5 hover:text-orange">Über mich</a>
+
+          <div>
+            <button class="mobile-accordion w-full flex items-center justify-between px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:bg-white/5 hover:text-orange" aria-expanded="false">
+              Angebote
+              <svg class="accordion-icon w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-panel hidden pl-4 space-y-1">
+              <a href="/anamnesegesprach" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Verhaltensanalyse</a>
+              <a href="/einzelstunde" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Einzelstunde</a>
+              <a href="/social-walk" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Social Walk</a>
+              <a href="/welpengruppe" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Welpengruppe</a>
+              <a href="/grunderziehungsgruppe" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Grunderziehung</a>
+            </div>
+          </div>
+
+          <a href="/preise" class="block px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:bg-white/5 hover:text-orange">Preise</a>
+          <a href="/faq" class="block px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:bg-white/5 hover:text-orange">FAQ</a>
+          <a href="/blog" class="block px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:bg-white/5 hover:text-orange">Blog</a>
+
+          <div>
+            <button class="mobile-accordion w-full flex items-center justify-between px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:bg-white/5 hover:text-orange" aria-expanded="false">
+              Standorte
+              <svg class="accordion-icon w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-panel hidden pl-4 space-y-1">
+              <a href="/hundeschule-kiel" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Hundeschule Kiel</a>
+              <a href="/hundeschule-rendsburg" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Hundeschule Rendsburg</a>
+              <a href="/hundeschule-eckernfoerde" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Hundeschule Eckernförde</a>
+              <a href="/hundeschule-neumuenster" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Hundeschule Neumünster</a>
+            </div>
+          </div>
+
+          <a href="/kontakt" class="block mt-4 text-center rounded-full bg-orange hover:bg-orange-dark text-white font-semibold font-display px-5 py-3.5 text-[15px]">
+            Jetzt starten
+          </a>
+        </div>
+      </nav>
+    )}
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById("site-header") as HTMLElement;
+  const toggle = document.getElementById("mobile-menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  const iconOpen = document.getElementById("menu-icon-open");
+  const iconClose = document.getElementById("menu-icon-close");
+
+  // Scroll-based header background
+  const updateHeader = () => {
+    if (window.scrollY > 60) {
+      header.style.background = "rgba(10,10,11,.85)";
+      header.style.backdropFilter = "blur(20px) saturate(1.4)";
+      header.style.borderBottomColor = "rgba(255,255,255,.06)";
+    } else {
+      header.style.background = "transparent";
+      header.style.backdropFilter = "none";
+      header.style.borderBottomColor = "transparent";
+    }
+  };
+  window.addEventListener("scroll", updateHeader, { passive: true });
+  updateHeader();
+
+  // Mobile menu toggle
+  toggle?.addEventListener("click", () => {
+    const isHidden = menu?.classList.contains("hidden");
+    menu?.classList.toggle("hidden", !isHidden);
+    iconOpen?.classList.toggle("hidden", isHidden!);
+    iconClose?.classList.toggle("hidden", !isHidden);
+    if (isHidden) {
+      header.style.background = "rgba(10,10,11,.96)";
+      header.style.backdropFilter = "blur(24px)";
+    } else {
+      updateHeader();
+    }
+  });
+
+  // Accordion
+  document.querySelectorAll(".mobile-accordion").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const panel = btn.nextElementSibling as HTMLElement;
+      const icon = btn.querySelector(".accordion-icon") as HTMLElement;
+      const isOpen = !panel.classList.contains("hidden");
+      panel.classList.toggle("hidden", isOpen);
+      icon.style.transform = isOpen ? "" : "rotate(180deg)";
+      btn.setAttribute("aria-expanded", String(!isOpen));
+    });
+  });
+</script>

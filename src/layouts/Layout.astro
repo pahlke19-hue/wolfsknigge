@@ -1,0 +1,178 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ContactSidebar from "../components/ContactSidebar.astro";
+import MobileBar from "../components/MobileBar.astro";
+import CookieConsent from "../components/CookieConsent.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  landingPage?: boolean;
+  noindex?: boolean;
+}
+
+const { title, description = "WolfsKnigge – Mobile Hundeschule in Kiel, Rendsburg, Eckernförde & Neumünster. Individuelles Training für Problemverhalten und Alltag.", landingPage = false, noindex = false } = Astro.props;
+
+const path = Astro.url.pathname === "/" ? "/" : Astro.url.pathname.replace(/\/$/, "");
+const canonicalUrl = `https://wolfsknigge.de${path}`;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Consent Mode v2: Standardmäßig alles abgelehnt, bis der Nutzer einwilligt -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+        functionality_storage: "denied",
+        personalization_storage: "denied",
+        security_storage: "granted",
+        wait_for_update: 500,
+      });
+    </script>
+
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+
+    <!-- Above-the-fold Fonts vorladen (gegen FOUT / besseres LCP) -->
+    <link rel="preload" href="/fonts/sora/sora-800.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/manrope/manrope-regular.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://wolfsknigge.de/images/rene-hero.webp" />
+    <meta property="og:locale" content="de_DE" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://wolfsknigge.de/images/rene-hero.webp" />
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "WolfsKnigge - Mobile Hundeschule",
+        "image": "https://wolfsknigge.de/images/logo.svg",
+        "telephone": "+4915147736042",
+        "email": "kontakt@wolfsknigge.de",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Katzheide 24",
+          "addressLocality": "Bredenbek",
+          "postalCode": "24796",
+          "addressCountry": "DE"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 54.2908,
+          "longitude": 9.8797
+        },
+        "url": "https://wolfsknigge.de",
+        "priceRange": "$$",
+        "areaServed": [
+          {
+            "@type": "AdministrativeArea",
+            "name": "Kiel"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Rendsburg"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Eckernförde"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Neumünster"
+          }
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "19:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Saturday"],
+            "opens": "09:00",
+            "closes": "13:00"
+          }
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "reviewCount": "14"
+        },
+        "sameAs": [
+          "https://www.instagram.com/wolfsknigge/",
+          "https://www.facebook.com/profile.php?id=61574131065011",
+          "https://www.tiktok.com/@wolfsknigge"
+        ],
+        "founder": {
+          "@type": "Person",
+          "name": "René Pahlke",
+          "jobTitle": "Hundetrainer",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "WolfsKnigge - Mobile Hundeschule"
+          }
+        }
+      }
+    </script>
+    <title>{title}</title>
+  </head>
+  <body class="bg-anthrazit text-[#e4e4e7] antialiased">
+    <div id="scroll-progress" class="scroll-progress"></div>
+    <Header landingPage={landingPage} />
+    <main>
+      <slot />
+    </main>
+    <Footer landingPage={landingPage} />
+    <ContactSidebar />
+    <MobileBar />
+    <CookieConsent />
+
+    <script>
+      // Scroll reveal via IntersectionObserver
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: "0px 0px -30px 0px" });
+
+      document.querySelectorAll(".reveal, .reveal-scale").forEach((el) => io.observe(el));
+
+      // Scroll progress bar
+      const bar = document.getElementById("scroll-progress");
+      const onScroll = () => {
+        const h = document.documentElement;
+        const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
+        if (bar) bar.style.transform = `scaleX(${Math.min(Math.max(scrolled, 0), 1)})`;
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+    </script>
+  </body>
+</html>

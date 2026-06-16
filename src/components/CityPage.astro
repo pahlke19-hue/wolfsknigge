@@ -1,0 +1,808 @@
+---
+interface Feature { text: string; bold?: string; }
+interface Props {
+  city: string;
+  title: string;
+  heroSubtitle: string;
+  heroImage: string;
+  features: Feature[];
+  introH2: string;
+  introParagraphs: string[];
+  routeImage: string;
+  routeImageAlt: string;
+  anamneseText: string;
+  anamneseAlt: string;
+  einzelAlt: string;
+  welpenText: string;
+  welpenAlt: string;
+  grundAlt: string;
+  landingPage?: boolean;
+}
+
+const { landingPage = false, ...p } = Astro.props as Props;
+
+const titleParts = {
+  before: p.title.split('<span>')[0],
+  highlight: p.title.includes('<span>') ? p.title.split('<span>')[1].split('</span>')[0] : '',
+  after: p.title.includes('</span>') ? p.title.split('</span>')[1] : '',
+};
+
+const painPoints = [
+  { icon: '<path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/>', title: "Leinenpöbeln", text: "Kaum ein anderer Hund in Sicht und dein Hund dreht komplett durch. Jeder Spaziergang ein Nervenspiel." },
+  { icon: '<circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/>', title: "Angst und Panik", text: "Gewitter, Böller, fremde Menschen. Was für andere normal ist, löst bei deinem Hund puren Stress aus." },
+  { icon: '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/>', title: "Kein Rückruf", text: "Er kommt. Aber nur wenn er Lust hat. In dem Moment, wo es zählt, ist er weg." },
+  { icon: '<path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/>', title: "Reizüberflutung in der Stadt", text: "Radfahrer, Kinderwagen, Skater. Alles wird zum Trigger. Entspanntes Stadtleben? Fehlanzeige." },
+  { icon: '<circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/>', title: "Basics funktionieren nicht", text: "Sitz klappt zu Hause prima. Auf der Straße ist er wie ausgewechselt. Du weißt nicht warum." },
+  { icon: '<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>', title: "Überfordert als Ersthundebesitzer", text: "Niemand hat dir erklärt wie das wirklich geht. YouTube-Videos bringen dich nicht weiter." },
+];
+
+const vergleich = [
+  { topic: "Trainingsort", hundeplatz: "Immer derselbe Hundeplatz", mobil: "Bei dir vor Ort. Dort, wo Probleme entstehen." },
+  { topic: "Reizlage", hundeplatz: "Isoliert und eingezäunt", mobil: "Echter Alltag mit Joggern, Autos, anderen Hunden." },
+  { topic: "Transfer", hundeplatz: "Funktioniert oft nur auf dem Platz", mobil: "Training findet direkt im Alltag statt." },
+  { topic: "Betreuung", hundeplatz: "Große Gruppen, wenig Zeit pro Team", mobil: "1:1 oder kleine Gruppen. Voller Fokus." },
+  { topic: "Methodik", hundeplatz: "Schema F für alle Hunde", mobil: "Individueller Plan nach moderner Lerntheorie." },
+];
+
+const prozess = [
+  { step: "01", title: "Kennenlernen", text: "Kostenloses Erstgespräch per Telefon. Wir schauen, ob wir zueinander passen." },
+  { step: "02", title: "Verhaltensanalyse", text: "Ausführliche Bestandsaufnahme bei dir vor Ort. Ich lerne euch im Alltag kennen." },
+  { step: "03", title: "Klarer Fahrplan", text: "Ich gebe dir einen klaren, logisch aufgebauten Plan mit den ersten Trainingsschritten, damit ihr direkt loslegen könnt." },
+  { step: "04", title: "Umsetzung", text: "Training dort, wo das Problem entsteht. Konsequent, fair, mit System." },
+];
+
+const testimonials = [
+  { name: "Jori K.", text: "Die Trainingsanreize haben schnell geholfen und René nimmt sich wirklich Zeit für einen." },
+  { name: "Susanne H.", text: "Als Ersthundebesitzer hatten wir viele Fragen, die uns schlüssig beantwortet wurden." },
+  { name: "Daniela B.", text: "Dank des Trainings können wir endlich wieder entspannt Gassi gehen." },
+  { name: "Jens", text: "Wir bekamen die Leinenaggression bei unserer Herdenschützerin super in den Griff." },
+  { name: "Nicole H.", text: "Das Training hat schnell geholfen, sodass bei uns wieder Harmonie herrscht." },
+  { name: "Sophia S.", text: "Dank des konsequenten Trainings klappt der Rückruf jetzt perfekt." },
+  { name: "Mathias", text: "Wir lernen so viel Wichtiges, das uns super und schnell weiterhilft." },
+  { name: "Claudia R.", text: "René hat uns geholfen, die Fehler im Umfeld zu sehen. Jetzt ist der Kleine entspannter." },
+];
+
+const allCities = [
+  { city: "Kiel", href: "/hundeschule-kiel", text: "Kiellinie, Schrevenpark, Holtenauer.", image: "/images/hundeplatz_kiel.webp" },
+  { city: "Rendsburg", href: "/hundeschule-rendsburg", text: "Nord-Ostsee-Kanal, Büdelsdorf, Fockbek.", image: "/images/rendsburg.webp" },
+  { city: "Eckernförde", href: "/hundeschule-eckernfoerde", text: "Hafen, Promenade, Hundestrand.", image: "/images/social_walk_eckernfoerde.webp" },
+  { city: "Neumünster", href: "/hundeschule-neumuenster", text: "Einfelder See, Stadtwald, Großflecken.", image: "/images/neumuenster.webp" },
+];
+const otherCities = allCities.filter((c) => c.city !== p.city);
+
+const faq = [
+  {
+    frage: `Ist mein Hund wirklich ein Fall für einen Trainer?`,
+    antwort: "Kurze Antwort: Ja, wahrscheinlich. Viele Halter warten zu lange. Ob Leinenpöbeln, Angst oder einfach keine Basics - je früher du anfängst, desto einfacher wird es. Ein kurzes Telefonat kostet nichts und bringt Klarheit."
+  },
+  {
+    frage: "Ich war schon woanders. Warum sollte das hier anders sein?",
+    antwort: "Weil wir nicht auf einem Hundeplatz trainieren. Dein Hund lernt genau dort, wo das Problem auftaucht: in deiner Straße, deinem Park, deiner Stadt. Kein Übungsplatz-Effekt, kein Schema F. Was hier funktioniert, funktioniert im echten Leben."
+  },
+  {
+    frage: "Mein Hund ist sehr aggressiv. Geht das überhaupt?",
+    antwort: "Genau das ist mein Schwerpunkt. Ich habe mich auf Problemverhalten spezialisiert und jahrelang in diesem Bereich gearbeitet. Aggression hat immer eine Ursache. Die finden wir, und dann gehen wir systematisch ran."
+  },
+  {
+    frage: "Was kostet das Kennenlerngespräch?",
+    antwort: "Nichts. Das erste Gespräch ist kostenlos. Wir schauen gemeinsam, ob und wie ich euch helfen kann. Erst dann entscheidest du, ob du weitermachen möchtest."
+  },
+  {
+    frage: `Kommst du auch wirklich nach ${p.city}?`,
+    antwort: `Ja. Ich bin mobil in einem Umkreis von ca. 35 km rund um Bredenbek aktiv und ${p.city} liegt in meinem Einzugsgebiet. Ruf kurz an, wir klären die Details.`
+  },
+  {
+    frage: "Wie lange dauert es, bis ich Ergebnisse sehe?",
+    antwort: "Das hängt vom Problem und deiner Konsequenz ab. Erste Verbesserungen sind oft nach wenigen Einheiten spürbar. Tiefergehende Verhaltensänderungen brauchen Zeit. Ich sage dir nach der Verhaltensanalyse ehrlich, was realistisch ist."
+  },
+];
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify({"@context":"https://schema.org","@type":"FAQPage",mainEntity:faq.map((f)=>({"@type":"Question",name:f.frage,acceptedAnswer:{"@type":"Answer",text:f.antwort}}))})} />
+
+<!-- HERO -->
+<section id="hero" class="relative overflow-clip" style="min-height: 72svh; background: #000;">
+
+  <div class="absolute inset-0">
+    <img
+      src={p.heroImage}
+      alt=""
+      aria-hidden="true"
+      id="hero-bg-img"
+      fetchpriority="high"
+      decoding="async"
+      class="w-full h-full object-cover"
+      style="object-position: center 30%; transform-origin: center; will-change: transform;"
+      width="1920" height="1280"
+    />
+  </div>
+
+  <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-[rgba(10,10,11,0.7)] to-[rgba(10,10,11,0.2)]"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-[rgba(10,10,11,0.85)] via-[rgba(10,10,11,0.3)] to-transparent"></div>
+  <div class="absolute -top-[200px] right-[-100px] w-[600px] h-[600px] rounded-full pointer-events-none blob-float" style="background: radial-gradient(circle, rgba(249,115,22,.15), transparent 70%);"></div>
+
+  <div class="relative flex flex-col justify-end" style="min-height: 72svh; padding-bottom: env(safe-area-inset-bottom, 0px);">
+    <div class="w-full max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12 pb-20 pt-32 lg:pb-28">
+
+      <div class="hero-reveal inline-flex items-center gap-2.5 bg-white/8 backdrop-blur-md border border-white/12 text-white font-medium text-[13px] px-4 py-2 rounded-full mb-7">
+        <span class="relative flex h-2 w-2">
+          <span class="absolute inline-flex h-full w-full rounded-full bg-orange opacity-75 ping-slow"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-orange"></span>
+        </span>
+        Mobile Hundeschule {p.city} · Schleswig-Holstein
+      </div>
+
+      <h1 class="hero-reveal hero-reveal-d1 font-display font-extrabold tracking-[-0.03em] leading-[1.05] mb-7 text-white text-[clamp(1.75rem,4.5vw,3.75rem)] max-w-[1000px]">
+        {titleParts.before}
+        {titleParts.highlight && <span class="text-gradient-orange italic">{titleParts.highlight}</span>}
+        {titleParts.after}
+      </h1>
+
+      <p class="hero-reveal hero-reveal-d2 text-[clamp(1rem,2vw,1.25rem)] text-white/70 mb-9 leading-relaxed max-w-[640px] font-light">
+        {p.heroSubtitle}
+      </p>
+
+      <div class="hero-reveal hero-reveal-d3 flex flex-col sm:flex-row gap-3.5 mb-12">
+        <a href={landingPage ? "#kontakt-formular" : "/kontakt"} class="shine group inline-flex items-center justify-center gap-2.5 rounded-full bg-orange text-white font-display font-semibold px-8 py-4 text-[15px] transition-all shadow-[0_0_60px_rgba(249,115,22,0.35)] active:scale-95 sm:hover:scale-[1.03] sm:hover:bg-orange-dark">
+          Kostenloses Kennenlernen
+          <svg class="w-[18px] h-[18px] sm:group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href={landingPage ? "#starter-paket" : "#angebote"} class="inline-flex items-center justify-center gap-2 rounded-full bg-white/6 backdrop-blur border border-white/15 text-white font-display font-semibold px-8 py-4 text-[15px] transition-all sm:hover:bg-white/12">
+          {landingPage ? "Starter-Paket ansehen" : "Angebote ansehen"}
+        </a>
+      </div>
+
+      <div class="hero-reveal hero-reveal-d4 flex items-center gap-8 pt-7 border-t border-white/8">
+        <div>
+          <div class="text-gradient-orange font-display font-extrabold text-2xl leading-none mb-0.5">
+            <span class="hero-counter" data-target="200" data-suffix="+">0+</span>
+          </div>
+          <div class="text-[11px] text-white/55 uppercase tracking-[0.12em] font-medium">Glückliche Teams</div>
+        </div>
+        <div class="w-px h-9 bg-white/10"></div>
+        <a href="https://g.page/r/Cd7XaBPmJ5fKEAE" target="_blank" rel="noopener noreferrer" aria-label="Google-Bewertungen von WolfsKnigge ansehen">
+          <div class="flex items-center gap-2 mb-0.5">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            <span class="text-gradient-orange font-display font-extrabold text-2xl leading-none hero-counter" data-target="5" data-decimal="1" data-suffix="">0</span>
+            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <div class="text-[11px] text-white/55 uppercase tracking-[0.12em] font-medium">14 Bewertungen ↗</div>
+        </a>
+        <div class="w-px h-9 bg-white/10"></div>
+        <div>
+          <div class="font-display font-extrabold text-2xl text-white leading-none mb-0.5">
+            &lt; 2<span class="text-orange">h</span>
+          </div>
+          <div class="text-[11px] text-white/55 uppercase tracking-[0.12em] font-medium">Antwortzeit</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-6 right-6 sm:right-8 text-white/55 flex flex-col items-center gap-1.5">
+    <div class="w-px h-10 bg-gradient-to-b from-transparent to-white/30 scroll-line-anim"></div>
+  </div>
+</section>
+
+
+<!-- SOCIAL PROOF STRIP -->
+<section class="relative bg-anthrazit-2 border-y border-white/4 py-10 overflow-hidden">
+  <div class="text-center mb-6">
+    <a href="https://g.page/r/Cd7XaBPmJ5fKEAE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 hover:opacity-80 transition-opacity" aria-label="Google-Bewertungen von WolfsKnigge ansehen">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+      </svg>
+      <div class="flex gap-[3px]">
+        {[1,2,3,4,5].map(() => (
+          <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        ))}
+      </div>
+      <span class="text-white font-semibold text-sm">5,0 auf Google · 14 Bewertungen · Über 200 betreute Teams <span class="text-white/55">↗</span></span>
+    </a>
+  </div>
+  <div class="relative">
+    <div class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-anthrazit-2 to-transparent z-10 pointer-events-none"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-anthrazit-2 to-transparent z-10 pointer-events-none"></div>
+    <div class="flex gap-3 animate-marquee whitespace-nowrap">
+      {[...testimonials, ...testimonials].map((t) => (
+        <div class="inline-flex items-start gap-3 bg-white/4 border border-white/6 rounded-2xl px-5 py-4 min-w-[300px] max-w-[300px] flex-shrink-0">
+          <div class="flex-shrink-0 w-9 h-9 rounded-full bg-orange/15 border border-orange/25 flex items-center justify-center text-orange font-display font-bold text-sm">
+            {t.name.charAt(0)}
+          </div>
+          <div>
+            <div class="flex items-center gap-2 mb-1.5">
+              <div class="flex gap-0.5">
+                {[1,2,3,4,5].map(() => (
+                  <svg class="w-2.5 h-2.5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                ))}
+              </div>
+              <span class="text-white text-xs font-semibold">{t.name}</span>
+            </div>
+            <p class="text-white/55 text-[13px] leading-snug whitespace-normal">{t.text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- PAIN POINTS -->
+<section class="py-16 md:py-32 bg-anthrazit-2">
+  <div class="max-w-[1200px] mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="text-center max-w-[700px] mx-auto mb-14">
+      <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Kommt dir das bekannt vor?</span>
+      <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(2rem,5vw,3.8rem)] font-display font-extrabold text-white tracking-tight leading-[1.05]">
+        Du bist nicht allein.
+        <span class="block text-gradient-orange">Fast alle starten so.</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+      {painPoints.map((pp, i) => (
+        <div class={`reveal reveal-delay-${(i % 3) + 1} group relative bg-anthrazit-3 rounded-[20px] p-7 border border-white/4 hover:border-orange/20 hover:-translate-y-1 transition-all duration-500 overflow-hidden`}>
+          <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-orange to-orange-dark opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <svg class="w-9 h-9 text-orange mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={pp.icon}></svg>
+          <h3 class="font-display font-bold text-lg text-white mb-2 group-hover:text-orange transition-colors">{pp.title}</h3>
+          <p class="text-[14px] text-white/50 leading-relaxed">{pp.text}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center">
+      <p class="text-white/55 text-base mb-6 font-light">Du musst das nicht alleine durchkämpfen.</p>
+      <a href="/kontakt" class="inline-flex items-center gap-2 text-orange font-semibold font-display text-[15px] hover:text-orange-dark transition-colors">
+        Lass uns kurz reden
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINER INTRO (SEO-Texte) -->
+<section class="py-16 md:py-32 bg-anthrazit overflow-hidden">
+  <div class="max-w-[1200px] mx-auto px-5 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
+    <div class="reveal-scale relative">
+      <div class="absolute -inset-4 rounded-[28px] blur-[30px] pointer-events-none" style="background: linear-gradient(135deg, rgba(249,115,22,.15), transparent);"></div>
+      <img src={p.routeImage} alt={p.routeImageAlt} class="relative rounded-3xl w-full" style="aspect-ratio: 4/5; object-fit: cover;" width="600" height="750" loading="lazy" />
+    </div>
+    <div>
+      <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Dein Trainer in {p.city}</span>
+      <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(1.8rem,4vw,3rem)] font-display font-extrabold text-white tracking-tight mb-7 leading-[1.15]" set:html={p.introH2}></h2>
+      <div class="space-y-4 text-white/60 leading-relaxed text-base md:text-[16px] reveal reveal-delay-2 city-prose">
+        {p.introParagraphs.map((para) => <p set:html={para}></p>)}
+      </div>
+      <a href="/ueber-mich" class="reveal reveal-delay-3 inline-flex items-center gap-2 mt-6 text-orange hover:text-orange-dark font-semibold font-display text-base transition-colors">
+        Mehr über mich <span>→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- VERGLEICH -->
+<section class="relative py-16 md:py-32 bg-anthrazit-2 overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at top, rgba(249,115,22,.1), transparent 60%);"></div>
+  <div class="relative max-w-[900px] mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Warum mobil?</span>
+      <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(1.8rem,5vw,3.5rem)] font-display font-extrabold text-white tracking-tight leading-[1.1] mb-4">
+        Hundeplatz <span class="text-white/30 font-light">vs.</span> <span class="text-gradient-orange">Mobiles Training</span>
+      </h2>
+    </div>
+    <div class="reveal flex flex-col gap-0.5 rounded-[20px] overflow-hidden">
+      {vergleich.map((v) => (
+        <div class="grid grid-cols-2 bg-anthrazit-3">
+          <div class="p-5 border-r border-white/4">
+            <div class="text-[10px] uppercase tracking-[0.15em] text-white/30 mb-1.5 font-semibold">{v.topic}</div>
+            <div class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-white/25 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
+              <span class="text-sm text-white/55">{v.hundeplatz}</span>
+            </div>
+          </div>
+          <div class="p-5" style="background: linear-gradient(135deg, rgba(249,115,22,.08), transparent);">
+            <div class="text-[10px] uppercase tracking-[0.15em] text-orange mb-1.5 font-semibold">{v.topic}</div>
+            <div class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-orange flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" viewBox="0 0 16 16"><path d="M3 9l3.5 3.5L13 5"/></svg>
+              <span class="text-sm text-white font-medium">{v.mobil}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES (city-spezifisch, SEO-Texte) -->
+<section class="py-16 md:py-32 bg-anthrazit">
+  <div class="max-w-[1200px] mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="max-w-[700px] mb-14">
+      <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Was mein Training in {p.city} besonders macht</span>
+      <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(1.8rem,5vw,3.5rem)] font-display font-extrabold text-white tracking-tight leading-[1.1]">
+        Fünf Gründe, warum es bei dir in <span class="text-gradient-orange">{p.city}</span> klappt.
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {p.features.map((f, i) => {
+        const nr = String(i + 1).padStart(2, '0');
+        return (
+          <div class={`reveal reveal-delay-${(i % 3) + 1} group relative bg-anthrazit-2 rounded-3xl p-8 border border-white/5 hover:border-orange/20 hover:-translate-y-1 transition-all duration-500 overflow-hidden`}>
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange to-orange-dark opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div class="absolute -bottom-4 -right-4 font-display font-extrabold text-[6rem] leading-none text-white/5 select-none pointer-events-none">{nr}</div>
+            <div class="relative">
+              <div class="text-orange/80 text-xl font-bold mb-3">✓</div>
+              <h3 class="font-display font-bold text-xl text-white mb-2.5 group-hover:text-orange transition-colors" set:html={f.bold}></h3>
+              <p class="text-[15px] text-white/50 leading-relaxed">{f.text}</p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<!-- PROZESS -->
+<section class="py-16 md:py-32 bg-anthrazit-2 relative overflow-hidden">
+  <div class="absolute top-0 left-1/4 w-[400px] h-[400px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(249,115,22,.08), transparent 60%);"></div>
+  <div class="relative max-w-[1200px] mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-16">
+      <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">So läufts ab</span>
+      <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(1.8rem,5vw,3.5rem)] font-display font-extrabold text-white tracking-tight leading-[1.1]">
+        In <span class="text-gradient-orange">vier Schritten</span> zum entspannten Alltag.
+      </h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 relative">
+      <div class="hidden md:block absolute top-12 left-12 right-12 h-px bg-gradient-to-r from-transparent via-orange/30 to-transparent"></div>
+      {prozess.map((pr, i) => (
+        <div class={`reveal reveal-delay-${i+1} text-center`}>
+          <div class="relative w-24 h-24 mx-auto mb-6">
+            <div class="absolute inset-0 bg-orange/20 rounded-full blur-xl"></div>
+            <div class="relative w-24 h-24 rounded-full bg-gradient-to-br from-orange to-orange-dark flex items-center justify-center text-[28px] font-display font-extrabold text-white shadow-[0_0_60px_rgba(249,115,22,0.25)]">
+              {pr.step}
+            </div>
+          </div>
+          <h3 class="font-display font-bold text-[22px] text-white mb-2">{pr.title}</h3>
+          <p class="text-sm text-white/60 leading-relaxed">{pr.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ANGEBOTE (SEO-Texte) / STARTER-PAKET BEI LANDINGPAGE -->
+{landingPage ? (
+  <section id="starter-paket" class="py-16 md:py-32 bg-anthrazit relative overflow-hidden">
+    <div class="absolute -top-[150px] -right-[150px] w-[400px] h-[400px] rounded-full pointer-events-none opacity-20" style="background: radial-gradient(circle, #f97316, transparent 70%);"></div>
+    <div class="max-w-[1200px] mx-auto px-5 sm:px-6 lg:px-8">
+      <div class="text-center max-w-[800px] mx-auto mb-16">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Dein optimaler Einstieg in {p.city}</span>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(1.8rem,5vw,3.5rem)] font-display font-extrabold text-white tracking-tight leading-[1.1] mb-6">
+          Das <span class="text-gradient-orange">Starter-Paket</span> für schnellen Erfolg
+        </h2>
+        <p class="reveal reveal-delay-2 text-white/50 text-base md:text-lg leading-relaxed font-light">
+          Die optimale Kombination aus umfassender Analyse und direktem Einzeltraining im Alltag. Wir legen das Fundament für eure harmonische Zukunft.
+        </p>
+      </div>
+
+      <div class="reveal max-w-[800px] mx-auto bg-anthrazit-3 border border-white/6 rounded-3xl overflow-hidden shadow-2xl relative">
+        <div class="grid grid-cols-1 md:grid-cols-12">
+          <!-- Paket Details -->
+          <div class="p-8 md:p-12 md:col-span-7 space-y-6">
+            <div class="inline-block bg-orange/10 border border-orange/20 text-orange text-xs font-semibold uppercase tracking-wider px-3.5 py-1.5 rounded-full">
+              Empfohlener Einstieg
+            </div>
+            <h3 class="font-display font-bold text-2xl md:text-3xl text-white">Starter-Paket</h3>
+            <p class="text-white/60 text-sm leading-relaxed">
+              Perfekt für Teams, die vor einer konkreten Herausforderung stehen (z.B. Leinenführigkeit, Begegnungen, Rückruf) und eine nachhaltige Lösung suchen.
+            </p>
+            
+            <ul class="space-y-4 pt-2">
+              {[
+                { title: "Ausführliche Verhaltensanalyse", detail: "Auswertung deines Fragebogens, ca. 90-120 Min. Analyse bei dir vor Ort." },
+                { title: "2x Einzelstunde (je 60 Min.)", detail: "Praktisches 1:1 Training an euren individuellen Problemstellen." },
+                { title: "Klarer Weg nach vorn", detail: "Du weißt genau, woran ihr arbeitet und in welcher Reihenfolge." },
+                { title: "Messenger-Support", detail: "Rückfragen zwischen den Stunden unkompliziert per WhatsApp." }
+              ].map((item) => (
+                <li class="flex items-start gap-3">
+                  <span class="text-orange text-lg mt-0.5">✓</span>
+                  <div>
+                    <strong class="text-white font-semibold text-[14px] block">{item.title}</strong>
+                    <span class="text-white/60 text-[13px] leading-snug block">{item.detail}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <!-- Preis & CTA -->
+          <div class="p-8 md:p-12 md:col-span-5 bg-white/2 border-t md:border-t-0 md:border-l border-white/6 flex flex-col justify-center items-center text-center">
+            <div class="text-white/55 text-xs font-semibold uppercase tracking-widest mb-2">Gesamtpreis</div>
+            <div class="flex items-baseline gap-1.5 mb-1.5">
+              <span class="font-display font-black text-white text-5xl md:text-6xl">270</span>
+              <span class="font-display font-bold text-white text-3xl">€</span>
+            </div>
+            <div class="text-orange line-through text-sm mb-6">Regulär 310 €</div>
+            
+            <a href="#kontakt-formular" class="shine w-full inline-flex items-center justify-center gap-2 rounded-full bg-orange hover:bg-orange-dark text-white font-display font-semibold px-6 py-4 text-[15px] transition-all shadow-[0_0_40px_rgba(249,115,22,0.2)] active:scale-95">
+              Jetzt anfragen
+            </a>
+            <span class="text-white/30 text-[11px] mt-4">
+              * Keine versteckten Kosten. Preise inkl. MwSt., zzgl. Fahrtkosten falls außerhalb des Kerngebiets.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+) : (
+  <section id="angebote" class="py-16 md:py-32 bg-anthrazit">
+    <div class="max-w-[1200px] mx-auto px-5 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-end justify-between gap-4 mb-12">
+        <div>
+          <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Angebote in {p.city}</span>
+          <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(1.8rem,5vw,3.5rem)] font-display font-extrabold text-white tracking-tight leading-[1.1]">
+            Trainingsangebote auf <span class="text-gradient-orange">einen Blick</span>.
+          </h2>
+        </div>
+        <a href="/preise" class="reveal reveal-delay-2 text-orange font-semibold text-[15px]">Alle Preise →</a>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <a href="/anamnesegesprach" class="reveal reveal-delay-1 group relative bg-anthrazit-3 rounded-[20px] overflow-hidden border border-white/4 hover:-translate-y-1.5 transition-all duration-500">
+          <div class="aspect-[4/5] overflow-hidden relative">
+            <img src="/images/anamnese_termin_im_park.webp" alt={p.anamneseAlt} class="w-full h-full object-cover group-hover:scale-[1.08] transition-transform duration-700" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[rgba(10,10,11,0.85)] via-[rgba(10,10,11,0.2)] to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 p-5">
+              <div class="text-[11px] uppercase tracking-[0.15em] text-orange-glow font-semibold mb-1">Ersttermin vor Ort</div>
+              <h3 class="font-display font-bold text-xl sm:text-2xl text-white">Verhaltensanalyse</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <p class="text-sm text-white/50 leading-relaxed">{p.anamneseText}</p>
+          </div>
+        </a>
+        <a href="/einzelstunde" class="reveal reveal-delay-2 group relative bg-anthrazit-3 rounded-[20px] overflow-hidden border border-white/4 hover:-translate-y-1.5 transition-all duration-500">
+          <div class="aspect-[4/5] overflow-hidden relative">
+            <img src="/images/rene_unterordnung.webp" alt={p.einzelAlt} class="w-full h-full object-cover group-hover:scale-[1.08] transition-transform duration-700" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[rgba(10,10,11,0.85)] via-[rgba(10,10,11,0.2)] to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 p-5">
+              <div class="text-[11px] uppercase tracking-[0.15em] text-orange-glow font-semibold mb-1">1:1 Coaching</div>
+              <h3 class="font-display font-bold text-xl sm:text-2xl text-white">Einzelstunde</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <p class="text-sm text-white/50 leading-relaxed">Persönliches Training für dich und deinen Hund. Flexibel, lösungsorientiert und direkt im Alltag umsetzbar.</p>
+          </div>
+        </a>
+        <a href="/welpengruppe" class="reveal reveal-delay-3 group relative bg-anthrazit-3 rounded-[20px] overflow-hidden border border-white/4 hover:-translate-y-1.5 transition-all duration-500">
+          <div class="aspect-[4/5] overflow-hidden relative">
+            <img src="/images/welpe_mit_kuscheltier.webp" alt={p.welpenAlt} class="w-full h-full object-cover group-hover:scale-[1.08] transition-transform duration-700" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[rgba(10,10,11,0.85)] via-[rgba(10,10,11,0.2)] to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 p-5">
+              <div class="text-[11px] uppercase tracking-[0.15em] text-orange-glow font-semibold mb-1">Der perfekte Start</div>
+              <h3 class="font-display font-bold text-xl sm:text-2xl text-white">Welpengruppe</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <p class="text-sm text-white/50 leading-relaxed">{p.welpenText}</p>
+          </div>
+        </a>
+        <a href="/grunderziehungsgruppe" class="reveal reveal-delay-4 group relative bg-anthrazit-3 rounded-[20px] overflow-hidden border border-white/4 hover:-translate-y-1.5 transition-all duration-500">
+          <div class="aspect-[4/5] overflow-hidden relative">
+            <img src="/images/grunderziehungsgruppe.webp" alt={p.grundAlt} class="w-full h-full object-cover group-hover:scale-[1.08] transition-transform duration-700" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[rgba(10,10,11,0.85)] via-[rgba(10,10,11,0.2)] to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 p-5">
+              <div class="text-[11px] uppercase tracking-[0.15em] text-orange-glow font-semibold mb-1">Kleingruppe</div>
+              <h3 class="font-display font-bold text-xl sm:text-2xl text-white">Grunderziehung</h3>
+            </div>
+          </div>
+          <div class="p-5">
+            <p class="text-sm text-white/50 leading-relaxed">Leinenführigkeit, Rückruf und Co. für einen entspannten Alltag. Stärkt eure Bindung und Kommunikation.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- ANDERE STÄDTE -->
+<section class="py-16 md:py-32 bg-anthrazit-2">
+  <div class="max-w-[1200px] mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Auch in deiner Nähe</span>
+      <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(1.8rem,5vw,3.5rem)] font-display font-extrabold text-white tracking-tight leading-[1.1] mb-3">
+        Mobil unterwegs in <span class="text-gradient-orange">ganz Schleswig-Holstein</span>.
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      {otherCities.map((s, i) => (
+        <a href={s.href} class={`reveal reveal-delay-${(i % 3) + 1} group relative rounded-[20px] overflow-hidden aspect-[3/4] hover:-translate-y-1.5 transition-all duration-500`}>
+          <img src={s.image} alt={`Hundeschule ${s.city}`} class="w-full h-full object-cover group-hover:scale-[1.08] transition-transform duration-700" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[rgba(10,10,11,0.9)] via-[rgba(10,10,11,0.4)] to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-orange/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+          <div class="absolute inset-x-0 bottom-0 p-5">
+            <h3 class="font-display font-extrabold text-2xl md:text-[28px] text-white mb-1">{s.city}</h3>
+            <p class="text-[13px] text-white/60 mb-2 hidden sm:block">{s.text}</p>
+            <span class="text-orange-glow font-semibold text-[13px] inline-block group-hover:translate-x-1 transition-transform">Mehr →</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-24 md:py-32 bg-anthrazit">
+  <div class="max-w-[900px] mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Häufige Fragen</span>
+      <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(1.8rem,5vw,3.5rem)] font-display font-extrabold text-white tracking-tight leading-[1.1]">
+        Alles, was du <span class="text-gradient-orange">wissen willst.</span>
+      </h2>
+    </div>
+    <div class="reveal space-y-3">
+      {faq.map((item) => (
+        <details class="group bg-anthrazit-3 border border-white/6 rounded-2xl overflow-hidden open:border-orange/30 transition-all">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-display font-semibold text-white text-base md:text-lg group-open:text-orange transition-colors">
+            {item.frage}
+            <svg class="w-5 h-5 flex-shrink-0 text-white/55 group-open:rotate-45 group-open:text-orange transition-all duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </summary>
+          <div class="px-6 pb-6 text-white/60 leading-relaxed text-[15px]">
+            {item.antwort}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE STRIP -->
+<div class="bg-orange py-4 overflow-hidden">
+  <div class="flex animate-marquee whitespace-nowrap gap-0">
+    {["Mobil", "Alltagsnah", "Problemverhalten", "Kein Schema F", "200+ Teams", "Gewaltfrei", "Kiel", "Rendsburg", "Eckernförde", "Neumünster", "Mobil", "Alltagsnah", "Problemverhalten", "Kein Schema F", "200+ Teams", "Gewaltfrei", "Kiel", "Rendsburg", "Eckernförde", "Neumünster"].map((word) => (
+      <span class="inline-block font-display font-extrabold text-white uppercase tracking-widest text-lg px-8">
+        {word} <span class="text-white/55 mx-4">·</span>
+      </span>
+    ))}
+  </div>
+</div>
+
+<!-- FINAL CTA ODER INLINE-FORMULAR BEI LANDINGPAGE -->
+{landingPage ? (
+  <section id="kontakt-formular" class="py-16 md:py-32 bg-anthrazit border-t border-white/5 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(249,115,22,.1), transparent 60%);"></div>
+    <div class="max-w-[700px] mx-auto px-5 sm:px-8 relative">
+      <div class="bg-anthrazit-2 border border-white/5 rounded-3xl p-8 md:p-10 shadow-2xl relative">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange to-orange-dark"></div>
+        
+        <div class="text-center mb-8">
+          <span class="inline-block text-orange font-semibold uppercase text-xs tracking-[0.3em] mb-2">Erstgespräch & Anfrage</span>
+          <h2 class="font-display font-bold text-2xl md:text-3xl text-white">Starter-Paket anfragen</h2>
+          <p class="text-white/50 text-sm mt-2">
+            Beschreibe kurz eure aktuelle Situation. Ich melde mich innerhalb von 24 Stunden bei dir.
+          </p>
+        </div>
+
+        <form name={`kontakt-${p.city.toLowerCase()}`} method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6" action="/danke">
+          <input type="hidden" name="form-name" value={`kontakt-${p.city.toLowerCase()}`} />
+          <p class="hidden" aria-hidden="true">
+            <label>Bitte dieses Feld leer lassen: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+          </p>
+          <input type="hidden" name="stadt" value={p.city} />
+          <input type="hidden" name="paket" value="Starter-Paket" />
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="name" class="block text-[13px] font-semibold text-white/60 mb-2 uppercase tracking-wider">Dein Name *</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                required
+                placeholder="Max Mustermann"
+                class="w-full bg-white/3 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:border-orange/50 transition-colors text-sm"
+              />
+            </div>
+            <div>
+              <label for="ort" class="block text-[13px] font-semibold text-white/60 mb-2 uppercase tracking-wider">Wohnort & Ortsteil *</label>
+              <input
+                type="text"
+                name="ort"
+                id="ort"
+                required
+                placeholder={`${p.city}, Zentrum`}
+                class="w-full bg-white/3 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:border-orange/50 transition-colors text-sm"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="phone" class="block text-[13px] font-semibold text-white/60 mb-2 uppercase tracking-wider">Telefonnummer *</label>
+              <input
+                type="tel"
+                name="phone"
+                id="phone"
+                required
+                placeholder="0151 1234567"
+                class="w-full bg-white/3 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:border-orange/50 transition-colors text-sm"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-[13px] font-semibold text-white/60 mb-2 uppercase tracking-wider">E-Mail-Adresse *</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                required
+                placeholder="deine-mail@adresse.de"
+                class="w-full bg-white/3 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:border-orange/50 transition-colors text-sm"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 border-t border-white/5 pt-6">
+            <div>
+              <label for="hund-info" class="block text-[13px] font-semibold text-white/60 mb-2 uppercase tracking-wider">Name & Rasse des Hundes</label>
+              <input
+                type="text"
+                name="hund-info"
+                id="hund-info"
+                placeholder="Bello, Schäferhund Mix"
+                class="w-full bg-white/3 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:border-orange/50 transition-colors text-sm"
+              />
+            </div>
+            <div>
+              <label for="hund-alter" class="block text-[13px] font-semibold text-white/60 mb-2 uppercase tracking-wider">Alter des Hundes</label>
+              <input
+                type="text"
+                name="hund-alter"
+                id="hund-alter"
+                placeholder="z.B. 2 Jahre"
+                class="w-full bg-white/3 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:border-orange/50 transition-colors text-sm"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="message" class="block text-[13px] font-semibold text-white/60 mb-2 uppercase tracking-wider">Details zu eurem Verhalten/Problem *</label>
+            <textarea
+              name="message"
+              id="message"
+              rows="5"
+              required
+              placeholder="Bitte beschreibe kurz eure aktuelle Situation (z.B. Leinenpöbeln, Angst, Aggressivität bei Hundebegegnungen, etc.)."
+              class="w-full bg-white/3 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:border-orange/50 transition-colors text-sm leading-relaxed"
+            ></textarea>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <input
+              type="checkbox"
+              name="dsgvo"
+              id={`dsgvo-${p.city.toLowerCase()}`}
+              required
+              class="mt-1 accent-orange"
+            />
+            <label for={`dsgvo-${p.city.toLowerCase()}`} class="text-xs text-white/55 leading-relaxed">
+              Ich willige ein, dass meine Daten zum Zwecke der Kontaktaufnahme verarbeitet werden. Details findest du in der <a href="/dsgvo" target="_blank" class="text-orange underline hover:text-orange-glow">Datenschutzerklärung</a>. *
+            </label>
+          </div>
+
+          <button
+            type="submit"
+            class="shine w-full inline-flex items-center justify-center gap-2.5 rounded-full bg-orange hover:bg-orange-dark text-white font-display font-semibold px-8 py-4 text-base transition-all shadow-[0_0_40px_rgba(249,115,22,0.25)] active:scale-98 cursor-pointer"
+          >
+            Jetzt Starter-Paket anfragen
+            <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+) : (
+  <section class="relative py-24 md:py-48 bg-anthrazit overflow-hidden noise">
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(249,115,22,.18), transparent 60%);"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blob-float pointer-events-none" style="background: rgba(249,115,22,.06);"></div>
+    <div class="relative max-w-[800px] mx-auto px-5 sm:px-6 lg:px-8 text-center">
+      <span class="reveal inline-block text-orange font-semibold uppercase text-sm tracking-[0.3em] mb-6">Kostenlos kennenlernen</span>
+      <h2 class="reveal reveal-delay-1 text-4xl md:text-[clamp(2.5rem,7vw,5.5rem)] font-display font-extrabold text-white mb-6 tracking-tight leading-[0.95]">
+        Bereit für entspanntes<br/>
+        <span class="text-gradient-orange">Gassigehen</span> in {p.city}?
+      </h2>
+      <p class="reveal reveal-delay-2 text-[clamp(1rem,2vw,1.3rem)] text-white/50 mb-10 font-light">Das Kennenlerngespräch ist kostenlos. Antwort innerhalb von 24 Stunden.</p>
+      <div class="reveal reveal-delay-3 flex flex-col sm:flex-row gap-3.5 justify-center">
+        <a href="/kontakt" class="shine group inline-flex items-center justify-center gap-2.5 rounded-full bg-orange hover:bg-orange-dark text-white font-display font-semibold px-10 py-[18px] text-[17px] transition-all shadow-[0_0_80px_rgba(249,115,22,0.3)] hover:scale-[1.03] active:scale-95">
+          Kennenlerngespräch anfragen
+          <svg class="w-[18px] h-[18px] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="tel:+4915147736042" class="inline-flex items-center justify-center gap-2 rounded-full bg-white/5 border border-white/10 text-white font-display font-semibold px-10 py-[18px] text-[17px] transition-all hover:bg-white/10">
+          📞 0151 47736042
+        </a>
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .city-prose :global(strong) { color: #ffffff; font-weight: 600; }
+  .city-prose :global(em) { color: #f97316; font-style: normal; font-weight: 600; }
+</style>
+
+<script>
+  (() => {
+    const els = document.querySelectorAll<HTMLElement>('.hero-reveal');
+    els.forEach((el) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+    });
+
+    const animate = () => {
+      els.forEach((el) => {
+        el.style.transition = 'opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1)';
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(() => requestAnimationFrame(animate)));
+    } else {
+      requestAnimationFrame(() => requestAnimationFrame(animate));
+    }
+
+    const heroBg = document.getElementById('hero-bg-img') as HTMLImageElement | null;
+    if (heroBg && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+      const onScroll = () => {
+        const scrollY = window.scrollY;
+        const heroEl = document.getElementById('hero');
+        if (!heroEl) return;
+        if (scrollY > heroEl.offsetHeight) return;
+        const pr = scrollY / heroEl.offsetHeight;
+        heroBg.style.transform = `scale(1.15) translateY(${pr * 120}px)`;
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+
+    const counters = document.querySelectorAll<HTMLElement>('.hero-counter');
+    const runCounter = (el: HTMLElement) => {
+      const target = parseFloat(el.dataset.target || '0');
+      const suffix = el.dataset.suffix ?? '';
+      const decimals = parseInt(el.dataset.decimal || '0', 10);
+      const duration = 1400;
+      const startTime = performance.now();
+      const tick = (now: number) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = eased * target;
+        el.textContent = current.toFixed(decimals).replace('.', ',') + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+
+    setTimeout(() => counters.forEach(runCounter), 750);
+
+    const revealEls = document.querySelectorAll<HTMLElement>('.reveal, .reveal-scale');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -10% 0px' });
+      revealEls.forEach((el) => io.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('is-visible'));
+    }
+  })();
+</script>

@@ -1,0 +1,230 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Kontakt & Ersttermin anfragen | WolfsKnigge Hundeschule" description="Nimm Kontakt auf für dein kostenloses Erstgespräch oder frage eine Verhaltensanalyse an. Mobile Hundeschule für Kiel, Rendsburg, Eckernförde & Neumünster.">
+
+  <!-- HERO & INTRO -->
+  <section class="relative pt-32 pb-16 md:pt-48 md:pb-24 bg-gradient-to-b from-black to-anthrazit overflow-hidden noise">
+    <div class="absolute -top-[200px] right-[-100px] w-[600px] h-[600px] rounded-full pointer-events-none blob-float" style="background: radial-gradient(circle, rgba(249,115,22,.12), transparent 70%);"></div>
+    <div class="absolute bottom-[-100px] left-[-100px] w-[500px] h-[500px] rounded-full pointer-events-none blob-float-rev" style="background: radial-gradient(circle, rgba(54,255,243,.04), transparent 70%);"></div>
+
+    <div class="relative max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-12 text-center">
+      <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Lass uns reden</span>
+      <h1 class="reveal reveal-delay-1 text-4xl md:text-6xl font-display font-extrabold text-white tracking-tight leading-[1.05] mb-6">
+        Schluss mit Stress.<br/>
+        <span class="text-gradient-orange">Jetzt starten.</span>
+      </h1>
+      <p class="reveal reveal-delay-2 text-[clamp(1rem,2vw,1.25rem)] text-white/50 max-w-[700px] mx-auto leading-relaxed font-light">
+        Das erste Telefongespräch ist komplett kostenlos und unverbindlich. Erzähl mir kurz von eurem Problem, und ich melde mich innerhalb von 24 Stunden bei dir.
+      </p>
+    </div>
+  </section>
+
+  <!-- FORM & INFO SECTION -->
+  <section class="py-12 md:py-24 bg-anthrazit relative overflow-hidden">
+    <div class="max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      
+      <!-- Linke Spalte: Direktkontakt Info -->
+      <div class="lg:col-span-5 space-y-8 reveal">
+        <div class="bg-anthrazit-2 border border-white/5 rounded-3xl p-8 space-y-6">
+          <h2 class="font-display font-bold text-2xl text-white">Direktkontakt</h2>
+          <p class="text-white/50 text-sm leading-relaxed">
+            Du willst nicht tippen, sondern lieber direkt anrufen oder eine schnelle WhatsApp schicken? Kein Problem.
+          </p>
+          
+          <div class="space-y-4 pt-2">
+            <!-- Anruf -->
+            <a href="tel:+4915147736042" class="group flex items-center gap-4 bg-white/3 border border-white/6 rounded-2xl p-4 hover:border-orange/30 hover:bg-orange/5 transition-all">
+              <div class="w-12 h-12 rounded-xl bg-orange/10 border border-orange/20 flex items-center justify-center text-orange group-hover:scale-110 transition-transform">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.387a12.035 12.035 0 0 1-7.108-7.108c-.155-.44.011-.927.387-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
+              </div>
+              <div>
+                <div class="text-xs text-white/55 font-medium uppercase tracking-wider">Telefonisch erreichbar</div>
+                <div class="text-white font-semibold group-hover:text-orange transition-colors">01514 7736042</div>
+              </div>
+            </a>
+
+            <!-- WhatsApp -->
+            <a href="https://wa.me/4915147736042" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 bg-white/3 border border-white/6 rounded-2xl p-4 hover:border-green-500/30 hover:bg-green-500/5 transition-all">
+              <div class="w-12 h-12 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-400 group-hover:scale-110 transition-transform">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.197 1.45 4.817 1.451 5.432.002 9.851-4.417 9.855-9.848.002-2.63-1.02-5.101-2.871-6.956C16.536 1.991 14.07 1.01 11.442 1.01c-5.436 0-9.856 4.417-9.86 9.848-.001 1.745.453 3.447 1.319 4.966L1.87 20.354l4.777-1.2zm11.758-6.196c-.3-.15-1.771-.874-2.045-.974-.273-.1-.473-.15-.671.15-.198.3-.767.974-.94 1.174-.173.2-.347.224-.647.074-.3-.15-1.267-.467-2.414-1.493-.893-.797-1.496-1.78-1.671-2.08-.174-.3-.019-.462.13-.61.135-.133.3-.347.45-.52.149-.174.199-.3.299-.5.1-.2.05-.375-.025-.525-.075-.15-.672-1.62-.92-2.22-.242-.584-.488-.504-.671-.514-.174-.01-.373-.01-.572-.01-.2 0-.525.075-.798.374-.273.3-1.043 1.02-1.043 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.11 3.22 5.11 4.52.714.31 1.272.49 1.71.63.717.23 1.373.2 1.889.12.573-.08 1.772-.72 2.02-1.42.25-.7.25-1.3.175-1.42-.075-.12-.275-.2-.575-.35z"/></svg>
+              </div>
+              <div>
+                <div class="text-xs text-white/55 font-medium uppercase tracking-wider">Schnelle Nachricht</div>
+                <div class="text-white font-semibold group-hover:text-green-400 transition-colors">WhatsApp schreiben</div>
+              </div>
+            </a>
+
+            <!-- E-Mail -->
+            <a href="mailto:kontakt@wolfsknigge.de" class="group flex items-center gap-4 bg-white/3 border border-white/6 rounded-2xl p-4 hover:border-orange/30 hover:bg-orange/5 transition-all">
+              <div class="w-12 h-12 rounded-xl bg-orange/10 border border-orange/20 flex items-center justify-center text-orange group-hover:scale-110 transition-transform">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+              </div>
+              <div>
+                <div class="text-xs text-white/55 font-medium uppercase tracking-wider">Klassischer Weg</div>
+                <div class="text-white font-semibold group-hover:text-orange transition-colors">kontakt@wolfsknigge.de</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-anthrazit-2 border border-white/5 rounded-3xl p-8 space-y-4">
+          <h3 class="font-display font-bold text-lg text-white">📍 Einsatzgebiet</h3>
+          <p class="text-white/50 text-[14px] leading-relaxed">
+            Als mobile Hundeschule komme ich direkt zu dir. Ich bin in einem Umkreis von ca. <strong class="text-white">35 km rund um Bredenbek</strong> unterwegs.
+          </p>
+          <div class="flex flex-wrap gap-2 pt-2">
+            {["Kiel", "Rendsburg", "Eckernförde", "Neumünster", "Fockbek", "Kronshagen", "Büdelsdorf", "Altenholz"].map((ort) => (
+              <span class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-white/5 border border-white/8 text-white/60">{ort}</span>
+            ))}
+          </div>
+          <p class="text-[12px] text-white/30 italic pt-1">
+            * Weiter entfernte Orte auf Anfrage gegen Erstattung einer Fahrtkostenpauschale möglich.
+          </p>
+        </div>
+      </div>
+
+      <!-- Rechte Spalte: Kontaktformular -->
+      <div class="lg:col-span-7 reveal reveal-delay-1">
+        <div class="bg-anthrazit-2 border border-white/5 rounded-3xl p-8 md:p-10 shadow-2xl relative">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange to-orange-dark"></div>
+          
+          <h2 class="font-display font-bold text-2xl md:text-3xl text-white mb-8">Anfrage senden</h2>
+
+          <!-- Formular mit Netlify Integration -->
+          <form name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6" action="/danke">
+            <input type="hidden" name="form-name" value="kontakt" />
+            <p class="hidden" aria-hidden="true">
+              <label>Bitte dieses Feld leer lassen: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="name" class="block text-[13px] font-semibold text-white/60 mb-2 uppercase tracking-wider">Dein Name *</label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  required
+                  placeholder="Max Mustermann"
+                  class="w-full bg-white/3 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:border-orange/50 transition-colors text-sm"
+                />
+              </div>
+              <div>
+                <label for="ort" class="block text-[13px] font-semibold text-white/60 mb-2 uppercase tracking-wider">Wohnort & Ortsteil</label>
+                <input
+                  type="text"
+                  name="ort"
+                  id="ort"
+                  placeholder="Kiel, Schreventeich"
+                  class="w-full bg-white/3 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:border-orange/50 transition-colors text-sm"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="phone" class="block text-[13px] font-semibold text-white/60 mb-2 uppercase tracking-wider">Telefonnummer (optional)</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  id="phone"
+                  placeholder="0151 1234567"
+                  class="w-full bg-white/3 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:border-orange/50 transition-colors text-sm"
+                />
+              </div>
+              <div>
+                <label for="email" class="block text-[13px] font-semibold text-white/60 mb-2 uppercase tracking-wider">E-Mail-Adresse *</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  required
+                  placeholder="deine-mail@adresse.de"
+                  class="w-full bg-white/3 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:border-orange/50 transition-colors text-sm"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 border-t border-white/5 pt-6">
+              <div>
+                <label for="hund-info" class="block text-[13px] font-semibold text-white/60 mb-2 uppercase tracking-wider">Name & Rasse des Hundes</label>
+                <input
+                  type="text"
+                  name="hund-info"
+                  id="hund-info"
+                  placeholder="Bello, Schäferhund Mix"
+                  class="w-full bg-white/3 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:border-orange/50 transition-colors text-sm"
+                />
+              </div>
+              <div>
+                <label for="hund-alter" class="block text-[13px] font-semibold text-white/60 mb-2 uppercase tracking-wider">Alter des Hundes</label>
+                <input
+                  type="text"
+                  name="hund-alter"
+                  id="hund-alter"
+                  placeholder="z.B. 2 Jahre"
+                  class="w-full bg-white/3 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:border-orange/50 transition-colors text-sm"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="thema" class="block text-[13px] font-semibold text-white/60 mb-2 uppercase tracking-wider">Wobei kann ich euch helfen? *</label>
+              <select
+                name="thema"
+                id="thema"
+                required
+                class="w-full bg-white/3 border border-white/10 rounded-xl px-4 py-3.5 text-white/80 focus:outline-none focus:border-orange/50 transition-colors text-sm"
+              >
+                <option value="" disabled selected class="bg-anthrazit-3 text-white/55">Bitte auswählen...</option>
+                <option value="anamnese" class="bg-anthrazit-3">Verhaltensanalyse / Ersttermin (130 €)</option>
+                <option value="einzelstunde" class="bg-anthrazit-3">Einzelstunde / 1:1 Coaching</option>
+                <option value="welpen" class="bg-anthrazit-3">Welpenstart / Welpengruppe</option>
+                <option value="erziehung" class="bg-anthrazit-3">Grunderziehung / Kleingruppe</option>
+                <option value="social-walk" class="bg-anthrazit-3">Social Walk</option>
+                <option value="anderes" class="bg-anthrazit-3">Sonstige Anfrage / Erstgespräch</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="message" class="block text-[13px] font-semibold text-white/60 mb-2 uppercase tracking-wider">Details zu eurem Verhalten/Problem *</label>
+              <textarea
+                name="message"
+                id="message"
+                rows="5"
+                required
+                placeholder="Bitte beschreibe kurz eure aktuelle Situation (z.B. Leinenpöbeln, Angst, Aggressivität bei Hundebegegnungen, etc.)."
+                class="w-full bg-white/3 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:border-orange/50 transition-colors text-sm leading-relaxed"
+              ></textarea>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <input
+                type="checkbox"
+                name="dsgvo"
+                id="dsgvo"
+                required
+                class="mt-1 accent-orange"
+              />
+              <label for="dsgvo" class="text-xs text-white/55 leading-relaxed">
+                Ich willige ein, dass meine Daten zum Zwecke der Kontaktaufnahme verarbeitet werden. Details findest du in der <a href="/dsgvo" target="_blank" class="text-orange underline hover:text-orange-glow">Datenschutzerklärung</a>. *
+              </label>
+            </div>
+
+            <button
+              type="submit"
+              class="shine w-full inline-flex items-center justify-center gap-2.5 rounded-full bg-orange hover:bg-orange-dark text-white font-display font-semibold px-8 py-4 text-base transition-all shadow-[0_0_40px_rgba(249,115,22,0.25)] active:scale-98 cursor-pointer"
+            >
+              Absenden
+              <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>

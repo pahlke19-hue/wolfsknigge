@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CityPage from "../components/CityPage.astro";
+
+const features = [
+  { bold: "Schnell bei dir in Neumünster", text: "Kurze Anfahrt aus Bredenbek, wir starten direkt bei dir vor der Haustür." },
+  { bold: 'Experte für "schwierige Felle"', text: "Echte Hilfe bei Aggression & Leinenpöbelei (kein Hundeplatz-Schema-F)." },
+  { bold: "Training im realen Umfeld", text: "Wir üben dort, wo Neumünster lebt: am See, im Stadtwald oder in der City." },
+  { bold: "Welpenstart mit Plan", text: "Sozialisierung im echten Leben statt nur im eingezäunten Auslauf." },
+  { bold: "Fit für den Alltag", text: "In kleinen Gruppen Leinenführigkeit, Rückruf & Co. meistern." },
+];
+
+const introParagraphs = [
+  'Wohnst du in <strong>Neumünster</strong> oder Umgebung und jeder Spaziergang fühlt sich an wie ein Spießrutenlauf? Vielleicht zieht dein Hund an der Leine, sobald ihr für die Runde am <strong>Einfelder See</strong> aus dem Auto steigt, oder er reagiert aggressiv auf andere Hunde, wenn es auf den Wegen im <strong>Stadtwald</strong> oder rund um den <strong>Großflecken</strong> eng wird.',
+  'Ich bin <strong>René Pahlke</strong> von WolfsKnigge. Als dein mobiler <strong>Hundetrainer für Neumünster</strong> weiß ich: Echte Verhaltensprobleme lassen sich nicht auf einem eingezäunten Hundeplatz am Stadtrand "wegtrainieren". Sitz und Platz funktionieren dort oft perfekt, aber sobald der echte Alltag mit Verkehr, Joggern und anderen Hunden beginnt, ist der Gehorsam weg. <em>Genau hier setze ich an.</em>',
+  'Mit meiner Erfahrung aus über <strong>200 erfolgreich betreuten Kunden-Teams</strong> habe ich mich auf <strong>Problemverhalten</strong> spezialisiert. Egal ob Leinenaggression, Angst, Stress oder fehlende Beißhemmung, ich arbeite mit dir fair, gewaltfrei und nach den neuesten Erkenntnissen der Lerntheorie (alle 4 Quadranten).',
+  '<strong>Der Vorteil:</strong> Ich komme aus Bredenbek direkt zu dir. Über die A7 bin ich in wenigen Minuten vor Ort. Wir trainieren in deinem realen Umfeld in Neumünster, damit dein Hund lernt, genau dort entspannt zu bleiben, wo du lebst.',
+];
+---
+
+<Layout title="Mobiles Hundetraining Neumünster | WolfsKnigge">
+  <CityPage
+    city="Neumünster"
+    title="Mobiles Hundetraining Neumünster. Dein Experte für <span>Problemverhalten</span> & Alltagstauglichkeit"
+    heroSubtitle="Schluss mit Stress an der Leine. Ich komme zu dir nach Neumünster und wir lösen das Problem dort, wo es entsteht."
+    heroImage="/images/hundetraining_in_neumuenster.webp"
+    features={features}
+    introH2="Dein erfahrener mobiler Hundetrainer in Neumünster"
+    introParagraphs={introParagraphs}
+    routeImage="/images/hundetraining_am_nok.webp"
+    routeImageAlt="Welpen trainieren am Einfelder See"
+    anamneseText="Der erste Schritt: ausführliche Bestandsaufnahme & individuelle Trainingsplanung. Direkt in Neumünster, Faldera & Gadeland."
+    anamneseAlt="Hundetraining in Neumünster an Aggressionsverhalten"
+    einzelAlt="Leinenführig durch den Stadtpark in Neumünster"
+    welpenText="Der beste Start für dich und deinen Welpen: Sozialisierung, Grunderziehung und Gewöhnung an das Stadtleben."
+    welpenAlt="Welpenschule in Faldera"
+    grundAlt="Gruppentraining in Gadeland und im Stadtpark Neumünster"
+  />
+</Layout>

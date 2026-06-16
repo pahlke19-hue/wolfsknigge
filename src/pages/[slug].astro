@@ -1,0 +1,151 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+};
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString("de-DE", { day: "2-digit", month: "long", year: "numeric" });
+
+// Related: 2 newest other posts
+const all = await getCollection("blog", ({ data }) => !data.draft);
+const related = all
+  .filter((p) => p.id !== post.id)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 2);
+---
+
+<Layout title={`${post.data.title} | WolfsKnigge Blog`} description={post.data.description}>
+
+  <!-- HERO -->
+  <section class="relative overflow-clip pt-28 pb-12 lg:pt-36 lg:pb-16">
+    <div class="absolute -top-[200px] right-[-100px] w-[600px] h-[600px] rounded-full pointer-events-none blob-float" style="background: radial-gradient(circle, rgba(249,115,22,.1), transparent 70%);"></div>
+
+    <div class="relative max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-12">
+      <a href="/blog" class="inline-flex items-center gap-2 text-[13px] text-white/60 hover:text-orange transition-colors mb-8 font-medium">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        Alle Beiträge
+      </a>
+
+      <div class="inline-flex items-center bg-white/8 backdrop-blur-md border border-white/12 text-orange font-semibold text-[11.5px] uppercase tracking-[0.16em] px-3.5 py-1.5 rounded-full mb-6">
+        {post.data.category}
+      </div>
+
+      <h1 class="font-display font-extrabold tracking-[-0.035em] leading-[1.05] text-white text-[clamp(2rem,5.5vw,4rem)] mb-7 max-w-[18ch]">
+        {post.data.title}
+      </h1>
+
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-[13.5px] text-white/50">
+        <div class="inline-flex items-center gap-2">
+          <span class="w-7 h-7 rounded-full bg-gradient-to-br from-orange to-orange-dark flex items-center justify-center text-white text-[11px] font-bold font-display">RP</span>
+          <span class="text-white/70 font-medium">{post.data.author}</span>
+        </div>
+        <span class="w-1 h-1 rounded-full bg-white/25"></span>
+        <span>{fmt(post.data.pubDate)}</span>
+        {post.data.readingTime && (
+          <>
+            <span class="w-1 h-1 rounded-full bg-white/25"></span>
+            <span>{post.data.readingTime} Lesezeit</span>
+          </>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- HERO IMAGE -->
+  <section class="relative pb-12 lg:pb-16">
+    <div class="max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="relative aspect-[16/9] sm:aspect-[21/9] rounded-3xl overflow-hidden border border-white/8 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)]">
+        <img
+          src={post.data.heroImage}
+          alt={post.data.heroAlt}
+          class="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+          width="1600" height="900"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLE BODY -->
+  <article class="relative pb-20">
+    <div class="max-w-[760px] mx-auto px-5 sm:px-8">
+      <div class="prose-blog">
+        <Content />
+      </div>
+    </div>
+  </article>
+
+  <!-- INLINE CTA -->
+  <section class="relative pb-24">
+    <div class="max-w-[760px] mx-auto px-5 sm:px-8">
+      <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-orange/15 via-anthrazit-2 to-anthrazit-3 border border-orange/20 p-7 sm:p-10">
+        <div class="absolute -top-16 -right-16 w-[280px] h-[280px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(249,115,22,.18), transparent 70%);"></div>
+        <div class="relative">
+          <p class="text-[12px] uppercase tracking-[0.18em] text-orange font-semibold mb-3">Du willst loslegen?</p>
+          <h3 class="font-display font-extrabold text-white text-[clamp(1.3rem,2.6vw,1.8rem)] leading-[1.15] mb-4 tracking-[-0.02em]">
+            Lass uns über deinen Hund sprechen.
+          </h3>
+          <p class="text-white/65 text-[15px] leading-relaxed mb-6">
+            Mobile Hundeschule für Kiel, Rendsburg, Eckernförde und Neumünster. Ich komme zu euch - dahin, wo's wirklich brennt.
+          </p>
+          <a href="/kontakt" class="shine inline-flex items-center gap-2 rounded-full bg-orange text-white font-display font-semibold px-6 py-3 text-[14.5px] transition-all hover:bg-orange-dark hover:scale-[1.03]">
+            Kennenlerngespräch
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {related.length > 0 && (
+    <!-- RELATED -->
+    <section class="relative pb-32 border-t border-white/5 pt-20">
+      <div class="max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-12">
+        <div class="flex items-end justify-between mb-10">
+          <h2 class="font-display font-extrabold text-white text-[clamp(1.5rem,3vw,2.2rem)] tracking-[-0.025em] leading-[1.1]">
+            Weiterlesen
+          </h2>
+          <a href="/blog" class="hidden sm:inline-flex items-center gap-2 text-orange font-display font-semibold text-sm hover:gap-3 transition-all">
+            Alle Beiträge
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+          {related.map((p) => (
+            <a href={`/${p.id}`} class="group flex flex-col bg-anthrazit-2 border border-white/8 rounded-2xl overflow-hidden transition-all hover:border-orange/30 hover:-translate-y-1">
+              <div class="relative aspect-[16/10] overflow-hidden">
+                <img
+                  src={p.data.heroImage}
+                  alt={p.data.heroAlt}
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                  width="1024" height="640"
+                />
+              </div>
+              <div class="p-6">
+                <div class="text-[11px] uppercase tracking-[0.14em] text-orange font-semibold mb-3">{p.data.category}</div>
+                <h3 class="font-display font-bold text-white text-[1.15rem] leading-[1.25] tracking-[-0.02em] mb-3 group-hover:text-orange-glow transition-colors line-clamp-2">
+                  {p.data.title}
+                </h3>
+                <p class="text-white/55 text-[14px] leading-relaxed line-clamp-2">{p.data.excerpt}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+</Layout>

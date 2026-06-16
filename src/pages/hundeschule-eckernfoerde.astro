@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CityPage from "../components/CityPage.astro";
+
+const features = [
+  { bold: "Schnell bei dir in Eckernförde", text: "Kurze Anfahrt aus Bredenbek, ich bin flexibel bei dir vor Ort." },
+  { bold: 'Experte für "schwierige Felle"', text: "Echte Hilfe bei Aggression & Leinenpöbelei (kein Hundeplatz-Schema-F)." },
+  { bold: "Training im Küsten-Alltag", text: "Wir üben dort, wo Eckernförde lebt: am Hafen, am Noor oder am Strand." },
+  { bold: "Welpenstart mit Plan", text: "Sozialisierung im echten Leben statt nur im eingezäunten Auslauf." },
+  { bold: "Fit für den Alltag", text: "In kleinen Gruppen Leinenführigkeit, Rückruf & Co. meistern." },
+];
+
+const introParagraphs = [
+  'Wohnst du in <strong>Eckernförde</strong> oder Umgebung und der entspannte Spaziergang am Wasser wird zur Zerreißprobe? Vielleicht zieht dein Hund an der Leine, sobald ihr euch dem Trubel am <strong>Hafen</strong> oder der <strong>Promenade</strong> nähert? Oder der Rückruf am <strong>Hundestrand</strong> funktioniert überhaupt nicht, sobald andere Hunde oder Möwen in Sicht sind?',
+  'Ich bin <strong>René Pahlke</strong> von WolfsKnigge. Als dein mobiler <strong>Hundetrainer für Eckernförde</strong> weiß ich: Probleme wie Leinenaggression oder Jagdverhalten lösen wir nicht auf einem abgelegenen Hundeplatz im Binnenland. Dein Hund muss lernen, in <em>deinem</em> küstennahen Umfeld entspannt zu bleiben, zwischen Touristen, Radfahrern und Strand-Trubel. <em>Genau hier setze ich an.</em>',
+  'Mit meiner Erfahrung aus über <strong>200 erfolgreich betreuten Kunden-Teams</strong> habe ich mich auf <strong>Problemverhalten</strong> spezialisiert. Egal ob dein Hund pöbelt, jagt oder unsicher ist, ich arbeite mit dir fair, gewaltfrei und nach den neuesten Erkenntnissen der Lerntheorie (alle 4 Quadranten).',
+  '<strong>Der Vorteil:</strong> Ich starte direkt aus Bredenbek. Über die Landstraße bin ich ruckzuck bei dir in Eckernförde, Borby oder Altenhof. Wir trainieren in deinem realen Alltag, damit die Erfolge auch wirklich anhalten.',
+];
+---
+
+<Layout title="Mobiles Hundetraining Eckernförde | WolfsKnigge">
+  <CityPage
+    city="Eckernförde"
+    title="Mobiles Hundetraining Eckernförde. Dein Experte für <span>Problemverhalten</span> & Alltagstauglichkeit"
+    heroSubtitle="Schluss mit Stress an der Promenade. Ich komme zu dir nach Eckernförde und wir lösen das Problem dort, wo es entsteht."
+    heroImage="/images/hundetraining_eckernförde.webp"
+    features={features}
+    introH2="Dein erfahrener mobiler Hundetrainer in Eckernförde"
+    introParagraphs={introParagraphs}
+    routeImage="/images/hundeschule_isz_am_strand.webp"
+    routeImageAlt="Hundeschule am Strand in Eckernförde"
+    anamneseText="Der erste Schritt: ausführliche Bestandsaufnahme & individuelle Trainingsplanung. Direkt in Eckernförde, Borby & Altenhof."
+    anamneseAlt="Hundetraining in Eckernförde an Aggressionsverhalten"
+    einzelAlt="Leinenführig durch den Park in Altenholz"
+    welpenText="Der beste Start für dich und deinen Welpen: Sozialisierung, Grunderziehung und Gewöhnung an das Stadt- und Strandleben."
+    welpenAlt="Welpenschule am Hafen von Eckernförde"
+    grundAlt="Gruppentraining im Windebyer Noor und Umgebung"
+  />
+</Layout>

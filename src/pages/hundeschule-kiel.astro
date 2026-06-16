@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CityPage from "../components/CityPage.astro";
+
+const features = [
+  { bold: "Schnell bei dir in Kiel", text: "Direkt aus Bredenbek über die A210/A215. In Gaarden, Wik, Projensdorf oder Hassee bin ich in wenigen Minuten bei dir zuhause oder im Park." },
+  { bold: 'Experte für "schwierige Felle"', text: "Echte Hilfe bei Aggression und Leinenpöbelei. Genau da, wo viele andere Hundeschulen in Kiel abwinken (kein Hundeplatz-Schema-F)." },
+  { bold: "Training an der Förde", text: "Wir üben dort, wo Kiel lebt. Kiellinie, Tiessenkai, Schrevenpark oder Düsternbrooker Gehölz. Echter Alltag statt isolierter Trainingsplatz." },
+  { bold: "Welpenschule Kiel mit Plan", text: "Sozialisierung im echten Stadtleben statt nur eingezäunter Welpenspielplatz. Vorbereitung auf das, was später wirklich kommt." },
+  { bold: "Individuelle Betreuung", text: "Voller Fokus auf dich und deinen Hund im 1:1 Coaching. Persönlich, ehrlich, in deinem Tempo." },
+];
+
+const introParagraphs = [
+  'Wohnst du in <strong>Kiel</strong> und jeder Gang vor die Tür wird zur Stressprobe? Vielleicht wird der Sonntagsspaziergang an der <strong>Kiellinie</strong> zum Spießrutenlauf, weil dein Hund bei jedem Jogger in die Leine springt. Oder du meidest den <strong>Schrevenpark</strong> und das <strong>Düsternbrooker Gehölz</strong>, weil Begegnungen mit anderen Hunden dort regelmäßig eskalieren.',
+  'Ich bin René Pahlke von <strong>WolfsKnigge</strong>. Als deine mobile <strong>Hundeschule in Kiel</strong> und <strong>Hundetrainer für Kiel</strong> weiß ich: Ein "Sitz" auf dem Hundeplatz bringt dir nichts, wenn dein Hund an der <strong>Holtenauer Straße</strong> bei Lärm und Trubel die Nerven verliert. Großstadthunde brauchen Training im echten Leben, nicht im Labor. <em>Genau hier setze ich an.</em>',
+  'Mit Erfahrung aus über <strong>200 erfolgreich betreuten Kunden-Teams</strong> habe ich mich auf <strong>Problemverhalten</strong> spezialisiert. Egal ob Leinenaggression an der Promenade, Angst vor dem Stadtverkehr oder fehlende Abrufbarkeit im Park, ich arbeite mit dir fair, gewaltfrei und klar nach allen vier Quadranten der Lerntheorie.',
+  '<strong>Der Vorteil:</strong> Ich starte direkt aus Bredenbek. Über die A210/A215 bin ich in wenigen Minuten bei dir, egal ob in <strong>Gaarden, Wik, Projensdorf, Hassee, Düsternbrook oder Elmschenhagen</strong>. Wir trainieren in deinem realen Kieler Alltag.',
+];
+---
+
+<Layout title="Hundeschule Kiel & Hundetrainer Kiel | WolfsKnigge - Mobil bei dir" description="Mobile Hundeschule Kiel: Hundetrainer René Pahlke kommt zu dir. Spezialisiert auf Problemverhalten, Leinenaggression und Angst. Training an Kiellinie, Schrevenpark, Holtenauer. 200+ Teams, 5,0 auf Google.">
+  <CityPage
+    city="Kiel"
+    title="Hundeschule Kiel - Dein Hundetrainer für <span>Problemverhalten</span> & Alltagstauglichkeit"
+    heroSubtitle="Schluss mit Stress an der Förde. Ich komme zu dir nach Kiel und wir lösen das Problem dort, wo es entsteht."
+    heroImage="/images/hundeschule_in_sehestedt.webp"
+    features={features}
+    introH2="Dein erfahrener mobiler <span>Hundetrainer in Kiel</span>"
+    introParagraphs={introParagraphs}
+    routeImage="/images/rene_unterordnung.webp"
+    routeImageAlt="Hundetraining in Kiel an der Förde"
+    anamneseText="Der erste Schritt: ausführliche Bestandsaufnahme & individuelle Trainingsplanung. Direkt bei dir zuhause in Kiel."
+    anamneseAlt="Verhaltensanalyse Hundetraining in Kiel"
+    einzelAlt="Einzelstunde Hundetrainer Kiel im Schrevenpark"
+    welpenText="Welpenschule Kiel mit Plan: Sozialisierung im echten Stadtleben statt isolierter Spielplatz. Gewöhnung an Joggern, Radfahrern, Stadtlärm."
+    welpenAlt="Welpenschule Kiel im Schrevenpark"
+    grundAlt="Gruppentraining Hundeschule Kiel Altstadt"
+  />
+</Layout>

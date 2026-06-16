@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontaktseite – Designvorschlag</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #1a1a2e; color: #e4e4e7; font-family: 'Segoe UI', system-ui, sans-serif; }
+
+  .page-label {
+    position: fixed; top: 12px; left: 50%; transform: translateX(-50%);
+    background: rgba(249,115,22,0.15); border: 1px solid rgba(249,115,22,0.3);
+    color: #f97316; font-size: 11px; font-weight: 600; padding: 5px 14px;
+    border-radius: 50px; z-index: 999; letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+  .approve-bar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: rgba(10,10,11,0.95); backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 14px 24px; display: flex; align-items: center; justify-content: center; gap: 12px;
+    z-index: 999;
+  }
+  .btn-approve {
+    background: #f97316; color: #fff; border: none; border-radius: 50px;
+    padding: 10px 28px; font-size: 14px; font-weight: 700; cursor: pointer;
+    transition: background 0.15s;
+  }
+  .btn-approve:hover { background: #ea580c; }
+  .btn-change {
+    background: rgba(255,255,255,0.07); color: #fff; border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50px; padding: 10px 20px; font-size: 14px; cursor: pointer;
+  }
+  .approve-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+
+  /* PAGE STYLES */
+  .page { background: #0a0a0b; min-height: 100vh; }
+
+  /* HERO */
+  .hero {
+    position: relative; overflow: hidden; min-height: 100svh;
+    display: flex; flex-direction: column; justify-content: flex-end; background: #000;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: #000;
+  }
+  .hero-bg img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center 30%;
+    display: block;
+  }
+  .hero-overlay-t { position: absolute; inset: 0; background: linear-gradient(to top, #0a0a0b 0%, rgba(10,10,11,0.5) 50%, rgba(10,10,11,0.1) 100%); }
+  .hero-overlay-l { position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,10,11,0.75) 35%, rgba(10,10,11,0.2) 100%); }
+  .hero-glow { position: absolute; top: -100px; right: -100px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(249,115,22,0.14), transparent 70%); border-radius: 50%; pointer-events: none; }
+
+  .hero-inner {
+    position: relative; z-index: 1;
+    width: 100%; max-width: 1280px; margin: 0 auto;
+    padding: 120px 24px 80px;
+  }
+
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.08); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.12); border-radius: 50px;
+    padding: 5px 14px; margin-bottom: 24px;
+  }
+  .pill-dot { width: 7px; height: 7px; background: #f97316; border-radius: 50%; flex-shrink: 0; }
+  .pill span { font-size: 12px; color: #fff; font-weight: 600; letter-spacing: 0.06em; }
+
+  .hero h1 {
+    font-size: clamp(3rem, 9vw, 7rem); font-weight: 900; line-height: 0.95;
+    letter-spacing: -0.04em; color: #fff; margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: italic; background: linear-gradient(135deg, #f97316, #fb923c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-sub { font-size: 16px; color: rgba(255,255,255,0.55); max-width: 420px; line-height: 1.6; margin-bottom: 28px; font-weight: 300; }
+
+  .hero-btns { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #f97316; color: #fff; font-weight: 700; font-size: 14px;
+    padding: 14px 28px; border-radius: 50px; text-decoration: none;
+    box-shadow: 0 0 50px rgba(249,115,22,0.35);
+  }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15);
+    color: #fff; font-weight: 600; font-size: 14px; padding: 14px 22px; border-radius: 50px;
+    text-decoration: none;
+  }
+  .btn-wa {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(37,211,102,0.12); border: 1px solid rgba(37,211,102,0.25);
+    color: #25d366; font-weight: 600; font-size: 14px; padding: 14px 22px; border-radius: 50px;
+    text-decoration: none;
+  }
+
+  .hero-stats {
+    display: flex; align-items: center; gap: 24px;
+    padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .stat-val { font-size: 22px; font-weight: 900; line-height: 1; margin-bottom: 3px; }
+  .stat-val.orange { color: #f97316; }
+  .stat-label { font-size: 10px; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; }
+  .stat-div { width: 1px; height: 36px; background: rgba(255,255,255,0.1); }
+
+  /* MAIN SECTION */
+  .contact-section {
+    background: #111215;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .contact-inner {
+    max-width: 1280px; margin: 0 auto; padding: 72px 24px 96px;
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px 64px;
+    align-items: start;
+  }
+
+  /* LEFT COLUMN */
+  .col-left {}
+  .section-eyebrow {
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em;
+    color: #f97316; margin-bottom: 16px;
+  }
+  .col-left h2 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: #fff;
+    line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px;
+  }
+  .col-left h2 em { font-style: normal; background: linear-gradient(135deg, #f97316, #fb923c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .col-left p { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 28px; font-weight: 300; }
+
+  .contact-cards { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+  .contact-card {
+    display: flex; align-items: center; gap: 14px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px; padding: 14px 18px; text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-card:hover { border-color: rgba(249,115,22,0.3); background: rgba(249,115,22,0.05); }
+  .contact-card-icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: rgba(249,115,22,0.12); border: 1px solid rgba(249,115,22,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .contact-card-label { font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 2px; }
+  .contact-card-val { font-size: 14px; color: #fff; font-weight: 600; }
+
+  .hours-block {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px; padding: 16px 18px;
+  }
+  .hours-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #f97316; margin-bottom: 10px; }
+  .hours-row { display: flex; justify-content: space-between; font-size: 13px; padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .hours-row:last-child { border-bottom: none; }
+  .hours-day { color: rgba(255,255,255,0.5); }
+  .hours-time { color: #fff; font-weight: 500; }
+  .hours-time.closed { color: rgba(255,255,255,0.3); }
+
+  /* RIGHT COLUMN — FORM */
+  .form-card {
+    background: #161618; border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 24px; padding: 40px 36px;
+  }
+  .form-eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: #f97316; margin-bottom: 6px; }
+  .form-title { font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 6px; letter-spacing: -0.02em; }
+  .form-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 28px; line-height: 1.5; }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .form-grid .full { grid-column: 1 / -1; }
+
+  .field { display: flex; flex-direction: column; gap: 5px; }
+  .field label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.08em; }
+  .field input, .field select, .field textarea {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; padding: 12px 14px; font-size: 14px; color: #fff;
+    font-family: inherit; outline: none; transition: border-color 0.2s;
+  }
+  .field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,0.2); }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: rgba(249,115,22,0.5); }
+  .field select { color: rgba(255,255,255,0.4); }
+  .field textarea { resize: vertical; min-height: 100px; }
+  select option { background: #161618; color: #fff; }
+
+  .gdpr-row { display: flex; align-items: flex-start; gap: 10px; margin-top: 4px; }
+  .gdpr-row input[type=checkbox] { width: 16px; height: 16px; margin-top: 2px; accent-color: #f97316; flex-shrink: 0; }
+  .gdpr-row label { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.5; font-weight: 400; text-transform: none; letter-spacing: 0; }
+  .gdpr-row label a { color: #f97316; text-decoration: none; }
+
+  .submit-btn {
+    width: 100%; background: #f97316; color: #fff; border: none; border-radius: 50px;
+    padding: 16px; font-size: 15px; font-weight: 700; cursor: pointer; margin-top: 8px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    box-shadow: 0 0 40px rgba(249,115,22,0.3); font-family: inherit;
+    letter-spacing: 0.01em;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .contact-inner { grid-template-columns: 1fr; padding: 48px 20px 64px; }
+    .form-card { padding: 28px 20px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .form-grid .full { grid-column: 1; }
+    .hero-inner { padding: 100px 20px 60px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-label">Designvorschlag · Kontaktseite · Scroll zum Ansehen</div>
+
+<div class="page">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="/files/rene-hero.webp" alt="" aria-hidden="true" width="1920" height="1280">
+    </div>
+    <div class="hero-overlay-t"></div>
+    <div class="hero-overlay-l"></div>
+    <div class="hero-glow"></div>
+
+    <div class="hero-inner">
+      <div class="pill">
+        <span class="pill-dot"></span>
+        <span>Kostenlos kennenlernen · Unverbindlich</span>
+      </div>
+
+      <h1>
+        Schreib<br/>
+        mir.<br/>
+        <em>Ich antworte.</em>
+      </h1>
+
+      <p class="hero-sub">
+        Das erste Gespräch ist kostenlos und unverbindlich.
+        Ich melde mich innerhalb von <strong style="color:#fff;font-weight:600;">24 Stunden</strong>.
+      </p>
+
+      <div class="hero-btns">
+        <a href="#formular" class="btn-primary">
+          Anfrage schreiben
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="tel:015147736042" class="btn-secondary">📞 0151 47736042</a>
+        <a href="https://wa.me/4915147736042" class="btn-wa">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.528 5.845L.057 23.428a.5.5 0 0 0 .614.614l5.638-1.47A11.934 11.934 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.797 9.797 0 0 1-5.003-1.376l-.36-.214-3.724.97.993-3.63-.234-.374A9.797 9.797 0 0 1 2.182 12C2.182 6.573 6.573 2.182 12 2.182S21.818 6.573 21.818 12 17.427 21.818 12 21.818z"/>
+          </svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT + FORM -->
+  <section class="contact-section" id="formular">
+    <div class="contact-inner">
+
+      <!-- LEFT -->
+      <div class="col-left">
+        <div class="section-eyebrow">Direkt erreichen</div>
+        <h2>Komm auf mich<br/>zu. <em>Ich höre zu.</em></h2>
+        <p>Egal ob du ein konkretes Problem hast oder erstmal nur Fragen – schreib mir, ruf an oder komm über WhatsApp. Kein Formular-Zwang.</p>
+
+        <div class="contact-cards">
+          <a href="tel:015147736042" class="contact-card">
+            <div class="contact-card-icon">📞</div>
+            <div>
+              <div class="contact-card-label">Telefon</div>
+              <div class="contact-card-val">0151 47736042</div>
+            </div>
+          </a>
+          <a href="https://wa.me/4915147736042" class="contact-card" style="border-color:rgba(37,211,102,0.15);">
+            <div class="contact-card-icon" style="background:rgba(37,211,102,0.1);border-color:rgba(37,211,102,0.25);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#25d366" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.528 5.845L.057 23.428a.5.5 0 0 0 .614.614l5.638-1.47A11.934 11.934 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.797 9.797 0 0 1-5.003-1.376l-.36-.214-3.724.97.993-3.63-.234-.374A9.797 9.797 0 0 1 2.182 12C2.182 6.573 6.573 2.182 12 2.182S21.818 6.573 21.818 12 17.427 21.818 12 21.818z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="contact-card-label">WhatsApp</div>
+              <div class="contact-card-val" style="color:#25d366;">Direkt schreiben</div>
+            </div>
+          </a>
+          <a href="mailto:kontakt@wolfsknigge.de" class="contact-card">
+            <div class="contact-card-icon">✉️</div>
+            <div>
+              <div class="contact-card-label">E-Mail</div>
+              <div class="contact-card-val">kontakt@wolfsknigge.de</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="hours-block">
+          <div class="hours-title">Erreichbarkeit</div>
+          <div class="hours-row">
+            <span class="hours-day">Montag – Freitag</span>
+            <span class="hours-time">09:00 – 19:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Samstag</span>
+            <span class="hours-time">09:00 – 13:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Sonntag</span>
+            <span class="hours-time closed">Geschlossen</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: FORM -->
+      <div class="form-card">
+        <div class="form-eyebrow">Anfrage senden</div>
+        <div class="form-title">Termin anfragen</div>
+        <div class="form-sub">Alle Felder außer Telefon sind Pflichtfelder. Ich antworte innerhalb von 24 Stunden.</div>
+
+        <form>
+          <div class="form-grid">
+            <div class="field">
+              <label>Dein Name</label>
+              <input type="text" placeholder="Vorname Nachname">
+            </div>
+            <div class="field">
+              <label>Hundename</label>
+              <input type="text" placeholder="Name deines Hundes">
+            </div>
+            <div class="field">
+              <label>Hunderasse</label>
+              <input type="text" placeholder="Rasse (ungefähr ok)">
+            </div>
+            <div class="field">
+              <label>Stadt</label>
+              <input type="text" placeholder="z. B. Kiel, Rendsburg…">
+            </div>
+            <div class="field">
+              <label>E-Mail</label>
+              <input type="email" placeholder="deine@email.de">
+            </div>
+            <div class="field">
+              <label>Telefon <span style="font-weight:400;opacity:0.5;">(optional)</span></label>
+              <input type="tel" placeholder="+49 …">
+            </div>
+            <div class="field full">
+              <label>Worum geht's?</label>
+              <select>
+                <option value="" disabled selected>Bitte wählen…</option>
+                <option>Einzelstunde</option>
+                <option>Anamnese & Erstgespräch</option>
+                <option>Welpenstunde</option>
+                <option>Grunderziehungsgruppe</option>
+                <option>Social Walk</option>
+                <option>Anderes / noch nicht sicher</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label>Deine Nachricht</label>
+              <textarea placeholder="Erzähl mir kurz von deiner Situation und deinem Hund – was beschäftigt euch?"></textarea>
+            </div>
+            <div class="full">
+              <div class="gdpr-row">
+                <input type="checkbox" id="gdpr">
+                <label for="gdpr" style="font-size:12px;color:rgba(255,255,255,0.4);line-height:1.5;font-weight:400;text-transform:none;letter-spacing:0;">
+                  Ich habe die <a href="/datenschutz" style="color:#f97316;">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage zu.
+                </label>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="submit-btn">
+            Jetzt kostenlos anfragen
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<div class="approve-bar">
+  <span class="approve-label">Sieht das so gut aus?</span>
+  <button class="btn-approve" onclick="window.recordApproval()">Ja, so umsetzen ✓</button>
+  <button class="btn-change" onclick="window.recordChange()">Änderung nötig</button>
+</div>
+
+<script>
+window.recordApproval = function() {
+  fetch('/events', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({type:'click', choice:'approved', text:'Design approved'})
+  }).catch(()=>{});
+  document.querySelector('.approve-bar').innerHTML = '<span style="color:#4ade80;font-weight:700;">✓ Design freigegeben – sag mir das kurz im Terminal</span>';
+};
+window.recordChange = function() {
+  fetch('/events', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({type:'click', choice:'change', text:'Change requested'})
+  }).catch(()=>{});
+  document.querySelector('.approve-bar').innerHTML = '<span style="color:#f97316;font-weight:700;">Sag mir im Terminal was geändert werden soll.</span>';
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString("de-DE", { day: "2-digit", month: "long", year: "numeric" });
+
+const [featured, ...rest] = posts;
+---
+
+<Layout title="Blog – WolfsKnigge | Hundetrainer Kiel & Umgebung" description="Tipps, Methoden und Geschichten aus dem Trainingsalltag. Hundeerziehung in Kiel, Rendsburg, Eckernförde und Neumünster.">
+
+  <!-- HERO -->
+  <section class="relative overflow-clip pt-32 pb-16 lg:pt-40 lg:pb-24">
+    <div class="absolute -top-[200px] right-[-100px] w-[600px] h-[600px] rounded-full pointer-events-none blob-float" style="background: radial-gradient(circle, rgba(249,115,22,.12), transparent 70%);"></div>
+    <div class="absolute top-[200px] left-[-150px] w-[500px] h-[500px] rounded-full pointer-events-none blob-float-rev" style="background: radial-gradient(circle, rgba(54,255,243,.06), transparent 70%);"></div>
+
+    <div class="relative max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="inline-flex items-center gap-2.5 bg-white/8 backdrop-blur-md border border-white/12 text-white font-medium text-[13px] px-4 py-2 rounded-full mb-7">
+        <span class="relative flex h-2 w-2">
+          <span class="absolute inline-flex h-full w-full rounded-full bg-orange opacity-75 ping-slow"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-orange"></span>
+        </span>
+        Tipps · News · Geschichten aus dem Training
+      </div>
+
+      <h1 class="font-display font-extrabold tracking-[-0.04em] leading-[0.95] text-white mb-6 text-[clamp(2.5rem,7vw,5.5rem)]">
+        <span class="block">Blog &</span>
+        <span class="block text-gradient-orange italic">Hunde-Wissen.</span>
+      </h1>
+
+      <p class="text-white/60 text-[clamp(1rem,1.6vw,1.2rem)] max-w-[640px] leading-relaxed font-light">
+        Was ich im Alltag mit Problemverhalten, Stress, Angst und Aggression sehe - und was wirklich hilft. Praxis statt Floskeln.
+      </p>
+    </div>
+  </section>
+
+  {featured && (
+    <!-- FEATURED ARTICLE -->
+    <section class="relative pb-12">
+      <div class="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12">
+        <a href={`/${featured.id}`} class="reveal group block relative overflow-hidden rounded-3xl border border-white/8 bg-anthrazit-2 transition-all hover:border-orange/30">
+          <div class="grid lg:grid-cols-2 gap-0">
+            <div class="relative aspect-[16/10] lg:aspect-auto lg:min-h-[420px] overflow-hidden">
+              <img
+                src={featured.data.heroImage}
+                alt={featured.data.heroAlt}
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="eager"
+                width="1600" height="1000"
+              />
+              <div class="absolute inset-0 bg-gradient-to-r from-anthrazit-2/60 via-transparent to-transparent lg:block hidden"></div>
+            </div>
+            <div class="relative p-7 sm:p-10 lg:p-14 flex flex-col justify-center">
+              <div class="flex items-center gap-3 text-[12px] uppercase tracking-[0.16em] text-orange font-semibold mb-5">
+                <span>{featured.data.category}</span>
+                <span class="w-1 h-1 rounded-full bg-white/30"></span>
+                <span class="text-white/50">Aktuell</span>
+              </div>
+              <h2 class="font-display font-extrabold tracking-[-0.025em] leading-[1.08] text-white text-[clamp(1.6rem,3vw,2.6rem)] mb-5 group-hover:text-gradient-orange transition-colors">
+                {featured.data.title}
+              </h2>
+              <p class="text-white/65 leading-relaxed text-[15px] sm:text-[16px] mb-7 line-clamp-4">
+                {featured.data.excerpt}
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 text-[13px] text-white/60">
+                  <span>{fmt(featured.data.pubDate)}</span>
+                  {featured.data.readingTime && (
+                    <>
+                      <span class="w-1 h-1 rounded-full bg-white/25"></span>
+                      <span>{featured.data.readingTime} Lesezeit</span>
+                    </>
+                  )}
+                </div>
+                <span class="inline-flex items-center gap-2 text-orange font-display font-semibold text-sm group-hover:gap-3 transition-all">
+                  Lesen
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+  )}
+
+  {rest.length > 0 && (
+    <!-- ARTICLE GRID -->
+    <section class="relative pb-32">
+      <div class="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {rest.map((post) => (
+            <a href={`/${post.id}`} class="reveal group flex flex-col bg-anthrazit-2 border border-white/8 rounded-2xl overflow-hidden transition-all hover:border-orange/30 hover:-translate-y-1">
+              <div class="relative aspect-[16/10] overflow-hidden">
+                <img
+                  src={post.data.heroImage}
+                  alt={post.data.heroAlt}
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                  width="1024" height="640"
+                />
+                <div class="absolute top-3 left-3 inline-flex items-center bg-black/60 backdrop-blur-md text-orange text-[11px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-white/10">
+                  {post.data.category}
+                </div>
+              </div>
+              <div class="p-6 flex flex-col flex-1">
+                <h3 class="font-display font-bold text-white text-[1.15rem] leading-[1.25] tracking-[-0.02em] mb-3 group-hover:text-orange-glow transition-colors line-clamp-3">
+                  {post.data.title}
+                </h3>
+                <p class="text-white/55 text-[14.5px] leading-relaxed mb-5 line-clamp-3 flex-1">
+                  {post.data.excerpt}
+                </p>
+                <div class="flex items-center justify-between text-[12.5px] text-white/55 pt-4 border-t border-white/5">
+                  <span>{fmt(post.data.pubDate)}</span>
+                  {post.data.readingTime && <span>{post.data.readingTime}</span>}
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA -->
+  <section class="relative pb-24">
+    <div class="max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-orange/15 via-anthrazit-2 to-anthrazit-3 border border-orange/20 p-8 sm:p-12 lg:p-16">
+        <div class="absolute -top-20 -right-20 w-[400px] h-[400px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(249,115,22,.18), transparent 70%);"></div>
+        <div class="relative">
+          <h2 class="font-display font-extrabold text-white text-[clamp(1.6rem,3.4vw,2.4rem)] tracking-[-0.025em] leading-[1.1] mb-5 max-w-[640px]">
+            Theorie ist gut. Aber dein Hund braucht Training in <span class="text-gradient-orange italic">echten Situationen</span>.
+          </h2>
+          <p class="text-white/70 text-[16px] leading-relaxed max-w-[560px] mb-7">
+            Wenn du dir einen Termin sichern willst - bei dir zuhause, an deiner echten Gassirunde, in deinem Alltag - schreib mir.
+          </p>
+          <a href="/kontakt" class="shine inline-flex items-center justify-center gap-2.5 rounded-full bg-orange text-white font-display font-semibold px-7 py-3.5 text-[15px] transition-all shadow-[0_0_60px_rgba(249,115,22,0.35)] hover:bg-orange-dark hover:scale-[1.03]">
+            Kennenlerngespräch
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

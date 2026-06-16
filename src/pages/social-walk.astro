@@ -1,0 +1,571 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const walks = [
+  {
+    nr: "01",
+    name: "Zusammen-Wachsen",
+    untertitel: "Der Standard-Walk",
+    fuerWen: "Für alle Teams, die alltagsnah trainieren und sich mit anderen Haltern austauschen wollen.",
+    highlights: [
+      "Wechselnde Themen pro Termin: Leinenführigkeit, Rückruf, Begegnungen, Impulskontrolle …",
+      "Klassische Trainingsinhalte, verpackt in einen entspannten Walk",
+      "Max. 8 Teams · viel Raum für Austausch",
+    ],
+    daten: "90 Min · 35 € · Max. 8 Teams",
+    termin: "Nächster Termin folgt",
+  },
+  {
+    nr: "02",
+    name: "Bindungs-Walk",
+    untertitel: "Bindung & Kooperation",
+    fuerWen: "Für Teams, die das Miteinander mit ihrem Hund vertiefen wollen, weg vom Nebeneinanderher.",
+    highlights: [
+      "Die Natur wird zum Trainingsplatz: Baumstämme, Abhänge, Wegkreuzungen als Team-Aufgaben",
+      "Fokus auf Aufmerksamkeit, gemeinsamen Spaß und echtes Miteinander",
+      "Bewältigte Aufgaben schweißen zusammen",
+    ],
+    daten: "90 Min · 35 € · Max. 8 Teams",
+    termin: "Nächster Termin folgt",
+  },
+  {
+    nr: "03",
+    name: "Pöbel-Walk",
+    untertitel: "Für leinenaggressive Hunde",
+    fuerWen: "Für Teams, deren Hund an der Leine eskaliert und die merken wollen: ihr seid nicht allein.",
+    highlights: [
+      "Nur 3–4 Teams · abgelegene Strecken · viel Abstand",
+      "Andere Hunde mit ähnlichen Themen, kontrolliert, gewaltfrei, ohne Showdown",
+      "Hund erlebt: \"Es geht auch anders.\" Halter erlebt: \"Andere kennen das.\"",
+    ],
+    daten: "90 Min · 35 € · Max. 4 Teams",
+    termin: "Nächster Termin folgt",
+  },
+];
+
+const wasIstEs = [
+  {
+    icon: '<path d="M20 6 9 17l-5-5"/>',
+    title: "Was es IST",
+    text: "Ein geführter Walk in der Gruppe. Training läuft nebenher. Halter kommen ins Gespräch. Hunde lernen am Modell.",
+  },
+  {
+    icon: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+    title: "Was es NICHT ist",
+    text: "Keine Hundespielwiese. Kein Frontalunterricht. Kein Zwang, dass alle Hunde Kumpels werden müssen.",
+  },
+  {
+    icon: '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
+    title: "Wofür's nützt",
+    text: "Alltagsnah trainieren, ohne Druck. Austausch mit Leuten, die wissen, wovon du redest. Hund und Halter wachsen gemeinsam.",
+  },
+];
+
+const ablauf = [
+  { step: "01", title: "Anmelden", text: "Walk und Termin auswählen, kurze Mail oder Anruf. Wir klären vorab, ob's passt." },
+  { step: "02", title: "Treffpunkt", text: "Du bekommst Wegbeschreibung und Infos. Pünktlich da sein, Hund anleinen, los geht's." },
+  { step: "03", title: "Walken & Reflektion", text: "90 Minuten gemeinsam unterwegs, danach kurzer Austausch. Fragen, Beobachtungen, nächste Schritte." },
+];
+
+const unterschiede = [
+  { nr: "01", titel: "Spezialist statt Generalist", text: "Auf Problemverhalten spezialisiert. Wer täglich mit Aggression und Stress arbeitet, führt auch entspannte Walks anders." },
+  { nr: "02", titel: "Kleine Gruppen", text: "Je nach Format 3–8 Teams. Jeder bekommt Aufmerksamkeit, nicht nur einen Platz in der Schlange." },
+  { nr: "03", titel: "Echte Orte", text: "Kein isolierter Übungsplatz. Wir laufen, wo Alltag stattfindet: Wald, Wege, Begegnungen inklusive." },
+  { nr: "04", titel: "Gewaltfrei & klar", text: "Fair und konsequent. Keine Showeffekte, keine Härte, sondern das, was nachhaltig funktioniert." },
+];
+
+const faq = [
+  {
+    frage: "Mein Hund pöbelt an der Leine, passt er überhaupt rein?",
+    antwort: "Genau dafür gibt's den Pöbel-Walk. Kleine Gruppe, viel Abstand, abgelegene Strecken. Vorher telefonieren wir kurz, damit ich einschätzen kann, ob's für deinen Hund schon passt, oder ob erst ein paar Einzelstunden sinnvoller sind."
+  },
+  {
+    frage: "Was, wenn es regnet?",
+    antwort: "Wir laufen bei fast jedem Wetter. Nur bei Sturm, Gewitter oder Glatteis sage ich ab, dann findest du die Info rechtzeitig per Mail oder Anruf. Wetterfeste Klamotten sind Pflicht, sonst wird's kein Spaß."
+  },
+  {
+    frage: "Was muss ich mitbringen?",
+    antwort: "Funktionierendes Geschirr oder Halsband, normale Leine (keine Flexi), wenn vorhanden eine 5–10 m Schleppleine, Leckerli, Wasser für deinen Hund. Du selbst: festes Schuhwerk und wetterangepasste Kleidung."
+  },
+  {
+    frage: "Müssen alle Hunde miteinander verträglich sein?",
+    antwort: "Nein. Beim Zusammen-Wachsen und Bindungs-Walk sollten Hunde grundsätzlich gruppentauglich sein, Kontakt ist aber kein Muss. Beim Pöbel-Walk ist Unverträglichkeit ausdrücklich okay, dafür ist das Format gemacht."
+  },
+  {
+    frage: "Kann ich erst mal zuschauen, bevor ich mitmache?",
+    antwort: "Zuschauen ohne Hund ist möglich, wenn die Gruppe nicht voll ist. Ruf vorher an, dann finden wir eine Lösung. Meist ist mitlaufen aber der bessere Einstieg, du merkst schneller, ob's für euch passt."
+  },
+  {
+    frage: "Wo finden die Walks statt?",
+    antwort: "Rund um Bredenbek, Kiel, Rendsburg und Umgebung, also im Einzugsgebiet bis ca. 35 km. Der genaue Treffpunkt richtet sich nach dem Format und steht jeweils beim Termin."
+  },
+];
+
+const testimonials = [
+  { name: "Jori K.", text: "Die Trainingsanreize haben schnell geholfen und es wird sich wirklich Zeit genommen." },
+  { name: "Susanne H.", text: "Als Ersthundebesitzer hatten wir viele Fragen, die uns schlüssig beantwortet wurden." },
+  { name: "Daniela B.", text: "Dank des Trainings können wir endlich wieder entspannt Gassi gehen." },
+  { name: "Jens", text: "Wir bekamen die Leinenaggression bei unserer Herdenschützerin super in den Griff." },
+  { name: "Nicole H.", text: "Das Training hat schnell geholfen, sodass bei uns wieder Harmonie herrscht." },
+  { name: "Sophia S.", text: "Dank des konsequenten Trainings klappt der Rückruf jetzt perfekt." },
+  { name: "Mathias", text: "Wir lernen so viel Wichtiges, das uns super und schnell weiterhilft." },
+  { name: "Claudia R.", text: "Es wurde geholfen, die Fehler im Umfeld zu sehen. Jetzt ist der Kleine entspannter." },
+];
+
+const termine = [
+  { format: "Zusammen-Wachsen", datum: "Folgt", ort: "Region Kiel / Rendsburg", preis: "35 €", plaetze: "Warteliste offen" },
+  { format: "Bindungs-Walk", datum: "Folgt", ort: "Region Kiel / Rendsburg", preis: "35 €", plaetze: "Warteliste offen" },
+  { format: "Pöbel-Walk", datum: "Folgt", ort: "Abgelegene Strecke (Details bei Anmeldung)", preis: "35 €", plaetze: "Warteliste offen" },
+];
+---
+
+<Layout title="Social Walks | WolfsKnigge Kiel & Rendsburg" description="Social Walks rund um Kiel & Rendsburg: Drei Formate für Halter, die mehr wollen als nur Gassi gehen. Zusammen-Wachsen, Bindungs-Walk und Pöbel-Walk für leinenaggressive Hunde.">
+
+  <!-- HERO -->
+  <section class="relative overflow-clip" style="min-height: 72svh; background: #000;">
+
+    <div class="absolute inset-0">
+      <img
+        src="/images/hundeschule_eckernförde_strand.webp"
+        alt=""
+        aria-hidden="true"
+        id="hero-bg-img-sw"
+        fetchpriority="high"
+        decoding="async"
+        class="w-full h-full object-cover"
+        style="object-position: center 50%; transform-origin: center; will-change: transform;"
+        width="1920" height="1280"
+      />
+    </div>
+
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-[rgba(10,10,11,0.65)] to-[rgba(10,10,11,0.15)]"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[rgba(10,10,11,0.9)] via-[rgba(10,10,11,0.35)] to-transparent"></div>
+    <div class="absolute -top-[200px] right-[-100px] w-[600px] h-[600px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(249,115,22,.15), transparent 70%);"></div>
+
+    <div class="relative flex flex-col justify-end text-white" style="min-height: 72svh; padding-bottom: env(safe-area-inset-bottom, 0px);">
+      <div class="w-full max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12 pb-20 pt-32 lg:pb-28">
+
+        <div class="hero-reveal inline-flex items-center gap-2.5 bg-white/8 backdrop-blur-md border border-white/12 text-white font-medium text-[13px] px-4 py-2 rounded-full mb-7">
+          <span class="relative flex h-2 w-2">
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-orange"></span>
+          </span>
+          Social Walks · Kiel · Rendsburg
+        </div>
+
+        <h1 class="font-display font-extrabold tracking-[-0.04em] leading-[0.92] mb-7">
+          <span class="hero-reveal hero-reveal-d1 block text-[clamp(3rem,9vw,7.5rem)] text-white">Endlich</span>
+          <span class="hero-reveal hero-reveal-d2 block text-[clamp(3rem,9vw,7.5rem)] text-white">Leute, die</span>
+          <span class="hero-reveal hero-reveal-d3 block text-[clamp(3rem,9vw,7.5rem)] text-gradient-orange italic">dich verstehen.</span>
+        </h1>
+
+        <p class="hero-reveal hero-reveal-d4 text-[clamp(1rem,2vw,1.25rem)] text-white/60 mb-9 leading-relaxed max-w-[560px] font-light">
+          Walken in der Gruppe, wo Training ganz nebenbei läuft.
+          <span class="text-white font-medium">Reden, lachen, merken: Mit eurem Thema seid ihr nicht die Einzigen.</span>
+        </p>
+
+        <div class="hero-reveal hero-reveal-d5 flex flex-col sm:flex-row gap-3.5 mb-12">
+          <a href="#termine" class="shine group inline-flex items-center justify-center gap-2.5 rounded-full bg-orange text-white font-display font-semibold px-8 py-4 text-[15px] transition-all shadow-[0_0_60px_rgba(249,115,22,0.35)] active:scale-95 sm:hover:scale-[1.03] sm:hover:bg-orange-dark">
+            Kommende Termine
+            <svg class="w-[18px] h-[18px] sm:group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="#was-ist-das" class="inline-flex items-center justify-center gap-2 rounded-full bg-white/6 backdrop-blur border border-white/15 text-white font-display font-semibold px-8 py-4 text-[15px] transition-all sm:hover:bg-white/12">
+            Was ist ein Social Walk?
+          </a>
+        </div>
+
+        <div class="hero-reveal hero-reveal-d6 flex items-center gap-8 pt-7 border-t border-white/8">
+          <div>
+            <div class="text-gradient-orange font-display font-extrabold text-2xl leading-none mb-0.5">3</div>
+            <div class="text-[11px] text-white/55 uppercase tracking-[0.12em] font-medium">Formate</div>
+          </div>
+          <div class="w-px h-9 bg-white/10"></div>
+          <div>
+            <div class="font-display font-extrabold text-2xl text-white leading-none mb-0.5">max. 8</div>
+            <div class="text-[11px] text-white/55 uppercase tracking-[0.12em] font-medium">Teams pro Walk</div>
+          </div>
+          <div class="w-px h-9 bg-white/10"></div>
+          <div>
+            <div class="font-display font-extrabold text-2xl text-white leading-none mb-0.5">5,0<span class="text-orange">★</span></div>
+            <div class="text-[11px] text-white/55 uppercase tracking-[0.12em] font-medium">14 Bewertungen</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (() => {
+      const els = document.querySelectorAll<HTMLElement>('.hero-reveal');
+      els.forEach((el) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(28px)';
+      });
+      const animate = () => {
+        els.forEach((el) => {
+          el.style.transition = 'opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1)';
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        });
+      };
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(() => requestAnimationFrame(animate)));
+      } else {
+        requestAnimationFrame(() => requestAnimationFrame(animate));
+      }
+      const heroBg = document.getElementById('hero-bg-img-sw') as HTMLImageElement | null;
+      if (heroBg && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+        const onScroll = () => {
+          const scrollY = window.scrollY;
+          const heroEl = heroBg.closest('section');
+          if (!heroEl) return;
+          if (scrollY > heroEl.offsetHeight) return;
+          const p = scrollY / heroEl.offsetHeight;
+          heroBg.style.transform = `scale(1.12) translateY(${p * 100}px)`;
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      }
+    })();
+  </script>
+
+  <!-- BIG STATEMENT -->
+  <section class="relative py-32 md:py-48 bg-anthrazit overflow-hidden noise">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(249,115,22,.08), transparent 60%);"></div>
+    <div class="relative max-w-[900px] mx-auto px-5 sm:px-6 lg:px-8 text-center">
+      <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-5">Worum's geht</span>
+      <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(2rem,6vw,4.5rem)] font-display font-extrabold text-white leading-[1.05] tracking-tight mb-6">
+        Plötzlich seid ihr
+        <span class="block text-gradient-orange mt-2">nicht mehr allein.</span>
+      </h2>
+      <p class="reveal reveal-delay-2 text-[clamp(1rem,2vw,1.35rem)] text-white/50 max-w-[700px] mx-auto leading-relaxed font-light">
+        Gemeinsam laufen. Reden. Lachen. Lernen. Manchmal ist der Hund die Nebensache, und genau das tut allen gut.
+      </p>
+    </div>
+  </section>
+
+  <!-- WAS IST EIN SOCIAL WALK? -->
+  <section id="was-ist-das" class="py-24 md:py-32 bg-anthrazit-2">
+    <div class="max-w-[1200px] mx-auto px-5 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-16">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Was ist ein Social Walk?</span>
+        <h2 class="reveal reveal-delay-1 text-4xl md:text-6xl font-display font-extrabold text-white tracking-tight leading-[1.05]">
+          Kein Hundeplatz.<br/>
+          <span class="text-gradient-orange">Kein Frontalunterricht.</span>
+        </h2>
+        <p class="reveal reveal-delay-2 text-lg text-white/50 mt-6 font-light">Sondern: Training, das im Vorbeigehen passiert, eingebettet in echtes Miteinander.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {wasIstEs.map((t, i) => (
+          <div class={`reveal reveal-delay-${(i % 3) + 1} group relative bg-anthrazit-3 rounded-[20px] p-8 border border-white/4 hover:bg-anthrazit-4 hover:-translate-y-1 transition-all duration-500 overflow-hidden`}>
+            <div class="absolute -top-8 -right-8 w-24 h-24 bg-orange/0 rounded-full group-hover:bg-orange/8 transition-colors blur-xl pointer-events-none"></div>
+            <div class="relative">
+              <div class="w-12 h-12 rounded-full bg-orange/15 border border-orange/25 flex items-center justify-center text-orange mb-5"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={t.icon}></svg></div>
+              <h3 class="font-display font-bold text-xl text-white mb-3 group-hover:text-orange transition-colors">{t.title}</h3>
+              <p class="text-[15px] text-white/50 leading-relaxed">{t.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ECKDATEN-STRIP -->
+  <section class="py-16 bg-anthrazit">
+    <div class="max-w-[1200px] mx-auto px-5 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {[
+          { label: "Formate", value: "3 Walks" },
+          { label: "Pro Walk", value: "90 Minuten" },
+          { label: "Gruppengröße", value: "3–8 Teams" },
+          { label: "Region", value: "Kiel & Rendsburg" },
+        ].map((d) => (
+          <div class="reveal bg-anthrazit-3 rounded-[20px] p-6 border border-white/4 text-center">
+            <div class="text-[11px] uppercase tracking-[0.2em] text-orange font-semibold mb-2">{d.label}</div>
+            <div class="font-display font-bold text-white text-lg">{d.value}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF MARQUEE -->
+  <section class="relative bg-anthrazit-2 border-y border-white/4 py-10 overflow-hidden">
+    <div class="text-center mb-6">
+      <a href="https://g.page/r/Cd7XaBPmJ5fKEAE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 hover:opacity-80 transition-opacity" aria-label="Google-Bewertungen von WolfsKnigge ansehen">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        <div class="flex gap-[3px]">
+          {[1,2,3,4,5].map(() => (
+            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          ))}
+        </div>
+        <span class="text-white font-semibold text-sm">5,0 auf Google · 14 Bewertungen · Über 200 betreute Teams <span class="text-white/55">↗</span></span>
+      </a>
+    </div>
+    <div class="relative">
+      <div class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-anthrazit-2 to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-anthrazit-2 to-transparent z-10 pointer-events-none"></div>
+      <div class="flex animate-marquee-fast whitespace-nowrap">
+        {[...testimonials, ...testimonials].map((t) => (
+          <div class="inline-flex items-start gap-3 bg-white/4 border border-white/6 rounded-2xl px-5 py-4 min-w-[300px] max-w-[300px] flex-shrink-0 mr-3">
+            <div class="flex-shrink-0 w-9 h-9 rounded-full bg-orange/15 border border-orange/25 flex items-center justify-center text-orange font-display font-bold text-sm">
+              {t.name.charAt(0)}
+            </div>
+            <div>
+              <div class="flex items-center gap-2 mb-1.5">
+                <div class="flex gap-0.5">
+                  {[1,2,3,4,5].map(() => (
+                    <svg class="w-2.5 h-2.5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  ))}
+                </div>
+                <span class="text-white text-xs font-semibold">{t.name}</span>
+              </div>
+              <p class="text-white/55 text-[13px] leading-snug whitespace-normal">{t.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- DIE 3 WALK-FORMATE -->
+  <section id="formate" class="py-24 md:py-32 bg-anthrazit-2">
+    <div class="max-w-[1200px] mx-auto px-5 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-16">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Die Formate</span>
+        <h2 class="reveal reveal-delay-1 text-4xl md:text-6xl font-display font-extrabold text-white tracking-tight leading-[1.05]">
+          Drei Walks für<br/>
+          <span class="text-gradient-orange">drei Zielgruppen.</span>
+        </h2>
+        <p class="reveal reveal-delay-2 text-lg text-white/50 mt-6 font-light">Jedes Format hat seinen eigenen Charakter. Such dir aus, was zu euch passt, oder frag mich, wenn du unsicher bist.</p>
+      </div>
+      <div class="space-y-6">
+        {walks.map((w, i) => (
+          <div class={`reveal ${i > 0 ? `reveal-delay-${i}` : ''} group relative bg-anthrazit-3 rounded-3xl overflow-hidden border border-white/5 hover:border-orange/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-orange/10`}>
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange to-orange-dark opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div class="p-8 md:p-10 grid md:grid-cols-[auto_1fr_auto] gap-6 md:gap-10 items-start">
+              <div class="text-6xl md:text-7xl font-display font-extrabold text-white/5 select-none leading-none">{w.nr}</div>
+              <div>
+                <div class="text-[11px] uppercase tracking-[0.2em] text-orange font-semibold mb-2">{w.untertitel}</div>
+                <h3 class="font-display font-extrabold text-2xl md:text-3xl text-white group-hover:text-orange transition-colors mb-3">{w.name}</h3>
+                <p class="text-white/60 leading-relaxed text-base mb-5">{w.fuerWen}</p>
+                <ul class="space-y-2.5 mb-5">
+                  {w.highlights.map((h) => (
+                    <li class="flex items-start gap-3">
+                      <svg class="w-4 h-4 text-orange flex-shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" viewBox="0 0 16 16"><path d="M3 9l3.5 3.5L13 5"/></svg>
+                      <span class="text-[14px] text-white/55 leading-relaxed">{h}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div class="text-sm text-white/55 font-medium">{w.daten}</div>
+              </div>
+              <div class="md:text-right md:min-w-[180px]">
+                <div class="bg-anthrazit-4 rounded-2xl p-5 border border-orange/15 mb-4">
+                  <div class="text-[10px] uppercase tracking-[0.2em] text-orange font-semibold mb-1">Nächster Termin</div>
+                  <div class="font-display font-bold text-white text-base">{w.termin}</div>
+                </div>
+                <a href="/kontakt" class="shine group/btn inline-flex items-center justify-center gap-2 rounded-full bg-orange text-white font-display font-semibold px-6 py-3 text-[14px] transition-all shadow-[0_0_40px_rgba(249,115,22,0.25)] sm:hover:scale-[1.03] sm:hover:bg-orange-dark w-full md:w-auto">
+                  Auf Warteliste
+                  <svg class="w-4 h-4 sm:group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAKTEN STRIP -->
+  <div class="bg-orange py-5">
+    <div class="max-w-[900px] mx-auto px-5 grid grid-cols-3 gap-4 text-center text-white">
+      <div>
+        <div class="font-display font-extrabold text-2xl sm:text-3xl leading-none">200+</div>
+        <div class="text-[11px] sm:text-xs uppercase tracking-[0.12em] font-semibold text-white/80 mt-1">Teams begleitet</div>
+      </div>
+      <div class="border-x border-white/20">
+        <div class="font-display font-extrabold text-2xl sm:text-3xl leading-none">5,0 ★</div>
+        <div class="text-[11px] sm:text-xs uppercase tracking-[0.12em] font-semibold text-white/80 mt-1">aus 14 Bewertungen</div>
+      </div>
+      <div>
+        <div class="font-display font-extrabold text-2xl sm:text-3xl leading-none">35 km</div>
+        <div class="text-[11px] sm:text-xs uppercase tracking-[0.12em] font-semibold text-white/80 mt-1">mobil um Bredenbek</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABLAUF / 3 STEPS -->
+  <section class="py-16 md:py-32 bg-anthrazit relative overflow-hidden">
+    <div class="absolute top-0 left-1/4 w-[400px] h-[400px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(249,115,22,.06), transparent 60%);"></div>
+    <div class="relative max-w-[1200px] mx-auto px-5 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-16">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">So läuft's ab</span>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(1.8rem,5vw,3.5rem)] font-display font-extrabold text-white tracking-tight leading-[1.1]">
+          In <span class="text-gradient-orange">drei Schritten</span> dabei.
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+        <div class="hidden md:block absolute top-12 left-12 right-12 h-px bg-gradient-to-r from-transparent via-orange/30 to-transparent"></div>
+        {ablauf.map((s, i) => (
+          <div class={`reveal reveal-delay-${i + 1} text-center`}>
+            <div class="relative w-24 h-24 mx-auto mb-6">
+              <div class="absolute inset-0 bg-orange/20 rounded-full blur-xl"></div>
+              <div class="relative w-24 h-24 rounded-full bg-gradient-to-br from-orange to-orange-dark flex items-center justify-center text-[28px] font-display font-extrabold text-white shadow-[0_0_60px_rgba(249,115,22,0.25)]">
+                {s.step}
+              </div>
+            </div>
+            <h3 class="font-display font-bold text-[22px] text-white mb-2">{s.title}</h3>
+            <p class="text-sm text-white/60 leading-relaxed">{s.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WARUM BEI MIR -->
+  <section class="relative py-24 md:py-32 bg-anthrazit-2 overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(249,115,22,0.08),transparent_60%)]"></div>
+    <div class="relative max-w-[1200px] mx-auto px-5 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Warum WolfsKnigge?</span>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(1.8rem,5vw,3.5rem)] font-display font-extrabold text-white tracking-tight leading-[1.1]">
+          Was diese Walks <span class="text-gradient-orange">anders macht.</span>
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+        {unterschiede.map((u, i) => (
+          <div class={`reveal ${i > 0 ? `reveal-delay-${i}` : ''} group relative bg-anthrazit-3 rounded-3xl overflow-hidden border border-white/5 hover:border-orange/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-orange/10`}>
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange to-orange-dark opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div class="p-8 md:p-10">
+              <div class="flex items-start justify-between mb-6">
+                <div>
+                  <h3 class="font-display font-extrabold text-2xl md:text-3xl text-white group-hover:text-orange transition-colors">{u.titel}</h3>
+                </div>
+                <div class="text-7xl md:text-8xl font-display font-extrabold text-white/5 select-none leading-none -mt-2">{u.nr}</div>
+              </div>
+              <p class="text-white/60 leading-relaxed text-base">{u.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- MID-PAGE WHATSAPP TOUCHPOINT -->
+  <section class="bg-anthrazit py-16 md:py-20">
+    <div class="max-w-[1000px] mx-auto px-5 sm:px-6 lg:px-8">
+      <div class="reveal relative overflow-hidden rounded-[24px] border border-orange/20 bg-gradient-to-br from-anthrazit-3 to-anthrazit p-7 sm:p-9 flex flex-col sm:flex-row items-center gap-6">
+        <div class="flex-shrink-0 w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center">
+          <svg viewBox="0 0 24 24" fill="#fff" width="28" height="28" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.528 5.845L.057 23.428a.5.5 0 0 0 .614.614l5.638-1.47A11.934 11.934 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.797 9.797 0 0 1-5.003-1.376l-.36-.214-3.724.97.993-3.63-.234-.374A9.797 9.797 0 0 1 2.182 12C2.182 6.573 6.573 2.182 12 2.182S21.818 6.573 21.818 12 17.427 21.818 12 21.818z"/></svg>
+        </div>
+        <div class="flex-1 text-center sm:text-left">
+          <h3 class="font-display font-bold text-xl sm:text-2xl text-white mb-1">Lieber direkt fragen?</h3>
+          <p class="text-white/55 text-[15px] leading-relaxed">Schreib mir kurz, was bei euch los ist. Antwort meist in unter 24 Stunden.</p>
+        </div>
+        <a href="https://wa.me/4915147736042" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] hover:bg-[#1ebe5d] text-white font-display font-semibold px-7 py-3.5 text-[15px] transition-all active:scale-95">
+          WhatsApp öffnen
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- KOMMENDE TERMINE -->
+  <section id="termine" class="py-24 md:py-32 bg-anthrazit">
+    <div class="max-w-[1100px] mx-auto px-5 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Kommende Termine</span>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(1.8rem,5vw,3.5rem)] font-display font-extrabold text-white tracking-tight leading-[1.1]">
+          Was als nächstes <span class="text-gradient-orange">geplant ist.</span>
+        </h2>
+        <p class="reveal reveal-delay-2 text-white/50 mt-6 font-light max-w-[640px] mx-auto">Konkrete Termine folgen, trag dich auf die Warteliste, dann sag ich dir Bescheid, sobald's losgeht.</p>
+      </div>
+      <div class="space-y-4">
+        {termine.map((t) => (
+          <div class="reveal bg-anthrazit-3 rounded-2xl border border-white/6 p-6 md:p-7 grid md:grid-cols-[1fr_auto] gap-5 items-center hover:border-orange/30 transition-all">
+            <div class="grid sm:grid-cols-4 gap-4 sm:gap-6">
+              <div>
+                <div class="text-[10px] uppercase tracking-[0.2em] text-orange font-semibold mb-1">Format</div>
+                <div class="font-display font-bold text-white text-base">{t.format}</div>
+              </div>
+              <div>
+                <div class="text-[10px] uppercase tracking-[0.2em] text-orange font-semibold mb-1">Datum</div>
+                <div class="font-display font-bold text-white text-base">{t.datum}</div>
+              </div>
+              <div>
+                <div class="text-[10px] uppercase tracking-[0.2em] text-orange font-semibold mb-1">Ort</div>
+                <div class="text-white/70 text-sm">{t.ort}</div>
+              </div>
+              <div>
+                <div class="text-[10px] uppercase tracking-[0.2em] text-orange font-semibold mb-1">Preis</div>
+                <div class="font-display font-bold text-white text-base">{t.preis}</div>
+              </div>
+            </div>
+            <a href="/kontakt" class="inline-flex items-center justify-center gap-2 rounded-full bg-orange/15 hover:bg-orange text-orange hover:text-white font-display font-semibold px-6 py-3 text-[14px] transition-all border border-orange/25 hover:border-orange whitespace-nowrap">
+              {t.plaetze}
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-24 md:py-32 bg-anthrazit-2">
+    <div class="max-w-[900px] mx-auto px-5 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Häufige Fragen</span>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(1.8rem,5vw,3.5rem)] font-display font-extrabold text-white tracking-tight leading-[1.1]">
+          Alles, was du <span class="text-gradient-orange">wissen willst.</span>
+        </h2>
+      </div>
+      <div class="reveal space-y-3">
+        {faq.map((item) => (
+          <details name="faq" class="group bg-anthrazit-3 border border-white/6 rounded-2xl overflow-hidden open:border-orange/30 transition-all">
+            <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-display font-semibold text-white text-base md:text-lg group-open:text-orange transition-colors">
+              {item.frage}
+              <svg class="w-5 h-5 flex-shrink-0 text-white/55 group-open:rotate-45 group-open:text-orange transition-all duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+            </summary>
+            <div class="px-6 pb-6 text-white/60 leading-relaxed text-[15px]">
+              {item.antwort}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="relative py-32 md:py-48 bg-anthrazit text-white overflow-hidden noise">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(249,115,22,0.22),transparent_60%)]"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-orange/8 rounded-full blur-3xl"></div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="reveal inline-block text-orange font-semibold uppercase text-sm tracking-[0.3em] mb-6">Mitlaufen</span>
+      <h2 class="reveal reveal-delay-1 text-5xl md:text-7xl lg:text-8xl font-display font-extrabold mb-8 tracking-tight leading-[0.95]">
+        Bock auf<br/>
+        <span class="text-gradient-orange">gemeinsam unterwegs</span>?
+      </h2>
+      <p class="reveal reveal-delay-2 text-xl md:text-2xl text-white/50 mb-12 font-light">Kurzer Anruf genügt. Wir klären, welcher Walk zu euch passt.</p>
+      <div class="reveal reveal-delay-3 flex flex-col sm:flex-row gap-3.5 justify-center">
+        <a href="https://wa.me/4915147736042" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center justify-center gap-2.5 rounded-full bg-[#25D366] hover:bg-[#1ebe5d] text-white font-display font-semibold px-10 py-[18px] text-[17px] transition-all shadow-[0_0_80px_rgba(37,211,102,0.25)] hover:scale-[1.03] active:scale-95">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.528 5.845L.057 23.428a.5.5 0 0 0 .614.614l5.638-1.47A11.934 11.934 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+          WhatsApp schreiben
+        </a>
+        <a href="/kontakt" class="shine group inline-flex items-center justify-center gap-2.5 rounded-full bg-orange hover:bg-orange-dark text-white font-display font-semibold px-10 py-[18px] text-[17px] transition-all shadow-[0_0_80px_rgba(249,115,22,0.3)] hover:scale-[1.03] active:scale-95">
+          Auf Warteliste
+          <svg class="w-[18px] h-[18px] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+      <div class="reveal reveal-delay-3 mt-5">
+        <a href="tel:+4915147736042" class="text-white/50 hover:text-white text-[15px] font-medium transition-colors">oder direkt anrufen: 0151 47736042</a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({"@context":"https://schema.org","@type":"FAQPage",mainEntity:faq.map((f)=>({"@type":"Question",name:f.frage,acceptedAnswer:{"@type":"Answer",text:f.antwort}}))})} />
+</Layout>

@@ -1,0 +1,614 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const einstieg = [
+  {
+    name: "Verhaltensanalyse",
+    sub: "Ersttermin · Analyse vor Ort",
+    umfang: "90 Min.",
+    preis: "130 €",
+    text: "Ausführliche Analyse bei euch vor Ort. Zieldefinition, individuelle Trainingsplanung und erste konkrete Schritte. Das Fundament für alles, was folgt.",
+    href: "/anamnesegesprach",
+    icon: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+    badge: null,
+    highlight: false,
+  },
+  {
+    name: "Einzeltrainingsstunde",
+    sub: "1:1 Coaching",
+    umfang: "60 Min.",
+    preis: "90 €",
+    text: "Voller Fokus auf euch. Lösungsorientiert, flexibel, direkt in eurem Alltag, nicht auf einem Hundeplatz.",
+    href: "/einzelstunde",
+    icon: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+    badge: null,
+    highlight: false,
+  },
+];
+
+const pakete = [
+  {
+    name: "Starter-Paket",
+    sub: "Verhaltensanalyse + 2 Einzelstunden",
+    umfang: "1× 90 Min. + 2× 60 Min.",
+    preis: "270 €",
+    statt: "310 €",
+    ersparnis: "15% Ersparnis",
+    text: "Der ideale Einstieg: Analyse, Plan und zwei Trainings, als aufeinander aufbauendes Paket, das direkt Wirkung zeigt.",
+    badge: "Meistgekauft",
+    highlight: true,
+    proEinheit: null,
+  },
+  {
+    name: "3× Einzelstunden",
+    sub: "Paket",
+    umfang: "3× 60 Min.",
+    preis: "235 €",
+    statt: "270 €",
+    ersparnis: "15% Ersparnis",
+    text: "Drei intensive Einzeltrainings. Flexibel buchbar, mit klarem rotem Faden.",
+    badge: "Beliebt",
+    highlight: false,
+    proEinheit: "78 € / Std.",
+  },
+  {
+    name: "5× Einzelstunden",
+    sub: "Paket",
+    umfang: "5× 60 Min.",
+    preis: "385 €",
+    statt: "450 €",
+    ersparnis: "17% Ersparnis",
+    text: "Für tiefergehende Themen, also Verhaltensarbeit, die Zeit und Wiederholung braucht.",
+    badge: null,
+    highlight: false,
+    proEinheit: "77 € / Std.",
+  },
+  {
+    name: "10× Einzelstunden",
+    sub: "Intensivpaket",
+    umfang: "10× 60 Min.",
+    preis: "750 €",
+    statt: "900 €",
+    ersparnis: "17% Ersparnis",
+    text: "Das umfangreichste Paket für komplexe Problemverhalten, die nachhaltig verändert werden sollen.",
+    badge: "Vorteilspreis",
+    highlight: false,
+    proEinheit: "75 € / Std.",
+  },
+];
+
+const kurse = [
+  {
+    name: "Intensivkurs Leinenführigkeit",
+    sub: "Hybrid-Kurs",
+    umfang: "5 Termine · 1× Online + 4× Praxis",
+    preis: "219 €",
+    text: "5-wöchiger Aufbaukurs für einen entspannten Spaziergang. Inkl. Workbook.",
+    badge: "Inkl. Workbook",
+    icon: '<circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/>',
+  },
+  {
+    name: "Intensivkurs Frust & Impulskontrolle",
+    sub: "Hybrid-Kurs",
+    umfang: "4 Termine · 1× Online + 3× Praxis",
+    preis: "189 €",
+    text: "4-teiliger Kurs für mehr Gelassenheit im Alltag, an der Leine, in Stresssituationen.",
+    badge: "Gelassenheit",
+    icon: '<rect x="14" y="4" width="4" height="16" rx="1"/><rect x="6" y="4" width="4" height="16" rx="1"/>',
+  },
+];
+
+const gruppen = [
+  {
+    name: "Gruppenstunden",
+    sub: "WelpenKnigge / AlltagsKnigge",
+    umfang: "60 Min. pro Termin",
+    preis: "25 €",
+    preisSub: "pro Termin",
+    zehnerkarte: "225 € · 10er-Karte (10% Ersparnis)",
+    text: "Strukturierte Kleingruppen mit max. 5 Teams. Sozialisierung, Grunderziehung, Alltagsreize.",
+    href: "/welpengruppe",
+    badge: "Kleine Gruppe",
+  },
+  {
+    name: "Social Walk",
+    sub: "Bindungsarbeit im Wald",
+    umfang: "90 Min.",
+    preis: "35 €",
+    preisSub: "pro Termin",
+    zehnerkarte: null,
+    text: "Gezielte Kooperationsübungen in realer Umgebung (L48). Max. 10 Teams, persönlich und praxisnah.",
+    href: "/social-walk",
+    badge: "Max. 10 Teams",
+  },
+];
+
+const vertrauen = [
+  { icon: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>', text: "Antwort innerhalb 24 h" },
+  { icon: '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>', text: "Kein Hundeplatz, Training bei euch" },
+  { icon: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>', text: "200+ betreute Teams" },
+  { icon: '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>', text: "Nur faire, gewaltfreie Methoden" },
+];
+
+const testimonials = [
+  { name: "Jori K.", text: "Die Trainingsanreize haben schnell geholfen und René nimmt sich wirklich Zeit für einen." },
+  { name: "Susanne H.", text: "Als Ersthundebesitzer hatten wir viele Fragen, die uns schlüssig beantwortet wurden." },
+  { name: "Daniela B.", text: "Dank des Trainings können wir endlich wieder entspannt Gassi gehen." },
+  { name: "Jens", text: "Wir bekamen die Leinenaggression bei unserer Herdenschützerin super in den Griff." },
+  { name: "Nicole H.", text: "Das Training hat schnell geholfen, sodass bei uns wieder Harmonie herrscht." },
+  { name: "Sophia S.", text: "Dank des konsequenten Trainings klappt der Rückruf jetzt perfekt." },
+  { name: "Mathias", text: "Wir lernen so viel Wichtiges, das uns super und schnell weiterhilft." },
+  { name: "Claudia R.", text: "René hat uns geholfen, die Fehler im Umfeld zu sehen. Jetzt ist der Kleine entspannter." },
+];
+
+const faq = [
+  { q: "Sind die Preise verhandelbar?", a: "Nein. Die Preise sind fair kalkuliert und für alle gleich. Über die Pakete sparst du bis zu 17 % gegenüber dem Einzelpreis." },
+  { q: "Was kostet die Anfahrt?", a: "Die ersten 25 km ab Bredenbek sind frei. Danach kommen 25 Cent pro Kilometer dazu, aber nur für die Strecke über die 25 km hinaus. Was bei dir konkret anfällt, sage ich dir vorher, keine Überraschungen." },
+  { q: "Wie und wann zahle ich?", a: "Wie es für dich am einfachsten ist: bar, mit EC- oder Kreditkarte, per PayPal, Klarna, Apple Pay oder Google Pay. Bei Paketen vorab, bei Einzelterminen nach der Stunde. Eine ordentliche Rechnung bekommst du immer." },
+  { q: "Was ist im Kennenlerngespräch enthalten?", a: "Ein kostenloses Telefonat (ca. 15–20 Min.), in dem wir eure Situation besprechen und schauen, ob ich der richtige Trainer für euch bin. Unverbindlich, ohne Verkaufsdruck." },
+  { q: "Kann ich später noch auf ein Paket aufstocken?", a: "Ja. Wenn du erst einzeln startest und dann ein Paket buchst, rechne ich die bereits genommenen Stunden fair an." },
+  { q: "Was passiert, wenn ich einen Termin absagen muss?", a: "Bis 24 Stunden vorher kostenlos. Danach behalte ich mir vor, die Stunde zu berechnen, außer es ist wirklich was Ernstes passiert. Wir reden drüber, wir sind vernünftige Menschen." },
+];
+---
+
+<Layout title="Preise & Angebote | WolfsKnigge Hundeschule" description="Preise für mobiles Hundetraining in Kiel, Rendsburg, Eckernförde & Neumünster. Einzelstunden, Pakete, Intensivkurse und Gruppenangebote von WolfsKnigge.">
+
+  <!-- HERO -->
+  <section class="relative overflow-clip" style="min-height: 60svh; background: #0a0a0b;">
+
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 30% 50%, rgba(249,115,22,.18), transparent 60%);"></div>
+    <div class="absolute top-0 right-0 w-[700px] h-[700px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(249,115,22,.08), transparent 70%);"></div>
+
+    <div class="relative flex flex-col justify-end" style="min-height: 60svh; padding-bottom: env(safe-area-inset-bottom, 0px);">
+      <div class="w-full max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12 pb-20 pt-32 lg:pb-24">
+
+        <div class="hero-reveal inline-flex items-center gap-2.5 bg-white/8 backdrop-blur-md border border-white/12 text-white font-medium text-[13px] px-4 py-2 rounded-full mb-7">
+          <span class="relative flex h-2 w-2">
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-orange"></span>
+          </span>
+          Angebote & Preise
+        </div>
+
+        <h1 class="font-display font-extrabold tracking-[-0.04em] leading-[0.92] mb-7">
+          <span class="hero-reveal hero-reveal-d1 block text-[clamp(2.8rem,8vw,6.5rem)] text-white">Training, das</span>
+          <span class="hero-reveal hero-reveal-d2 block text-[clamp(2.8rem,8vw,6.5rem)] text-gradient-orange italic">sich lohnt.</span>
+        </h1>
+
+        <p class="hero-reveal hero-reveal-d4 text-[clamp(1rem,2vw,1.2rem)] text-white/60 mb-10 leading-relaxed max-w-[560px] font-light">
+          Kein versteckter Stundensatz, keine Pauschalverträge. Transparente Preise für Einzel, Pakete und Gruppen.<br class="hidden sm:inline"/>
+          <span class="text-white font-medium">Mobil bei euch vor Ort, in Kiel, Rendsburg, Eckernförde & Neumünster.</span>
+        </p>
+
+        <div class="hero-reveal hero-reveal-d5 flex flex-col sm:flex-row gap-3.5">
+          <a href="/kontakt" class="shine group inline-flex items-center justify-center gap-2.5 rounded-full bg-orange text-white font-display font-semibold px-8 py-4 text-[15px] transition-all shadow-[0_0_60px_rgba(249,115,22,0.35)] active:scale-95 sm:hover:scale-[1.03] sm:hover:bg-orange-dark">
+            Kostenloses Kennenlernen
+            <svg class="w-[18px] h-[18px] sm:group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="#pakete" class="inline-flex items-center justify-center gap-2 rounded-full bg-white/6 backdrop-blur border border-white/15 text-white font-display font-semibold px-8 py-4 text-[15px] transition-all sm:hover:bg-white/12">
+            Direkt zu den Paketen
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERTRAUEN STRIP -->
+  <div class="bg-anthrazit-2 border-y border-white/5 py-5 overflow-hidden">
+    <div class="max-w-[1280px] mx-auto px-5 sm:px-8">
+      <div class="flex flex-wrap justify-center gap-6 md:gap-12">
+        {vertrauen.map((v) => (
+          <div class="flex items-center gap-2.5 text-white/50 text-sm font-medium">
+            <svg class="w-4 h-4 text-orange flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={v.icon}></svg>
+            {v.text}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- BIG STATEMENT -->
+  <section class="relative py-24 md:py-40 bg-anthrazit overflow-hidden noise">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(249,115,22,.08), transparent 60%);"></div>
+    <div class="relative max-w-[900px] mx-auto px-5 sm:px-6 lg:px-8 text-center">
+      <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-5">Was du bekommst</span>
+      <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(2rem,6vw,4.5rem)] font-display font-extrabold text-white leading-[1.05] tracking-tight mb-6">
+        Du zahlst für Lösungen.
+        <span class="block text-gradient-orange mt-2">Nicht für Stunden auf dem Platz.</span>
+      </h2>
+      <p class="reveal reveal-delay-2 text-[clamp(1rem,2vw,1.35rem)] text-white/50 max-w-[700px] mx-auto leading-relaxed font-light">
+        Faire Preise. Keine Verträge. Kein Abo. Du buchst, was ihr wirklich braucht, und wenn's reicht, reicht's.
+      </p>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF MARQUEE -->
+  <section class="relative bg-anthrazit-2 border-y border-white/4 py-10 overflow-hidden">
+    <div class="text-center mb-6">
+      <a href="https://g.page/r/Cd7XaBPmJ5fKEAE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 hover:opacity-80 transition-opacity" aria-label="Google-Bewertungen von WolfsKnigge ansehen">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        <div class="flex gap-[3px]">
+          {[1,2,3,4,5].map(() => (
+            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          ))}
+        </div>
+        <span class="text-white font-semibold text-sm">5,0 auf Google · 14 Bewertungen · Über 200 betreute Teams <span class="text-white/55">↗</span></span>
+      </a>
+    </div>
+    <div class="relative">
+      <div class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-anthrazit-2 to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-anthrazit-2 to-transparent z-10 pointer-events-none"></div>
+      <div class="flex animate-marquee-fast whitespace-nowrap">
+        {[...testimonials, ...testimonials].map((t) => (
+          <div class="inline-flex items-start gap-3 bg-white/4 border border-white/6 rounded-2xl px-5 py-4 min-w-[300px] max-w-[300px] flex-shrink-0 mr-3">
+            <div class="flex-shrink-0 w-9 h-9 rounded-full bg-orange/15 border border-orange/25 flex items-center justify-center text-orange font-display font-bold text-sm">
+              {t.name.charAt(0)}
+            </div>
+            <div>
+              <div class="flex items-center gap-2 mb-1.5">
+                <div class="flex gap-0.5">
+                  {[1,2,3,4,5].map(() => (
+                    <svg class="w-2.5 h-2.5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  ))}
+                </div>
+                <span class="text-white text-xs font-semibold">{t.name}</span>
+              </div>
+              <p class="text-white/55 text-[13px] leading-snug whitespace-normal">{t.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PAKETE -->
+  <section id="pakete" class="py-20 md:py-32 bg-anthrazit-2">
+    <div class="max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Pakete & Mehrfachkarten</span>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(2rem,5vw,3.8rem)] font-display font-extrabold text-white tracking-tight leading-[1.05]">
+          Mehr Training,<br/><span class="text-gradient-orange">weniger zahlen.</span>
+        </h2>
+        <p class="reveal reveal-delay-2 text-white/50 text-base mt-4 font-light">Pakete sparen bis zu 17% und geben eurem Training den roten Faden, den es braucht.</p>
+      </div>
+
+      <!-- Starter-Paket featured -->
+      <div class="reveal mb-5">
+        <div class="relative bg-anthrazit-3 rounded-[24px] border border-orange/40 overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange to-orange-dark"></div>
+          <div class="absolute -top-12 -right-12 w-64 h-64 rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(249,115,22,.12), transparent 70%);"></div>
+          <div class="relative p-8 md:p-10 grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <div class="inline-flex items-center gap-2 bg-orange text-white text-xs font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full mb-5">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                Meistgekauft
+              </div>
+              <div class="text-[11px] uppercase tracking-[0.2em] text-white/35 font-semibold mb-1">{pakete[0].sub}</div>
+              <h3 class="font-display font-extrabold text-3xl md:text-4xl text-white mb-2">{pakete[0].name}</h3>
+              <div class="text-sm text-white/55 mb-6">{pakete[0].umfang}</div>
+              <p class="text-white/55 leading-relaxed">{pakete[0].text}</p>
+            </div>
+            <div class="md:text-right">
+              <div class="inline-block bg-orange/10 border border-orange/20 rounded-2xl px-6 py-5 mb-5">
+                <div class="text-sm text-orange font-bold uppercase tracking-wider mb-1">{pakete[0].ersparnis}</div>
+                <div class="text-5xl md:text-6xl font-display font-extrabold text-white">{pakete[0].preis}</div>
+                <div class="text-white/35 text-sm mt-1 line-through">{pakete[0].statt}</div>
+              </div>
+              <div class="block">
+                <a href="/kontakt" class="shine inline-flex items-center justify-center gap-2.5 rounded-full bg-orange hover:bg-orange-dark text-white font-display font-semibold px-8 py-4 text-base transition-all shadow-[0_0_40px_rgba(249,115,22,0.35)] sm:hover:scale-[1.03]">
+                  Jetzt starten
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Weitere Pakete -->
+      <div class="grid md:grid-cols-3 gap-5">
+        {pakete.slice(1).map((item, i) => (
+          <div class={`reveal reveal-delay-${i + 1} group relative bg-anthrazit-3 rounded-[20px] border border-white/5 p-7 hover:border-orange/25 hover:-translate-y-1 transition-all duration-500 overflow-hidden`}>
+            <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            {item.badge && (
+              <div class="inline-block text-[11px] font-bold tracking-[0.2em] text-orange uppercase bg-orange/10 border border-orange/20 px-3 py-1 rounded-full mb-4">{item.badge}</div>
+            )}
+            <div class="text-[11px] uppercase tracking-[0.2em] text-white/30 font-semibold mb-1">{item.sub}</div>
+            <h3 class="font-display font-bold text-xl text-white mb-1 group-hover:text-orange transition-colors">{item.name}</h3>
+            <div class="text-sm text-white/30 mb-5">{item.umfang}</div>
+            <div class="flex items-end gap-3 mb-1">
+              <span class="text-4xl font-display font-extrabold text-white">{item.preis}</span>
+              <span class="text-white/30 text-sm line-through mb-1.5">{item.statt}</span>
+            </div>
+            {item.proEinheit && (
+              <div class="text-xs text-orange/80 font-semibold mb-4">= {item.proEinheit}</div>
+            )}
+            <p class="text-white/60 text-sm leading-relaxed mt-2">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAKTEN STRIP -->
+  <div class="bg-orange py-5">
+    <div class="max-w-[900px] mx-auto px-5 grid grid-cols-3 gap-4 text-center text-white">
+      <div>
+        <div class="font-display font-extrabold text-2xl sm:text-3xl leading-none">200+</div>
+        <div class="text-[11px] sm:text-xs uppercase tracking-[0.12em] font-semibold text-white/80 mt-1">Teams begleitet</div>
+      </div>
+      <div class="border-x border-white/20">
+        <div class="font-display font-extrabold text-2xl sm:text-3xl leading-none">5,0 ★</div>
+        <div class="text-[11px] sm:text-xs uppercase tracking-[0.12em] font-semibold text-white/80 mt-1">aus 14 Bewertungen</div>
+      </div>
+      <div>
+        <div class="font-display font-extrabold text-2xl sm:text-3xl leading-none">35 km</div>
+        <div class="text-[11px] sm:text-xs uppercase tracking-[0.12em] font-semibold text-white/80 mt-1">mobil um Bredenbek</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EINZELANGEBOTE -->
+  <section class="py-20 md:py-32 bg-anthrazit">
+    <div class="max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="max-w-2xl mb-14">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Dein Einstieg</span>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(2rem,5vw,3.8rem)] font-display font-extrabold text-white tracking-tight leading-[1.05]">
+          Einzeln buchen –<br/><span class="text-gradient-orange">ohne Verpflichtung.</span>
+        </h2>
+        <p class="reveal reveal-delay-2 text-white/50 text-base md:text-lg mt-4 font-light leading-relaxed">Starte mit einem Erstgespräch oder direkt mit einer Einzelstunde. Kein Vertrag, kein Abo.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        {einstieg.map((item, i) => (
+          <div class={`reveal reveal-delay-${i + 1} group relative bg-anthrazit-2 rounded-[20px] border border-white/5 p-8 hover:border-orange/30 hover:-translate-y-1 transition-all duration-500 overflow-hidden`}>
+            <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <svg class="w-8 h-8 mb-5 text-orange/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={item.icon}></svg>
+            <div class="text-[11px] uppercase tracking-[0.2em] text-white/35 font-semibold mb-1">{item.sub}</div>
+            <h3 class="font-display font-bold text-2xl text-white mb-1 group-hover:text-orange transition-colors">{item.name}</h3>
+            <div class="text-sm text-white/35 mb-5">{item.umfang}</div>
+            <div class="text-4xl font-display font-extrabold text-white mb-5">{item.preis}</div>
+            <p class="text-white/50 text-sm leading-relaxed mb-6">{item.text}</p>
+            {item.href && (
+              <a href={item.href} class="inline-flex items-center gap-1.5 text-orange font-semibold text-sm group-hover:gap-2.5 transition-all">
+                Mehr erfahren <span>→</span>
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- GRUPPEN -->
+  <section class="py-20 md:py-32 bg-anthrazit-2 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(249,115,22,.07), transparent 70%);"></div>
+    <div class="relative max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="max-w-2xl mb-14">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Gruppenangebote</span>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(2rem,5vw,3.8rem)] font-display font-extrabold text-white tracking-tight leading-[1.05]">
+          Gemeinsam lernen –<br/><span class="text-gradient-orange">ab 25 €.</span>
+        </h2>
+        <p class="reveal reveal-delay-2 text-white/50 text-base mt-4 font-light">Kleine Gruppen, echter Kontext, fairer Preis. Für Welpen, Junghunde und alle, die im Team wachsen wollen.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        {gruppen.map((item, i) => (
+          <div class={`reveal reveal-delay-${i + 1} group relative bg-anthrazit-3 rounded-[20px] border border-white/5 hover:border-orange/25 hover:-translate-y-1 transition-all duration-500 overflow-hidden`}>
+            <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div class="p-8">
+              {item.badge && (
+                <div class="inline-block text-[11px] font-bold tracking-[0.2em] text-orange uppercase bg-orange/10 border border-orange/20 px-3 py-1 rounded-full mb-5">{item.badge}</div>
+              )}
+              <div class="text-[11px] uppercase tracking-[0.2em] text-white/35 font-semibold mb-1">{item.sub}</div>
+              <h3 class="font-display font-bold text-2xl text-white mb-1 group-hover:text-orange transition-colors">{item.name}</h3>
+              <div class="text-sm text-white/35 mb-5">{item.umfang}</div>
+              <div class="flex items-end gap-2 mb-1.5">
+                <span class="text-4xl font-display font-extrabold text-white">{item.preis}</span>
+                <span class="text-white/55 text-sm mb-1.5">{item.preisSub}</span>
+              </div>
+              {item.zehnerkarte && (
+                <div class="text-xs text-orange/70 font-semibold mb-5">{item.zehnerkarte}</div>
+              )}
+              <p class="text-white/50 text-sm leading-relaxed mb-6">{item.text}</p>
+              {item.href && (
+                <a href={item.href} class="inline-flex items-center gap-1.5 text-orange font-semibold text-sm group-hover:gap-2.5 transition-all">
+                  Mehr erfahren <span>→</span>
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- INTENSIVKURSE -->
+  <section class="py-20 md:py-32 bg-anthrazit relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at bottom right, rgba(249,115,22,.1), transparent 60%);"></div>
+    <div class="relative max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="max-w-2xl mb-14">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Intensivkurse</span>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(2rem,5vw,3.8rem)] font-display font-extrabold text-white tracking-tight leading-[1.05]">
+          Spezifisch, strukturiert,<br/><span class="text-gradient-orange">wirksam.</span>
+        </h2>
+        <p class="reveal reveal-delay-2 text-white/50 text-base mt-4 font-light">Für konkrete Themen: Hybrid-Kurse mit Online-Theorie und Praxis-Einheiten direkt bei euch.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        {kurse.map((item, i) => (
+          <div class={`reveal reveal-delay-${i + 1} group relative bg-anthrazit-2 rounded-[20px] border border-white/5 hover:border-orange/25 transition-all duration-500 hover:-translate-y-1 overflow-hidden`}>
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange to-orange-dark opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div class="p-8">
+              <svg class="w-8 h-8 mb-5 text-orange/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={item.icon}></svg>
+              <div class="flex items-start justify-between mb-3">
+                <div>
+                  <div class="text-[11px] uppercase tracking-[0.2em] text-white/35 font-semibold mb-1">{item.sub}</div>
+                  <h3 class="font-display font-bold text-2xl text-white group-hover:text-orange transition-colors">{item.name}</h3>
+                </div>
+                {item.badge && (
+                  <span class="flex-shrink-0 ml-4 text-[11px] font-bold tracking-[0.15em] text-orange uppercase bg-orange/10 border border-orange/20 px-3 py-1.5 rounded-full">{item.badge}</span>
+                )}
+              </div>
+              <div class="text-sm text-white/35 mb-5">{item.umfang}</div>
+              <div class="text-4xl font-display font-extrabold text-white mb-5">{item.preis}</div>
+              <p class="text-white/50 text-sm leading-relaxed">{item.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HINWEIS + VERTRAUEN -->
+  <section class="py-16 bg-anthrazit">
+    <div class="max-w-[900px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="reveal bg-anthrazit-2 rounded-[20px] border border-white/5 p-8 md:p-10 grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h3 class="font-display font-bold text-xl text-white mb-3">Gut zu wissen</h3>
+          <ul class="space-y-2.5 text-white/50 text-sm leading-relaxed">
+            <li class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-orange flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" viewBox="0 0 16 16"><path d="M3 9l3.5 3.5L13 5"/></svg>
+              Alle Preise gelten pro Mensch-Hund-Team.
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-orange flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" viewBox="0 0 16 16"><path d="M3 9l3.5 3.5L13 5"/></svg>
+              Anfahrt: erste 25 km ab Bredenbek frei, danach 25 ct/km.
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-orange flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" viewBox="0 0 16 16"><path d="M3 9l3.5 3.5L13 5"/></svg>
+              Das Kennenlerngespräch ist kostenlos.
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-orange flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" viewBox="0 0 16 16"><path d="M3 9l3.5 3.5L13 5"/></svg>
+              Trainiert wird dort, wo das Problem entsteht, nicht auf dem Hundeplatz.
+            </li>
+          </ul>
+        </div>
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-orange/15 border border-orange/25 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <div>
+              <div class="text-white font-semibold text-sm">5,0 auf Google</div>
+              <div class="text-white/35 text-xs">Über 200 betreute Teams</div>
+            </div>
+          </div>
+          <blockquote class="text-white/60 text-sm leading-relaxed italic border-l-2 border-orange/40 pl-4">
+            „Die Trainingsanreize haben schnell geholfen und René nimmt sich wirklich Zeit für einen."
+            <cite class="not-italic block text-white/30 text-xs mt-1">- Jori K.</cite>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZAHLUNGSARTEN -->
+  <section class="py-12 bg-anthrazit border-t border-white/5">
+    <div class="max-w-[900px] mx-auto px-5 sm:px-8 lg:px-12 text-center">
+      <div class="reveal text-[11px] uppercase tracking-[0.2em] text-orange font-semibold mb-6">Zahlungsarten</div>
+      <div class="reveal reveal-delay-1 flex flex-wrap justify-center items-center gap-3">
+        {[
+          { src: "/images/zahlung/paypal.png", alt: "PayPal" },
+          { src: "/images/zahlung/klarna.svg", alt: "Klarna" },
+          { src: "/images/zahlung/visa.png", alt: "Visa" },
+          { src: "/images/zahlung/mastercard.png", alt: "Mastercard" },
+          { src: "/images/zahlung/apple-pay.png", alt: "Apple Pay" },
+          { src: "/images/zahlung/google-pay.webp", alt: "Google Pay" },
+        ].map((p) => (
+          <div class="bg-white rounded-xl h-12 px-4 flex items-center justify-center">
+            <img src={p.src} alt={p.alt} class="max-h-6 w-auto" loading="lazy" />
+          </div>
+        ))}
+        <div class="h-12 px-4 rounded-xl bg-white/8 border border-white/10 flex items-center text-white/70 text-sm font-medium">Barzahlung</div>
+      </div>
+      <p class="reveal reveal-delay-2 text-white/40 text-sm mt-6">Bar, Karte, PayPal, Klarna, Apple Pay oder Google Pay, ganz wie es dir passt.</p>
+    </div>
+  </section>
+
+  <!-- LOKALE SEO -->
+  <section class="py-16 bg-anthrazit-2">
+    <div class="max-w-[900px] mx-auto px-5 sm:px-8 lg:px-12">
+      <h2 class="reveal text-xl font-display font-bold text-white mb-4">Deine mobile Hundeschule in der Nähe</h2>
+      <p class="reveal reveal-delay-1 text-white/60 leading-relaxed text-sm mb-3">Als mobile Hundeschule biete ich flexibles Training direkt bei dir vor Ort, egal ob du in <strong class="text-white/70">Kiel, Rendsburg, Eckernförde, Neumünster</strong>, Gettorf, Nortorf, Bordesholm, Büdelsdorf, Achterwehr, Flintbek, Borgstedt, Felde, Westensee oder Bredenbek wohnst.</p>
+      <p class="reveal reveal-delay-2 text-white/60 leading-relaxed text-sm">Positive, gewaltfreie Methoden. Training in der gewohnten Umgebung deines Hundes, das beschleunigt den Lernprozess und reduziert Stress.</p>
+    </div>
+  </section>
+
+  <!-- MID-PAGE WHATSAPP TOUCHPOINT -->
+  <section class="bg-anthrazit py-16 md:py-20">
+    <div class="max-w-[1000px] mx-auto px-5 sm:px-6 lg:px-8">
+      <div class="reveal relative overflow-hidden rounded-[24px] border border-orange/20 bg-gradient-to-br from-anthrazit-3 to-anthrazit p-7 sm:p-9 flex flex-col sm:flex-row items-center gap-6">
+        <div class="flex-shrink-0 w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center">
+          <svg viewBox="0 0 24 24" fill="#fff" width="28" height="28" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.528 5.845L.057 23.428a.5.5 0 0 0 .614.614l5.638-1.47A11.934 11.934 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.797 9.797 0 0 1-5.003-1.376l-.36-.214-3.724.97.993-3.63-.234-.374A9.797 9.797 0 0 1 2.182 12C2.182 6.573 6.573 2.182 12 2.182S21.818 6.573 21.818 12 17.427 21.818 12 21.818z"/></svg>
+        </div>
+        <div class="flex-1 text-center sm:text-left">
+          <h3 class="font-display font-bold text-xl sm:text-2xl text-white mb-1">Unsicher, was zu euch passt?</h3>
+          <p class="text-white/55 text-[15px] leading-relaxed">Schreib mir kurz, was bei euch los ist. Ich sage dir ehrlich, was Sinn ergibt. Antwort meist in unter 24 Stunden.</p>
+        </div>
+        <a href="https://wa.me/4915147736042" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] hover:bg-[#1ebe5d] text-white font-display font-semibold px-7 py-3.5 text-[15px] transition-all active:scale-95">
+          WhatsApp öffnen
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 md:py-32 bg-anthrazit-2">
+    <div class="max-w-[900px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="text-center mb-12">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Häufige Fragen</span>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(2rem,5vw,3.8rem)] font-display font-extrabold text-white tracking-tight leading-[1.05]">
+          Was viele <span class="text-gradient-orange">vorher fragen.</span>
+        </h2>
+      </div>
+      <div class="space-y-3">
+        {faq.map((f, i) => (
+          <details name="faq" class={`reveal reveal-delay-${(i % 4) + 1} group bg-anthrazit-3 rounded-2xl border border-white/5 hover:border-orange/20 transition-colors overflow-hidden`}>
+            <summary class="flex items-center justify-between gap-4 p-6 cursor-pointer list-none">
+              <span class="font-display font-bold text-white text-lg group-hover:text-orange transition-colors">{f.q}</span>
+              <span class="flex-shrink-0 w-8 h-8 rounded-full bg-orange/10 border border-orange/20 flex items-center justify-center text-orange transition-transform group-open:rotate-45">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </summary>
+            <div class="px-6 pb-6 text-white/55 leading-relaxed text-[15px]">{f.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="relative py-24 md:py-48 bg-anthrazit overflow-hidden noise">
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(249,115,22,.18), transparent 60%);"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full pointer-events-none" style="background: rgba(249,115,22,.06);"></div>
+    <div class="relative max-w-[800px] mx-auto px-5 sm:px-8 lg:px-12 text-center">
+      <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-6">Kostenlos · Unverbindlich</span>
+      <h2 class="reveal reveal-delay-1 text-4xl md:text-[clamp(2.5rem,7vw,5.5rem)] font-display font-extrabold text-white mb-6 tracking-tight leading-[0.95]">
+        Lass uns einfach<br/>
+        <span class="text-gradient-orange">mal telefonieren</span>.
+      </h2>
+      <p class="reveal reveal-delay-2 text-[clamp(1rem,2vw,1.3rem)] text-white/50 mb-10 font-light">Kostet nichts, verpflichtet zu nichts. Du erzählst mir, was bei euch los ist, und ich sage dir ehrlich, ob und wie ich helfen kann.</p>
+      <div class="reveal reveal-delay-3 flex flex-col sm:flex-row gap-3.5 justify-center">
+        <a href="https://wa.me/4915147736042" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center justify-center gap-2.5 rounded-full bg-[#25D366] hover:bg-[#1ebe5d] text-white font-display font-semibold px-10 py-[18px] text-[17px] transition-all shadow-[0_0_80px_rgba(37,211,102,0.25)] hover:scale-[1.03] active:scale-95">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.528 5.845L.057 23.428a.5.5 0 0 0 .614.614l5.638-1.47A11.934 11.934 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+          WhatsApp schreiben
+        </a>
+        <a href="/kontakt" class="shine group inline-flex items-center justify-center gap-2.5 rounded-full bg-orange hover:bg-orange-dark text-white font-display font-semibold px-10 py-[18px] text-[17px] transition-all shadow-[0_0_80px_rgba(249,115,22,0.3)] hover:scale-[1.03] active:scale-95">
+          Kennenlerngespräch anfragen
+          <svg class="w-[18px] h-[18px] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+      <div class="reveal reveal-delay-3 mt-5">
+        <a href="tel:+4915147736042" class="text-white/50 hover:text-white text-[15px] font-medium transition-colors">oder direkt anrufen: 0151 47736042</a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({"@context":"https://schema.org","@type":"FAQPage",mainEntity:faq.map((f)=>({"@type":"Question",name:f.q,acceptedAnswer:{"@type":"Answer",text:f.a}}))})} />
+</Layout>

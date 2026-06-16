@@ -1,0 +1,34 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Danke für deine Nachricht! | WolfsKnigge" description="Vielen Dank für deine Kontaktaufnahme. Ich melde mich innerhalb von 24 Stunden bei dir." noindex={true}>
+  
+  <section class="relative min-h-[90svh] flex items-center justify-center bg-anthrazit overflow-hidden noise">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(249,115,22,.15),transparent_60%)] pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full blob-float pointer-events-none" style="background: rgba(249,115,22,.04);"></div>
+
+    <div class="relative max-w-[600px] mx-auto px-5 text-center space-y-8">
+      <div class="w-20 h-20 mx-auto rounded-full bg-orange/15 border border-orange/30 flex items-center justify-center text-orange text-4xl shadow-[0_0_60px_rgba(249,115,22,0.25)]">
+        🐾
+      </div>
+      
+      <div class="space-y-4">
+        <h1 class="font-display font-extrabold text-4xl md:text-5xl text-white tracking-tight">
+          Vielen Dank für deine <br/>
+          <span class="text-gradient-orange">Anfrage!</span>
+        </h1>
+        <p class="text-white/50 text-base leading-relaxed font-light">
+          Ich habe deine Nachricht erhalten. Ich schaue mir die Details zu deinem Hund genau an und melde mich innerhalb von <strong class="text-white font-medium">24 Stunden</strong> bei dir zurück.
+        </p>
+      </div>
+
+      <div class="pt-4">
+        <a href="/" class="inline-flex items-center justify-center gap-2 rounded-full bg-white/5 border border-white/10 text-white font-display font-semibold px-8 py-4 text-sm transition-all hover:bg-white/10">
+          ← Zurück zur Startseite
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

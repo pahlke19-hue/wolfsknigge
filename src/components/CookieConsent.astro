@@ -1,0 +1,99 @@
+---
+// Schlankes, self-hosted Consent-Banner (Vanilla JS) + Google Consent Mode v2.
+// GTM wird erst nach aktiver Einwilligung nachgeladen. GA4 + Meta Pixel
+// werden als Tags IM GTM-Container verwaltet (über Consent gegated).
+---
+
+<div
+  id="cookie-consent"
+  class="hidden fixed inset-x-0 bottom-0 z-[100]"
+  role="dialog"
+  aria-live="polite"
+  aria-label="Cookie-Hinweis"
+>
+  <div class="max-w-[1100px] mx-auto m-3 sm:m-4 bg-anthrazit-2/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-5 sm:p-6">
+    <div class="flex flex-col lg:flex-row lg:items-center gap-4">
+      <div class="flex-1">
+        <h2 class="text-white font-display font-bold text-base mb-1.5">Cookies & Tracking</h2>
+        <p class="text-white/55 text-[13px] leading-relaxed">
+          Ich nutze Cookies und Tools (Google Analytics, Meta Pixel) über den Google Tag Manager, um die Website zu verbessern und Marketing zu messen. Diese laden nur mit deiner Einwilligung – du kannst sie jederzeit widerrufen. Mehr dazu in der <a href="/dsgvo" class="text-orange hover:underline">Datenschutzerklärung</a>.
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-2.5 shrink-0">
+        <button
+          id="cookie-decline"
+          type="button"
+          class="rounded-full bg-white/8 hover:bg-white/12 border border-white/12 text-white font-display font-semibold px-6 py-3 text-sm transition-all"
+        >
+          Ablehnen
+        </button>
+        <button
+          id="cookie-accept"
+          type="button"
+          class="shine rounded-full bg-orange hover:bg-orange-dark text-white font-display font-semibold px-6 py-3 text-sm transition-all"
+        >
+          Akzeptieren
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const KEY = "wk-consent";
+  const GTM_ID = "GTM-NQ89PJT2";
+  const banner = document.getElementById("cookie-consent");
+  const w = window as any;
+
+  function gtag(...args: any[]) {
+    (w.dataLayer = w.dataLayer || []).push(args);
+  }
+
+  function loadGTM() {
+    if (w.__gtmLoaded) return;
+    w.__gtmLoaded = true;
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      const f = d.getElementsByTagName(s)[0];
+      const j = d.createElement(s) as HTMLScriptElement;
+      const dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode!.insertBefore(j, f);
+    })(w, document, "script", "dataLayer", GTM_ID);
+  }
+
+  function grant() {
+    gtag("consent", "update", {
+      ad_storage: "granted",
+      ad_user_data: "granted",
+      ad_personalization: "granted",
+      analytics_storage: "granted",
+      functionality_storage: "granted",
+      personalization_storage: "granted",
+    });
+    loadGTM();
+  }
+
+  const show = () => banner?.classList.remove("hidden");
+  const hide = () => banner?.classList.add("hidden");
+
+  document.getElementById("cookie-accept")?.addEventListener("click", () => {
+    localStorage.setItem(KEY, "granted");
+    grant();
+    hide();
+  });
+
+  document.getElementById("cookie-decline")?.addEventListener("click", () => {
+    localStorage.setItem(KEY, "denied");
+    hide();
+  });
+
+  // Widerruf / erneutes Öffnen (z.B. aus dem Footer)
+  w.openCookieSettings = show;
+
+  const saved = localStorage.getItem(KEY);
+  if (saved === "granted") grant();
+  else if (!saved) show();
+</script>

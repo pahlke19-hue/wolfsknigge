@@ -1,0 +1,579 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const skills = [
+  { icon: '<path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>', title: "1,5 Jahre Ausbildung", text: "Intensivausbildung bei der Kynologisch gGmbH. Wissenschaftlich fundiert und nicht bloß graue Theorie." },
+  { icon: '<path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>', title: "§ 11 Sachkunde", text: "Sachkundeprüfung nach §11 Tierschutzgesetz, abgelegt beim Veterinäramt Rendsburg. Pflicht für seriöse Arbeit mit Hunden, keine Auszeichnung, sondern Grundvoraussetzung." },
+  { icon: '<path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"/><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/>', title: "Lerntheorie-Basis", text: "Ich arbeite mit allen vier Quadranten der Lerntheorie, immer passend zur Situation und ohne Dogma." },
+  { icon: '<polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>', title: "200+ Teams", text: "Über 200 erfolgreich begleitete Hunde-Mensch-Teams seit Gründung der Hundeschule." },
+  { icon: '<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/>', title: "Problemverhalten", text: "Leinenaggression, Angst, Jagd. Genau da fange ich an, wo viele andere schon aufgeben." },
+  { icon: '<path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/>', title: "Ständige Weiterbildung", text: "Ich bilde mich laufend weiter, zuletzt im Aggressionsverhalten und in der Frustrationstoleranz." },
+];
+
+const weiterbildung = [
+  { datum: "April 2025", titel: "Aggressionsverhalten", art: "Praxisseminar" },
+  { datum: "August 2025", titel: "Körpersprache Hund", art: "Praxisseminar" },
+  { datum: "August 2025", titel: "Frustrationstoleranz", art: "Intensiv-Onlinekurs" },
+];
+
+const dozenten = [
+  "Michael Eichhorn & Ute Heberer",
+  "Dr. Marie Nitzschner",
+  "Nora Brede & Charly Arzberger",
+  "Franziska Ferenz u.v.m.",
+];
+
+const testimonials = [
+  { name: "Jori K.", text: "Die Trainingsanreize haben schnell geholfen und René nimmt sich wirklich Zeit für einen." },
+  { name: "Susanne H.", text: "Als Ersthundebesitzer hatten wir viele Fragen, die uns schlüssig beantwortet wurden." },
+  { name: "Daniela B.", text: "Dank des Trainings können wir endlich wieder entspannt Gassi gehen." },
+  { name: "Jens", text: "Wir bekamen die Leinenaggression bei unserer Herdenschützerin super in den Griff." },
+  { name: "Nicole H.", text: "Das Training hat schnell geholfen, sodass bei uns wieder Harmonie herrscht." },
+  { name: "Sophia S.", text: "Dank des konsequenten Trainings klappt der Rückruf jetzt perfekt." },
+  { name: "Mathias", text: "Wir lernen so viel Wichtiges, das uns super und schnell weiterhilft." },
+  { name: "Claudia R.", text: "René hat uns geholfen, die Fehler im Umfeld zu sehen. Jetzt ist der Kleine entspannter." },
+];
+
+const faq = [
+  { q: "Welche Ausbildung hast du gemacht?", a: "1,5 Jahre Intensivausbildung bei der Kynologisch gGmbH, wissenschaftlich fundiert und mit viel Praxis und Prüfung. Dazu kommen vier Jahre, in denen ich in einer Hundeschule gearbeitet habe. Die zähle ich genauso zu meiner Ausbildung. Und ich bilde mich laufend weiter, zuletzt im Aggressionsverhalten und in der Frustrationstoleranz." },
+  { q: "Was bedeutet §11 Sachkunde überhaupt?", a: "Nach §11 Tierschutzgesetz braucht in Deutschland jeder eine behördlich anerkannte Sachkundeprüfung, um gewerblich mit Hunden arbeiten zu dürfen. Die habe ich abgelegt. Das ist die Grundvoraussetzung für seriöse Arbeit, keine Auszeichnung, sondern schlicht Pflicht." },
+  { q: "Welche Methoden lehnst du ab?", a: "Stachelhalsband, E-Geräte, Würgehilfen, Einschüchterung. Solche Mittel sind in Deutschland verboten und klar tierschutzwidrig, und ich lehne sie kompromisslos ab. Sie steuern den Hund über Angst und Schmerz, funktionieren nachweislich schlechter und machen langfristig kaputt." },
+  { q: "Arbeitest du auch mit aggressiven Hunden?", a: "Ja, genau das ist mein Schwerpunkt. Leinenaggression, Angstaggression oder Pöbeln an der Leine sind die Fälle, in denen ich richtig zuhause bin. Wenn andere abwinken, fangen wir oft erst an." },
+  { q: "Wo trainierst du?", a: "Mobil bei euch vor Ort: Kiel, Rendsburg, Eckernförde, Neumünster und das Umland (ca. 35 km um Bredenbek). Kein steriler Hundeplatz, sondern genau dorthin, wo das Problem im Alltag entsteht." },
+  { q: "Wie kann ich dich am besten erreichen?", a: "Per WhatsApp, Telefon oder über das Kontaktformular. Antwort kommt innerhalb von 24 Stunden, meistens deutlich schneller." },
+];
+
+const angebote = [
+  { icon: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>', title: "Einzelstunde", text: "1:1, mobil, dort wo's brennt.", href: "/einzelstunde" },
+  { icon: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>', title: "Grunderziehungsgruppe", text: "Kleine Gruppe, alltagsnah, max. 7 Teams.", href: "/grunderziehungsgruppe" },
+  { icon: '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>', title: "Verhaltensanalyse", text: "Noch unsicher? Das erste Telefonat ist kostenlos.", href: "/anamnesegesprach" },
+];
+---
+
+<Layout title="Über mich – René Pahlke | WolfsKnigge" description="Hundetrainer für Kiel, Rendsburg, Neumünster & Eckernförde. Spezialisiert auf Problemverhalten, fair und fundiert ohne Gewalt. §11 Sachkunde, 200+ Teams.">
+
+  <!-- HERO -->
+  <section class="relative overflow-clip" style="min-height: 72svh; background: #000;">
+
+    <div class="absolute inset-0">
+      <img
+        src="/images/hundeschule_in_sehestedt.webp"
+        alt=""
+        aria-hidden="true"
+        id="hero-bg-img-ueber"
+        fetchpriority="high"
+        decoding="async"
+        class="w-full h-full object-cover"
+        style="object-position: center 30%; transform-origin: center; will-change: transform;"
+        width="1920" height="1280"
+      />
+    </div>
+
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-[rgba(10,10,11,0.65)] to-[rgba(10,10,11,0.15)]"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[rgba(10,10,11,0.9)] via-[rgba(10,10,11,0.35)] to-transparent"></div>
+    <div class="absolute -top-[200px] right-[-100px] w-[600px] h-[600px] rounded-full pointer-events-none blob-float" style="background: radial-gradient(circle, rgba(249,115,22,.15), transparent 70%);"></div>
+
+    <div class="relative flex flex-col justify-end text-white" style="min-height: 72svh; padding-bottom: env(safe-area-inset-bottom, 0px);">
+      <div class="w-full max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12 pb-20 pt-32 lg:pb-28">
+
+        <div class="hero-reveal inline-flex items-center gap-2.5 bg-white/8 backdrop-blur-md border border-white/12 text-white font-medium text-[13px] px-4 py-2 rounded-full mb-7">
+          <span class="relative flex h-2 w-2">
+            <span class="absolute inline-flex h-full w-full rounded-full bg-orange opacity-75 ping-slow"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-orange"></span>
+          </span>
+          Dein Trainer · Kiel · Rendsburg · Neumünster · Eckernförde
+        </div>
+
+        <h1 class="font-display font-extrabold tracking-[-0.04em] leading-[0.92] mb-7">
+          <span class="hero-reveal hero-reveal-d1 block text-[clamp(3rem,9vw,7.5rem)] text-white">Hi, ich bin</span>
+          <span class="hero-reveal hero-reveal-d2 block text-[clamp(3rem,9vw,7.5rem)] text-gradient-orange italic">René.</span>
+        </h1>
+
+        <p class="hero-reveal hero-reveal-d3 text-[clamp(1rem,2vw,1.25rem)] text-white/60 mb-9 leading-relaxed max-w-[540px] font-light">
+          Hundetrainer für Kiel, Rendsburg, Neumünster & Eckernförde.
+          <span class="text-white font-medium">Spezialisiert auf Problemverhalten. Fair und fundiert, immer ohne Gewalt.</span>
+        </p>
+
+        <div class="hero-reveal hero-reveal-d4 flex flex-col sm:flex-row gap-3.5 mb-12">
+          <a href="/kontakt" class="shine group inline-flex items-center justify-center gap-2.5 rounded-full bg-orange text-white font-display font-semibold px-8 py-4 text-[15px] transition-all shadow-[0_0_60px_rgba(249,115,22,0.35)] active:scale-95 sm:hover:scale-[1.03] sm:hover:bg-orange-dark">
+            Kennenlerngespräch
+            <svg class="w-[18px] h-[18px] sm:group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="#geschichte" class="inline-flex items-center justify-center gap-2 rounded-full bg-white/6 backdrop-blur border border-white/15 text-white font-display font-semibold px-8 py-4 text-[15px] transition-all sm:hover:bg-white/12">
+            Meine Geschichte
+          </a>
+        </div>
+
+        <div class="hero-reveal hero-reveal-d5 flex items-center gap-8 pt-7 border-t border-white/8">
+          <a href="https://g.page/r/Cd7XaBPmJ5fKEAE" target="_blank" rel="noopener noreferrer" class="group/google" aria-label="Google-Bewertungen von WolfsKnigge ansehen">
+            <div class="flex items-center gap-2 mb-0.5">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+              <span class="text-gradient-orange font-display font-extrabold text-2xl leading-none hero-counter" data-target="5" data-decimal="1" data-suffix="">0</span>
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <div class="text-[11px] text-white/55 uppercase tracking-[0.12em] font-medium group-hover/google:text-white/70 transition-colors">14 Bewertungen ↗</div>
+          </a>
+          <div class="w-px h-9 bg-white/10"></div>
+          <div>
+            <div class="font-display font-extrabold text-2xl text-white leading-none mb-0.5">
+              <span class="hero-counter" data-target="200" data-suffix="+">0+</span>
+            </div>
+            <div class="text-[11px] text-white/55 uppercase tracking-[0.12em] font-medium">Teams</div>
+          </div>
+          <div class="w-px h-9 bg-white/10"></div>
+          <div>
+            <div class="font-display font-extrabold text-2xl text-white leading-none mb-0.5">&lt; 24<span class="text-orange">h</span></div>
+            <div class="text-[11px] text-white/55 uppercase tracking-[0.12em] font-medium">Antwort</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (() => {
+      const els = document.querySelectorAll<HTMLElement>('.hero-reveal');
+      els.forEach((el) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(28px)';
+      });
+      const animate = () => {
+        els.forEach((el) => {
+          el.style.transition = 'opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1)';
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        });
+      };
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(() => requestAnimationFrame(animate)));
+      } else {
+        requestAnimationFrame(() => requestAnimationFrame(animate));
+      }
+
+      const counters = document.querySelectorAll<HTMLElement>('.hero-counter');
+      const runCounter = (el: HTMLElement) => {
+        const target = parseFloat(el.dataset.target || '0');
+        const suffix = el.dataset.suffix ?? '';
+        const decimals = parseInt(el.dataset.decimal || '0', 10);
+        const duration = 1400;
+        const startTime = performance.now();
+        const tick = (now: number) => {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = eased * target;
+          el.textContent = current.toFixed(decimals).replace('.', ',') + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      };
+      setTimeout(() => counters.forEach(runCounter), 750);
+      const heroBg = document.getElementById('hero-bg-img-ueber') as HTMLImageElement | null;
+      if (heroBg && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+        const onScroll = () => {
+          const scrollY = window.scrollY;
+          const heroEl = heroBg.closest('section');
+          if (!heroEl) return;
+          if (scrollY > heroEl.offsetHeight) return;
+          const p = scrollY / heroEl.offsetHeight;
+          heroBg.style.transform = `scale(1.12) translateY(${p * 100}px)`;
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      }
+    })();
+  </script>
+
+  <!-- BIG STATEMENT -->
+  <section class="relative py-32 md:py-48 bg-anthrazit overflow-hidden noise">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(249,115,22,.08), transparent 60%);"></div>
+    <div class="relative max-w-[900px] mx-auto px-5 sm:px-6 lg:px-8 text-center">
+      <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-5">Mein Antrieb</span>
+      <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(2rem,6vw,4.5rem)] font-display font-extrabold text-white leading-[1.05] tracking-tight mb-6">
+        Ich war selbst mal
+        <span class="block text-gradient-orange mt-2">am Verzweifeln.</span>
+      </h2>
+      <p class="reveal reveal-delay-2 text-[clamp(1rem,2vw,1.35rem)] text-white/50 max-w-[700px] mx-auto leading-relaxed font-light">
+        Ich war selbst mal komplett überfordert mit meinem Hund. Genau deshalb verstehe ich, was du gerade durchmachst. Und genau deshalb verurteile ich hier niemanden.
+      </p>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF MARQUEE -->
+  <section class="relative bg-anthrazit-2 border-y border-white/4 py-10 overflow-hidden">
+    <div class="text-center mb-6">
+      <a href="https://g.page/r/Cd7XaBPmJ5fKEAE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 hover:opacity-80 transition-opacity" aria-label="Google-Bewertungen von WolfsKnigge ansehen">
+        <div class="flex gap-[3px]">
+          {[1,2,3,4,5].map(() => (
+            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          ))}
+        </div>
+        <span class="text-white font-semibold text-sm">5,0 auf Google · 14 Bewertungen · Über 200 betreute Teams <span class="text-white/55">↗</span></span>
+      </a>
+    </div>
+    <div class="relative">
+      <div class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-anthrazit-2 to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-anthrazit-2 to-transparent z-10 pointer-events-none"></div>
+      <div class="flex gap-3 animate-marquee whitespace-nowrap">
+        {[...testimonials, ...testimonials].map((t) => (
+          <div class="inline-flex items-start gap-3 bg-white/4 border border-white/6 rounded-2xl px-5 py-4 min-w-[300px] max-w-[300px] flex-shrink-0">
+            <div class="flex-shrink-0 w-9 h-9 rounded-full bg-orange/15 border border-orange/25 flex items-center justify-center text-orange font-display font-bold text-sm">
+              {t.name.charAt(0)}
+            </div>
+            <div>
+              <div class="flex items-center gap-2 mb-1.5">
+                <div class="flex gap-0.5">
+                  {[1,2,3,4,5].map(() => (
+                    <svg class="w-2.5 h-2.5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  ))}
+                </div>
+                <span class="text-white text-xs font-semibold">{t.name}</span>
+              </div>
+              <p class="text-white/55 text-[13px] leading-snug whitespace-normal">{t.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- LEHRMEISTER ELIX & SUKA -->
+  <section id="geschichte" class="relative py-24 md:py-32 bg-anthrazit-2 text-white overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(249,115,22,0.10),transparent_60%)]"></div>
+    <div class="absolute top-0 right-1/4 w-96 h-96 bg-orange/8 rounded-full blur-3xl blob-float"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-sm tracking-[0.3em] mb-4">Meine größten Lehrmeister</span>
+        <h2 class="reveal reveal-delay-1 text-4xl md:text-6xl font-display font-extrabold tracking-tight leading-[1.05] mb-6">
+          Zwei Hunde, von denen ich <span class="text-gradient-orange">unendlich viel</span> gelernt habe.
+        </h2>
+        <p class="reveal reveal-delay-2 text-lg text-white/50 font-light">
+          Keine Bücher haben mich so viel gelehrt wie diese zwei. Sie sind der Grund, warum ich heute tue, was ich tue.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+        <!-- Elix -->
+        <div class="reveal group relative bg-anthrazit-3 rounded-3xl overflow-hidden border border-white/5 hover:border-orange/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-orange/10">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange to-orange-dark opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <img
+            src="/images/elix_mit_maulkorb.webp"
+            alt="Elix, Deutscher Schäferhund mit Maulkorb"
+            class="w-full object-cover rounded-t-3xl"
+            style="aspect-ratio: 4/3;"
+            loading="lazy"
+            width="800" height="600"
+          />
+          <div class="p-8 md:p-10">
+            <div class="flex items-start justify-between mb-6">
+              <div>
+                <div class="text-xs uppercase tracking-[0.3em] text-orange font-semibold mb-2">Lehrmeister #01</div>
+                <h3 class="font-display font-extrabold text-3xl md:text-4xl text-white">Elix</h3>
+                <p class="text-white/55 mt-1">Deutscher Schäferhund · Sommer 2021</p>
+              </div>
+              <div class="text-7xl md:text-8xl font-display font-extrabold text-white/5 select-none leading-none -mt-2">01</div>
+            </div>
+            <div class="space-y-4 text-white/60 leading-relaxed">
+              <p>Als Elix in mein Leben trat, hatte er bereits eine Odyssee hinter sich. In seinen ersten zwei Lebensjahren hatte er <strong class="text-white">drei Vorbesitzer</strong> und war in einem schlechten körperlichen Zustand. Dazu kam einiges an Baustellen: <strong class="text-white">schwere Leinenaggression</strong>, ein Schnappen nach allem, was sich schnell bewegte. Ging meine Frau auch nur an seinem Liegeplatz vorbei, schnappte er nach ihr.</p>
+              <p>Ich hatte damals wenig Erfahrung und war, ehrlich gesagt, <strong class="text-orange">völlig überfordert</strong>. Durch ihn musste ich lernen, echte Führung zu übernehmen, ohne dabei unfair zu werden.</p>
+            </div>
+            <div class="mt-6 inline-flex items-center gap-2 text-orange text-sm font-semibold">
+              <span class="w-5 h-px bg-orange"></span>
+              Der Überforderer
+            </div>
+          </div>
+        </div>
+
+        <!-- Suka -->
+        <div class="reveal reveal-delay-1 group relative bg-anthrazit-3 rounded-3xl overflow-hidden border border-white/5 hover:border-tuerkis/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-tuerkis/10">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-tuerkis to-tuerkis-dark opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <img
+            src="/images/suka_am_strand.webp"
+            alt="Suka, Malinois am Strand"
+            class="w-full object-cover rounded-t-3xl"
+            style="aspect-ratio: 4/3;"
+            loading="lazy"
+            width="800" height="600"
+          />
+          <div class="p-8 md:p-10">
+            <div class="flex items-start justify-between mb-6">
+              <div>
+                <div class="text-xs uppercase tracking-[0.3em] text-tuerkis font-semibold mb-2">Lehrmeisterin #02</div>
+                <h3 class="font-display font-extrabold text-3xl md:text-4xl text-white">Suka</h3>
+                <p class="text-white/55 mt-1">Malinois-Hündin · Ehemaliger Polizeianwärter</p>
+              </div>
+              <div class="text-7xl md:text-8xl font-display font-extrabold text-white/5 select-none leading-none -mt-2">02</div>
+            </div>
+            <div class="space-y-4 text-white/60 leading-relaxed">
+              <p>Suka kam mit knapp 1,5 Jahren zu mir, nachdem sie ca. 4–5 Monate eine <strong class="text-white">polizeiliche Grundausbildung</strong> durchlaufen hatte, aber aus gesundheitlichen Gründen ausgemustert wurde.</p>
+              <p>Sie brachte den „Arbeitsmodus" in den Alltag und stellte mich vor ganz neue Herausforderungen. <strong class="text-tuerkis">Ruhe zu lernen</strong>, wenn man eigentlich für Action gezüchtet wurde, ist ein harter Weg.</p>
+            </div>
+            <div class="mt-6 inline-flex items-center gap-2 text-tuerkis text-sm font-semibold">
+              <span class="w-5 h-px bg-tuerkis"></span>
+              Die Spezialistin
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quote -->
+      <div class="reveal mt-12 max-w-3xl mx-auto text-center">
+        <blockquote class="text-2xl md:text-3xl font-display font-bold text-white/80 leading-[1.3]">
+          "Meine Hunde haben mir beigebracht, <span class="text-gradient-orange">erst zu denken und dann zu handeln</span>. Einen Plan zu haben, bevor ich loslege. Ruhe auszustrahlen, auch wenn in mir gerade alles andere als ruhig ist. Konsequent zu bleiben und meinen eigenen Frust dabei hintenanzustellen."
+        </blockquote>
+        <cite class="not-italic text-white/30 mt-4 inline-block text-sm uppercase tracking-wider">- René Pahlke</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ERFAHRUNG MIT PROBLEMHUNDEN -->
+  <section class="py-24 md:py-32 bg-anthrazit overflow-hidden">
+    <div class="max-w-[1200px] mx-auto px-5 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div>
+        <span class="reveal inline-block text-orange font-semibold uppercase text-sm tracking-[0.3em] mb-4">Praxiserfahrung</span>
+        <h2 class="reveal reveal-delay-1 text-4xl md:text-5xl font-display font-extrabold text-white tracking-tight leading-[1.05] mb-8">
+          Mich schockt so schnell
+          <span class="block text-gradient-orange">nichts mehr.</span>
+        </h2>
+        <div class="space-y-5 text-white/60 leading-relaxed text-lg reveal reveal-delay-2">
+          <p>Jahrelange Arbeit in einer renommierten <strong class="text-white">Hundeschule & Pension</strong> sowie Einsätze <strong class="text-white">im Auftrag von Tierheimen</strong> haben mich geprägt.</p>
+          <p>Ich habe Besitzer begleitet, die durch <strong class="text-white">Beißvorfälle</strong> völlig überfordert waren. Ich habe Hunde gesehen, die aufgegeben wurden. Und welche, die noch eine Chance bekommen haben.</p>
+          <p>Diese Erfahrung macht den Unterschied. Kein Wissen nur aus dem Lehrbuch, sondern <em class="text-orange not-italic font-semibold">echte Praxis</em> mit echten Hunden.</p>
+        </div>
+      </div>
+      <div class="reveal-scale relative group overflow-hidden rounded-3xl border border-white/8 shadow-2xl">
+        <div class="absolute -inset-4 bg-gradient-to-br from-orange/15 to-transparent rounded-3xl blur-2xl pointer-events-none"></div>
+        <img
+          src="/images/rene_mit_tierschutzhund.webp"
+          alt="René Pahlke mit einem Tierschutzhund"
+          class="relative rounded-3xl w-full object-cover group-hover:scale-105 transition-transform duration-700"
+          style="aspect-ratio: 4/5; object-fit: cover;"
+          width="600" height="750"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE STRIP -->
+  <div class="bg-orange py-4 overflow-hidden">
+    <div class="flex animate-marquee whitespace-nowrap gap-0">
+      {["Fair", "Fundiert", "Individuell", "Mobil", "Gewaltfrei", "Wissenschaftlich", "Ehrlich", "Alltagsnah", "Fair", "Fundiert", "Individuell", "Mobil", "Gewaltfrei", "Wissenschaftlich", "Ehrlich", "Alltagsnah"].map((word) => (
+        <span class="inline-block font-display font-extrabold text-white uppercase tracking-widest text-lg px-8">
+          {word} <span class="text-white/55 mx-4">·</span>
+        </span>
+      ))}
+    </div>
+  </div>
+
+  <!-- AUSBILDUNG & QUALIFIKATION -->
+  <section class="py-24 md:py-32 bg-anthrazit-2">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-16">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-sm tracking-[0.3em] mb-4">Qualifikation & Philosophie</span>
+        <h2 class="reveal reveal-delay-1 text-4xl md:text-6xl font-display font-extrabold text-white tracking-tight leading-[1.05]">
+          Fair, fundiert <br/>
+          <span class="text-gradient-orange">& individuell.</span>
+        </h2>
+        <p class="reveal reveal-delay-2 text-lg text-white/50 mt-6 font-light">Hundetraining ist kein geschützter Begriff. Qualität aber schon. Meine Arbeit basiert auf einer 1,5-jährigen Intensivausbildung und ständiger Weiterentwicklung.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {skills.map((s, i) => (
+          <div class={`reveal reveal-delay-${(i % 4) + 1} group relative bg-anthrazit-3 rounded-3xl p-8 border border-white/4 hover:border-orange/20 hover:-translate-y-1 transition-all duration-500 overflow-hidden`}>
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-orange/0 rounded-full group-hover:bg-orange/8 transition-colors blur-2xl"></div>
+            <div class="relative">
+              <svg class="w-11 h-11 mb-6 text-orange inline-block transform group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={s.icon}></svg>
+              <h3 class="font-display font-bold text-2xl text-white mb-3 group-hover:text-orange transition-colors">{s.title}</h3>
+              <p class="text-white/50 leading-relaxed">{s.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-10 grid md:grid-cols-2 gap-6">
+        <div class="reveal bg-anthrazit-3 rounded-3xl p-8 md:p-10 border-l-4 border-orange">
+          <div class="text-xs uppercase tracking-[0.3em] text-orange font-semibold mb-3">Geprüfter Experte (§11)</div>
+          <h3 class="font-display font-bold text-2xl text-white mb-4">1,5 Jahre · Kynologisch gGmbH</h3>
+          <p class="text-white/50 mb-4">Wissenschaftlich fundierte Theorie kombiniert mit intensiver Praxis bei renommierten Dozenten:</p>
+          <ul class="space-y-2">
+            {dozenten.map((d) => (
+              <li class="flex items-center gap-3 text-white/70">
+                <svg class="w-4 h-4 text-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                {d}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="reveal reveal-delay-1 bg-anthrazit-3 rounded-3xl p-8 md:p-10 border-l-4 border-tuerkis">
+          <div class="text-xs uppercase tracking-[0.3em] text-tuerkis font-semibold mb-3">Stillstand ist Rückschritt</div>
+          <h3 class="font-display font-bold text-2xl text-white mb-4">Weiterbildungen 2025</h3>
+          <p class="text-white/50 mb-4">Ich ruhe mich nicht auf meiner Ausbildung aus:</p>
+          <div class="space-y-3">
+            {weiterbildung.map((w) => (
+              <div class="flex items-start gap-4 p-3 bg-anthrazit-4 rounded-xl">
+                <div class="text-xs font-semibold text-white/55 uppercase tracking-wider whitespace-nowrap mt-0.5">{w.datum}</div>
+                <div>
+                  <div class="font-semibold text-white text-sm">{w.titel}</div>
+                  <div class="text-xs text-white/55">{w.art}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHIE -->
+  <section class="relative py-24 md:py-32 bg-anthrazit overflow-hidden">
+    <div class="absolute -right-40 top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-orange/5 rounded-full blur-3xl"></div>
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="reveal inline-block text-orange font-semibold uppercase text-sm tracking-[0.3em] mb-6">Mein Ansatz</span>
+      <h2 class="reveal reveal-delay-1 text-4xl md:text-6xl lg:text-7xl font-display font-extrabold text-white leading-[1.05] tracking-tight mb-10">
+        Alle Möglichkeiten nutzen,<br/>
+        <span class="text-gradient-orange">statt Dogmatismus.</span>
+      </h2>
+      <div class="reveal reveal-delay-2 max-w-3xl">
+        <p class="text-xl md:text-2xl text-white/60 leading-relaxed font-light mb-8">
+          Ich nutze flexibel alle vier Quadranten der wissenschaftlichen Lerntheorie. Wer Prinzipien ausschließt, schränkt seinen Handlungsspielraum ein.
+        </p>
+        <p class="text-xl md:text-2xl text-white/60 leading-relaxed font-light">
+          Dabei ist ein <strong class="text-white font-semibold">positiver, respektvoller und gewaltfreier</strong> Umgang für mich die Basis. Nicht bloß ein Ziel, das ich ab und zu mal erreiche.
+        </p>
+      </div>
+      <div class="reveal reveal-delay-3 mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+        {["Positive Verstärkung", "Negative Verstärkung", "Positive Strafe", "Negative Strafe"].map((q, i) => (
+          <div class="bg-anthrazit-3 rounded-2xl p-4 text-center border border-white/6 hover:border-orange/30 hover:bg-orange/5 transition-all">
+            <div class="text-2xl font-display font-extrabold text-orange mb-1">Q{i + 1}</div>
+            <div class="text-xs font-semibold text-white/70">{q}</div>
+          </div>
+        ))}
+      </div>
+      <p class="reveal reveal-delay-4 mt-6 max-w-3xl text-base md:text-lg text-white/45 leading-relaxed font-light">
+        „Strafe" klingt hart, ich weiß. In der Lerntheorie ist damit aber kein Schmerz und kein Zwang gemeint, sondern zum Beispiel, dass dein Hund kurz die Aufmerksamkeit verliert, wenn sich ein Verhalten nicht lohnen soll. Stachelhalsband, Würger oder Teletakt kommen mir nie an den Hund.
+      </p>
+    </div>
+  </section>
+
+  <!-- WARUM WOLFSKNIGGE -->
+  <section class="relative py-24 md:py-32 bg-anthrazit-2 text-white overflow-hidden noise">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(249,115,22,0.15),transparent_60%)]"></div>
+    <div class="absolute -bottom-32 -right-32 w-[500px] h-[500px] bg-orange/10 rounded-full blur-3xl blob-float-rev"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-sm tracking-[0.3em] mb-4">Der Name</span>
+        <h2 class="reveal reveal-delay-1 text-4xl md:text-6xl font-display font-extrabold tracking-tight leading-[1.05] mb-6">
+          Warum eigentlich <span class="text-gradient-orange">"WolfsKnigge"</span>?
+        </h2>
+        <p class="reveal reveal-delay-2 text-lg text-white/50 font-light">
+          Der Name ist kein Zufall. Er verbindet zwei zentrale Aspekte des Trainings: das Ursprüngliche und das gelebte Miteinander.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+        <div class="reveal group relative bg-gradient-to-br from-orange/20 to-anthrazit-3 rounded-3xl p-8 md:p-10 border border-orange/20 hover:border-orange/50 transition-all hover:-translate-y-1 duration-500">
+          <div class="text-6xl mb-4">🐺</div>
+          <h3 class="font-display font-extrabold text-3xl text-orange mb-4">Der Wolf</h3>
+          <p class="text-white/60 leading-relaxed text-lg">Steht für das <strong class="text-white">natürliche Verhalten</strong> unserer Hunde. Ihre Authentizität, Instinkte und ihr tief verwurzeltes Sozialverhalten.</p>
+        </div>
+        <div class="reveal reveal-delay-1 group relative bg-gradient-to-br from-tuerkis/10 to-anthrazit-3 rounded-3xl p-8 md:p-10 border border-tuerkis/20 hover:border-tuerkis/40 transition-all hover:-translate-y-1 duration-500">
+          <div class="text-6xl mb-4">📖</div>
+          <h3 class="font-display font-extrabold text-3xl text-tuerkis mb-4">Der Knigge</h3>
+          <p class="text-white/60 leading-relaxed text-lg">Symbolisiert den <strong class="text-white">Verhaltenskodex im Alltag</strong>. Die Fähigkeit, Regeln zu verstehen und sich in unsere Gesellschaft zu integrieren.</p>
+        </div>
+      </div>
+
+      <p class="reveal reveal-delay-2 text-center text-white/55 mt-10 text-lg italic max-w-2xl mx-auto">
+        WolfsKnigge steht für die Balance aus <span class="text-white not-italic font-medium">natürlichem Ausdruck</span> und <span class="text-white not-italic font-medium">alltagstauglicher Erziehung</span>.
+      </p>
+    </div>
+  </section>
+
+  <!-- SOFT-BRIDGE ANGEBOTE -->
+  <section class="py-24 md:py-32 bg-anthrazit-2">
+    <div class="max-w-[1200px] mx-auto px-5 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Meine Angebote</span>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(1.8rem,5vw,3.5rem)] font-display font-extrabold text-white tracking-tight leading-[1.1]">
+          Wo kann ich <span class="text-gradient-orange">für euch da sein</span>?
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5">
+        {angebote.map((a, i) => (
+          <a
+            href={a.href}
+            class={`reveal ${i > 0 ? `reveal-delay-${i}` : ''} group relative bg-anthrazit-3 rounded-3xl p-8 border border-white/4 hover:border-orange/30 hover:-translate-y-1 transition-all duration-500 overflow-hidden block`}
+          >
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange to-orange-dark opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <svg class="w-9 h-9 mb-5 text-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={a.icon}></svg>
+            <h3 class="font-display font-bold text-xl text-white mb-2 group-hover:text-orange transition-colors">{a.title}</h3>
+            <p class="text-[14px] text-white/60 leading-relaxed mb-4">{a.text}</p>
+            <div class="inline-flex items-center gap-1.5 text-orange text-sm font-semibold">
+              Mehr erfahren
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 md:py-32 bg-anthrazit">
+    <div class="max-w-[900px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="text-center mb-12">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Häufige Fragen</span>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(2rem,5vw,3.8rem)] font-display font-extrabold text-white tracking-tight leading-[1.05]">
+          Was Halter <span class="text-gradient-orange">vorher wissen wollen.</span>
+        </h2>
+      </div>
+      <div class="space-y-3">
+        {faq.map((f, i) => (
+          <details name="faq" class={`reveal reveal-delay-${(i % 4) + 1} group bg-anthrazit-3 rounded-2xl border border-white/5 hover:border-orange/20 transition-colors overflow-hidden`}>
+            <summary class="flex items-center justify-between gap-4 p-6 cursor-pointer list-none">
+              <span class="font-display font-bold text-white text-lg group-hover:text-orange transition-colors">{f.q}</span>
+              <span class="flex-shrink-0 w-8 h-8 rounded-full bg-orange/10 border border-orange/20 flex items-center justify-center text-orange transition-transform group-open:rotate-45">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </summary>
+            <div class="px-6 pb-6 text-white/55 leading-relaxed text-[15px]">{f.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="relative py-32 md:py-48 bg-anthrazit text-white overflow-hidden noise">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(249,115,22,0.25),transparent_60%)]"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-orange/10 rounded-full blur-3xl blob-float"></div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="reveal text-5xl md:text-7xl lg:text-8xl font-display font-extrabold mb-8 tracking-tight leading-[0.95]">
+        Lass uns einfach <br/>
+        <span class="text-gradient-orange">mal telefonieren</span>.
+      </h2>
+      <p class="reveal reveal-delay-1 text-xl md:text-2xl text-white/50 mb-12 font-light">Kostet nichts, verpflichtet zu nichts. Du erzählst mir, was bei euch los ist, und ich sage dir ehrlich, ob und wie ich helfen kann.</p>
+      <div class="reveal reveal-delay-2 flex flex-wrap gap-4 justify-center">
+        <a href="/kontakt" class="shine group inline-flex items-center gap-2 rounded-full bg-orange hover:bg-orange-dark text-white font-semibold px-10 py-5 text-lg transition-all shadow-2xl shadow-orange/40 hover:scale-[1.03]">
+          Kennenlerngespräch anfragen
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="tel:+4915147736042" class="inline-flex items-center gap-2 rounded-full bg-white/5 backdrop-blur border border-white/20 hover:bg-white/10 text-white font-semibold px-10 py-5 text-lg transition-all">
+          📞 0151 47736042
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({"@context":"https://schema.org","@type":"FAQPage",mainEntity:faq.map((f)=>({"@type":"Question",name:f.q,acceptedAnswer:{"@type":"Answer",text:f.a}}))})} />
+</Layout>
