@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 
 // Nächster Kursstart – hier aktualisieren, sobald der Termin wechselt.
-const kursstart = "Sonntag, 21.06. · 11:15 Uhr";
+const kursstart = "Sonntag, 21.06. · 10:00 Uhr";
 
 const inhalte = [
   { icon: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>', title: "Grundsignale", text: "Sitz, Platz, Rückruf & Co., spielerisch aufgebaut und vom ersten Tag an alltagstauglich." },
@@ -142,6 +142,19 @@ const testimonials = [
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- KURSSTART-BANNER -->
+  <section class="bg-anthrazit-2 border-y border-white/6 py-5">
+    <div class="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12 flex justify-center">
+      <a href="https://rene-pahlke-hundetraining.123hundeschule.de/kurse" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 bg-white/8 backdrop-blur-md border border-white/15 rounded-full px-5 py-2.5 text-[14px] sm:text-[15px] font-medium text-white text-center transition-all sm:hover:bg-white/14 sm:hover:border-orange/40">
+        <span class="relative flex h-2 w-2 flex-shrink-0">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-orange"></span>
+        </span>
+        Nächster Kursstart: <span class="font-display font-bold text-orange">{kursstart}</span>
+      </a>
     </div>
   </section>
 
