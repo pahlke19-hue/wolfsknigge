@@ -42,11 +42,23 @@
 <script>
   const KEY = "wk-consent";
   const GTM_ID = "GTM-NQ89PJT2";
+  const GA_ID = "G-3K8W7MPKXE";
   const banner = document.getElementById("cookie-consent");
   const w = window as any;
 
   function gtag(...args: any[]) {
-    (w.dataLayer = w.dataLayer || []).push(args);
+    (w.dataLayer = w.dataLayer || []).push(arguments);
+  }
+
+  function loadGA() {
+    if (w.__gaLoaded) return;
+    w.__gaLoaded = true;
+    const s = document.createElement("script");
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+    document.head.appendChild(s);
+    gtag("js", new Date());
+    gtag("config", GA_ID);
   }
 
   function loadGTM() {
@@ -73,6 +85,7 @@
       functionality_storage: "granted",
       personalization_storage: "granted",
     });
+    loadGA();
     loadGTM();
   }
 
