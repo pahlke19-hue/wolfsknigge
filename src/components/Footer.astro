@@ -11,7 +11,7 @@ const { year = new Date().getFullYear(), landingPage = false } = Astro.props;
   <div class={`max-w-[1200px] mx-auto px-6 lg:px-8 ${landingPage ? 'py-8' : 'py-16'}`}>
     {!landingPage && (
       <>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         <div>
           <img src="/images/logo.svg" alt="WolfsKnigge" class="h-10 w-auto invert brightness-200 mb-4" />
           <p class="text-sm text-white/55 leading-relaxed">
@@ -50,6 +50,16 @@ const { year = new Date().getFullYear(), landingPage = false } = Astro.props;
             <li>Mo – Fr: 09:00 – 19:00</li>
             <li>Sa: 09:00 – 13:00</li>
             <li>So: geschlossen</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-white font-display font-bold text-base mb-4">Standorte</h3>
+          <ul class="text-sm text-white/55 space-y-1 leading-[2]">
+            <li><a href="/hundeschule-kiel" class="hover:text-white/60 transition-colors">Hundeschule Kiel</a></li>
+            <li><a href="/hundeschule-rendsburg" class="hover:text-white/60 transition-colors">Hundeschule Rendsburg</a></li>
+            <li><a href="/hundeschule-eckernfoerde" class="hover:text-white/60 transition-colors">Hundeschule Eckernförde</a></li>
+            <li><a href="/hundeschule-neumuenster" class="hover:text-white/60 transition-colors">Hundeschule Neumünster</a></li>
           </ul>
         </div>
       </div>

@@ -25,7 +25,28 @@ const related = all
   .slice(0, 2);
 ---
 
-<Layout title={`${post.data.title} | WolfsKnigge Blog`} description={post.data.description}>
+<Layout
+  title={`${post.data.title} | WolfsKnigge Blog`}
+  description={post.data.description}
+  breadcrumb={[
+    { name: "Start", url: "https://wolfsknigge.de/" },
+    { name: "Blog", url: "https://wolfsknigge.de/blog/" },
+    { name: post.data.title, url: `https://wolfsknigge.de/${post.id}/` },
+  ]}
+>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.data.title,
+    description: post.data.description,
+    image: `https://wolfsknigge.de${post.data.heroImage}`,
+    datePublished: post.data.pubDate.toISOString(),
+    dateModified: post.data.pubDate.toISOString(),
+    author: { "@type": "Person", name: post.data.author },
+    publisher: { "@type": "Organization", name: "WolfsKnigge - Mobile Hundeschule", logo: { "@type": "ImageObject", url: "https://wolfsknigge.de/images/logo.svg" } },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `https://wolfsknigge.de/${post.id}/` },
+  })} />
 
   <!-- HERO -->
   <section class="relative overflow-clip pt-28 pb-12 lg:pt-36 lg:pb-16">

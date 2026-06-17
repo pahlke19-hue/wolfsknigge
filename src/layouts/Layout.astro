@@ -6,17 +6,53 @@ import ContactSidebar from "../components/ContactSidebar.astro";
 import MobileBar from "../components/MobileBar.astro";
 import CookieConsent from "../components/CookieConsent.astro";
 
+interface BreadcrumbItem { name: string; url: string; }
 interface Props {
   title: string;
   description?: string;
   landingPage?: boolean;
   noindex?: boolean;
+  breadcrumb?: BreadcrumbItem[];
 }
 
-const { title, description = "WolfsKnigge – Mobile Hundeschule in Kiel, Rendsburg, Eckernförde & Neumünster. Individuelles Training für Problemverhalten und Alltag.", landingPage = false, noindex = false } = Astro.props;
+const { title, description = "WolfsKnigge – Mobile Hundeschule in Kiel, Rendsburg, Eckernförde & Neumünster. Individuelles Training für Problemverhalten und Alltag.", landingPage = false, noindex = false, breadcrumb } = Astro.props;
 
-const path = Astro.url.pathname === "/" ? "/" : Astro.url.pathname.replace(/\/$/, "");
-const canonicalUrl = `https://wolfsknigge.de${path}`;
+const SITE = "https://wolfsknigge.de";
+// Canonical mit Trailing-Slash, damit es zum Sitemap-Format (Directory-Build) passt
+const normalizedPath = Astro.url.pathname.replace(/\/$/, "");
+const path = normalizedPath === "" ? "/" : `${normalizedPath}/`;
+const canonicalUrl = `${SITE}${path}`;
+
+// Breadcrumb: expliziter Prop gewinnt, sonst automatisch aus dem Pfad (nicht auf Home/noindex)
+const routeLabels: Record<string, string> = {
+  "hundeschule-kiel": "Hundeschule Kiel",
+  "hundeschule-rendsburg": "Hundeschule Rendsburg",
+  "hundeschule-eckernfoerde": "Hundeschule Eckernförde",
+  "hundeschule-neumuenster": "Hundeschule Neumünster",
+  "social-walk": "Social Walks",
+  "welpengruppe": "Welpengruppe",
+  "grunderziehungsgruppe": "Grunderziehung",
+  "einzelstunde": "Einzelstunde",
+  "anamnesegesprach": "Verhaltensanalyse",
+  "preise": "Preise",
+  "ueber-mich": "Über mich",
+  "kontakt": "Kontakt",
+  "faq": "FAQ",
+  "blog": "Blog",
+  "impressum": "Impressum",
+  "dsgvo": "Datenschutz",
+  "agb": "AGB",
+};
+let breadcrumbItems = breadcrumb;
+if (!breadcrumbItems && !noindex && path !== "/") {
+  const segments = normalizedPath.split("/").filter(Boolean);
+  breadcrumbItems = [{ name: "Start", url: `${SITE}/` }];
+  let acc = "";
+  for (const seg of segments) {
+    acc += `/${seg}`;
+    breadcrumbItems.push({ name: routeLabels[seg] ?? seg, url: `${SITE}${acc}/` });
+  }
+}
 ---
 
 <!doctype html>
@@ -138,6 +174,9 @@ const canonicalUrl = `https://wolfsknigge.de${path}`;
         }
       }
     </script>
+    {breadcrumbItems && breadcrumbItems.length > 1 && (
+      <script type="application/ld+json" is:inline set:html={JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:breadcrumbItems.map((b,i)=>({"@type":"ListItem",position:i+1,name:b.name,item:b.url}))})} />
+    )}
     <title>{title}</title>
   </head>
   <body class="bg-anthrazit text-[#e4e4e7] antialiased">
