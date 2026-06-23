@@ -138,9 +138,27 @@ const faq = [
         {titleParts.after}
       </h1>
 
-      <p class="hero-reveal hero-reveal-d2 text-[clamp(1rem,2vw,1.25rem)] text-white/70 mb-9 leading-relaxed max-w-[640px] font-light">
+      <p class="hero-reveal hero-reveal-d2 text-[clamp(1rem,2vw,1.25rem)] text-white/70 mb-6 leading-relaxed max-w-[640px] font-light">
         {p.heroSubtitle}
       </p>
+
+      <div class="hero-reveal hero-reveal-d2b mb-9">
+        <span class="block text-white/45 text-[13px] font-light mb-2.5">Ich helfe dir bei:</span>
+        <div class="flex flex-nowrap items-center gap-0.5 sm:gap-2.5">
+          <span class="inline-flex items-center gap-1.5 whitespace-nowrap bg-white/[0.06] backdrop-blur-md border border-white/10 text-white/85 font-medium text-[clamp(0.5rem,2.5vw,0.8125rem)] px-1.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full">
+            <span class="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-orange"></span>Leinenaggression
+          </span>
+          <span class="inline-flex items-center gap-1.5 whitespace-nowrap bg-white/[0.06] backdrop-blur-md border border-white/10 text-white/85 font-medium text-[clamp(0.5rem,2.5vw,0.8125rem)] px-1.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full">
+            <span class="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-orange"></span>Angst
+          </span>
+          <span class="inline-flex items-center gap-1.5 whitespace-nowrap bg-white/[0.06] backdrop-blur-md border border-white/10 text-white/85 font-medium text-[clamp(0.5rem,2.5vw,0.8125rem)] px-1.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full">
+            <span class="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-orange"></span>Jagdverhalten
+          </span>
+          <span class="inline-flex items-center gap-1.5 whitespace-nowrap bg-white/[0.06] backdrop-blur-md border border-white/10 text-white/85 font-medium text-[clamp(0.5rem,2.5vw,0.8125rem)] px-1.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full">
+            <span class="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-orange"></span>Welpenschule
+          </span>
+        </div>
+      </div>
 
       <div class="hero-reveal hero-reveal-d3 flex flex-col sm:flex-row gap-3.5 mb-12">
         <a href={landingPage ? "#kontakt-formular" : "/kontakt"} class="shine group inline-flex items-center justify-center gap-2.5 rounded-full bg-orange text-white font-display font-semibold px-8 py-4 text-[15px] transition-all shadow-[0_0_60px_rgba(249,115,22,0.35)] active:scale-95 sm:hover:scale-[1.03] sm:hover:bg-orange-dark">
