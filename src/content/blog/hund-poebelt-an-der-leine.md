@@ -54,4 +54,6 @@ Ein paar ehrliche Sachen, die du sofort umsetzen kannst. Wobei ich gleich dazusa
 
 Leinenpöbelei verschwindet nicht, indem man sie wegdrückt. Sie verschwindet, wenn dein Hund lernt, mit dem Gefühl klarzukommen, das sie überhaupt auslöst. Das braucht etwas Geduld und einen ehrlichen Blick auf euren Alltag. Aber ich verspreche dir, es lohnt sich, an der Wurzel anzusetzen und nicht an der Spitze.
 
+Leinenpöbelei ist dabei nur eines von mehreren Gesichtern, die ein überforderter Hund zeigen kann. Wie ich an echte Aggression oder Angst herangehe, liest du in meinem Überblick zum Thema [Problemhund](/problemhund/).
+
 **Dein Hund pöbelt an der Leine und du willst endlich an der Ursache arbeiten statt immer nur am Symptom? Dann melde dich einfach. Als deine mobile Hundeschule komme ich zu euch, nach Kiel, Rendsburg, Eckernförde, Neumünster und ins Umland. Wir schauen uns in Ruhe gemeinsam an, was dein Hund wirklich braucht.**
