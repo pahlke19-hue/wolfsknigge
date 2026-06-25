@@ -7,6 +7,7 @@ heroImage: "/images/blog/hunde-news.webp"
 heroAlt: "Mehrere Hunde – aktuelle Nachrichten aus der Hundewelt"
 category: "News"
 readingTime: "1 min"
+draft: true
 ---
 
 In den vergangenen Wochen gab es zahlreiche bemerkenswerte Ereignisse und Entwicklungen in der Welt der Hunde. In diesem Artikel präsentiere ich dir eine Auswahl der aktuellsten und interessantesten Nachrichten rund um unsere vierbeinigen Begleiter.
