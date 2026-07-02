@@ -1,6 +1,7 @@
 ---
 title: "Ab wann Welpenschule? Warum die ersten 16 Wochen alles entscheiden"
-description: "Ab welchem Alter sollte ein Welpe in die Welpenschule? Warum die Sozialisierungsphase bis zur 16. Woche so wichtig ist, was Deprivation bedeutet und worauf du achten solltest."
+seoTitle: "Ab wann Welpenschule? Die ersten 16 Wochen | WolfsKnigge"
+description: "Ab welchem Alter sollte ein Welpe in die Welpenschule? Warum die Sozialisierungsphase bis zur 16. Woche so wichtig ist und worauf du achten solltest."
 excerpt: "Die Prägephase deines Welpen schließt sich, ob du sie nutzt oder nicht. Ab wann Welpenschule sinnvoll ist, was hinter dem Wort Deprivation steckt und warum du trotzdem ganz ruhig bleiben darfst."
 pubDate: 2026-06-18
 heroImage: "/images/welpe_mit_kuscheltier.webp"

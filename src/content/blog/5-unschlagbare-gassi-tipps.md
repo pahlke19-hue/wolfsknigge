@@ -1,5 +1,6 @@
 ---
 title: "5 unschlagbare Gassi-Tipps für entspannte Spaziergänge in Kiel und Umgebung"
+seoTitle: "5 unschlagbare Gassi-Tipps – Kiel & Umgebung | WolfsKnigge"
 description: "5 praxiserprobte Tipps für entspannte Spaziergänge mit Hund in Kiel, Rendsburg, Eckernförde und Neumünster. Mehr Bindung, weniger Stress."
 excerpt: "Verwandle die tägliche Routine in ein Abenteuer. 5 Tipps unserer Hundetrainer für mehr Bindung, weniger Stress – und ganz nebenbei eine bessere Position in den Suchergebnissen."
 pubDate: 2025-07-25

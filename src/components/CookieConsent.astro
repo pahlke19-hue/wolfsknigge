@@ -100,7 +100,17 @@
 
   document.getElementById("cookie-decline")?.addEventListener("click", () => {
     localStorage.setItem(KEY, "denied");
+    gtag("consent", "update", {
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      analytics_storage: "denied",
+      functionality_storage: "denied",
+      personalization_storage: "denied",
+    });
     hide();
+    // Widerrufs-Fall: Waren GA/GTM bereits geladen, stoppt erst ein Reload das Tracking wirklich
+    if (w.__gaLoaded || w.__gtmLoaded) location.reload();
   });
 
   // Widerruf / erneutes Öffnen (z.B. aus dem Footer)

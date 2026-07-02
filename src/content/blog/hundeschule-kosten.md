@@ -1,6 +1,7 @@
 ---
 title: "Was kostet eine Hundeschule? Ein ehrlicher Preis-Überblick"
-description: "Was kostet eine Hundeschule wirklich? Realistische Preise für Einzelstunde, Gruppe und Welpenkurs, was den Preis bestimmt und woran du faire Qualität erkennst."
+seoTitle: "Was kostet eine Hundeschule? Preis-Überblick | WolfsKnigge"
+description: "Was kostet eine Hundeschule wirklich? Realistische Preise für Einzelstunde, Gruppe und Welpenkurs – und woran du faire Qualität erkennst."
 excerpt: "50 Euro hier, 100 Euro dort, woran liegt das eigentlich? Ein ehrlicher Blick darauf, was eine Hundeschule kostet, was den Preis bestimmt und wofür du wirklich bezahlst."
 pubDate: 2026-06-25
 heroImage: "/images/anamnese_termin_im_park.webp"

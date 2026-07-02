@@ -1,6 +1,7 @@
 ---
 title: "Hund pöbelt an der Leine? Warum Impulskontrolle das Problem nicht löst"
-description: "Dein Hund pöbelt an der Leine, bellt andere Hunde an oder zieht zu jedem Passanten? Warum die Ursache meistens Frustration ist und wie echtes Training aussieht."
+seoTitle: "Hund pöbelt an der Leine? Ursachen & Training | WolfsKnigge"
+description: "Dein Hund pöbelt an der Leine oder bellt andere Hunde an? Warum die Ursache meistens Frustration ist und wie echtes Training aussieht."
 excerpt: "Leinenpöbelei ist selten das eigentliche Problem, sondern nur das Symptom. Warum reine Impulskontrolle den Stress nur staut und was beim Eurasier Bruno wirklich geholfen hat."
 pubDate: 2026-06-17
 heroImage: "/images/blog/leinenpoebelei.webp"

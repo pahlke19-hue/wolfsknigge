@@ -5,6 +5,8 @@ const blog = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
   schema: z.object({
     title: z.string(),
+    // Optionaler SEO-Title (≤60 Zeichen) für den <title>-Tag; H1 bleibt title
+    seoTitle: z.string().optional(),
     description: z.string(),
     excerpt: z.string(),
     pubDate: z.coerce.date(),
