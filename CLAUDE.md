@@ -18,6 +18,10 @@
 - **SEO & Sitemap**: `@astrojs/sitemap` (excludes `/danke`, `/thanks-formular`, `/404`).
 - **Domain**: `https://wolfsknigge.de`
 
+## Brand & Content References
+- **Design work** (UI, colors, motion, components): Read `design.md` first. Design tokens: source of truth is the `@theme` block in `src/styles/global.css` — never duplicate hex values or font names into docs.
+- **Copy/content work** (page copy, blog, SEO texts): Read `voice.md` first.
+
 ---
 
 ## Coding Guidelines & Standards

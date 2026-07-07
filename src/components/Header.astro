@@ -4,18 +4,6 @@ interface Props {
 }
 
 const { landingPage = false } = Astro.props;
-
-const nav = [
-  { label: "Startseite", href: "/" },
-  { label: "Über mich", href: "/ueber-mich" },
-  { label: "Verhaltensanalyse", href: "/anamnesegesprach" },
-  { label: "Einzelstunde", href: "/einzelstunde" },
-  { label: "Social Walk", href: "/social-walk" },
-  { label: "Welpengruppe", href: "/welpengruppe" },
-  { label: "Grunderziehung", href: "/grunderziehungsgruppe" },
-  { label: "Preise", href: "/preise" },
-  { label: "FAQ", href: "/faq" },
-];
 ---
 
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 border-b border-transparent transition-all duration-500">
@@ -33,7 +21,6 @@ const nav = [
 
       {!landingPage && (
         <nav class="hidden lg:flex items-center gap-8">
-          <a href="/" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Startseite</a>
           <a href="/ueber-mich" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Über mich</a>
 
           <!-- Angebote Dropdown -->
@@ -57,22 +44,6 @@ const nav = [
           <a href="/faq" class="text-sm font-medium text-white/70 hover:text-white transition-colors">FAQ</a>
           <a href="/blog" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Blog</a>
 
-          <!-- Standorte Dropdown -->
-          <div class="relative group">
-            <button aria-haspopup="true" class="text-sm font-medium text-white/70 hover:text-white transition-colors inline-flex items-center gap-1">
-              Standorte
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="absolute right-0 top-full pt-2 w-52 hidden group-hover:block group-focus-within:block">
-              <div class="bg-anthrazit-3 backdrop-blur-xl rounded-xl shadow-2xl border border-white/10 py-2">
-                <a href="/hundeschule-kiel" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Hundeschule Kiel</a>
-                <a href="/hundeschule-rendsburg" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Hundeschule Rendsburg</a>
-                <a href="/hundeschule-eckernfoerde" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Hundeschule Eckernförde</a>
-                <a href="/hundeschule-neumuenster" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Hundeschule Neumünster</a>
-              </div>
-            </div>
-          </div>
-
           <a href="https://rene-pahlke-hundetraining.123hundeschule.de/" target="_blank" rel="noopener noreferrer" title="Sichere Buchung über mein Kursportal 123Hundeschule – öffnet in einem neuen Tab" class="shine inline-flex items-center rounded-full bg-orange hover:bg-orange-dark text-white text-sm font-semibold font-display px-6 py-2.5 transition-all hover:scale-[1.04]">
             Jetzt buchen
           </a>
@@ -94,7 +65,6 @@ const nav = [
     {!landingPage && (
       <nav id="mobile-menu" class="hidden lg:hidden pb-6 border-t border-white/6">
         <div class="pt-4 space-y-1">
-          <a href="/" class="block px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:bg-white/5 hover:text-orange">Startseite</a>
           <a href="/ueber-mich" class="block px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:bg-white/5 hover:text-orange">Über mich</a>
 
           <div>
@@ -114,19 +84,6 @@ const nav = [
           <a href="/preise" class="block px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:bg-white/5 hover:text-orange">Preise</a>
           <a href="/faq" class="block px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:bg-white/5 hover:text-orange">FAQ</a>
           <a href="/blog" class="block px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:bg-white/5 hover:text-orange">Blog</a>
-
-          <div>
-            <button class="mobile-accordion w-full flex items-center justify-between px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:bg-white/5 hover:text-orange" aria-expanded="false">
-              Standorte
-              <svg class="accordion-icon w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="accordion-panel hidden pl-4 space-y-1">
-              <a href="/hundeschule-kiel" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Hundeschule Kiel</a>
-              <a href="/hundeschule-rendsburg" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Hundeschule Rendsburg</a>
-              <a href="/hundeschule-eckernfoerde" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Hundeschule Eckernförde</a>
-              <a href="/hundeschule-neumuenster" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Hundeschule Neumünster</a>
-            </div>
-          </div>
 
           <a href="https://rene-pahlke-hundetraining.123hundeschule.de/" target="_blank" rel="noopener noreferrer" class="block mt-4 text-center rounded-full bg-orange hover:bg-orange-dark text-white font-semibold font-display px-5 py-3.5 text-[15px]">
             Jetzt buchen

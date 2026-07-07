@@ -322,15 +322,12 @@ const fuer_wen = [
           In <span class="text-gradient-orange">vier Schritten</span> zum Ziel.
         </h2>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 relative">
-        <div class="hidden md:block absolute top-12 left-12 right-12 h-px bg-gradient-to-r from-transparent via-orange/30 to-transparent"></div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10 relative">
+        <div class="hidden md:block absolute top-8 left-14 right-14 h-px bg-gradient-to-r from-transparent via-orange/40 to-transparent"></div>
         {ablauf.map((a, i) => (
           <div class={`reveal reveal-delay-${i + 1} text-center`}>
-            <div class="relative w-24 h-24 mx-auto mb-6">
-              <div class="absolute inset-0 bg-orange/20 rounded-full blur-xl"></div>
-              <div class="relative w-24 h-24 rounded-full bg-gradient-to-br from-orange to-orange-dark flex items-center justify-center text-[28px] font-display font-extrabold text-white shadow-[0_0_60px_rgba(249,115,22,0.25)]">
-                {a.step}
-              </div>
+            <div class="relative w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-orange to-orange-dark flex items-center justify-center text-2xl font-display font-extrabold text-white shadow-[0_0_0_6px_#141416,0_0_34px_rgba(249,115,22,0.4)]">
+              {a.step}
             </div>
             <h3 class="font-display font-bold text-[22px] text-white mb-2">{a.title}</h3>
             <p class="text-sm text-white/60 leading-relaxed">{a.text}</p>
@@ -515,6 +512,31 @@ const fuer_wen = [
               <a href="/preise" class="text-orange text-sm font-semibold hover:text-orange-dark transition-colors">Alle Preise ansehen →</a>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STARTER-PAKET CROSS-SELL -->
+  <section class="py-16 md:py-24 bg-anthrazit-2">
+    <div class="max-w-[900px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="reveal relative grid md:grid-cols-[1fr_auto] gap-8 items-center bg-gradient-to-br from-orange/10 to-anthrazit-3 border border-orange/25 rounded-3xl p-8 md:p-10 overflow-hidden">
+        <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(249,115,22,.18), transparent 70%);"></div>
+        <div class="relative">
+          <span class="inline-block text-orange font-semibold uppercase text-[12px] tracking-[0.2em] mb-3">Spar-Tipp · Meistgekauft</span>
+          <h2 class="font-display font-extrabold text-2xl md:text-3xl text-white mb-3">Im Starter-Paket günstiger</h2>
+          <p class="text-white/60 text-[15px] leading-relaxed mb-5 max-w-[52ch]">Zwei Einzelstunden stecken schon im Starter-Paket, zusammen mit der Verhaltensanalyse als Fundament. Wer strukturiert starten will, fährt mit dem Paket günstiger.</p>
+          <ul class="flex flex-wrap gap-x-5 gap-y-2 text-[13.5px] text-white/70">
+            <li class="flex items-center gap-2"><span class="text-orange font-bold">✓</span>1× Verhaltensanalyse (90 Min.)</li>
+            <li class="flex items-center gap-2"><span class="text-orange font-bold">✓</span>2× Einzelstunde (60 Min.)</li>
+            <li class="flex items-center gap-2"><span class="text-orange font-bold">✓</span>Individueller Trainingsplan</li>
+          </ul>
+        </div>
+        <div class="relative text-center md:border-l md:border-white/10 md:pl-8">
+          <div class="font-display font-extrabold text-white text-5xl">270 €</div>
+          <div class="text-white/40 line-through text-sm mt-1">310 €</div>
+          <div class="inline-block text-[#67e8f9] text-xs font-bold bg-[rgba(54,255,243,0.08)] border border-[rgba(54,255,243,0.25)] rounded-full px-3 py-1 mt-3 mb-5">15% sparen</div>
+          <a href="/preise#pakete" class="shine block text-center rounded-full bg-orange hover:bg-orange-dark text-white font-display font-semibold px-7 py-3.5 text-[15px] transition-all">Paket ansehen</a>
         </div>
       </div>
     </div>

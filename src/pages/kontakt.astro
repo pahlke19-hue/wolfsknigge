@@ -147,55 +147,14 @@ import Layout from "../layouts/Layout.astro";
               </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 border-t border-white/5 pt-6">
-              <div>
-                <label for="hund-info" class="block text-[13px] font-semibold text-white/60 mb-2 uppercase tracking-wider">Name & Rasse des Hundes</label>
-                <input
-                  type="text"
-                  name="hund-info"
-                  id="hund-info"
-                  placeholder="Bello, Schäferhund Mix"
-                  class="w-full bg-white/3 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:border-orange/50 transition-colors text-sm"
-                />
-              </div>
-              <div>
-                <label for="hund-alter" class="block text-[13px] font-semibold text-white/60 mb-2 uppercase tracking-wider">Alter des Hundes</label>
-                <input
-                  type="text"
-                  name="hund-alter"
-                  id="hund-alter"
-                  placeholder="z.B. 2 Jahre"
-                  class="w-full bg-white/3 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:border-orange/50 transition-colors text-sm"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label for="thema" class="block text-[13px] font-semibold text-white/60 mb-2 uppercase tracking-wider">Wobei kann ich euch helfen? *</label>
-              <select
-                name="thema"
-                id="thema"
-                required
-                class="w-full bg-white/3 border border-white/10 rounded-xl px-4 py-3.5 text-white/80 focus:outline-none focus:border-orange/50 transition-colors text-sm"
-              >
-                <option value="" disabled selected class="bg-anthrazit-3 text-white/55">Bitte auswählen...</option>
-                <option value="anamnese" class="bg-anthrazit-3">Verhaltensanalyse / Ersttermin (130 €)</option>
-                <option value="einzelstunde" class="bg-anthrazit-3">Einzelstunde / 1:1 Coaching</option>
-                <option value="welpen" class="bg-anthrazit-3">Welpenstart / Welpengruppe</option>
-                <option value="erziehung" class="bg-anthrazit-3">Grunderziehung / Kleingruppe</option>
-                <option value="social-walk" class="bg-anthrazit-3">Social Walk</option>
-                <option value="anderes" class="bg-anthrazit-3">Sonstige Anfrage / Erstgespräch</option>
-              </select>
-            </div>
-
-            <div>
-              <label for="message" class="block text-[13px] font-semibold text-white/60 mb-2 uppercase tracking-wider">Details zu eurem Verhalten/Problem *</label>
+            <div class="border-t border-white/5 pt-6">
+              <label for="message" class="block text-[13px] font-semibold text-white/60 mb-2 uppercase tracking-wider">Worum geht es? *</label>
               <textarea
                 name="message"
                 id="message"
-                rows="5"
+                rows="4"
                 required
-                placeholder="Bitte beschreibe kurz eure aktuelle Situation (z.B. Leinenpöbeln, Angst, Aggressivität bei Hundebegegnungen, etc.)."
+                placeholder="Beschreib kurz euer Anliegen (z.B. Leinenpöbeln, Angst, Welpenstart)."
                 class="w-full bg-white/3 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:outline-none focus:border-orange/50 transition-colors text-sm leading-relaxed"
               ></textarea>
             </div>
