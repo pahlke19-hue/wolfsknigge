@@ -213,5 +213,21 @@ if (!breadcrumbItems && !noindex && path !== "/") {
       window.addEventListener("scroll", onScroll, { passive: true });
       onScroll();
     </script>
+
+    <script>
+      // Kontakt- und Buchungs-Klicks als dataLayer-Events (Trigger für GTM-Conversion-Tags)
+      const w = window as any;
+      document.addEventListener("click", (e) => {
+        const a = (e.target as Element | null)?.closest?.("a[href]");
+        if (!a) return;
+        const href = a.getAttribute("href") || "";
+        let event = "";
+        if (href.startsWith("tel:")) event = "contact_call";
+        else if (href.includes("wa.me/") || href.includes("api.whatsapp.com")) event = "contact_whatsapp";
+        else if (href.startsWith("mailto:")) event = "contact_email";
+        else if (href.includes("123hundeschule.de")) event = "booking_portal_click";
+        if (event) (w.dataLayer = w.dataLayer || []).push({ event });
+      });
+    </script>
   </body>
 </html>

@@ -1,7 +1,8 @@
 ---
 // Schlankes, self-hosted Consent-Banner (Vanilla JS) + Google Consent Mode v2.
-// GTM wird erst nach aktiver Einwilligung nachgeladen. GA4 + Meta Pixel
-// werden als Tags IM GTM-Container verwaltet (über Consent gegated).
+// GTM wird erst nach aktiver Einwilligung nachgeladen. GA4, Google Ads,
+// Meta-Pixel + Microsoft Clarity werden als Tags IM GTM-Container verwaltet
+// (über Consent gegated).
 ---
 
 <div
@@ -16,7 +17,7 @@
       <div class="flex-1">
         <h2 class="text-white font-display font-bold text-base mb-1.5">Cookies & Tracking</h2>
         <p class="text-white/55 text-[13px] leading-relaxed">
-          Ich nutze Cookies und Tools (Google Analytics, Meta Pixel) über den Google Tag Manager, um die Website zu verbessern und Marketing zu messen. Diese laden nur mit deiner Einwilligung – du kannst sie jederzeit widerrufen. Mehr dazu in der <a href="/dsgvo" class="text-orange hover:underline">Datenschutzerklärung</a>.
+          Ich nutze Cookies und Tools (Google Analytics, Google Ads, Meta-Pixel, Microsoft Clarity) über den Google Tag Manager, um die Website zu verbessern und Marketing zu messen. Diese laden nur mit deiner Einwilligung – du kannst sie jederzeit widerrufen. Mehr dazu in der <a href="/dsgvo" class="text-orange hover:underline">Datenschutzerklärung</a>.
         </p>
       </div>
       <div class="flex flex-col sm:flex-row gap-2.5 shrink-0">
@@ -42,23 +43,11 @@
 <script>
   const KEY = "wk-consent";
   const GTM_ID = "GTM-NQ89PJT2";
-  const GA_ID = "G-3K8W7MPKXE";
   const banner = document.getElementById("cookie-consent");
   const w = window as any;
 
   function gtag(...args: any[]) {
     (w.dataLayer = w.dataLayer || []).push(arguments);
-  }
-
-  function loadGA() {
-    if (w.__gaLoaded) return;
-    w.__gaLoaded = true;
-    const s = document.createElement("script");
-    s.async = true;
-    s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
-    document.head.appendChild(s);
-    gtag("js", new Date());
-    gtag("config", GA_ID);
   }
 
   function loadGTM() {
@@ -85,7 +74,6 @@
       functionality_storage: "granted",
       personalization_storage: "granted",
     });
-    loadGA();
     loadGTM();
   }
 
@@ -109,8 +97,8 @@
       personalization_storage: "denied",
     });
     hide();
-    // Widerrufs-Fall: Waren GA/GTM bereits geladen, stoppt erst ein Reload das Tracking wirklich
-    if (w.__gaLoaded || w.__gtmLoaded) location.reload();
+    // Widerrufs-Fall: War GTM bereits geladen, stoppt erst ein Reload das Tracking wirklich
+    if (w.__gtmLoaded) location.reload();
   });
 
   // Widerruf / erneutes Öffnen (z.B. aus dem Footer)
