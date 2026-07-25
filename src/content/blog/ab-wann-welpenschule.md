@@ -52,4 +52,4 @@ Keine Panik, falls dein Welpe diese erste Phase schon teilweise hinter sich hat.
 
 Wenn dein Welpe gerade eingezogen ist oder bald einzieht, ist genau jetzt der richtige Moment, dich um die Welpenschule zu kümmern, nicht erst, wenn die ersten Unsicherheiten auffallen. In meiner Welpengruppe arbeite ich bewusst mit maximal sieben Teams, wechselnden Orten und genau dem ruhigen, strukturierten Aufbau, den dieses Zeitfenster braucht. Ohne Druck, ohne Reizüberflutung, im Tempo deines Welpen.
 
-**Du willst dieses Fenster für deinen Welpen entspannt und richtig nutzen? In meiner [Welpengruppe](/welpengruppe) für Kiel und Rendsburg begleite ich euch durch genau diese entscheidenden ersten Monate, fair, fundiert und mit jeder Menge Spaß für deinen Welpen.**
+**Du willst dieses Fenster für deinen Welpen entspannt und richtig nutzen? In meiner [Welpengruppe](/welpengruppe/) für Kiel und Rendsburg begleite ich euch durch genau diese entscheidenden ersten Monate, fair, fundiert und mit jeder Menge Spaß für deinen Welpen.**

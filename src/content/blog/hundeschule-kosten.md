@@ -63,7 +63,7 @@ Ein faires, ehrliches Gespräch vorab sagt dir oft mehr als jede Preisliste. Gen
 
 ### Wie ich es bei mir handhabe
 
-Damit du eine konkrete Vorstellung hast, hier meine Preise als Beispiel. Ich arbeite mobil und komme zu dir, statt dich auf einen Hundeplatz zu bestellen. Unterwegs bin ich in [Kiel](/hundeschule-kiel), [Rendsburg](/hundeschule-rendsburg), [Eckernförde](/hundeschule-eckernfoerde) und [Neumünster](/hundeschule-neumuenster).
+Damit du eine konkrete Vorstellung hast, hier meine Preise als Beispiel. Ich arbeite mobil und komme zu dir, statt dich auf einen Hundeplatz zu bestellen. Unterwegs bin ich in [Kiel](/hundeschule-kiel/), [Rendsburg](/hundeschule-rendsburg/), [Eckernförde](/hundeschule-eckernfoerde/) und [Neumünster](/hundeschule-neumuenster/).
 
 - Das **Kennenlerngespräch** am Telefon ist kostenlos.
 - Eine **Verhaltensanalyse** vor Ort dauert 90 Minuten und kostet 130 Euro. Das ist der Einstieg, bei dem wir euer Ziel klären und einen Plan machen.
@@ -71,7 +71,7 @@ Damit du eine konkrete Vorstellung hast, hier meine Preise als Beispiel. Ich arb
 - Mit **Paketen** wird es pro Stunde günstiger. Das Starter-Paket aus Analyse und zwei Einzelstunden liegt bei 270 Euro, größere Pakete sparen bis zu 17 Prozent.
 - In der **Gruppe** geht es ab 25 Euro pro Termin los.
 
-Keine Verträge, kein Abo, du buchst, was ihr wirklich braucht. Die komplette Übersicht mit allen Paketen findest du auf meiner [Preisseite](/preise). Wenn du wissen willst, was für euch Sinn ergibt, erzähl mir im [kostenlosen Kennenlerngespräch](/anamnesegesprach) kurz, was bei euch los ist.
+Keine Verträge, kein Abo, du buchst, was ihr wirklich braucht. Die komplette Übersicht mit allen Paketen findest du auf meiner [Preisseite](/preise/). Wenn du wissen willst, was für euch Sinn ergibt, erzähl mir im [kostenlosen Kennenlerngespräch](/anamnesegesprach/) kurz, was bei euch los ist.
 
 ### Häufige Fragen zu den Kosten
 
@@ -82,7 +82,7 @@ Das hängt davon ab, wie oft ihr trainiert. Wer alle zwei Wochen eine Einzelstun
 Aus meiner Sicht fast immer, wenn der Trainer zu euch passt. Gutes Training spart dir später Nerven, vermeidet Stress beim Hund und im schlimmsten Fall echten Ärger. Vieles lässt sich früh mit wenig Aufwand lösen und wird teuer, wenn man es schleifen lässt.
 
 **Was kostet eine Welpenschule?**
-Welpenstunden laufen meist in der Gruppe und liegen pro Termin im ähnlichen Rahmen wie andere Gruppenstunden, also grob 15 bis 25 Euro. Ab wann und wie das sinnvoll ist, liest du bei meiner [Welpengruppe](/welpengruppe).
+Welpenstunden laufen meist in der Gruppe und liegen pro Termin im ähnlichen Rahmen wie andere Gruppenstunden, also grob 15 bis 25 Euro. Ab wann und wie das sinnvoll ist, liest du bei meiner [Welpengruppe](/welpengruppe/).
 
 **Warum ist mobiles Training manchmal teurer als der Hundeplatz?**
 Weil ich für jede Stunde zu dir fahre und mich nur um dein Team kümmere, statt mehrere Hunde gleichzeitig zu betreuen. Dafür trainieren wir genau dort, wo dein Problem entsteht, mitten in eurem Alltag, und das wirkt oft schneller.

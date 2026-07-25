@@ -53,7 +53,7 @@ const related = all
     <div class="absolute -top-[200px] right-[-100px] w-[600px] h-[600px] rounded-full pointer-events-none blob-float" style="background: radial-gradient(circle, rgba(249,115,22,.1), transparent 70%);"></div>
 
     <div class="relative max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-12">
-      <a href="/blog" class="inline-flex items-center gap-2 text-[13px] text-white/60 hover:text-orange transition-colors mb-8 font-medium">
+      <a href="/blog/" class="inline-flex items-center gap-2 text-[13px] text-white/60 hover:text-orange transition-colors mb-8 font-medium">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
         Alle Beiträge
       </a>
@@ -120,7 +120,7 @@ const related = all
           <p class="text-white/65 text-[15px] leading-relaxed mb-6">
             Mobile Hundeschule für Kiel, Rendsburg, Eckernförde und Neumünster. Ich komme zu euch - dahin, wo's wirklich brennt.
           </p>
-          <a href="/kontakt" class="shine inline-flex items-center gap-2 rounded-full bg-orange text-white font-display font-semibold px-6 py-3 text-[14.5px] transition-all hover:bg-orange-dark hover:scale-[1.03]">
+          <a href="/kontakt/" class="shine inline-flex items-center gap-2 rounded-full bg-orange text-white font-display font-semibold px-6 py-3 text-[14.5px] transition-all hover:bg-orange-dark hover:scale-[1.03]">
             Kennenlerngespräch
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
@@ -137,7 +137,7 @@ const related = all
           <h2 class="font-display font-extrabold text-white text-[clamp(1.5rem,3vw,2.2rem)] tracking-[-0.025em] leading-[1.1]">
             Weiterlesen
           </h2>
-          <a href="/blog" class="hidden sm:inline-flex items-center gap-2 text-orange font-display font-semibold text-sm hover:gap-3 transition-all">
+          <a href="/blog/" class="hidden sm:inline-flex items-center gap-2 text-orange font-display font-semibold text-sm hover:gap-3 transition-all">
             Alle Beiträge
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
@@ -145,7 +145,7 @@ const related = all
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
           {related.map((p) => (
-            <a href={`/${p.id}`} class="group flex flex-col bg-anthrazit-2 border border-white/8 rounded-2xl overflow-hidden transition-all hover:border-orange/30 hover:-translate-y-1">
+            <a href={`/${p.id}/`} class="group flex flex-col bg-anthrazit-2 border border-white/8 rounded-2xl overflow-hidden transition-all hover:border-orange/30 hover:-translate-y-1">
               <div class="relative aspect-[16/10] overflow-hidden">
                 <img
                   src={p.data.heroImage}

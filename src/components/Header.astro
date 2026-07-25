@@ -21,7 +21,7 @@ const { landingPage = false } = Astro.props;
 
       {!landingPage && (
         <nav class="hidden lg:flex items-center gap-8">
-          <a href="/ueber-mich" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Über mich</a>
+          <a href="/ueber-mich/" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Über mich</a>
 
           <!-- Angebote Dropdown -->
           <div class="relative group">
@@ -31,18 +31,18 @@ const { landingPage = false } = Astro.props;
             </button>
             <div class="absolute left-0 top-full pt-2 w-52 hidden group-hover:block group-focus-within:block">
               <div class="bg-anthrazit-3 backdrop-blur-xl rounded-xl shadow-2xl border border-white/10 py-2">
-                <a href="/anamnesegesprach" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Verhaltensanalyse</a>
-                <a href="/einzelstunde" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Einzelstunde</a>
-                <a href="/social-walk" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Social Walk</a>
-                <a href="/welpengruppe" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Welpengruppe</a>
-                <a href="/grunderziehungsgruppe" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Grunderziehung</a>
+                <a href="/anamnesegesprach/" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Verhaltensanalyse</a>
+                <a href="/einzelstunde/" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Einzelstunde</a>
+                <a href="/social-walk/" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Social Walk</a>
+                <a href="/welpengruppe/" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Welpengruppe</a>
+                <a href="/grunderziehungsgruppe/" class="block px-4 py-2 text-sm text-white/70 hover:bg-white/5 hover:text-orange transition-colors">Grunderziehung</a>
               </div>
             </div>
           </div>
 
-          <a href="/preise" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Preise</a>
-          <a href="/faq" class="text-sm font-medium text-white/70 hover:text-white transition-colors">FAQ</a>
-          <a href="/blog" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Blog</a>
+          <a href="/preise/" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Preise</a>
+          <a href="/faq/" class="text-sm font-medium text-white/70 hover:text-white transition-colors">FAQ</a>
+          <a href="/blog/" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Blog</a>
 
           <a href="https://rene-pahlke-hundetraining.123hundeschule.de/" target="_blank" rel="noopener noreferrer" title="Sichere Buchung über mein Kursportal 123Hundeschule – öffnet in einem neuen Tab" class="shine inline-flex items-center rounded-full bg-orange hover:bg-orange-dark text-white text-sm font-semibold font-display px-6 py-2.5 transition-all hover:scale-[1.04]">
             Jetzt buchen
@@ -65,7 +65,7 @@ const { landingPage = false } = Astro.props;
     {!landingPage && (
       <nav id="mobile-menu" class="hidden lg:hidden pb-6 border-t border-white/6">
         <div class="pt-4 space-y-1">
-          <a href="/ueber-mich" class="block px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:bg-white/5 hover:text-orange">Über mich</a>
+          <a href="/ueber-mich/" class="block px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:bg-white/5 hover:text-orange">Über mich</a>
 
           <div>
             <button class="mobile-accordion w-full flex items-center justify-between px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:bg-white/5 hover:text-orange" aria-expanded="false">
@@ -73,17 +73,17 @@ const { landingPage = false } = Astro.props;
               <svg class="accordion-icon w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </button>
             <div class="accordion-panel hidden pl-4 space-y-1">
-              <a href="/anamnesegesprach" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Verhaltensanalyse</a>
-              <a href="/einzelstunde" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Einzelstunde</a>
-              <a href="/social-walk" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Social Walk</a>
-              <a href="/welpengruppe" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Welpengruppe</a>
-              <a href="/grunderziehungsgruppe" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Grunderziehung</a>
+              <a href="/anamnesegesprach/" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Verhaltensanalyse</a>
+              <a href="/einzelstunde/" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Einzelstunde</a>
+              <a href="/social-walk/" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Social Walk</a>
+              <a href="/welpengruppe/" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Welpengruppe</a>
+              <a href="/grunderziehungsgruppe/" class="block px-3 py-2 rounded-lg text-sm font-medium text-white/60 hover:bg-white/5 hover:text-orange">Grunderziehung</a>
             </div>
           </div>
 
-          <a href="/preise" class="block px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:bg-white/5 hover:text-orange">Preise</a>
-          <a href="/faq" class="block px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:bg-white/5 hover:text-orange">FAQ</a>
-          <a href="/blog" class="block px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:bg-white/5 hover:text-orange">Blog</a>
+          <a href="/preise/" class="block px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:bg-white/5 hover:text-orange">Preise</a>
+          <a href="/faq/" class="block px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:bg-white/5 hover:text-orange">FAQ</a>
+          <a href="/blog/" class="block px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:bg-white/5 hover:text-orange">Blog</a>
 
           <a href="https://rene-pahlke-hundetraining.123hundeschule.de/" target="_blank" rel="noopener noreferrer" class="block mt-4 text-center rounded-full bg-orange hover:bg-orange-dark text-white font-semibold font-display px-5 py-3.5 text-[15px]">
             Jetzt buchen

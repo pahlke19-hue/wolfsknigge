@@ -65,10 +65,10 @@ const testimonials = [
 ];
 
 const allCities = [
-  { city: "Kiel", href: "/hundeschule-kiel", text: "Kiellinie, Schrevenpark, Holtenauer.", image: "/images/hundeplatz_kiel.webp" },
-  { city: "Rendsburg", href: "/hundeschule-rendsburg", text: "Nord-Ostsee-Kanal, Büdelsdorf, Fockbek.", image: "/images/rendsburg.webp" },
-  { city: "Eckernförde", href: "/hundeschule-eckernfoerde", text: "Hafen, Promenade, Hundestrand.", image: "/images/social_walk_eckernfoerde.webp" },
-  { city: "Neumünster", href: "/hundeschule-neumuenster", text: "Einfelder See, Stadtwald, Großflecken.", image: "/images/neumuenster.webp" },
+  { city: "Kiel", href: "/hundeschule-kiel/", text: "Kiellinie, Schrevenpark, Holtenauer.", image: "/images/hundeplatz_kiel.webp" },
+  { city: "Rendsburg", href: "/hundeschule-rendsburg/", text: "Nord-Ostsee-Kanal, Büdelsdorf, Fockbek.", image: "/images/rendsburg.webp" },
+  { city: "Eckernförde", href: "/hundeschule-eckernfoerde/", text: "Hafen, Promenade, Hundestrand.", image: "/images/social_walk_eckernfoerde.webp" },
+  { city: "Neumünster", href: "/hundeschule-neumuenster/", text: "Einfelder See, Stadtwald, Großflecken.", image: "/images/neumuenster.webp" },
 ];
 const otherCities = allCities.filter((c) => c.city !== p.city);
 
@@ -172,7 +172,7 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
       </div>
 
       <div class="hero-reveal hero-reveal-d3 flex flex-col sm:flex-row gap-3.5 mb-12">
-        <a href={landingPage ? "#kontakt-formular" : "/kontakt"} class="shine group inline-flex items-center justify-center gap-2.5 rounded-full bg-orange text-white font-display font-semibold px-8 py-4 text-[15px] transition-all shadow-[0_0_60px_rgba(249,115,22,0.35)] active:scale-95 sm:hover:scale-[1.03] sm:hover:bg-orange-dark">
+        <a href={landingPage ? "#kontakt-formular" : "/kontakt/"} class="shine group inline-flex items-center justify-center gap-2.5 rounded-full bg-orange text-white font-display font-semibold px-8 py-4 text-[15px] transition-all shadow-[0_0_60px_rgba(249,115,22,0.35)] active:scale-95 sm:hover:scale-[1.03] sm:hover:bg-orange-dark">
           Kostenloses Kennenlernen
           <svg class="w-[18px] h-[18px] sm:group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
@@ -251,7 +251,7 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
         ))}
       </div>
 
-      <p class="sym-cta reveal reveal-delay-3">Euer Thema ist nicht dabei? <a href={landingPage ? "#kontakt-formular" : "/kontakt"}>Schreib mir kurz, wir klären das →</a></p>
+      <p class="sym-cta reveal reveal-delay-3">Euer Thema ist nicht dabei? <a href={landingPage ? "#kontakt-formular" : "/kontakt/"}>Schreib mir kurz, wir klären das →</a></p>
     </div>
   </section>
 
@@ -303,7 +303,7 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
             <span class="cred"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>Spezialist für Problemverhalten</span>
             <span class="cred"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>200+ Teams begleitet</span>
           </div>
-          <a href="/ueber-mich" class="trainer-more">Mehr über mich →</a>
+          <a href="/ueber-mich/" class="trainer-more">Mehr über mich →</a>
 
           <div class="press">
             <p class="plabel">Bekannt aus</p>
@@ -395,7 +395,7 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
           <p class="sec-sub reveal reveal-delay-2">Jedes ernsthafte Training beginnt mit der Verhaltensanalyse. Wer direkt durchstarten will, nimmt das Starter-Paket.</p>
 
           <div class="offer-duo reveal reveal-delay-2">
-            <a href="/anamnesegesprach" class="offer-feat">
+            <a href="/anamnesegesprach/" class="offer-feat">
               <div class="of-img">
                 <img src="/images/anamnese_termin_im_park.webp" alt={p.anamneseAlt} loading="lazy" />
                 <span class="of-badge">Hier startet jedes Training</span>
@@ -409,7 +409,7 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
               </div>
             </a>
 
-            <a href="/preise#pakete" class="offer-feat offer-pkg">
+            <a href="/preise/#pakete" class="offer-feat offer-pkg">
               <div class="of-body">
                 <span class="of-badge of-badge-static">Meistgekauft</span>
                 <div class="of-sub">Verhaltensanalyse + 2 Einzelstunden</div>
@@ -427,26 +427,26 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
           </div>
 
           <div class="offers reveal reveal-delay-2">
-            <a href="/einzelstunde" class="offer">
+            <a href="/einzelstunde/" class="offer">
               <img src="/images/rene_unterordnung.webp" alt={p.einzelAlt} loading="lazy" />
               <span class="ot"><span class="on">Einzelstunde</span><span class="os">1:1 Coaching im Alltag</span></span>
               <span class="op">90 €</span>
               <span class="oarr"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
             </a>
-            <a href="/welpengruppe" class="offer">
+            <a href="/welpengruppe/" class="offer">
               <img src="/images/welpe_mit_kuscheltier.webp" alt={p.welpenAlt} loading="lazy" />
               <span class="ot"><span class="on">Welpengruppe</span><span class="os">Der perfekte Start</span></span>
               <span class="op">ab 25 €</span>
               <span class="oarr"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
             </a>
-            <a href="/grunderziehungsgruppe" class="offer">
+            <a href="/grunderziehungsgruppe/" class="offer">
               <img src="/images/grunderziehungsgruppe.webp" alt={p.grundAlt} loading="lazy" />
               <span class="ot"><span class="on">Grunderziehung</span><span class="os">Kleingruppe</span></span>
               <span class="op">ab 25 €</span>
               <span class="oarr"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
             </a>
           </div>
-          <p class="offers-more reveal"><a href="/preise">Alle Leistungen & Preise →</a></p>
+          <p class="offers-more reveal"><a href="/preise/">Alle Leistungen & Preise →</a></p>
         </>
       )}
     </div>
@@ -577,7 +577,7 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
           <h2 class="ziel-h reveal reveal-delay-1">Starter-Paket<br /><span class="text-gradient-orange">anfragen.</span></h2>
           <p class="zsub reveal reveal-delay-2">Beschreibe kurz eure aktuelle Situation. Ich melde mich innerhalb von 24 Stunden bei dir.</p>
 
-          <form name={`kontakt-${p.city.toLowerCase()}`} method="POST" data-netlify="true" netlify-honeypot="bot-field" class="cform reveal reveal-delay-2" action="/danke">
+          <form name={`kontakt-${p.city.toLowerCase()}`} method="POST" data-netlify="true" netlify-honeypot="bot-field" class="cform reveal reveal-delay-2" action="/danke/">
             <input type="hidden" name="form-name" value={`kontakt-${p.city.toLowerCase()}`} />
             <p class="hidden" aria-hidden="true">
               <label>Bitte dieses Feld leer lassen: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
@@ -626,7 +626,7 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
             <div class="fdsgvo">
               <input type="checkbox" name="dsgvo" id={`dsgvo-${p.city.toLowerCase()}`} required />
               <label for={`dsgvo-${p.city.toLowerCase()}`}>
-                Ich willige ein, dass meine Daten zum Zwecke der Kontaktaufnahme verarbeitet werden. Details findest du in der <a href="/dsgvo" target="_blank">Datenschutzerklärung</a>. *
+                Ich willige ein, dass meine Daten zum Zwecke der Kontaktaufnahme verarbeitet werden. Details findest du in der <a href="/dsgvo/" target="_blank">Datenschutzerklärung</a>. *
               </label>
             </div>
 
@@ -647,7 +647,7 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" set:html={icWa}></svg>
               WhatsApp schreiben
             </a>
-            <a href="/kontakt" class="btn btn-orange">
+            <a href="/kontakt/" class="btn btn-orange">
               Kontaktformular
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={icArrow}></svg>
             </a>
