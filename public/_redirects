@@ -4,5 +4,6 @@ https://wolfsknigge.netlify.app/*  https://wolfsknigge.de/:splat  301!
 # Review-Funnel: kurze URL für Kunden, führt direkt zum Google-Bewertungsformular
 /bewerten  https://g.page/r/Cd7XaBPmJ5fKEAE/review  302
 
-# Alte Live-URL auf neue Route weiterleiten (Ranking-Erhalt, direkt mit Trailing-Slash gegen Redirect-Kette)
+# Alte Live-URLs auf neue Routen weiterleiten (Ranking-Erhalt, direkt mit Trailing-Slash gegen Redirect-Kette)
 /social-walk-bindungsarbeit  /social-walk/  301
+/hunde-blog                  /blog/  301
