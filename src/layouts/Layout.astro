@@ -108,22 +108,25 @@ if (!breadcrumbItems && !noindex && path !== "/") {
       {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
+        "@id": "https://wolfsknigge.de/#hundeschule",
         "name": "WolfsKnigge - Mobile Hundeschule",
-        "image": "https://wolfsknigge.de/images/logo.svg",
+        "image": "https://wolfsknigge.de/images/og-default.webp",
         "telephone": "+4915147736042",
         "email": "kontakt@wolfsknigge.de",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Katzheide 24",
           "addressLocality": "Bredenbek",
+          "addressRegion": "Schleswig-Holstein",
           "postalCode": "24796",
           "addressCountry": "DE"
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 54.2908,
-          "longitude": 9.8797
+          "latitude": 54.3197,
+          "longitude": 9.872
         },
+        "hasMap": "https://www.google.com/maps/search/?api=1&query=54.3197,9.872",
         "url": "https://wolfsknigge.de",
         "priceRange": "$$",
         "areaServed": [
@@ -142,6 +145,15 @@ if (!breadcrumbItems && !noindex && path !== "/") {
           {
             "@type": "AdministrativeArea",
             "name": "Neumünster"
+          },
+          {
+            "@type": "GeoCircle",
+            "geoMidpoint": {
+              "@type": "GeoCoordinates",
+              "latitude": 54.3197,
+              "longitude": 9.872
+            },
+            "geoRadius": "35000"
           }
         ],
         "openingHoursSpecification": [
@@ -161,7 +173,8 @@ if (!breadcrumbItems && !noindex && path !== "/") {
         "sameAs": [
           "https://www.instagram.com/wolfsknigge/",
           "https://www.facebook.com/profile.php?id=61574131065011",
-          "https://www.tiktok.com/@wolfsknigge"
+          "https://www.tiktok.com/@wolfsknigge",
+          "https://www.google.com/search?kgmid=/g/11m65ly_rs"
         ],
         "founder": {
           "@type": "Person",
@@ -178,6 +191,7 @@ if (!breadcrumbItems && !noindex && path !== "/") {
       <script type="application/ld+json" is:inline set:html={JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:breadcrumbItems.map((b,i)=>({"@type":"ListItem",position:i+1,name:b.name,item:b.url}))})} />
     )}
     <title>{title}</title>
+    <noscript><style>.reveal,.reveal-scale{opacity:1 !important;transform:none !important;}</style></noscript>
   </head>
   <body class="bg-anthrazit text-[#e4e4e7] antialiased">
     <div id="scroll-progress" class="scroll-progress"></div>
