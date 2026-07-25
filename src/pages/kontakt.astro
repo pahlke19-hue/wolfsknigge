@@ -93,7 +93,7 @@ import Layout from "../layouts/Layout.astro";
           <h2 class="font-display font-bold text-2xl md:text-3xl text-white mb-8">Anfrage senden</h2>
 
           <!-- Formular mit Netlify Integration -->
-          <form name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6" action="/thanks-formular">
+          <form name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6" action="/thanks-formular/">
             <input type="hidden" name="form-name" value="kontakt" />
             <p class="hidden" aria-hidden="true">
               <label>Bitte dieses Feld leer lassen: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
@@ -159,18 +159,9 @@ import Layout from "../layouts/Layout.astro";
               ></textarea>
             </div>
 
-            <div class="flex items-start gap-3">
-              <input
-                type="checkbox"
-                name="dsgvo"
-                id="dsgvo"
-                required
-                class="mt-1 accent-orange"
-              />
-              <label for="dsgvo" class="text-xs text-white/55 leading-relaxed">
-                Ich willige ein, dass meine Daten zum Zwecke der Kontaktaufnahme verarbeitet werden. Details findest du in der <a href="/dsgvo" target="_blank" class="text-orange underline hover:text-orange-glow">Datenschutzerklärung</a>. *
-              </label>
-            </div>
+            <p class="text-xs text-white/55 leading-relaxed">
+              Mit dem Absenden willigst du in die Verarbeitung deiner Daten zur Kontaktaufnahme ein. Details findest du in der <a href="/dsgvo/" target="_blank" rel="noopener" class="text-orange underline hover:text-orange-glow">Datenschutzerklärung</a>.
+            </p>
 
             <button
               type="submit"
