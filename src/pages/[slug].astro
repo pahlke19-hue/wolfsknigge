@@ -145,7 +145,7 @@ const related = all
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
           {related.map((p) => (
-            <a href={`/${p.id}/`} class="group flex flex-col bg-anthrazit-2 border border-white/8 rounded-2xl overflow-hidden transition-all hover:border-orange/30 hover:-translate-y-1">
+            <article class="group relative flex flex-col bg-anthrazit-2 border border-white/8 rounded-2xl overflow-hidden transition-all hover:border-orange/30 hover:-translate-y-1">
               <div class="relative aspect-[16/10] overflow-hidden">
                 <img
                   src={p.data.heroImage}
@@ -158,11 +158,11 @@ const related = all
               <div class="p-6">
                 <div class="text-[11px] uppercase tracking-[0.14em] text-orange font-semibold mb-3">{p.data.category}</div>
                 <h3 class="font-display font-bold text-white text-[1.15rem] leading-[1.25] tracking-[-0.02em] mb-3 group-hover:text-orange-glow transition-colors line-clamp-2">
-                  {p.data.title}
+                  <a href={`/${p.id}/`} class="after:absolute after:inset-0 after:content-['']">{p.data.title}</a>
                 </h3>
                 <p class="text-white/55 text-[14px] leading-relaxed line-clamp-2">{p.data.excerpt}</p>
               </div>
-            </a>
+            </article>
           ))}
         </div>
       </div>
