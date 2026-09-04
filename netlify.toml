@@ -29,3 +29,21 @@
   for = "/images/*"
   [headers.values]
     Cache-Control = "public, max-age=2592000"
+
+[[redirects]]
+  from = "https://www.wolfsknigge.de/*"
+  to = "https://wolfsknigge.de/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.wolfsknigge.de/*"
+  to = "https://wolfsknigge.de/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://wolfsknigge.de/*"
+  to = "https://wolfsknigge.de/:splat"
+  status = 301
+  force = true
