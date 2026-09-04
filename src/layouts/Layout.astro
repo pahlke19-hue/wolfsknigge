@@ -43,6 +43,74 @@ const routeLabels: Record<string, string> = {
   "dsgvo": "Datenschutz",
   "agb": "AGB",
 };
+// Vollständiges LocalBusiness nur auf der Startseite (zentrale Entität);
+// Stadtseiten bringen ihr eigenes, städtespezifisches LocalBusiness mit.
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://wolfsknigge.de/#hundeschule",
+  "name": "WolfsKnigge - Mobile Hundeschule",
+  "image": "https://wolfsknigge.de/images/og-default.webp",
+  "telephone": "+4915147736042",
+  "email": "kontakt@wolfsknigge.de",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Katzheide 24",
+    "addressLocality": "Bredenbek",
+    "addressRegion": "Schleswig-Holstein",
+    "postalCode": "24796",
+    "addressCountry": "DE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 54.3197,
+    "longitude": 9.872
+  },
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=54.3197,9.872",
+  "url": "https://wolfsknigge.de",
+  "priceRange": "$$",
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Kiel" },
+    { "@type": "AdministrativeArea", "name": "Rendsburg" },
+    { "@type": "AdministrativeArea", "name": "Eckernförde" },
+    { "@type": "AdministrativeArea", "name": "Neumünster" },
+    {
+      "@type": "GeoCircle",
+      "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 54.3197, "longitude": 9.872 },
+      "geoRadius": "35000"
+    }
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "19:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Saturday"],
+      "opens": "09:00",
+      "closes": "13:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/wolfsknigge/",
+    "https://www.facebook.com/profile.php?id=61574131065011",
+    "https://www.tiktok.com/@wolfsknigge",
+    "https://www.google.com/search?kgmid=/g/11m65ly_rs"
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "René Pahlke",
+    "jobTitle": "Hundetrainer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "WolfsKnigge - Mobile Hundeschule"
+    }
+  }
+};
+
 let breadcrumbItems = breadcrumb;
 if (!breadcrumbItems && !noindex && path !== "/") {
   const segments = normalizedPath.split("/").filter(Boolean);
@@ -104,89 +172,9 @@ if (!breadcrumbItems && !noindex && path !== "/") {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="https://wolfsknigge.de/images/og-default.webp" />
     <meta name="twitter:image:alt" content="René Pahlke von WolfsKnigge unterwegs beim mobilen Hundetraining mit seinem Hund" />
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "@id": "https://wolfsknigge.de/#hundeschule",
-        "name": "WolfsKnigge - Mobile Hundeschule",
-        "image": "https://wolfsknigge.de/images/og-default.webp",
-        "telephone": "+4915147736042",
-        "email": "kontakt@wolfsknigge.de",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Katzheide 24",
-          "addressLocality": "Bredenbek",
-          "addressRegion": "Schleswig-Holstein",
-          "postalCode": "24796",
-          "addressCountry": "DE"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 54.3197,
-          "longitude": 9.872
-        },
-        "hasMap": "https://www.google.com/maps/search/?api=1&query=54.3197,9.872",
-        "url": "https://wolfsknigge.de",
-        "priceRange": "$$",
-        "areaServed": [
-          {
-            "@type": "AdministrativeArea",
-            "name": "Kiel"
-          },
-          {
-            "@type": "AdministrativeArea",
-            "name": "Rendsburg"
-          },
-          {
-            "@type": "AdministrativeArea",
-            "name": "Eckernförde"
-          },
-          {
-            "@type": "AdministrativeArea",
-            "name": "Neumünster"
-          },
-          {
-            "@type": "GeoCircle",
-            "geoMidpoint": {
-              "@type": "GeoCoordinates",
-              "latitude": 54.3197,
-              "longitude": 9.872
-            },
-            "geoRadius": "35000"
-          }
-        ],
-        "openingHoursSpecification": [
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-            "opens": "09:00",
-            "closes": "19:00"
-          },
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Saturday"],
-            "opens": "09:00",
-            "closes": "13:00"
-          }
-        ],
-        "sameAs": [
-          "https://www.instagram.com/wolfsknigge/",
-          "https://www.facebook.com/profile.php?id=61574131065011",
-          "https://www.tiktok.com/@wolfsknigge",
-          "https://www.google.com/search?kgmid=/g/11m65ly_rs"
-        ],
-        "founder": {
-          "@type": "Person",
-          "name": "René Pahlke",
-          "jobTitle": "Hundetrainer",
-          "worksFor": {
-            "@type": "Organization",
-            "name": "WolfsKnigge - Mobile Hundeschule"
-          }
-        }
-      }
-    </script>
+    {path === "/" && (
+      <script type="application/ld+json" is:inline set:html={JSON.stringify(localBusinessSchema)} />
+    )}
     {breadcrumbItems && breadcrumbItems.length > 1 && (
       <script type="application/ld+json" is:inline set:html={JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:breadcrumbItems.map((b,i)=>({"@type":"ListItem",position:i+1,name:b.name,item:b.url}))})} />
     )}

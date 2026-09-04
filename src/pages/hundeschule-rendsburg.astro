@@ -16,9 +16,36 @@ const introParagraphs = [
   'Mit meiner Erfahrung aus über <strong>200 erfolgreich betreuten Kunden-Teams</strong> habe ich mich auf das spezialisiert, was viele andere Hundeschulen an ihre Grenzen bringt: <strong>Problemverhalten</strong>. Egal ob Leinenaggression, Angst, Stress oder fehlende Beißhemmung, ich arbeite mit dir fair, gewaltfrei und nach den neuesten Erkenntnissen der Lerntheorie (alle 4 Quadranten).',
   'Ich komme aus Bredenbek direkt zu dir. Wir trainieren in deinem realen Umfeld in Rendsburg, damit dein Hund lernt, genau dort entspannt zu bleiben, wo du lebst.',
 ];
+
+const extraContent = [
+  'Rendsburg hat einen Trainingsort, den kaum eine andere Stadt bietet: den <strong>Nord-Ostsee-Kanal</strong>. Auf dem Uferweg kommen dir Radfahrer und andere Hunde auf schmaler Strecke entgegen, dazu ziehen die großen Pötte vorbei, manchmal mit Schiffshorn. Für einen Hund, der ohnehin schnell hochfährt, ist das geballte Reizlage. Für uns ist es ein ideales Übungsgelände, weil die Reize vorhersehbar kommen und wir den Abstand über die Wiesen am Ufer selbst steuern können.',
+  'Auch die <strong>Innenstadt</strong> hat es in sich. Rund um den Paradeplatz und in den Fußgängerzonen wird es an Markttagen eng: Menschen, Fahrräder, Kinderwagen, Futterreste am Boden. Wenn dein Hund hier pöbelt oder panisch wird, meidest du die Stadt irgendwann komplett. Genau das drehen wir um. Wir üben erst am ruhigen Rand, an der <strong>Obereider</strong> zum Beispiel, und gehen dann schrittweise dorthin, wo es voller wird.',
+  'In <strong>Büdelsdorf</strong> sieht der Alltag anders aus: Wohngebiete, Zaunhunde, die deinen beim Vorbeigehen anbellen, Begegnungen an unübersichtlichen Ecken. Das sind die klassischen Auslöser für Leinenaggression, und sie lassen sich nur dort lösen, wo sie passieren. In <strong>Fockbek</strong>, <strong>Osterrönfeld</strong> und <strong>Westerrönfeld</strong> wird es ländlicher: Felder, Knicks, Wildgeruch. Hier geht es oft um Jagdverhalten und einen Rückruf, der auch dann funktioniert, wenn ein Hase aufspringt.',
+  'Eine Rendsburger Eigenheit solltest du nicht unterschätzen: den Lärm. Die Eisenbahnhochbrücke, der Schiffsverkehr, die Bahnlinie mitten durch die Stadt. Manche Hunde blenden das aus, andere sind dadurch dauerhaft im Stress und explodieren dann bei der ersten Hundebegegnung. Ob das bei euch eine Rolle spielt, sehe ich mir in der Verhaltensanalyse genau an, bevor wir einen Plan bauen.',
+  'Der Weg dahin ist unspektakulär und genau deshalb wirksam: Ich komme zu dir, wir gehen eure echten Runden, und ich zeige dir an jeder kritischen Stelle, was du konkret anders machst. Kein Hundeplatz-Umweg, sondern Training am Kanal, in deiner Straße, in deinem Ortsteil.',
+];
 ---
 
 <Layout title="Hundeschule Rendsburg – mobil bei dir | WolfsKnigge" description="Mobile Hundeschule Rendsburg: 200+ Teams, 5,0 auf Google. René Pahlke kommt zu dir – Hilfe bei Leinenaggression & Angst. Training am Nord-Ostsee-Kanal.">
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://wolfsknigge.de/hundeschule-rendsburg/#localbusiness",
+    "name": "WolfsKnigge - Mobile Hundeschule",
+    "url": "https://wolfsknigge.de/hundeschule-rendsburg/",
+    "image": "https://wolfsknigge.de/images/og-default.webp",
+    "priceRange": "$$",
+    "telephone": "+4915147736042",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Katzheide 24",
+      "addressLocality": "Bredenbek",
+      "addressRegion": "Schleswig-Holstein",
+      "postalCode": "24796",
+      "addressCountry": "DE"
+    },
+    "areaServed": { "@type": "City", "name": "Rendsburg" }
+  })} />
   <CityPage
     city="Rendsburg"
     title="Mobiles Hundetraining Rendsburg. Dein Experte für <span>Problemverhalten</span> & Alltagstauglichkeit"
@@ -27,6 +54,7 @@ const introParagraphs = [
     features={features}
     introH2="Dein erfahrener mobiler Hundetrainer in Rendsburg"
     introParagraphs={introParagraphs}
+    extraContent={extraContent}
     routeImage="/images/hundetraining_am_nok.webp"
     routeImageAlt="Welpen trainieren am Kanal in Rendsburg"
     anamneseText="Der erste Schritt: ausführliche Bestandsaufnahme & individuelle Trainingsplanung. Direkt in Fockbek, Büdelsdorf & Umgebung."

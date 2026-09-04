@@ -16,9 +16,36 @@ const introParagraphs = [
   'Mit meiner Erfahrung aus über <strong>200 erfolgreich betreuten Kunden-Teams</strong> habe ich mich auf <strong>Problemverhalten</strong> spezialisiert. Egal ob dein Hund pöbelt, jagt oder unsicher ist, ich arbeite mit dir fair, gewaltfrei und nach den neuesten Erkenntnissen der Lerntheorie (alle 4 Quadranten).',
   '<strong>Der Vorteil:</strong> Ich starte direkt aus Bredenbek. Über die Landstraße bin ich ruckzuck bei dir in Eckernförde, Borby oder Altenhof. Wir trainieren in deinem realen Alltag, damit die Erfolge auch wirklich anhalten.',
 ];
+
+const extraContent = [
+  'Eckernförde ist klein, aber für Hunde mit Baustellen erstaunlich anspruchsvoll. Der Grund: die Saison. Von Frühjahr bis Herbst verwandeln Touristen den <strong>Hafen</strong> und die <strong>Promenade</strong> in einen Dauerreiz aus Menschen, Eisdielen, Fahrrädern und fremden Hunden auf engem Raum. Ein Hund, der im Februar entspannt am Wasser läuft, kann im Juli komplett überfordert sein. Genau deshalb trainieren wir saisonabhängig: ruhige Monate zum Aufbauen, volle Monate zum Festigen.',
+  'Der <strong>Hundestrand</strong> ist Segen und Falle zugleich. Freilauf, Wasser, andere Hunde, dazu Möwen, die knapp über den Köpfen kreisen. Wenn der Rückruf nicht sitzt, wird aus der schönsten Ecke der Stadt schnell Kontrollverlust. Wir bauen ihn deshalb systematisch auf: erst auf reizarmen Flächen im Umland, dann am Strandrand mit Schleppleine, am Ende mitten im Trubel. Und wir klären, wie du mit Freilauf-Hunden umgehst, die ungefragt auf deinen angeleinten Hund zulaufen. Das ist am Strand die häufigste Eskalationssituation.',
+  'Auf der anderen Seite der Bucht liegt <strong>Borby</strong>, und dort sieht der Alltag anders aus: Wohnstraßen, das ruhigere Borbyer Ufer, Begegnungen auf schmalen Gehwegen. Hier entstehen die typischen Leinenprobleme, weil man sich täglich denselben Hunden gegenübersteht und Ausweichen kaum möglich ist. Dazu kommt der Rundweg am <strong>Windebyer Noor</strong>: schöne Strecke, aber schmal, mit Radfahrern und Gegenverkehr. Perfekt, um Bogen laufen und ruhiges Passieren zu üben.',
+  'Und wer etwas raus will: Richtung <strong>Altenhof</strong> und entlang der Steilküste wird es waldiger und wildreicher. Für jagdlich motivierte Hunde ist das die Prüfung, für uns das Trainingsgelände für Impulskontrolle und Orientierung am Menschen. Auch hier gilt: erst dort üben, wo dein Hund noch ansprechbar ist, dann die Anforderungen steigern.',
+  'Kurz gesagt: Eckernförde bietet auf wenigen Kilometern alles, vom leeren Winterstrand bis zur überfüllten Sommerpromenade. Ich komme zu dir, wir nutzen genau diese Bandbreite, und dein Hund lernt dort, wo ihr wirklich unterwegs seid. Nicht auf einem Platz im Binnenland.',
+];
 ---
 
 <Layout title="Hundeschule Eckernförde – mobil bei dir | WolfsKnigge" description="Mobile Hundeschule Eckernförde: 200+ Teams, 5,0 auf Google. René Pahlke kommt zu dir – Hilfe bei Leinenaggression & Angst. Training am Noor & Strand.">
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://wolfsknigge.de/hundeschule-eckernfoerde/#localbusiness",
+    "name": "WolfsKnigge - Mobile Hundeschule",
+    "url": "https://wolfsknigge.de/hundeschule-eckernfoerde/",
+    "image": "https://wolfsknigge.de/images/og-default.webp",
+    "priceRange": "$$",
+    "telephone": "+4915147736042",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Katzheide 24",
+      "addressLocality": "Bredenbek",
+      "addressRegion": "Schleswig-Holstein",
+      "postalCode": "24796",
+      "addressCountry": "DE"
+    },
+    "areaServed": { "@type": "City", "name": "Eckernförde" }
+  })} />
   <CityPage
     city="Eckernförde"
     title="Mobiles Hundetraining Eckernförde. Dein Experte für <span>Problemverhalten</span> & Alltagstauglichkeit"
@@ -27,6 +54,7 @@ const introParagraphs = [
     features={features}
     introH2="Dein erfahrener mobiler Hundetrainer in Eckernförde"
     introParagraphs={introParagraphs}
+    extraContent={extraContent}
     routeImage="/images/hundeschule_isz_am_strand.webp"
     routeImageAlt="Hundeschule am Strand in Eckernförde"
     anamneseText="Der erste Schritt: ausführliche Bestandsaufnahme & individuelle Trainingsplanung. Direkt in Eckernförde, Borby & Altenhof."

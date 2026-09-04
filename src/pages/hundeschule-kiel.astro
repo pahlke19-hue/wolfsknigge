@@ -16,9 +16,36 @@ const introParagraphs = [
   'Mit Erfahrung aus über <strong>200 erfolgreich betreuten Kunden-Teams</strong> habe ich mich auf <strong>Problemverhalten</strong> spezialisiert. Egal ob Leinenaggression an der Promenade, Angst vor dem Stadtverkehr oder fehlende Abrufbarkeit im Park, ich arbeite mit dir fair, gewaltfrei und klar nach allen vier Quadranten der Lerntheorie.',
   '<strong>Der Vorteil:</strong> Ich starte direkt aus Bredenbek. Über die A210/A215 bin ich in wenigen Minuten bei dir, egal ob in <strong>Gaarden, Wik, Projensdorf, Hassee, Düsternbrook oder Elmschenhagen</strong>. Wir trainieren in deinem realen Kieler Alltag.',
 ];
+
+const extraContent = [
+  'Kiel ist für Hunde mit Baustellen kein einfaches Pflaster. Die <strong>Kiellinie</strong> ist das beste Beispiel: schmale Promenade, Jogger von hinten, Radfahrer von vorn, dazwischen Kinderwagen, Möwen und andere Hunde. Für einen Leinenpöbler ist das der Endgegner. Genau deshalb ist sie als Trainingsort so wertvoll. Wir starten mit Abstand auf den Wiesen oberhalb, etwa an der <strong>Reventlouwiese</strong>, und arbeiten uns Schritt für Schritt an den Trubel heran. Kontrolliert, nicht ins kalte Wasser.',
+  'Der <strong>Schrevenpark</strong> ist Kiels Hunde-Hotspot, und ehrlich gesagt: Für den Einstieg mit einem aggressiven oder unsicheren Hund ist er ungeeignet. Zu viele Freiläufer, zu wenig Ausweichraum, zu viel Unberechenbarkeit. Wir nutzen ihn später, wenn dein Hund Begegnungen aushalten kann. Für die ersten Einheiten weichen wir auf ruhigere Ecken aus, zum Beispiel ins <strong>Vieburger Gehölz</strong> oder ins <strong>Projensdorfer Gehölz</strong>, wo wir Reize dosieren können statt sie nur auszuhalten.',
+  'Jeder Kieler Stadtteil stellt andere Aufgaben. In <strong>Gaarden</strong> sind die Gehwege eng, Begegnungen kommen plötzlich um die Hausecke und Ausweichen ist kaum möglich. Hier trainieren wir Bogen laufen, Blickkontakt und schnelle Richtungswechsel. In <strong>Hassee</strong> kommen Bahntrasse und Berufsverkehr dazu, in der <strong>Wik</strong> die Schleuse Holtenau mit Fähren, Schiffshörnern und Brückenlärm. Was deinen Hund kippen lässt, ist bei euch vor der Haustür, also üben wir es auch dort.',
+  'Dazu kommt das, was Kiel eben ausmacht: Großveranstaltungen wie die Kieler Woche, volle Fördeufer im Sommer, Möwen, die sich für jede Wurstsemmel interessieren. Ein Rückruf, der nur auf der leeren Wiese klappt, hilft dir am <strong>Falckensteiner Strand</strong> herzlich wenig. Deshalb bauen wir Rückruf und Impulskontrolle genau gegen diese Reize auf, mit klarem Plan statt Hoffnung.',
+  'Konkret läuft das so: Ich komme in deinen Stadtteil, wir schauen uns eure Alltagswege an und legen fest, wo das Training beginnt. Erst dort, wo dein Hund noch denken kann, dann gezielt näher an die Orte, die heute noch schwierig sind. So wird aus Vermeiden wieder normales Gassigehen, ob in Wik, Hassee, Gaarden oder direkt an der Förde.',
+];
 ---
 
 <Layout title="Hundeschule Kiel & Hundetrainer Kiel | WolfsKnigge" description="Mobile Hundeschule Kiel: 200+ Teams, 5,0 auf Google. René Pahlke kommt zu dir – Hilfe bei Leinenaggression & Angst. Training an Kiellinie & Schrevenpark.">
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://wolfsknigge.de/hundeschule-kiel/#localbusiness",
+    "name": "WolfsKnigge - Mobile Hundeschule",
+    "url": "https://wolfsknigge.de/hundeschule-kiel/",
+    "image": "https://wolfsknigge.de/images/og-default.webp",
+    "priceRange": "$$",
+    "telephone": "+4915147736042",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Katzheide 24",
+      "addressLocality": "Bredenbek",
+      "addressRegion": "Schleswig-Holstein",
+      "postalCode": "24796",
+      "addressCountry": "DE"
+    },
+    "areaServed": { "@type": "City", "name": "Kiel" }
+  })} />
   <CityPage
     city="Kiel"
     title="Hundeschule Kiel - Dein Hundetrainer für <span>Problemverhalten</span> & Alltagstauglichkeit"
@@ -27,6 +54,7 @@ const introParagraphs = [
     features={features}
     introH2="Dein erfahrener mobiler <span>Hundetrainer in Kiel</span>"
     introParagraphs={introParagraphs}
+    extraContent={extraContent}
     routeImage="/images/rene_unterordnung.webp"
     routeImageAlt="Hundetraining in Kiel an der Förde"
     anamneseText="Der erste Schritt: ausführliche Bestandsaufnahme & individuelle Trainingsplanung. Direkt bei dir zuhause in Kiel."

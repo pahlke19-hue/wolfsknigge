@@ -16,9 +16,36 @@ const introParagraphs = [
   'Mit meiner Erfahrung aus über <strong>200 erfolgreich betreuten Kunden-Teams</strong> habe ich mich auf <strong>Problemverhalten</strong> spezialisiert. Egal ob Leinenaggression, Angst, Stress oder fehlende Beißhemmung, ich arbeite mit dir fair, gewaltfrei und nach den neuesten Erkenntnissen der Lerntheorie (alle 4 Quadranten).',
   '<strong>Der Vorteil:</strong> Ich komme aus Bredenbek direkt zu dir. Über die A7 bin ich in wenigen Minuten vor Ort. Wir trainieren in deinem realen Umfeld in Neumünster, damit dein Hund lernt, genau dort entspannt zu bleiben, wo du lebst.',
 ];
+
+const extraContent = [
+  'Der <strong>Einfelder See</strong> ist für viele Neumünsteraner die Standardrunde, und genau da liegt das Problem: Im Sommer teilst du dir den Weg mit Badegästen, Radfahrern, freilaufenden Hunden und Wasservögeln direkt am Ufer. Ein Hund, der jagt oder an der Leine pöbelt, findet hier alle fünfzig Meter einen Auslöser. Wir nutzen das gezielt. Erst mit großem Abstand auf den offenen Flächen, dann immer näher am Weg, bis die Seerunde wieder Erholung ist statt Spießrutenlauf.',
+  'Im <strong>Stadtwald</strong> sieht die Aufgabe anders aus. Schmale Wege, schlechte Sicht, Jogger und Mountainbiker, die plötzlich hinter der Kurve auftauchen, dazu Wildgeruch an jeder zweiten Ecke. Das ist klassisches Gelände für Jagdverhalten und Schreckreaktionen. Hier arbeiten wir an einem Rückruf mit Substanz und an einer Leinenführung, die auch dann hält, wenn ein Reh über den Weg wechselt. Wer es ruhiger braucht, mit dem starte ich am <strong>Dosenmoor</strong>, wo wir Reize viel besser dosieren können.',
+  'Mitten in der Stadt wartet die dritte Baustelle: der <strong>Großflecken</strong> mit Bussen, Marktständen und Menschentrauben, dazu die Fußgängerzone und an Wochenenden der Besucherverkehr rund ums Outlet. Viele Halter meiden die Innenstadt irgendwann komplett, weil der Hund dort nicht mehr ansprechbar ist. Dabei ist genau das trainierbar, wenn man die Reizdichte kontrolliert aufbaut statt den Hund einfach durchzuschleifen.',
+  'Und dann sind da die Wohnviertel selbst. In <strong>Faldera</strong>, <strong>Tungendorf</strong>, <strong>Wittorf</strong> und <strong>Gadeland</strong> entstehen die meisten Alltagsprobleme: Zaunbeller, enge Gehwege, immer dieselben Begegnungen mit immer denselben Hunden. Weil sich diese Situationen täglich wiederholen, verfestigen sie sich schnell. Der Vorteil: Wir können sie genauso systematisch wieder auflösen, weil wir genau wissen, wann und wo sie auftreten.',
+  'Deshalb trainiere ich in Neumünster nicht auf einem Platz am Stadtrand, sondern auf euren Wegen. Ich komme in dein Viertel, wir gehen eure Route, und du bekommst an jeder kritischen Stelle einen konkreten Handlungsplan. Schritt für Schritt, vom machbaren Ort zum schwierigen.',
+];
 ---
 
 <Layout title="Hundeschule Neumünster – mobil bei dir | WolfsKnigge" description="Mobile Hundeschule Neumünster: 200+ Teams, 5,0 auf Google. René Pahlke kommt zu dir – Hilfe bei Leinenaggression & Angst. Training am Einfelder See.">
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://wolfsknigge.de/hundeschule-neumuenster/#localbusiness",
+    "name": "WolfsKnigge - Mobile Hundeschule",
+    "url": "https://wolfsknigge.de/hundeschule-neumuenster/",
+    "image": "https://wolfsknigge.de/images/og-default.webp",
+    "priceRange": "$$",
+    "telephone": "+4915147736042",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Katzheide 24",
+      "addressLocality": "Bredenbek",
+      "addressRegion": "Schleswig-Holstein",
+      "postalCode": "24796",
+      "addressCountry": "DE"
+    },
+    "areaServed": { "@type": "City", "name": "Neumünster" }
+  })} />
   <CityPage
     city="Neumünster"
     title="Mobiles Hundetraining Neumünster. Dein Experte für <span>Problemverhalten</span> & Alltagstauglichkeit"
@@ -27,6 +54,7 @@ const introParagraphs = [
     features={features}
     introH2="Dein erfahrener mobiler Hundetrainer in Neumünster"
     introParagraphs={introParagraphs}
+    extraContent={extraContent}
     routeImage="/images/hundetraining_am_nok.webp"
     routeImageAlt="Welpen trainieren am Einfelder See"
     anamneseText="Der erste Schritt: ausführliche Bestandsaufnahme & individuelle Trainingsplanung. Direkt in Neumünster, Faldera & Gadeland."

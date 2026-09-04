@@ -8,6 +8,7 @@ interface Props {
   features: Feature[];
   introH2: string;
   introParagraphs: string[];
+  extraContent?: string[];
   routeImage: string;
   routeImageAlt: string;
   anamneseText: string;
@@ -493,6 +494,20 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
     </div>
   </section>
 
+  <!-- WP 7b · TRAININGSORTE (unique Content pro Stadt, SEO) -->
+  {p.extraContent && p.extraContent.length > 0 && (
+    <section class="sec bg-2" id="trainingsorte">
+      <span class="node" aria-hidden="true"></span>
+      <div class="jc">
+        <p class="tag reveal">Training vor Ort</p>
+        <h2 class="sec-h reveal reveal-delay-1">Wo wir in <span class="text-gradient-orange">{p.city}</span> trainieren.</h2>
+        <div class="extra-prose city-prose reveal reveal-delay-2">
+          {p.extraContent.map((para) => <p set:html={para}></p>)}
+        </div>
+      </div>
+    </section>
+  )}
+
   <!-- WP 8 · STRECKE -->
   <section class="sec bg-1" id="strecke">
     <span class="node" aria-hidden="true"></span>
@@ -935,6 +950,8 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
   /* city-prose (SEO-Absätze: strong weiß, em orange) */
   .city-prose :global(strong) { color: #ffffff; font-weight: 600; }
   .city-prose :global(em) { color: #f97316; font-style: normal; font-weight: 600; }
+  .extra-prose { max-width: 720px; }
+  .extra-prose p { color: rgba(255,255,255,.7); line-height: 1.7; font-size: 15.5px; margin-bottom: 14px; }
 </style>
 
 <script>
