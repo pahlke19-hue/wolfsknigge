@@ -1,0 +1,513 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { themen, veranstalter, ausblick } from "../data/vortraege";
+
+const themaBySlug = Object.fromEntries(themen.map((t) => [t.slug, t]));
+
+// Vergangene Termine zur Build-Zeit rauswerfen (clientseitig zusätzlich, siehe Script unten)
+const heute = new Date();
+heute.setHours(0, 0, 0, 0);
+
+const haeuser = veranstalter
+  .map((v) => ({
+    ...v,
+    termine: v.termine
+      .filter((t) => new Date(`${t.datum}T00:00:00`) >= heute)
+      .sort((a, b) => a.datum.localeCompare(b.datum)),
+  }))
+  .filter((v) => v.termine.length > 0);
+
+const terminAnzahl = haeuser.reduce((n, v) => n + v.termine.length, 0);
+
+// Zeitzonen-Offset für Europe/Berlin am jeweiligen Termin (Sommer-/Winterzeit)
+function berlinOffset(datum: string, zeit: string): string {
+  const probe = new Date(`${datum}T${zeit}:00Z`);
+  const name = new Intl.DateTimeFormat("en-US", { timeZone: "Europe/Berlin", timeZoneName: "longOffset" })
+    .formatToParts(probe)
+    .find((p) => p.type === "timeZoneName")?.value;
+  return name?.replace("GMT", "") || "+01:00";
+}
+
+function formatDatum(datum: string): string {
+  return new Date(`${datum}T12:00:00`).toLocaleDateString("de-DE", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+}
+
+function wochentag(datum: string): string {
+  return new Date(`${datum}T12:00:00`).toLocaleDateString("de-DE", { weekday: "long" });
+}
+
+const events = haeuser.flatMap((v) =>
+  v.termine.map((t) => {
+    const thema = themaBySlug[t.thema];
+    const off = berlinOffset(t.datum, t.von);
+    return {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      name: `Vortrag: ${thema.kurz}`,
+      description: thema.teaser,
+      startDate: `${t.datum}T${t.von}:00${off}`,
+      endDate: `${t.datum}T${t.bis}:00${off}`,
+      eventStatus: "https://schema.org/EventScheduled",
+      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+      location: {
+        "@type": "Place",
+        name: v.name,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: v.strasse,
+          postalCode: v.plz,
+          addressLocality: v.ort,
+          addressCountry: "DE",
+        },
+      },
+      performer: { "@type": "Person", name: "René Pahlke" },
+      organizer: { "@type": "Organization", name: v.name, ...(v.website ? { url: v.website } : {}) },
+      ...(t.buchungsUrl
+        ? { offers: { "@type": "Offer", url: t.buchungsUrl, availability: "https://schema.org/InStock" } }
+        : {}),
+    };
+  })
+);
+
+const faq = [
+  {
+    frage: "Was kostet die Teilnahme?",
+    antwort:
+      "Die Gebühr legt die jeweilige Volkshochschule fest, nicht ich. Den aktuellen Preis findest du auf der Kursseite der VHS, über die du dich auch anmeldest.",
+  },
+  {
+    frage: "Muss ich meinen Hund mitbringen?",
+    antwort:
+      "Nein, bitte nicht. Die Vorträge finden in Seminarräumen statt und richten sich an dich, nicht an deinen Hund. Er hat den Abend frei.",
+  },
+  {
+    frage: "Brauche ich Vorwissen?",
+    antwort:
+      "Nein. Die Vorträge sind so aufgebaut, dass du ohne Vorkenntnisse mitkommst. Wenn du schon länger mit Hunden lebst, nimmst du trotzdem etwas mit, weil wir über das Warum sprechen, nicht über Kommandos.",
+  },
+  {
+    frage: "Wie melde ich mich an?",
+    antwort:
+      "Ausschließlich direkt über die jeweilige Volkshochschule. Ich vergebe keine Plätze und führe keine Warteliste für die Vorträge. Über die Links auf dieser Seite kommst du direkt zum richtigen Kurs.",
+  },
+  {
+    frage: "Ersetzt ein Vortrag ein Training?",
+    antwort:
+      "Nein. Ein Abend gibt dir Erklärungen und Aha-Momente, aber kein individuelles Training. Wenn dein Hund ein konkretes Problem hat, ist eine Verhaltensanalyse der richtige nächste Schritt.",
+  },
+];
+---
+
+<Layout
+  title="Hunde-Vorträge an Volkshochschulen | WolfsKnigge"
+  description="Vorträge von Hundetrainer René Pahlke an Volkshochschulen in Kiel, Rendsburg, Felde und Melsdorf: Leinenaggression, Lernverhalten, Kommunikation. Alle Termine."
+>
+
+  <!-- HERO -->
+  <section class="relative overflow-clip" style="min-height: 68svh; background: #000;">
+    <div class="absolute inset-0">
+      <img
+        src="/images/rene-vortrag-vhs.webp"
+        alt=""
+        aria-hidden="true"
+        fetchpriority="high"
+        decoding="async"
+        class="w-full h-full object-cover"
+        style="object-position: 40% 45%;"
+        width="1500" height="1319"
+      />
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-[rgba(10,10,11,0.7)] to-[rgba(10,10,11,0.2)]"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[rgba(10,10,11,0.92)] via-[rgba(10,10,11,0.4)] to-transparent"></div>
+    <div class="absolute -top-[200px] right-[-100px] w-[600px] h-[600px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(249,115,22,.15), transparent 70%);"></div>
+
+    <div class="relative flex flex-col justify-end text-white" style="min-height: 68svh; padding-bottom: env(safe-area-inset-bottom, 0px);">
+      <div class="w-full max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12 pb-20 pt-32 lg:pb-24">
+
+        <div class="hero-reveal inline-flex items-center gap-2.5 bg-white/8 backdrop-blur-md border border-white/12 text-white font-medium text-[13px] px-4 py-2 rounded-full mb-7">
+          <span class="relative flex h-2 w-2">
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-orange"></span>
+          </span>
+          Vorträge an Volkshochschulen · Kiel · Rendsburg · Felde · Melsdorf
+        </div>
+
+        <h1 class="font-display font-extrabold tracking-[-0.04em] leading-[0.92] mb-7">
+          <span class="hero-reveal hero-reveal-d1 block text-[clamp(2.6rem,8vw,6.5rem)] text-white">Dein Hund</span>
+          <span class="hero-reveal hero-reveal-d2 block text-[clamp(2.6rem,8vw,6.5rem)] text-white">spricht.</span>
+          <span class="hero-reveal hero-reveal-d3 block text-[clamp(2.6rem,8vw,6.5rem)] text-gradient-orange italic">Hörst du zu?</span>
+        </h1>
+
+        <p class="hero-reveal hero-reveal-d4 text-[clamp(1rem,2vw,1.25rem)] text-white/60 mb-9 leading-relaxed max-w-[600px] font-light">
+          Einen Abend lang verstehen, was dein Hund die ganze Zeit sagt.
+          <span class="text-white font-medium">Meine Vorträge an den Volkshochschulen in Kiel, Rendsburg, Felde und Melsdorf.</span>
+        </p>
+
+        <div class="hero-reveal hero-reveal-d5 flex flex-col sm:flex-row gap-3.5 mb-12">
+          <a href="#termine" class="shine group inline-flex items-center justify-center gap-2.5 rounded-full bg-orange text-white font-display font-semibold px-8 py-4 text-[15px] transition-all shadow-[0_0_60px_rgba(249,115,22,0.35)] active:scale-95 sm:hover:scale-[1.03] sm:hover:bg-orange-dark">
+            Zu den Terminen
+            <svg class="w-[18px] h-[18px] sm:group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="#themen" class="inline-flex items-center justify-center gap-2 rounded-full bg-white/6 backdrop-blur border border-white/15 text-white font-display font-semibold px-8 py-4 text-[15px] transition-all sm:hover:bg-white/12">
+            Die Themen ansehen
+          </a>
+        </div>
+
+        <div class="hero-reveal hero-reveal-d6 flex items-center gap-5 sm:gap-8 pt-7 border-t border-white/8">
+          <div>
+            <div class="text-gradient-orange font-display font-extrabold text-2xl leading-none mb-0.5">{themen.length}</div>
+            <div class="text-[11px] text-white/55 uppercase tracking-[0.12em] font-medium">Themen</div>
+          </div>
+          <div class="w-px h-9 bg-white/10"></div>
+          <div>
+            <div class="font-display font-extrabold text-2xl text-white leading-none mb-0.5">{haeuser.length + ausblick.häuser.length}</div>
+            <div class="text-[11px] text-white/55 uppercase tracking-[0.12em] font-medium">Volkshochschulen</div>
+          </div>
+          <div class="w-px h-9 bg-white/10"></div>
+          <div>
+            <div class="font-display font-extrabold text-2xl text-white leading-none mb-0.5">90<span class="text-orange">+</span></div>
+            <div class="text-[11px] text-white/55 uppercase tracking-[0.12em] font-medium">Minuten pro Abend</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (() => {
+      const els = document.querySelectorAll<HTMLElement>('.hero-reveal');
+      els.forEach((el) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(28px)';
+      });
+      const animate = () => {
+        els.forEach((el) => {
+          el.style.transition = 'opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1)';
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        });
+      };
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(() => requestAnimationFrame(animate)));
+      } else {
+        requestAnimationFrame(() => requestAnimationFrame(animate));
+      }
+    })();
+  </script>
+
+  <!-- WORUM'S GEHT -->
+  <section class="relative py-24 md:py-36 bg-anthrazit overflow-hidden noise">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(249,115,22,.08), transparent 60%);"></div>
+    <div class="relative max-w-[900px] mx-auto px-5 sm:px-6 lg:px-8 text-center">
+      <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-5">Worum's geht</span>
+      <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(2rem,5.5vw,4rem)] font-display font-extrabold text-white leading-[1.05] tracking-tight mb-6">
+        Kein Kommando-Training.
+        <span class="block text-gradient-orange mt-2">Sondern das Warum.</span>
+      </h2>
+      <p class="reveal reveal-delay-2 text-[clamp(1rem,2vw,1.3rem)] text-white/50 max-w-[720px] mx-auto leading-relaxed font-light">
+        90 Minuten, in denen ich erkläre, was in deinem Hund vorgeht. Warum er an der Leine ausrastet, warum er draußen plötzlich taub ist, was er anderen Hunden mitteilt. Ohne Fachchinesisch, mit Beispielen aus dem echten Alltag hier in Schleswig-Holstein.
+      </p>
+    </div>
+  </section>
+
+  <!-- TERMINE -->
+  <section id="termine" class="py-24 md:py-32 bg-anthrazit-2 border-y border-white/6 scroll-mt-24">
+    <div class="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="text-center mb-14 md:mb-20">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Termine</span>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(1.8rem,5vw,3.5rem)] font-display font-extrabold text-white tracking-tight leading-[1.1] mb-5">
+          Wann und wo du mich <span class="text-gradient-orange">hören kannst.</span>
+        </h2>
+        <p class="reveal reveal-delay-2 text-white/50 max-w-[620px] mx-auto leading-relaxed">
+          Die Anmeldung läuft immer über die jeweilige Volkshochschule, nicht über mich.
+        </p>
+      </div>
+
+      <div id="termin-grid" class="grid gap-6 md:grid-cols-2">
+        {haeuser.map((v) => (
+          <div class="reveal vhs-karte bg-anthrazit-3 border border-white/6 rounded-3xl p-6 md:p-8" data-vhs>
+            <div class="flex items-start justify-between gap-4 mb-6 pb-6 border-b border-white/8">
+              <div>
+                <h3 class="font-display font-extrabold text-white text-xl md:text-2xl tracking-tight mb-1.5">{v.name}</h3>
+                <p class="text-[13px] text-white/45">{v.strasse} · {v.plz} {v.ort}</p>
+              </div>
+              {v.website && (
+                <a
+                  href={v.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={`Website der ${v.name} – öffnet in einem neuen Tab`}
+                  class="flex-shrink-0 inline-flex items-center gap-1.5 rounded-full border border-white/12 px-3.5 py-1.5 text-[12px] font-medium text-white/60 transition-colors hover:border-orange/40 hover:text-orange"
+                >
+                  Website
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7m0 0H8m9 0v9"/></svg>
+                </a>
+              )}
+            </div>
+
+            <ul class="space-y-3">
+              {v.termine.map((t) => {
+                const thema = themaBySlug[t.thema];
+                const inhalt = (
+                  <>
+                    <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1.5">
+                      <span class="font-display font-bold text-orange text-[15px] tabular-nums">{formatDatum(t.datum)}</span>
+                      <span class="text-[13px] text-white/45">{wochentag(t.datum)} · {t.von}–{t.bis} Uhr</span>
+                    </div>
+                    <div class="font-display font-semibold text-white text-[16px] leading-snug">{thema.kurz}</div>
+                    {t.hinweis && <div class="mt-1 text-[12px] text-white/40">Im Rahmen: {t.hinweis}</div>}
+                  </>
+                );
+                return (
+                  <li data-termin={t.datum}>
+                    {t.buchungsUrl ? (
+                      <a
+                        href={t.buchungsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={`Anmeldung bei ${v.name} – öffnet in einem neuen Tab`}
+                        class="group block rounded-2xl border border-white/8 bg-white/[0.03] p-4 md:p-5 transition-all hover:border-orange/40 hover:bg-white/[0.06]"
+                      >
+                        {inhalt}
+                        <span class="mt-2.5 inline-flex items-center gap-1.5 text-[13px] font-semibold text-white/70 transition-colors group-hover:text-orange">
+                          Bei der {v.name} anmelden
+                          <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7m0 0H8m9 0v9"/></svg>
+                        </span>
+                      </a>
+                    ) : (
+                      <div class="rounded-2xl border border-white/8 bg-white/[0.03] p-4 md:p-5">
+                        {inhalt}
+                        <span class="mt-2.5 block text-[13px] text-white/40">Anmeldung über die {v.name}</span>
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
+
+        <div class="reveal bg-anthrazit-3/60 border border-dashed border-white/10 rounded-3xl p-6 md:p-8 flex flex-col justify-center">
+          <span class="inline-flex self-start items-center rounded-full border border-orange/40 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-orange mb-4">
+            Ab {ausblick.ab}
+          </span>
+          <h3 class="font-display font-extrabold text-white text-xl tracking-tight mb-2">
+            {ausblick.häuser.join(" & ")}
+          </h3>
+          <p class="text-[15px] text-white/50 leading-relaxed">
+            Hier komme ich neu dazu. Die Termine stehen, sobald die Häuser ihr Programm veröffentlichen.
+          </p>
+        </div>
+      </div>
+
+      <p id="keine-termine" class="hidden text-center text-white/50 leading-relaxed max-w-[560px] mx-auto py-10">
+        Gerade ist kein Vortrag ausgeschrieben. Die Volkshochschulen veröffentlichen ihre Programme halbjährlich, im Frühjahr und im Spätsommer. Schau dann wieder rein oder schreib mir kurz.
+      </p>
+
+      <p class="reveal text-center text-[12px] text-white/35 mt-8">
+        Alle Links führen zur jeweiligen Volkshochschule und öffnen in einem neuen Tab. Für Gebühren, Anmeldung und Durchführung ist die VHS zuständig.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    // Vergangene Termine auch ohne neuen Build ausblenden
+    (() => {
+      const heute = new Date();
+      heute.setHours(0, 0, 0, 0);
+      let sichtbar = 0;
+      document.querySelectorAll<HTMLElement>('[data-vhs]').forEach((karte) => {
+        let offen = 0;
+        karte.querySelectorAll<HTMLElement>('[data-termin]').forEach((li) => {
+          const datum = new Date(`${li.dataset.termin}T00:00:00`);
+          if (datum < heute) li.hidden = true;
+          else offen++;
+        });
+        if (offen === 0) karte.hidden = true;
+        else sichtbar++;
+      });
+      if (sichtbar === 0) {
+        document.getElementById('termin-grid')?.setAttribute('hidden', '');
+        document.getElementById('keine-termine')?.classList.remove('hidden');
+      }
+    })();
+  </script>
+
+  <!-- THEMEN -->
+  <section id="themen" class="py-24 md:py-32 bg-anthrazit scroll-mt-24">
+    <div class="max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="text-center mb-14 md:mb-20">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Die Themen</span>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(1.8rem,5vw,3.5rem)] font-display font-extrabold text-white tracking-tight leading-[1.1]">
+          Fünf Abende, fünf <span class="text-gradient-orange">Aha-Momente.</span>
+        </h2>
+      </div>
+
+      <div class="space-y-5">
+        {themen.map((t, i) => (
+          <article class="reveal bg-anthrazit-2 border border-white/6 rounded-3xl p-7 md:p-10">
+            <div class="flex flex-col md:flex-row md:gap-10">
+              <div class="md:w-[46%] mb-6 md:mb-0">
+                <div class="text-[13px] font-semibold uppercase tracking-[0.2em] text-orange mb-3">
+                  {String(i + 1).padStart(2, "0")} · {t.kurz}
+                </div>
+                <h3 class="font-display font-extrabold text-white text-2xl md:text-[2rem] leading-[1.1] tracking-tight">
+                  {t.headline}
+                </h3>
+              </div>
+              <div class="md:flex-1">
+                <p class="text-white/60 leading-relaxed mb-5">{t.teaser}</p>
+                <ul class="space-y-2.5">
+                  {t.inhalte.map((punkt) => (
+                    <li class="flex gap-3 text-[15px] text-white/50 leading-relaxed">
+                      <svg class="w-4 h-4 mt-1 flex-shrink-0 text-orange" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/></svg>
+                      {punkt}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- BRÜCKE ZUM TRAINING -->
+  <section class="py-24 md:py-32 bg-anthrazit-2 border-y border-white/6">
+    <div class="max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="text-center mb-14">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Danach</span>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(1.8rem,5vw,3.5rem)] font-display font-extrabold text-white tracking-tight leading-[1.1] mb-5">
+          Verstanden ist gut.
+          <span class="block text-gradient-orange mt-2">Verändert ist besser.</span>
+        </h2>
+        <p class="reveal reveal-delay-2 text-white/50 max-w-[640px] mx-auto leading-relaxed">
+          Ein Vortrag erklärt dir, warum dein Hund tut, was er tut. Wenn du das bei deinem Hund konkret angehen willst, arbeiten wir dort, wo das Problem auftritt.
+        </p>
+      </div>
+
+      <div class="grid gap-5 md:grid-cols-2">
+        <a href="/anamnesegesprach/" class="reveal group bg-anthrazit-3 border border-white/6 rounded-3xl p-7 md:p-9 transition-all hover:border-orange/40">
+          <div class="text-[12px] font-semibold uppercase tracking-[0.18em] text-orange mb-3">Schritt 1</div>
+          <h3 class="font-display font-extrabold text-white text-xl md:text-2xl tracking-tight mb-3">Verhaltensanalyse</h3>
+          <p class="text-white/55 leading-relaxed text-[15px] mb-5">
+            Wir schauen uns deinen Hund im echten Alltag an, finden die Ursache und legen einen Plan fest. Der Startpunkt bei Aggression, Angst und Stress.
+          </p>
+          <span class="inline-flex items-center gap-2 text-[15px] font-display font-semibold text-white transition-colors group-hover:text-orange">
+            Zur Verhaltensanalyse
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </span>
+        </a>
+
+        <a href="/einzelstunde/" class="reveal reveal-delay-1 group bg-anthrazit-3 border border-white/6 rounded-3xl p-7 md:p-9 transition-all hover:border-orange/40">
+          <div class="text-[12px] font-semibold uppercase tracking-[0.18em] text-orange mb-3">Schritt 2</div>
+          <h3 class="font-display font-extrabold text-white text-xl md:text-2xl tracking-tight mb-3">Einzeltraining</h3>
+          <p class="text-white/55 leading-relaxed text-[15px] mb-5">
+            Mobil bei dir vor der Tür, im Park, an der Straße. Genau da, wo dein Hund das Problem zeigt, und nicht auf einem Übungsplatz.
+          </p>
+          <span class="inline-flex items-center gap-2 text-[15px] font-display font-semibold text-white transition-colors group-hover:text-orange">
+            Zur Einzelstunde
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERENT BUCHEN -->
+  <section id="referent" class="py-24 md:py-32 bg-anthrazit scroll-mt-24">
+    <div class="max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="relative overflow-hidden rounded-[2rem] border border-white/8 bg-anthrazit-2 p-8 md:p-14">
+        <div class="absolute -top-[150px] -right-[100px] w-[500px] h-[500px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(249,115,22,.12), transparent 70%);"></div>
+        <div class="relative max-w-[760px]">
+            <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Für Veranstalter</span>
+            <h2 class="reveal reveal-delay-1 text-3xl md:text-[2.6rem] font-display font-extrabold text-white tracking-tight leading-[1.1] mb-5">
+              Sie planen ein Programm?
+            </h2>
+            <p class="reveal reveal-delay-2 text-white/55 leading-relaxed mb-6">
+              Volkshochschulen, Tierschutzvereine, Betriebe mit Bürohunden: Ich halte Vorträge zu allen fünf Themen und passe sie an Ihr Publikum an. 60 bis 120 Minuten, mit Zeit für Fragen. Beamer und Raum stellen Sie, den Rest bringe ich mit.
+            </p>
+            <ul class="reveal reveal-delay-2 space-y-2.5 mb-8">
+              {[
+                "Alle fünf Themen einzeln oder als Reihe buchbar",
+                "Auch Wunschthemen rund um Verhalten und Alltag mit Hund",
+                "Einzugsgebiet Kiel, Rendsburg, Eckernförde, Neumünster und Umland",
+              ].map((punkt) => (
+                <li class="flex gap-3 text-[15px] text-white/50 leading-relaxed">
+                  <svg class="w-4 h-4 mt-1 flex-shrink-0 text-orange" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/></svg>
+                  {punkt}
+                </li>
+              ))}
+            </ul>
+            <div class="reveal reveal-delay-3 flex flex-col sm:flex-row gap-3.5">
+              <a href="/kontakt/" class="shine group inline-flex items-center justify-center gap-2.5 rounded-full bg-orange hover:bg-orange-dark text-white font-display font-semibold px-8 py-4 text-[15px] transition-all shadow-[0_0_60px_rgba(249,115,22,0.3)] hover:scale-[1.03] active:scale-95">
+                Anfrage senden
+                <svg class="w-[18px] h-[18px] transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </a>
+              <a href="tel:+4915147736042" class="inline-flex items-center justify-center gap-2 rounded-full bg-white/6 border border-white/15 text-white font-display font-semibold px-8 py-4 text-[15px] transition-all hover:bg-white/12">
+                0151 47736042
+              </a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-24 md:py-32 bg-anthrazit-2 border-t border-white/6">
+    <div class="max-w-[900px] mx-auto px-5 sm:px-6 lg:px-8">
+      <div class="text-center mb-14 md:mb-16">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Häufige Fragen</span>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(1.8rem,5vw,3.5rem)] font-display font-extrabold text-white tracking-tight leading-[1.1]">
+          Alles, was du <span class="text-gradient-orange">wissen willst.</span>
+        </h2>
+      </div>
+      <div class="reveal space-y-3">
+        {faq.map((item) => (
+          <details name="faq" class="group bg-anthrazit-3 border border-white/6 rounded-2xl overflow-hidden open:border-orange/30 transition-all">
+            <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-display font-semibold text-white text-base md:text-lg group-open:text-orange transition-colors">
+              {item.frage}
+              <svg class="w-5 h-5 flex-shrink-0 text-white/55 group-open:rotate-45 group-open:text-orange transition-all duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+            </summary>
+            <div class="px-6 pb-6 text-white/60 leading-relaxed text-[15px]">
+              {item.antwort}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="relative py-28 md:py-40 bg-anthrazit text-white overflow-hidden noise">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(249,115,22,0.22),transparent_60%)]"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-orange/8 rounded-full blur-3xl"></div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="reveal inline-block text-orange font-semibold uppercase text-sm tracking-[0.3em] mb-6">Dabei sein</span>
+      <h2 class="reveal reveal-delay-1 text-4xl md:text-6xl lg:text-7xl font-display font-extrabold mb-8 tracking-tight leading-[0.95]">
+        {terminAnzahl > 0 ? "Der nächste Abend" : "Wir hören uns"}<br/>
+        <span class="text-gradient-orange">{terminAnzahl > 0 ? "wartet auf dich." : "beim nächsten Mal."}</span>
+      </h2>
+      <p class="reveal reveal-delay-2 text-lg md:text-xl text-white/50 mb-12 font-light">
+        Anmeldung direkt bei der Volkshochschule. Fragen zum Vortrag gerne an mich.
+      </p>
+      <div class="reveal reveal-delay-3 flex flex-col sm:flex-row gap-3.5 justify-center">
+        <a href="#termine" class="shine group inline-flex items-center justify-center gap-2.5 rounded-full bg-orange hover:bg-orange-dark text-white font-display font-semibold px-10 py-[18px] text-[17px] transition-all shadow-[0_0_80px_rgba(249,115,22,0.3)] hover:scale-[1.03] active:scale-95">
+          Termine ansehen
+          <svg class="w-[18px] h-[18px] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <a href="/kontakt/" class="inline-flex items-center justify-center gap-2 rounded-full bg-white/6 border border-white/15 text-white font-display font-semibold px-10 py-[18px] text-[17px] transition-all hover:bg-white/12">
+          Frage stellen
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({"@context":"https://schema.org","@type":"FAQPage",mainEntity:faq.map((f)=>({"@type":"Question",name:f.frage,acceptedAnswer:{"@type":"Answer",text:f.antwort}}))})} />
+  {events.map((e) => <script type="application/ld+json" is:inline set:html={JSON.stringify(e)} />)}
+</Layout>
