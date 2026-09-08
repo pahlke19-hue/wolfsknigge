@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import VideoIntro from "../components/VideoIntro.astro";
 
 // Symptom-Check (Original-Live-Texte, Reihenfolge = Hero-Chip-Deeplinks)
 const painPoints = [
@@ -156,8 +157,9 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
             Kostenloses Kennenlernen
             <svg class="w-[18px] h-[18px] sm:group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
-          <a href="#angebote" class="inline-flex items-center justify-center gap-2 rounded-full bg-white/6 backdrop-blur border border-white/15 text-white font-display font-semibold px-8 py-4 text-[15px] transition-all sm:hover:bg-white/12">
-            Angebote ansehen
+          <a href="#vorstellung" class="group inline-flex items-center justify-center gap-2.5 rounded-full bg-white/6 backdrop-blur border border-white/15 text-white font-display font-semibold px-8 py-4 text-[15px] transition-all sm:hover:bg-white/12">
+            <svg class="w-[18px] h-[18px] text-orange" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            Video: Wer ich bin
           </a>
         </div>
 
@@ -197,6 +199,8 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
       <div class="w-px h-10 bg-gradient-to-b from-transparent to-white/30 scroll-line-anim"></div>
     </div>
   </section>
+
+  <VideoIntro transcript />
 
   <!-- ============ TRAININGSROUTE (Journey) ============ -->
   <div class="journey" id="journey">
@@ -874,6 +878,18 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
       });
     })();
   </script>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: "René Pahlke stellt sich vor: mobile Hundeschule WolfsKnigge",
+    description: "Mobiler Hundetrainer René Pahlke stellt sich vor: Er trainiert dort, wo die Probleme entstehen, zu Hause und auf der Gassirunde, statt auf dem Hundeplatz. Kein Schema F, sondern ein Trainingsaufbau, der zu Hund und Halter passt. Bei Leinenaggression, Angst, Welpen und Hunden, die zu Hause die Regie übernommen haben. Einzugsgebiet Kiel, Rendsburg, Eckernförde und Neumünster.",
+    thumbnailUrl: "https://wolfsknigge.de/images/rene-video-poster.webp",
+    contentUrl: "https://wolfsknigge.de/videos/rene-vorstellung.mp4",
+    uploadDate: "2026-09-08",
+    duration: "PT1M37S",
+    publisher: { "@type": "Organization", name: "WolfsKnigge", url: "https://wolfsknigge.de" },
+  })} />
 
   <script type="application/ld+json" is:inline set:html={JSON.stringify({"@context":"https://schema.org","@type":"FAQPage",mainEntity:faq.map((f)=>({"@type":"Question",name:f.frage,acceptedAnswer:{"@type":"Answer",text:f.antwort}}))})} />
 </Layout>

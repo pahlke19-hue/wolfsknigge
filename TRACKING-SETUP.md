@@ -7,6 +7,7 @@ Container: GTM-NQ89PJT2 · GA4: G-3K8W7MPKXE · Domain: wolfsknigge.de
 1. `/danke` = nur noch Buchungsbestätigung (123Hundeschule leitet nach Kauf hierhin)
 2. `/thanks-formular` = Bestätigung Kontaktformular (Formular zeigt wieder hierhin, wie früher bei Hostinger)
 3. Klick-Events landen im dataLayer: `contact_call` (tel:), `contact_whatsapp` (wa.me), `contact_email` (mailto:), `booking_portal_click` (Link zum 123Hundeschule-Portal)
+3b. Vorstellungsvideo meldet `video_start`, `video_progress` (25/50/75 %) und `video_complete`, siehe Schritt 4b
 4. CSP erlaubt alle Google-Ads-Domains (inkl. frame-src td.doubleclick.net, das fehlte vorher komplett)
 5. Datenschutzerklärung hat jetzt einen Google-Ads-Abschnitt
 
@@ -59,6 +60,35 @@ Zwei neue Tags vom Typ "Google Analytics: GA4-Ereignis", Mess-ID `G-3K8W7MPKXE`:
 
 Optional genauso: `contact_email` und `booking_portal_click` (nur Reporting, keine Ads-Conversion).
 In GA4 unter Verwaltung → Ereignisse: `buchung_erhalten`, `formular_abschluss`, `contact_call`, `contact_whatsapp` als Schlüsselereignisse markieren.
+
+## Schritt 4b: GA4-Events fürs Vorstellungsvideo (ergänzt 08.09.2026)
+
+Das Video liegt auf Startseite, `/ueber-mich/` und den vier Stadtseiten. Der Code schiebt drei Ereignisse in den dataLayer, die Namen sind die von Google empfohlenen GA4-Videonamen:
+
+| Ereignis | Wann | Wichtigster Parameter |
+|---|---|---|
+| `video_start` | Wiedergabe läuft wirklich los, einmal pro Seitenaufruf | `video_percent` = 0 |
+| `video_progress` | bei 25 %, 50 % und 75 % | `video_percent`, `video_current_time` |
+| `video_complete` | Video bis zum Ende gesehen | `video_percent` = 100 |
+
+Jedes Ereignis trägt zusätzlich `video_title`, `video_provider` (`self-hosted`), `video_url` und `video_duration`.
+
+Gezählt wird der tatsächliche Start, nicht der Klick. Wenn der Browser die Wiedergabe abbricht, kommt der Play-Button zurück und es wird nichts gezählt. Auf welcher Seite gestartet wurde, siehst du in GA4 über die Standarddimension "Seitenpfad", das muss nicht extra mitgeschickt werden.
+
+**In GTM einrichten:**
+
+1. Variablen → Neu → "Variable für Datenschichtvariable" anlegen: `dlv_video_percent` (Variablenname `video_percent`), `dlv_video_title` (`video_title`), `dlv_video_duration` (`video_duration`).
+2. Trigger → Neu → "Benutzerdefiniertes Ereignis" dreimal anlegen, Ereignisnamen exakt `video_start`, `video_progress`, `video_complete`.
+3. Tags → Neu → "Google Analytics: GA4-Ereignis", Mess-ID `G-3K8W7MPKXE`, drei Stück:
+   - Ereignisname `video_start`, Trigger `video_start`, Ereignisparameter `video_title` = `{{dlv_video_title}}`, `video_duration` = `{{dlv_video_duration}}`
+   - Ereignisname `video_progress`, Trigger `video_progress`, zusätzlich `video_percent` = `{{dlv_video_percent}}`
+   - Ereignisname `video_complete`, Trigger `video_complete`
+4. GA4 → Verwaltung → Benutzerdefinierte Definitionen: `video_title` und `video_percent` als benutzerdefinierte Dimensionen anlegen, sonst tauchen sie in den Berichten nicht als Spalte auf.
+5. Vorschau im Tag Assistant, Video starten und einmal durchlaufen lassen, dann Container veröffentlichen.
+
+Optional als Schlüsselereignis markieren: `video_complete`. Wer das Video ganz sieht, ist deutlich näher an einer Anfrage als jemand, der nur startet.
+
+Wie alles andere feuert das erst nach Klick auf "Akzeptieren" im Cookie-Banner.
 
 ## Schritt 5: Microsoft Clarity (läuft jetzt)
 

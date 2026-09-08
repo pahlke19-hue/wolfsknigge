@@ -1,0 +1,212 @@
+---
+interface Props {
+  /** Ueberschrift, HTML erlaubt (z. B. <span class="text-gradient-orange">). */
+  heading?: string;
+  /** Untertext unter der Ueberschrift. Auf Stadtseiten mit Stadtbezug. */
+  sub?: string;
+  /** Transkript ausklappbar zeigen. Nur auf der Startseite, sonst Duplicate Content. */
+  transcript?: boolean;
+}
+
+const {
+  heading = 'Du hast schon einiges probiert. <span class="text-gradient-orange">Und trotzdem läuft&rsquo;s nicht rund.</span>',
+  sub = "Anderthalb Minuten, in denen ich dir erzähle, warum ich zu dir nach Hause komme statt auf den Hundeplatz und warum bei mir kein Hund nach Schema F trainiert wird.",
+  transcript = false,
+} = Astro.props as Props;
+---
+
+<!-- ============ VIDEO-VORSTELLUNG ============ -->
+<section class="vid-sec" id="vorstellung" data-video-intro>
+  <div class="vid-wrap">
+    <p class="vid-tag reveal">Lerne mich kennen</p>
+    <h2 class="vid-h reveal reveal-delay-1" set:html={heading}></h2>
+    <p class="vid-sub reveal reveal-delay-2">{sub}</p>
+
+    <figure class="vid-frame reveal-scale">
+      <video
+        class="vid-el"
+        data-vid
+        poster="/images/rene-video-poster.webp"
+        preload="none"
+        playsinline
+        controls
+        width="1280"
+        height="720"
+      >
+        <source src="/videos/rene-vorstellung.mp4" type="video/mp4" />
+        <track kind="captions" src="/videos/rene-vorstellung.de.vtt" srclang="de" label="Deutsch" default />
+        Dein Browser kann dieses Video nicht abspielen.
+      </video>
+      <button type="button" class="vid-play" data-vid-play hidden aria-label="Video abspielen: René stellt sich vor">
+        <span class="vid-play-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+        <span class="vid-play-txt">Video ansehen<span class="vid-play-len">1:37</span></span>
+      </button>
+    </figure>
+
+    <!-- Sehhilfe fuer den Ton, kein aria-live: Screenreader wuerden jede Zeile ueber den laufenden Ton sprechen -->
+    <p class="vid-caption" data-vid-cap hidden aria-hidden="true"></p>
+
+    {transcript && (
+      <details class="vid-tx reveal reveal-delay-2">
+        <summary>Lieber lesen? Transkript aufklappen</summary>
+        <div class="vid-tx-body">
+          <p>Wenn dein Hund an der Leine ausrastet, andere Hunde anpöbelt oder du einfach merkst, irgendwie läuft&rsquo;s gerade nicht rund, dann bist du hier bei mir genau richtig. Wahrscheinlich hast du schon so einiges probiert. Du hast Videos geguckt, hast Tipps bekommen, vielleicht warst du sogar schon in der Hundeschule, und trotzdem stehst du gerade irgendwo auf dem Gassiweg und denkst dir: Nee, so kann es einfach nicht weitergehen.</p>
+          <p>Genau da unterstütze ich euch. Ich bin René von WolfsKnigge und ich komme dahin, wo eure Probleme wirklich passieren. Zu dir nach Hause, auf deine Gassirunde, mitten in euren Alltag rein. Weil das Training genau dort funktionieren muss und nicht auf irgendeinem Hundeplatz.</p>
+          <p>Dein Hund wird bei mir auf keinen Fall nach Schema F behandelt. Wir schauen uns erst gemeinsam an, was bei euch überhaupt los ist, und bauen das Training dann so auf, dass es zu dir und deinem Hund passt. Egal ob Leinenaggression, Angst, ein Hund, der zu Hause die Regie übernommen hat, oder ob bei euch einfach ein Welpe eingezogen ist. Damit bist du bei mir genau richtig. Das ist seit über fünf Jahren mein Alltag.</p>
+          <p>Schreib mir per WhatsApp, eine Mail oder ruf einfach kurz durch. Ich melde mich innerhalb eines Tages zurück, wir schauen uns gemeinsam eure Situation an und gucken, was für euch Sinn ergibt. Ich freue mich darauf, euch kennenzulernen.</p>
+        </div>
+      </details>
+    )}
+
+    <div class="vid-after reveal reveal-delay-2">
+      <p class="vid-note">René Pahlke, mobiler Hundetrainer aus Bredenbek. Unterwegs in Kiel, Rendsburg, Eckernförde und Neumünster.</p>
+      <a href="/kontakt/" class="vid-cta">Kostenloses Kennenlernen<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vid-sec { background: var(--color-anthrazit); padding: clamp(3.5rem, 11vw, 6.5rem) 0; scroll-margin-top: 84px; }
+  .vid-wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; text-align: center; }
+  .vid-tag { display: inline-flex; font-size: 11px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--color-orange); margin-bottom: 16px; }
+  .vid-h { font-size: clamp(1.7rem, 6.5vw, 2.9rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; color: #fff; margin-bottom: 14px; }
+  .vid-sub { color: rgba(255,255,255,.62); font-size: clamp(.95rem, 2vw, 1.075rem); line-height: 1.6; font-weight: 300; max-width: 46ch; margin: 0 auto 30px; }
+
+  .vid-frame { position: relative; margin: 0; border-radius: 20px; overflow: hidden; background: #000; aspect-ratio: 16 / 9; box-shadow: 0 24px 70px rgba(0,0,0,.5); }
+  .vid-el { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 68% center; }
+  /* Hochkant-Ausschnitt fuers Handy: Rene steht rechts im Bild, links ist nur Wiese */
+  @media (max-width: 640px) { .vid-frame { aspect-ratio: 1 / 1; border-radius: 16px; } }
+
+  .vid-play { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; border: 0; cursor: pointer; color: #fff; background: linear-gradient(180deg, rgba(10,10,11,.15), rgba(10,10,11,.55)); transition: background .3s ease; }
+  .vid-play-ico { display: grid; place-items: center; width: 72px; height: 72px; border-radius: 50%; background: var(--color-orange); box-shadow: 0 0 50px rgba(249,115,22,.55); transition: transform .25s ease; }
+  .vid-play-ico svg { width: 34px; height: 34px; margin-left: 4px; }
+  .vid-play:active .vid-play-ico { transform: scale(.94); }
+  .vid-play-txt { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 600; font-size: 15px; text-shadow: 0 2px 12px rgba(0,0,0,.6); }
+  .vid-play-len { font-size: 12px; font-weight: 500; color: rgba(255,255,255,.7); padding: 3px 9px; border-radius: 999px; background: rgba(255,255,255,.14); backdrop-filter: blur(6px); }
+  @media (hover: hover) {
+    .vid-play:hover { background: linear-gradient(180deg, rgba(10,10,11,.05), rgba(10,10,11,.45)); }
+    .vid-play:hover .vid-play-ico { transform: scale(1.07); }
+  }
+
+  .vid-caption { min-height: 3.4em; margin-top: 14px; padding: 0 4px; scroll-margin-bottom: 104px; color: rgba(255,255,255,.9); font-size: clamp(.95rem, 3.6vw, 1.05rem); line-height: 1.55; font-weight: 400; text-wrap: balance; }
+
+  .vid-tx { margin-top: 22px; text-align: left; border-top: 1px solid rgba(255,255,255,.08); }
+  .vid-tx > summary { list-style: none; cursor: pointer; padding: 16px 2px; font-size: 14px; font-weight: 600; color: rgba(255,255,255,.6); display: flex; align-items: center; gap: 9px; transition: color .2s ease; }
+  .vid-tx > summary::-webkit-details-marker { display: none; }
+  .vid-tx > summary::before { content: ""; width: 7px; height: 7px; border-right: 2px solid var(--color-orange); border-bottom: 2px solid var(--color-orange); transform: rotate(45deg); transition: transform .25s ease; flex: none; margin-bottom: 2px; }
+  .vid-tx[open] > summary::before { transform: rotate(-135deg); margin-bottom: -2px; }
+  .vid-tx > summary:hover { color: #fff; }
+  .vid-tx-body { padding: 0 2px 6px; }
+  .vid-tx-body p { color: rgba(255,255,255,.55); font-size: 14.5px; line-height: 1.75; font-weight: 300; margin-bottom: 14px; }
+
+  .vid-after { display: flex; flex-direction: column; align-items: center; gap: 18px; margin-top: 26px; }
+  .vid-note { font-size: 13px; color: rgba(255,255,255,.45); font-weight: 300; }
+  .vid-cta { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border-radius: 999px; background: var(--color-orange); color: #fff; font-family: var(--font-display); font-weight: 600; font-size: 15px; padding: 15px 28px; box-shadow: 0 0 50px rgba(249,115,22,.3); transition: transform .25s ease, background .25s ease; }
+  .vid-cta svg { width: 18px; height: 18px; }
+  .vid-cta:active { transform: scale(.96); }
+  @media (hover: hover) { .vid-cta:hover { background: var(--color-orange-dark); transform: scale(1.03); } }
+
+  /* Nur fuer Vollbild und den Fall ohne JS: sonst rendern wir die Cues selbst unter dem Video */
+  .vid-el::cue { background: rgba(10,10,11,.78); color: #fff; font-family: var(--font-sans); font-size: .9em; line-height: 1.4; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vid-play-ico, .vid-cta { transition: none; }
+  }
+</style>
+
+<script>
+  // Video-Vorstellung: Overlay-Play nur mit JS, ohne JS greifen die nativen Controls
+  document.querySelectorAll<HTMLElement>('[data-video-intro]').forEach((root) => {
+    const video = root.querySelector<HTMLVideoElement>('[data-vid]');
+    const btn = root.querySelector<HTMLElement>('[data-vid-play]');
+    if (!video || !btn) return;
+
+    const cap = root.querySelector<HTMLElement>('[data-vid-cap]');
+    const track = video.textTracks[0];
+
+    video.removeAttribute('controls');
+    btn.hidden = false;
+
+    // Untertitel unter statt ueber dem Bild: nativ ausblenden, Cues selbst rendern
+    if (track && cap) {
+      track.mode = 'hidden';
+      track.addEventListener('cuechange', () => {
+        const cue = track.activeCues && (track.activeCues[0] as VTTCue | undefined);
+        cap.textContent = cue ? cue.text.split(/\s+/).join(' ').trim() : '';
+      });
+    }
+
+    // Im Vollbild ist unsere Zeile unter dem Video nicht sichtbar, dort uebernimmt der Player
+    const nativeCues = (on: boolean) => { if (track) track.mode = on ? 'showing' : 'hidden'; };
+    const onFsChange = () => {
+      const el = document.fullscreenElement || (document as any).webkitFullscreenElement;
+      nativeCues(el === video || (el instanceof Element && el.contains(video)));
+    };
+    document.addEventListener('fullscreenchange', onFsChange);
+    document.addEventListener('webkitfullscreenchange', onFsChange);
+    video.addEventListener('webkitbeginfullscreen', () => nativeCues(true));
+    video.addEventListener('webkitendfullscreen', () => nativeCues(false));
+
+    const showOverlay = () => {
+      video.removeAttribute('controls');
+      btn.hidden = false;
+      if (cap) { cap.hidden = true; cap.textContent = ''; }
+    };
+
+    btn.addEventListener('click', () => {
+      btn.hidden = true;
+      video.setAttribute('controls', '');
+      if (cap) {
+        cap.hidden = false;
+        cap.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      }
+      const started = video.play();
+      // Schlaegt das Abspielen fehl, kommt der Play-Button zurueck statt eines schwarzen Kastens
+      if (started) started.catch(showOverlay);
+    });
+
+    // Am Ende zurueck auf Anfang, damit kein toter schwarzer Rahmen stehen bleibt
+    video.addEventListener('ended', () => {
+      video.currentTime = 0;
+      showOverlay();
+    });
+
+    // GA4-Events ueber den dataLayer. GTM feuert daraus die Tags, aber erst nach Consent.
+    const push = (event: string, extra: Record<string, unknown> = {}) => {
+      const w = window as any;
+      (w.dataLayer = w.dataLayer || []).push({
+        event,
+        video_title: 'René stellt sich vor',
+        video_provider: 'self-hosted',
+        video_url: '/videos/rene-vorstellung.mp4',
+        video_duration: Math.round(video.duration) || 0,
+        ...extra,
+      });
+    };
+
+    let gestartet = false;
+    video.addEventListener('playing', () => {
+      // Nur der erste echte Start zaehlt, nicht jedes Weiterlaufen nach Pause oder Puffern
+      if (gestartet) return;
+      gestartet = true;
+      push('video_start', { video_percent: 0 });
+    });
+
+    const marken = [25, 50, 75];
+    const erreicht = new Set<number>();
+    video.addEventListener('timeupdate', () => {
+      if (!video.duration) return;
+      const pct = (video.currentTime / video.duration) * 100;
+      marken.forEach((m) => {
+        if (pct >= m && !erreicht.has(m)) {
+          erreicht.add(m);
+          push('video_progress', { video_percent: m, video_current_time: Math.round(video.currentTime) });
+        }
+      });
+    });
+
+    video.addEventListener('ended', () => push('video_complete', { video_percent: 100 }));
+  });
+</script>

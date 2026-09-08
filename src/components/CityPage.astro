@@ -1,4 +1,6 @@
 ---
+import VideoIntro from "./VideoIntro.astro";
+
 interface Feature { text: string; bold?: string; }
 interface Props {
   city: string;
@@ -218,6 +220,8 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
     <div class="w-px h-10 bg-gradient-to-b from-transparent to-white/30 scroll-line-anim"></div>
   </div>
 </section>
+
+<VideoIntro sub={`Anderthalb Minuten, in denen ich dir erzähle, warum ich in ${p.city} zu dir nach Hause komme statt auf den Hundeplatz und warum bei mir kein Hund nach Schema F trainiert wird.`} />
 
 
 <!-- ============ TRAININGSROUTE (Journey) ============ -->

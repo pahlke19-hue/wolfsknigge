@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import VideoIntro from "../components/VideoIntro.astro";
 
 const skills = [
   { icon: '<path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>', title: "1,5 Jahre Ausbildung", text: "Intensivausbildung bei der Kynologisch gGmbH. Wissenschaftlich fundiert und nicht bloß graue Theorie." },
@@ -225,6 +226,11 @@ const angebote = [
       </p>
     </div>
   </section>
+
+  <VideoIntro
+    heading='Das hier bin ich. <span class="text-gradient-orange">In anderthalb Minuten.</span>'
+    sub="Warum ich zu dir nach Hause komme statt auf den Hundeplatz und warum bei mir kein Hund nach Schema F trainiert wird."
+  />
 
   <!-- SOCIAL PROOF MARQUEE -->
   <section class="relative bg-anthrazit-2 border-y border-white/4 py-10 overflow-hidden">

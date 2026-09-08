@@ -68,7 +68,7 @@
   const bar = document.getElementById("mobile-bar");
   if (bar) {
     const update = () => {
-      bar.classList.toggle("is-shown", window.scrollY > window.innerHeight * 0.5);
+      bar.classList.toggle("is-shown", window.scrollY > window.innerHeight * 0.3);
     };
     update();
     addEventListener("scroll", update, { passive: true });
