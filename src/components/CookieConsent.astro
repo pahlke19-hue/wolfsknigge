@@ -74,6 +74,7 @@
       functionality_storage: "granted",
       personalization_storage: "granted",
     });
+    w.__consentGranted = true;
     loadGTM();
   }
 
@@ -97,8 +98,8 @@
       personalization_storage: "denied",
     });
     hide();
-    // Widerrufs-Fall: War GTM bereits geladen, stoppt erst ein Reload das Tracking wirklich
-    if (w.__gtmLoaded) location.reload();
+    // Widerrufs-Fall: War vorher eingewilligt, stoppt erst ein Reload einwilligungspflichtige Tags wirklich
+    if (w.__consentGranted) location.reload();
   });
 
   // Widerruf / erneutes Öffnen (z.B. aus dem Footer)
@@ -107,4 +108,9 @@
   const saved = localStorage.getItem(KEY);
   if (saved === "granted") grant();
   else if (!saved) show();
+
+  // Advanced Consent Mode: GTM laedt immer. Ohne Einwilligung bleiben alle Consent-Typen "denied",
+  // Google-Tags senden dann nur cookielose Pings. Nicht-Google-Tags (Clarity, Meta) muessen in GTM
+  // per "Zusaetzliche Einwilligung erforderlich" an analytics_storage/ad_storage gebunden sein.
+  loadGTM();
 </script>
