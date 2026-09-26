@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #0a0a0b; }
+    a { color: #f97316; text-decoration: none; }
+    a:hover { color: #ea580c; }
+  </style>
+</helmet>
+<div style="width: 1200px; height: 880px; box-sizing: border-box; background: #0a0a0b; color: #e4e4e7; font-family: 'Manrope', 'Segoe UI', system-ui, sans-serif; padding: 64px; display: flex; flex-direction: column; gap: 36px;">
+
+  <div style="display: flex; flex-direction: column; gap: 10px;">
+    <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: #f97316;">Farben</div>
+    <h2 style="margin: 0; font-family: 'Sora', 'Trebuchet MS', sans-serif; font-weight: 700; font-size: 44px; letter-spacing: -0.02em; color: #ffffff;">Palette</h2>
+    <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #a1a1aa; max-width: 760px; text-wrap: pretty;">Anthrazit traegt die Flaeche, Orange setzt den Akzent. Tuerkis nur punktuell. Faustregel: Orange nie flaechig, sondern dort, wo geklickt oder gelesen werden soll.</p>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 14px;">
+    <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #71717a;">Akzent / Orange</div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px;">
+      <div style="display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; border: 1px solid #28282c;">
+        <div style="height: 88px; background: #f97316;"></div>
+        <div style="padding: 14px 16px; background: #141416; display: flex; flex-direction: column; gap: 3px;">
+          <div style="font-family: 'Sora', 'Trebuchet MS', sans-serif; font-weight: 600; font-size: 15px; color: #ffffff;">Orange</div>
+          <div style="font-size: 13px; color: #f97316; font-weight: 600; letter-spacing: 0.04em;">#F97316</div>
+          <div style="font-size: 12px; color: #71717a;">CTAs, Highlights, Zahlen</div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; border: 1px solid #28282c;">
+        <div style="height: 88px; background: #ea580c;"></div>
+        <div style="padding: 14px 16px; background: #141416; display: flex; flex-direction: column; gap: 3px;">
+          <div style="font-family: 'Sora', 'Trebuchet MS', sans-serif; font-weight: 600; font-size: 15px; color: #ffffff;">Orange Dark</div>
+          <div style="font-size: 13px; color: #f97316; font-weight: 600; letter-spacing: 0.04em;">#EA580C</div>
+          <div style="font-size: 12px; color: #71717a;">Hover, Active, Druck</div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; border: 1px solid #28282c;">
+        <div style="height: 88px; background: #fb923c;"></div>
+        <div style="padding: 14px 16px; background: #141416; display: flex; flex-direction: column; gap: 3px;">
+          <div style="font-family: 'Sora', 'Trebuchet MS', sans-serif; font-weight: 600; font-size: 15px; color: #ffffff;">Orange Glow</div>
+          <div style="font-size: 13px; color: #f97316; font-weight: 600; letter-spacing: 0.04em;">#FB923C</div>
+          <div style="font-size: 12px; color: #71717a;">Sekundaerakzent, Gradient-Ende</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 14px;">
+    <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #71717a;">Basis / Anthrazit</div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;">
+      <div style="display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; border: 1px solid #28282c;">
+        <div style="height: 72px; background: #0a0a0b;"></div>
+        <div style="padding: 14px 16px; background: #141416; display: flex; flex-direction: column; gap: 3px;">
+          <div style="font-family: 'Sora', 'Trebuchet MS', sans-serif; font-weight: 600; font-size: 15px; color: #ffffff;">Anthrazit</div>
+          <div style="font-size: 13px; color: #f97316; font-weight: 600;">#0A0A0B</div>
+          <div style="font-size: 12px; color: #71717a;">Seiten-Hintergrund</div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; border: 1px solid #28282c;">
+        <div style="height: 72px; background: #141416;"></div>
+        <div style="padding: 14px 16px; background: #141416; display: flex; flex-direction: column; gap: 3px;">
+          <div style="font-family: 'Sora', 'Trebuchet MS', sans-serif; font-weight: 600; font-size: 15px; color: #ffffff;">Anthrazit 2</div>
+          <div style="font-size: 13px; color: #f97316; font-weight: 600;">#141416</div>
+          <div style="font-size: 12px; color: #71717a;">Sektionen, Cards</div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; border: 1px solid #28282c;">
+        <div style="height: 72px; background: #1c1c1f;"></div>
+        <div style="padding: 14px 16px; background: #141416; display: flex; flex-direction: column; gap: 3px;">
+          <div style="font-family: 'Sora', 'Trebuchet MS', sans-serif; font-weight: 600; font-size: 15px; color: #ffffff;">Anthrazit 3</div>
+          <div style="font-size: 13px; color: #f97316; font-weight: 600;">#1C1C1F</div>
+          <div style="font-size: 12px; color: #71717a;">Erhoehte Flaechen</div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; border: 1px solid #28282c;">
+        <div style="height: 72px; background: #28282c;"></div>
+        <div style="padding: 14px 16px; background: #141416; display: flex; flex-direction: column; gap: 3px;">
+          <div style="font-family: 'Sora', 'Trebuchet MS', sans-serif; font-weight: 600; font-size: 15px; color: #ffffff;">Anthrazit 4</div>
+          <div style="font-size: 13px; color: #f97316; font-weight: 600;">#28282C</div>
+          <div style="font-size: 12px; color: #71717a;">Raender, Trennlinien</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px;">
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #71717a;">Tuerkis / sparsam</div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;">
+        <div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 16px; background: #141416; border: 1px solid #28282c;">
+          <div style="width: 44px; height: 44px; border-radius: 12px; background: #36fff3; flex-shrink: 0;"></div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <div style="font-size: 14px; font-weight: 600; color: #ffffff;">Tuerkis</div>
+            <div style="font-size: 12px; color: #f97316; font-weight: 600;">#36FFF3</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 16px; background: #141416; border: 1px solid #28282c;">
+          <div style="width: 44px; height: 44px; border-radius: 12px; background: #06b6d4; flex-shrink: 0;"></div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <div style="font-size: 14px; font-weight: 600; color: #ffffff;">Tuerkis Dark</div>
+            <div style="font-size: 12px; color: #f97316; font-weight: 600;">#06B6D4</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #71717a;">Text</div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px;">
+        <div style="padding: 12px 14px; border-radius: 16px; background: #141416; border: 1px solid #28282c; display: flex; flex-direction: column; gap: 3px;">
+          <div style="font-family: 'Sora', 'Trebuchet MS', sans-serif; font-size: 20px; font-weight: 700; color: #ffffff;">Aa</div>
+          <div style="font-size: 12px; color: #f97316; font-weight: 600;">#FFFFFF</div>
+          <div style="font-size: 11px; color: #71717a;">Headlines</div>
+        </div>
+        <div style="padding: 12px 14px; border-radius: 16px; background: #141416; border: 1px solid #28282c; display: flex; flex-direction: column; gap: 3px;">
+          <div style="font-family: 'Sora', 'Trebuchet MS', sans-serif; font-size: 20px; font-weight: 700; color: #e4e4e7;">Aa</div>
+          <div style="font-size: 12px; color: #f97316; font-weight: 600;">#E4E4E7</div>
+          <div style="font-size: 11px; color: #71717a;">Fliesstext</div>
+        </div>
+        <div style="padding: 12px 14px; border-radius: 16px; background: #141416; border: 1px solid #28282c; display: flex; flex-direction: column; gap: 3px;">
+          <div style="font-family: 'Sora', 'Trebuchet MS', sans-serif; font-size: 20px; font-weight: 700; color: #a1a1aa;">Aa</div>
+          <div style="font-size: 12px; color: #f97316; font-weight: 600;">#A1A1AA</div>
+          <div style="font-size: 11px; color: #71717a;">Sekundaer</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

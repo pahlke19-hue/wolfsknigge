@@ -1,0 +1,19 @@
+{
+  "pages": [
+    { "id": "page-1", "name": "CI-Grundlagen" },
+    { "id": "page-2", "name": "Vorlagen" }
+  ],
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1200, "h": 760, "title": "Marke", "page": "page-1" },
+    { "file": "Farben.dc.html", "x": 1300, "y": 0, "w": 1200, "h": 880, "title": "Farben", "page": "page-1" },
+    { "file": "Typografie.dc.html", "x": 2600, "y": 0, "w": 1200, "h": 980, "title": "Typografie", "page": "page-1" },
+    { "file": "Komponenten.dc.html", "x": 0, "y": 1080, "w": 1240, "h": 900, "title": "Komponenten", "page": "page-1" },
+    { "file": "Layout.dc.html", "x": 1340, "y": 1080, "w": 1240, "h": 900, "title": "Layout & Regeln", "page": "page-1" },
+    { "file": "Vorlage-Post.dc.html", "x": 0, "y": 0, "w": 1080, "h": 1080, "title": "Social-Post 1:1", "page": "page-2" },
+    { "file": "Vorlage-Story.dc.html", "x": 1180, "y": 0, "w": 1080, "h": 1920, "title": "Story 9:16", "page": "page-2" }
+  ],
+  "annotations": [
+    { "id": "hinweis-vorlagen", "x": 0, "y": -160, "w": 640, "text": "Startvorlagen: duplizieren, Platzhalter in eckigen Klammern ersetzen, Rest stehen lassen.\nFarben und Schriften sitzen schon richtig.", "page": "page-2" }
+  ],
+  "launch": { "view": "canvas", "page": "page-1" }
+}

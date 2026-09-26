@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&display=swap">
+  <style>
+    body { margin: 0; background: #0a0a0b; }
+    a { color: #f97316; text-decoration: none; }
+    a:hover { color: #ea580c; }
+  </style>
+</helmet>
+<div style="width: 1200px; height: 980px; box-sizing: border-box; background: #0a0a0b; color: #e4e4e7; font-family: 'Manrope', 'Segoe UI', system-ui, sans-serif; padding: 64px; display: flex; flex-direction: column; gap: 34px;">
+
+  <div style="display: flex; flex-direction: column; gap: 10px;">
+    <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: #f97316;">Typografie</div>
+    <h2 style="margin: 0; font-family: 'Sora', 'Trebuchet MS', sans-serif; font-weight: 700; font-size: 44px; letter-spacing: -0.02em; color: #ffffff;">Zwei Schriften, klare Rollen</h2>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;">
+    <div style="padding: 26px 28px; border-radius: 24px; background: #141416; border: 1px solid #28282c; display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+        <div style="font-family: 'Sora', 'Trebuchet MS', sans-serif; font-weight: 800; font-size: 30px; color: #ffffff; letter-spacing: -0.02em;">Sora</div>
+        <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #f97316;">Display</div>
+      </div>
+      <div style="font-family: 'Sora', 'Trebuchet MS', sans-serif; font-size: 34px; color: #e4e4e7; letter-spacing: -0.02em;">AaBbCc 0123</div>
+      <div style="font-size: 14px; line-height: 1.6; color: #a1a1aa;">Alle Ueberschriften. Weight 700, Letter-Spacing -0.02em. Verfuegbar: 300 bis 800.</div>
+    </div>
+    <div style="padding: 26px 28px; border-radius: 24px; background: #141416; border: 1px solid #28282c; display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+        <div style="font-family: 'Manrope', 'Segoe UI', sans-serif; font-weight: 800; font-size: 30px; color: #ffffff; letter-spacing: -0.01em;">Manrope</div>
+        <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #f97316;">Text</div>
+      </div>
+      <div style="font-family: 'Manrope', 'Segoe UI', sans-serif; font-size: 34px; color: #e4e4e7;">AaBbCc 0123</div>
+      <div style="font-size: 14px; line-height: 1.6; color: #a1a1aa;">Fliesstext, Buttons, Labels. Weight 400, Emphasis 500 bis 600, Sekundaeres 300.</div>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 18px;">
+    <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #71717a;">Skala</div>
+
+    <div style="display: flex; align-items: baseline; gap: 24px; padding-bottom: 16px; border-bottom: 1px solid #1c1c1f;">
+      <div style="width: 132px; flex-shrink: 0; font-size: 12px; color: #71717a; font-weight: 500;">H1 / 64px / 700</div>
+      <div style="font-family: 'Sora', 'Trebuchet MS', sans-serif; font-weight: 700; font-size: 64px; line-height: 1.05; letter-spacing: -0.02em; color: #ffffff;">Hunde verstehen</div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 24px; padding-bottom: 16px; border-bottom: 1px solid #1c1c1f;">
+      <div style="width: 132px; flex-shrink: 0; font-size: 12px; color: #71717a; font-weight: 500;">H2 / 44px / 700</div>
+      <div style="font-family: 'Sora', 'Trebuchet MS', sans-serif; font-weight: 700; font-size: 44px; line-height: 1.1; letter-spacing: -0.02em; color: #ffffff;">Training, das im Alltag haelt</div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 24px; padding-bottom: 16px; border-bottom: 1px solid #1c1c1f;">
+      <div style="width: 132px; flex-shrink: 0; font-size: 12px; color: #71717a; font-weight: 500;">H3 / 28px / 700</div>
+      <div style="font-family: 'Sora', 'Trebuchet MS', sans-serif; font-weight: 700; font-size: 28px; line-height: 1.2; letter-spacing: -0.02em; color: #ffffff;">Leinenaggression im Griff</div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 24px; padding-bottom: 16px; border-bottom: 1px solid #1c1c1f;">
+      <div style="width: 132px; flex-shrink: 0; font-size: 12px; color: #71717a; font-weight: 500;">Lead / 21px / 400</div>
+      <div style="font-size: 21px; line-height: 1.6; color: #a1a1aa; max-width: 800px;">Ich komme dorthin, wo das Problem entsteht: an eure Leine, eure Strasse, euren Alltag.</div>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 24px; padding-bottom: 16px; border-bottom: 1px solid #1c1c1f;">
+      <div style="width: 132px; flex-shrink: 0; font-size: 12px; color: #71717a; font-weight: 500;">Body / 17px / 400</div>
+      <div style="font-size: 17px; line-height: 1.7; color: #e4e4e7; max-width: 800px; text-wrap: pretty;">Fliesstext bleibt bei 17px und 1.7 Zeilenhoehe. Zeilenlaenge maximal rund 75 Zeichen, damit auf dem Handy nichts zerfaellt.</div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 24px;">
+      <div style="width: 132px; flex-shrink: 0; font-size: 12px; color: #71717a; font-weight: 500;">Label / 12px / 600</div>
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: #f97316;">Mobiles Hundetraining</div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

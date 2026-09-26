@@ -20,6 +20,7 @@
 
 ## Brand & Content References
 - **Design work** (UI, colors, motion, components): Read `design.md` first. Design tokens: source of truth is the `@theme` block in `src/styles/global.css` — never duplicate hex values or font names into docs.
+- **CI / Designsystem** (Social-Posts, Storys, Grafiken, alle Designanfragen außerhalb der Website): `design-ci/` ist verbindlich. Einstieg `design-ci/wolfsknigge-ci.html`, Details in `Farben`, `Typografie`, `Komponenten`, `Layout`, Vorlagen `Vorlage-Post` / `Vorlage-Story` (`.dc.html`). Nie löschen.
 - **Copy/content work** (page copy, blog, SEO texts): Read `voice.md` first.
 
 ---

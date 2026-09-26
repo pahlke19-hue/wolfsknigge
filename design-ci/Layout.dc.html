@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #0a0a0b; }
+    a { color: #f97316; text-decoration: none; }
+    a:hover { color: #ea580c; }
+  </style>
+</helmet>
+<div style="width: 1240px; height: 900px; box-sizing: border-box; background: #0a0a0b; color: #e4e4e7; font-family: 'Manrope', 'Segoe UI', system-ui, sans-serif; padding: 64px; display: flex; flex-direction: column; gap: 34px;">
+
+  <div style="display: flex; flex-direction: column; gap: 10px;">
+    <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: #f97316;">Regeln</div>
+    <h2 style="margin: 0; font-family: 'Sora', 'Trebuchet MS', sans-serif; font-weight: 700; font-size: 44px; letter-spacing: -0.02em; color: #ffffff;">Form, Flaeche, Ton</h2>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;">
+    <div style="padding: 26px 28px; border-radius: 24px; background: #141416; border: 1px solid #28282c; display: flex; flex-direction: column; gap: 18px;">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #71717a;">Radien</div>
+      <div style="display: flex; align-items: flex-end; gap: 18px;">
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <div style="width: 68px; height: 68px; border-radius: 12px; background: #28282c;"></div>
+          <div style="font-size: 12px; color: #a1a1aa;">12px Chips</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <div style="width: 68px; height: 68px; border-radius: 16px; background: #28282c;"></div>
+          <div style="font-size: 12px; color: #a1a1aa;">16px Felder</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <div style="width: 68px; height: 68px; border-radius: 24px; background: #28282c;"></div>
+          <div style="font-size: 12px; color: #a1a1aa;">24px Cards</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <div style="width: 68px; height: 68px; border-radius: 999px; background: #28282c;"></div>
+          <div style="font-size: 12px; color: #a1a1aa;">Voll: Buttons</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding: 26px 28px; border-radius: 24px; background: #141416; border: 1px solid #28282c; display: flex; flex-direction: column; gap: 18px;">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #71717a;">Abstaende</div>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <div style="width: 8px; height: 14px; background: #f97316; border-radius: 3px;"></div>
+          <div style="font-size: 14px; color: #a1a1aa;">8 / 12 / 16px innerhalb einer Gruppe</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <div style="width: 24px; height: 14px; background: #f97316; border-radius: 3px;"></div>
+          <div style="font-size: 14px; color: #a1a1aa;">24 / 32px zwischen Bloecken</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <div style="width: 64px; height: 14px; background: #f97316; border-radius: 3px;"></div>
+          <div style="font-size: 14px; color: #a1a1aa;">64 / 96px zwischen Sektionen</div>
+        </div>
+      </div>
+      <div style="font-size: 13px; line-height: 1.6; color: #71717a;">Luft ist Teil der Marke. Im Zweifel eine Stufe mehr Abstand statt eine Zeile mehr Text.</div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;">
+    <div style="padding: 26px 28px; border-radius: 24px; background: #141416; border: 1px solid #28282c; display: flex; flex-direction: column; gap: 16px;">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #71717a;">Gradients</div>
+      <div style="font-family: 'Sora', 'Trebuchet MS', sans-serif; font-weight: 700; font-size: 40px; letter-spacing: -0.02em; background: linear-gradient(120deg, #f97316 0%, #fb923c 50%, #f97316 100%); -webkit-background-clip: text; background-clip: text; color: transparent;">Headline im Verlauf</div>
+      <div style="height: 12px; border-radius: 999px; background: linear-gradient(90deg, #f97316, #fb923c);"></div>
+      <div style="font-size: 13px; line-height: 1.6; color: #71717a;">Nur Orange zu Orange-Glow, 120 Grad fuer Text, 90 Grad fuer Flaechen. Keine Mehrfarb-Verlaeufe.</div>
+    </div>
+
+    <div style="padding: 26px 28px; border-radius: 24px; background: #141416; border: 1px solid #28282c; display: flex; flex-direction: column; gap: 14px;">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #71717a;">Bewegung</div>
+      <div style="font-size: 14px; line-height: 1.7; color: #a1a1aa;">Sanft und langsam: Scroll-Reveals mit leichtem Versatz nach oben, Hover mit minimalem Scale, ein Licht-Sweep ueber Buttons. Nichts blinkt, nichts springt.</div>
+      <div style="font-size: 13px; line-height: 1.6; color: #71717a;">Pflicht: reduzierte Bewegung respektieren, dann laeuft alles ohne Animation.</div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;">
+    <div style="padding: 24px 26px; border-radius: 24px; background: rgba(54,255,243,0.05); border: 1px solid rgba(54,255,243,0.25); display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; align-items: center; gap: 10px; color: #36fff3;">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"></path></svg>
+        <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;">So ja</div>
+      </div>
+      <div style="font-size: 14px; line-height: 1.75; color: #e4e4e7;">Echte Trainingsszenen bei Tageslicht. Eine klare Aussage pro Flaeche. Orange fuer genau eine Handlung. Grosszuegiger Rand.</div>
+    </div>
+    <div style="padding: 24px 26px; border-radius: 24px; background: rgba(249,115,22,0.05); border: 1px solid rgba(249,115,22,0.28); display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; align-items: center; gap: 10px; color: #f97316;">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6 18 18"></path><path d="M18 6 6 18"></path></svg>
+        <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;">So nicht</div>
+      </div>
+      <div style="font-size: 14px; line-height: 1.75; color: #e4e4e7;">Stockfotos mit gestellten Hunden. Orange als Hintergrundflaeche. Drei Buttons nebeneinander. Text bis an den Rand.</div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
