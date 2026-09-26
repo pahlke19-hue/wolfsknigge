@@ -7,7 +7,7 @@ interface Props {
 const { year = new Date().getFullYear(), landingPage = false } = Astro.props;
 ---
 
-<footer class="bg-anthrazit-2 border-t border-white/4">
+<footer class="bg-anthrazit-2 border-t border-white/4 pb-24 lg:pb-0">
   <div class={`max-w-[1200px] mx-auto px-6 lg:px-8 ${landingPage ? 'py-8' : 'py-16'}`}>
     {!landingPage && (
       <>
