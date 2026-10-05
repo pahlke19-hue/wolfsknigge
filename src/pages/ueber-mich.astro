@@ -473,17 +473,37 @@ const angebote = [
           Dabei ist ein <strong class="text-white font-semibold">positiver, respektvoller und gewaltfreier</strong> Umgang für mich die Basis. Nicht bloß ein Ziel, das ich ab und zu mal erreiche.
         </p>
       </div>
-      <div class="reveal reveal-delay-3 mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-        {["Positive Verstärkung", "Negative Verstärkung", "Positive Strafe", "Negative Strafe"].map((q, i) => (
-          <div class="bg-anthrazit-3 rounded-2xl p-4 text-center border border-white/6 hover:border-orange/30 hover:bg-orange/5 transition-all">
-            <div class="text-2xl font-display font-extrabold text-orange mb-1">Q{i + 1}</div>
-            <div class="text-xs font-semibold text-white/70">{q}</div>
-          </div>
-        ))}
-      </div>
       <p class="reveal reveal-delay-4 mt-6 max-w-3xl text-base md:text-lg text-white/45 leading-relaxed font-light">
         „Strafe" klingt hart, ich weiß. In der Lerntheorie ist damit aber kein Schmerz und kein Zwang gemeint, sondern zum Beispiel, dass dein Hund kurz die Aufmerksamkeit verliert, wenn sich ein Verhalten nicht lohnen soll. Stachelhalsband, Würger oder Teletakt kommen mir nie an den Hund.
       </p>
+
+      <h3 class="reveal mt-20 font-display font-extrabold text-2xl md:text-4xl text-white tracking-tight leading-[1.1] mb-8">
+        So sieht das <span class="text-gradient-orange">in der Praxis</span> aus.
+      </h3>
+      <ol class="grid md:grid-cols-3 gap-4">
+        {[
+          { title: "Erst die Alternative", text: "Bevor ich irgendetwas begrenze, lernt dein Hund, was er stattdessen tun soll. Und das lohnt sich für ihn richtig." },
+          { title: "Dann eine klare Grenze", text: "Wenn es nötig ist: kurz, im richtigen Moment und so leise wie möglich. Ein Abbruchsignal, ein Schritt in den Weg. Kein Dauergemecker." },
+          { title: "Sofort zurück ins Lob", text: "Direkt danach rufe ich das bekannte Verhalten ab und belohne es. So versteht dein Hund nicht nur, was nicht geht, sondern was stattdessen klappt." },
+        ].map((s, i) => (
+          <li class={`reveal reveal-delay-${i + 1} bg-anthrazit-3 rounded-2xl p-6 border border-white/6`}>
+            <div class="font-display font-extrabold text-orange text-sm tracking-[0.2em] mb-3">{String(i + 1).padStart(2, "0")}</div>
+            <h4 class="font-display font-bold text-lg text-white mb-2">{s.title}</h4>
+            <p class="text-[15px] text-white/60 leading-relaxed">{s.text}</p>
+          </li>
+        ))}
+      </ol>
+
+      <div class="reveal mt-10 grid md:grid-cols-2 gap-4">
+        <div class="rounded-2xl p-6 border border-white/6 bg-anthrazit-2">
+          <h4 class="font-display font-bold text-lg text-white mb-2">Erst muss dein Hund lernen können</h4>
+          <p class="text-[15px] text-white/60 leading-relaxed">Ein Hund in Panik oder im Tunnel lernt nichts, weder durch Lob noch durch Grenzen. Dann geht es zuerst um Abstand und Sicherheit. Trainiert wird dort, wo dein Hund gefordert ist, aber nicht überfordert.</p>
+        </div>
+        <div class="rounded-2xl p-6 border border-white/6 bg-anthrazit-2">
+          <h4 class="font-display font-bold text-lg text-white mb-2">Gewalt ist keine Erziehung</h4>
+          <p class="text-[15px] text-white/60 leading-relaxed">Schlagen, Treten, an der Leine hochziehen, Schmerz oder Strom: Das ist kein Training, sondern Tierschutzverstoß. Ziel jeder Grenze ist, dass sie bald gar nicht mehr nötig ist.</p>
+        </div>
+      </div>
     </div>
   </section>
 
