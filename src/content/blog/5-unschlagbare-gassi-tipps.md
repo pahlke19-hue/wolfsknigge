@@ -68,4 +68,4 @@ Als deine **mobile Hundeschule für Kiel und Umgebung** bieten wir regelmäßig 
 
 Ein Spaziergang ist die beste Zeit, um die Beziehung zu deinem Hund zu vertiefen und ihm ein artgerechtes Leben zu ermöglichen. Mit ein wenig Kreativität und der richtigen Herangehensweise werden die täglichen Runden durch Kiel und Umgebung zu kleinen Abenteuern, die euch noch enger zusammenschweißen.
 
-**Du möchtest an deiner Leinenführigkeit arbeiten, Hundebegegnungen entspannter meistern oder suchst nach passenden Beschäftigungsideen für unterwegs? Dann melde dich. Als deine mobile Hundeschule in Kiel komme ich gerne zu euch – ob nach Gaarden, Mettenhof, Suchsdorf oder an den Stadtrand.**
+**Du möchtest an deiner Leinenführigkeit arbeiten, Hundebegegnungen entspannter meistern oder suchst nach passenden Beschäftigungsideen für unterwegs? Dann melde dich. Als deine [mobile Hundeschule in Kiel](/hundeschule-kiel/) komme ich gerne zu euch – ob nach Gaarden, Mettenhof, Suchsdorf oder an den Stadtrand.**

@@ -52,4 +52,4 @@ Ein Hund, der im Feld nicht zurückkommt, ist kein ungehorsamer Hund. Er ist ein
 
 Rückrufprobleme sind dabei oft nur ein Symptom von etwas Größerem, gerade wenn Jagdverhalten, Angst oder eine generelle Übererregung mit reinspielen. Wie ich an solche tieferliegenden Themen herangehe, liest du in meinem Überblick zum Thema [Problemhund](/problemhund/).
 
-**Dein Hund kommt im Freilauf nicht zurück und du willst den Rückruf endlich von Grund auf neu aufbauen, statt ihm jedes Mal hinterherzulaufen? Dann melde dich einfach. Als deine mobile Hundeschule komme ich zu euch, nach Kiel, Rendsburg, Eckernförde, Neumünster und ins Umland. Wir schauen uns gemeinsam an, was deinem Hund gerade wirklich fehlt.**
+**Dein Hund kommt im Freilauf nicht zurück und du willst den Rückruf endlich von Grund auf neu aufbauen, statt ihm jedes Mal hinterherzulaufen? Dann melde dich einfach. Als deine mobile Hundeschule komme ich zu euch, nach [Kiel](/hundeschule-kiel/), [Rendsburg](/hundeschule-rendsburg/), [Eckernförde](/hundeschule-eckernfoerde/), [Neumünster](/hundeschule-neumuenster/) und ins Umland. Wir schauen uns gemeinsam an, was deinem Hund gerade wirklich fehlt.**

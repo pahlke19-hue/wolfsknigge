@@ -74,6 +74,6 @@ Du darfst kritisch sein. Du darfst Fragen stellen – auch unbequeme. Und du dar
 
 Dein Hund braucht dich als verlässlichen, fairen Partner – und du brauchst einen Trainer, der dir den Rücken stärkt, dir das „Warum" geduldig erklärt und dich kompetent durch schwierige Phasen begleitet. Ziel eines jeden guten Trainers sollte es sein, sich selbst überflüssig zu machen, weil du gelernt hast, deinen Hund zu lesen und zu führen.
 
-Suchst du genau diese Unterstützung in Kiel, Neumünster oder Rendsburg?
+Suchst du genau diese Unterstützung in [Kiel](/hundeschule-kiel/), [Neumünster](/hundeschule-neumuenster/) oder [Rendsburg](/hundeschule-rendsburg/)?
 
 Dann lass uns sprechen. Ich höre mir deine Geschichte an, wir analysieren das Verhalten deines Hundes vor Ort in eurem gewohnten Umfeld und erstellen einen Plan, der zu euch und eurem Alltag passt. Fair, verständlich und mit Herz.
