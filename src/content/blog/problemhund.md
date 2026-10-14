@@ -18,7 +18,7 @@ Das Wort Problemhund klingt nach einem Urteil. Nach einem Hund, der einfach so i
 
 Die Hunde, die zu mir kommen, sehen ganz unterschiedlich aus. Der eine pöbelt an der Leine und dreht bei jeder Hundebegegnung durch. Der andere knurrt, sobald sich jemand seinem Futternapf oder seinem Platz nähert. Wieder ein anderer verkriecht sich bei jedem fremden Geräusch und traut sich kaum vor die Tür. Von außen wirkt das wie drei völlig verschiedene Baustellen. Tatsächlich ist die Frage in jedem dieser Fälle dieselbe: Was ist hier eigentlich der Auslöser, und was steckt emotional dahinter?
 
-Genau deshalb fange ich selten direkt im Problem an. Wer sofort an der eskalierenden Hundebegegnung übt, arbeitet an der Spitze des Eisbergs. Vorher schaue ich mir an, wie dein Hund sich überhaupt selbst reguliert, wie er aus einer hohen Erregung wieder herunterkommt und wie euer Alltag aussieht. Sehr oft heizt der Alltag die ganze Sache nämlich weiter an, ohne dass es jemandem bewusst ist.
+Genau deshalb fange ich selten direkt im Problem an. Wer sofort an der eskalierenden Hundebegegnung übt, arbeitet an der Spitze des Eisbergs. Vorher schaue ich mir an, wie dein Hund sich überhaupt selbst reguliert, wie er aus einer hohen Erregung wieder herunterkommt und wie euer Alltag aussieht. Sehr oft heizt der Alltag die ganze Sache nämlich weiter an, ohne dass es jemandem bewusst ist. Woran du [Stress beim Hund erkennst](/stress-beim-hund/) und warum mehr Auslastung dann selten hilft, habe ich in einem eigenen Artikel aufgeschrieben.
 
 ## Wenn dein Hund aggressiv reagiert
 

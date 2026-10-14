@@ -28,7 +28,7 @@ Verlasse die ausgetretenen Pfade! Kiel bietet eine fantastische Vielfalt an Gass
 
 ### 2. Schnüffel-Spaß statt sturem Marschieren
 
-**Der Vorteil:** Schnüffeln ist ein Grundbedürfnis des Hundes. Erlaubst du ihm ausgiebig zu schnüffeln, senkt das seinen Stresspegel und macht ihn zufrieden. Es ist eine einfache Form der artgerechten Beschäftigung.
+**Der Vorteil:** Schnüffeln ist ein Grundbedürfnis des Hundes. Erlaubst du ihm ausgiebig zu schnüffeln, senkt das seinen Stresspegel und macht ihn zufrieden. Es ist eine einfache Form der artgerechten Beschäftigung. Warum ruhige Nasenarbeit einem [gestressten Hund](/stress-beim-hund/) mehr hilft als das nächste Ballspiel, erkläre ich in einem eigenen Artikel.
 
 Anstatt deinen Hund zügig von A nach B zu führen, baue bewusst „Schnüffel-Pausen" ein. Lass ihn interessante Stellen in seinem eigenen Tempo erkunden. Du kannst dies auch gezielt fördern:
 
