@@ -1,8 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-// Nächster Kursstart – hier aktualisieren, sobald der Termin wechselt.
-const kursstart = "Sonntag, 01.11. · 11:15 Uhr";
+// Kursstarts – neue Termine einfach ergänzen. Vergangene Termine werden
+// automatisch ausgeblendet (beim Build und zusätzlich clientseitig im Browser).
+const kursstarts = [
+  { datum: "2026-11-01", zeit: "11:15" },
+  { datum: "2027-01-10", zeit: "11:15" },
+];
+
+const heute = new Date();
+heute.setHours(0, 0, 0, 0);
+const kommendeKursstarts = kursstarts
+  .filter((k) => new Date(`${k.datum}T00:00:00`) >= heute)
+  .sort((a, b) => a.datum.localeCompare(b.datum));
+
+function formatKursstart(k: { datum: string; zeit: string }): string {
+  const wochentag = new Date(`${k.datum}T12:00:00`).toLocaleDateString("de-DE", { weekday: "long" });
+  const [, monat, tag] = k.datum.split("-");
+  return `${wochentag}, ${tag}.${monat}. · ${k.zeit} Uhr`;
+}
 
 const inhalte = [
   { icon: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>', title: "Grundsignale", text: "Sitz, Platz, Rückruf & Co., spielerisch aufgebaut und vom ersten Tag an alltagstauglich." },
@@ -167,10 +183,26 @@ const testimonials = [
           <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-orange"></span>
         </span>
-        Nächster Kursstart: <span class="font-display font-bold text-orange">{kursstart}</span>
+        Nächster Kursstart: <span class="font-display font-bold text-orange" data-kursstart>
+          {kommendeKursstarts.map((k, i) => <span data-kurs={k.datum} hidden={i > 0}>{formatKursstart(k)}</span>)}
+          <span data-kurs-fallback hidden={kommendeKursstarts.length > 0}>Termin folgt</span>
+        </span>
       </a>
     </div>
   </section>
+
+  <script>
+    // Vergangene Kursstarts ausblenden, auch wenn seit dem letzten Build Zeit vergangen ist
+    const heute = new Date();
+    heute.setHours(0, 0, 0, 0);
+    document.querySelectorAll<HTMLElement>('[data-kursstart]').forEach((box) => {
+      const termine = [...box.querySelectorAll<HTMLElement>('[data-kurs]')];
+      const naechster = termine.find((el) => new Date(`${el.dataset.kurs}T00:00:00`) >= heute);
+      termine.forEach((el) => (el.hidden = el !== naechster));
+      const fallback = box.querySelector<HTMLElement>('[data-kurs-fallback]');
+      if (fallback) fallback.hidden = !!naechster;
+    });
+  </script>
 
   <script>
     (() => {
@@ -591,7 +623,10 @@ const testimonials = [
             <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-orange"></span>
           </span>
-          Nächster Kursstart: <span class="font-display font-bold text-orange">{kursstart}</span>
+          Nächster Kursstart: <span class="font-display font-bold text-orange" data-kursstart>
+            {kommendeKursstarts.map((k, i) => <span data-kurs={k.datum} hidden={i > 0}>{formatKursstart(k)}</span>)}
+            <span data-kurs-fallback hidden={kommendeKursstarts.length > 0}>Termin folgt</span>
+          </span>
         </span>
       </div>
       <h2 class="reveal reveal-delay-1 text-5xl md:text-7xl lg:text-8xl font-display font-extrabold mb-8 tracking-tight leading-[0.95]">
