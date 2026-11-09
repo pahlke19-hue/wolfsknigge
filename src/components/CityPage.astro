@@ -57,21 +57,21 @@ const prozess = [
 ];
 
 const testimonials = [
-  { name: "Jori K.", text: "Die Trainingsanreize haben schnell geholfen und René nimmt sich wirklich Zeit für einen." },
-  { name: "Susanne H.", text: "Als Ersthundebesitzer hatten wir viele Fragen, die uns schlüssig beantwortet wurden." },
-  { name: "Daniela B.", text: "Dank des Trainings können wir endlich wieder entspannt Gassi gehen." },
-  { name: "Jens", text: "Wir bekamen die Leinenaggression bei unserer Herdenschützerin super in den Griff." },
-  { name: "Nicole H.", text: "Das Training hat schnell geholfen, sodass bei uns wieder Harmonie herrscht." },
-  { name: "Sophia S.", text: "Dank des konsequenten Trainings klappt der Rückruf jetzt perfekt." },
-  { name: "Mathias", text: "Wir lernen so viel Wichtiges, das uns super und schnell weiterhilft." },
-  { name: "Claudia R.", text: "René hat uns geholfen, die Fehler im Umfeld zu sehen. Jetzt ist der Kleine entspannter." },
+  { name: "Jori K.", text: "Man merkt, dass er sich wirklich für uns interessiert und helfen möchte die Problempunkte anzugehen." },
+  { name: "Kim R.", text: "Wir fühlen uns nach etlichen Trainerwechseln von René wirklich verstanden und gut bei ihm aufgehoben mit unseren Problemen." },
+  { name: "Astrid J.", text: "Ich kann diesen gewaltfreien aber sehr konsequenten Hundetrainer nur wärmstens empfehlen." },
+  { name: "Ina L.", text: "Wir haben dir innerhalb so kurzer Zeit wirklich deutliche positive Veränderung unserer Hündin zu verdanken!" },
+  { name: "Mi W.", text: "René strahlt absolute Ruhe aus und überträgt das auch auf Mensch und Tier." },
+  { name: "Uwe L.", text: "René konnte durch seine ruhige und sehr dem Tier zugewandte Art, erste Erfolge erzielen …" },
+  { name: "Antje P.", text: "Seine Trainingsmethoden sind sehr verständlich und helfen uns super im Alltag." },
+  { name: "Christina M.", text: "Professionelle, freundliche Hundeschule. Gerne wieder!" },
 ];
 
 const allCities = [
   { city: "Kiel", href: "/hundeschule-kiel/", text: "Kiellinie, Schrevenpark, Holtenauer.", image: "/images/hundeplatz_kiel.webp" },
-  { city: "Rendsburg", href: "/hundeschule-rendsburg/", text: "Nord-Ostsee-Kanal, Büdelsdorf, Fockbek.", image: "/images/rendsburg.webp" },
-  { city: "Eckernförde", href: "/hundeschule-eckernfoerde/", text: "Hafen, Promenade, Hundestrand.", image: "/images/social_walk_eckernfoerde.webp" },
-  { city: "Neumünster", href: "/hundeschule-neumuenster/", text: "Einfelder See, Stadtwald, Großflecken.", image: "/images/neumuenster.webp" },
+  { city: "Rendsburg", href: "/hundeschule-rendsburg/", text: "Nord-Ostsee-Kanal, Büdelsdorf, Fockbek.", image: "/images/rendsburg-900.webp" },
+  { city: "Eckernförde", href: "/hundeschule-eckernfoerde/", text: "Hafen, Promenade, Hundestrand.", image: "/images/social_walk_eckernfoerde-1200.webp" },
+  { city: "Neumünster", href: "/hundeschule-neumuenster/", text: "Einfelder See, Stadtwald, Großflecken.", image: "/images/neumuenster-1200.webp" },
 ];
 const otherCities = allCities.filter((c) => c.city !== p.city);
 
@@ -174,28 +174,36 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
             <span class="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-orange"></span>Angst
           </a>
           <a href="#sym-rueckruf" class="inline-flex items-center gap-1.5 whitespace-nowrap bg-white/[0.06] backdrop-blur-md border border-white/10 text-white/85 font-medium text-[clamp(0.5rem,2.5vw,0.8125rem)] px-1.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full transition-colors hover:border-orange/50 hover:text-white">
-            <span class="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-orange"></span>Jagdverhalten
+            <span class="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-orange"></span>Rückruf &amp; Jagd
           </a>
-          <a href="#sym-ersthund" class="inline-flex items-center gap-1.5 whitespace-nowrap bg-white/[0.06] backdrop-blur-md border border-white/10 text-white/85 font-medium text-[clamp(0.5rem,2.5vw,0.8125rem)] px-1.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full transition-colors hover:border-orange/50 hover:text-white">
-            <span class="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-orange"></span>Welpenschule
+          <a href="/welpengruppe/" class="inline-flex items-center gap-1.5 whitespace-nowrap bg-white/[0.06] backdrop-blur-md border border-white/10 text-white/85 font-medium text-[clamp(0.5rem,2.5vw,0.8125rem)] px-1.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full transition-colors hover:border-orange/50 hover:text-white">
+            <span class="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-orange"></span>Welpen
           </a>
         </div>
       </div>
 
-      <div class="hero-reveal hero-reveal-d3 flex flex-col sm:flex-row gap-3.5 mb-12">
-        <a href={landingPage ? "#kontakt-formular" : "/kontakt/"} class="shine group inline-flex items-center justify-center gap-2.5 rounded-full bg-orange text-white font-display font-semibold px-8 py-4 text-[15px] transition-all shadow-[0_0_60px_rgba(249,115,22,0.35)] active:scale-95 sm:hover:scale-[1.03] sm:hover:bg-orange-dark">
-          Kostenloses Kennenlernen
+      <div class="hero-reveal hero-reveal-d3 flex flex-col sm:flex-row gap-3.5 mb-2.5 lg:mb-12">
+        <a href="https://wa.me/4915147736042?text=Hallo%20Ren%C3%A9%2C%0AAnliegen%3A%20%0AWohnort%3A%20%0AZeit%20f%C3%BCr%20Anruf/Termin%3A%20" target="_blank" rel="noopener noreferrer" class="lg:hidden group inline-flex items-center justify-center gap-2.5 rounded-full bg-[#25D366] text-white font-display font-semibold px-8 py-4 text-[15px] transition-all shadow-[0_0_60px_rgba(37,211,102,0.3)] active:scale-95 sm:hover:scale-[1.03]">
+          <svg class="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.528 5.845L.057 23.428a.5.5 0 0 0 .614.614l5.638-1.47A11.934 11.934 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.797 9.797 0 0 1-5.003-1.376l-.36-.214-3.724.97.993-3.63-.234-.374A9.797 9.797 0 0 1 2.182 12C2.182 6.573 6.573 2.182 12 2.182S21.818 6.573 21.818 12 17.427 21.818 12 21.818z"/>
+          </svg>
+          Per WhatsApp schreiben
+        </a>
+        <a href={landingPage ? "#kontakt-formular" : "/kontakt/#formular"} class="shine group inline-flex items-center justify-center gap-2.5 rounded-full bg-orange text-white font-display font-semibold px-8 py-4 text-[15px] transition-all shadow-[0_0_60px_rgba(249,115,22,0.35)] active:scale-95 sm:hover:scale-[1.03] sm:hover:bg-orange-dark">
+          <span class="lg:hidden">Rückruf anfordern</span><span class="hidden lg:inline">Kostenloses Kennenlernen</span>
           <svg class="w-[18px] h-[18px] sm:group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
-        <a href={landingPage ? "#starter-paket" : "#angebote"} class="inline-flex items-center justify-center gap-2 rounded-full bg-white/6 backdrop-blur border border-white/15 text-white font-display font-semibold px-8 py-4 text-[15px] transition-all sm:hover:bg-white/12">
+        <a href={landingPage ? "#starter-paket" : "#angebote"} class="hidden lg:inline-flex items-center justify-center gap-2 rounded-full bg-white/6 backdrop-blur border border-white/15 text-white font-display font-semibold px-8 py-4 text-[15px] transition-all sm:hover:bg-white/12">
           {landingPage ? "Starter-Paket ansehen" : "Angebote ansehen"}
         </a>
       </div>
+      <p class="hero-reveal hero-reveal-d3 lg:hidden text-[12.5px] text-white/55 mb-6">Kostenloses Kennenlernen, unverbindlich.</p>
 
       <div class="hero-reveal hero-reveal-d4 flex items-center gap-4 sm:gap-8 pt-7 border-t border-white/8">
         <div>
           <div class="text-gradient-orange font-display font-extrabold text-2xl leading-none mb-0.5">
-            <span class="hero-counter" data-target="200" data-suffix="+">200+</span>
+            <span class="hero-counter" data-target="300" data-suffix="+">300+</span>
           </div>
           <div class="text-[11px] text-white/55 uppercase tracking-[0.12em] font-medium">Glückliche Teams</div>
         </div>
@@ -211,7 +219,7 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
             <span class="text-gradient-orange font-display font-extrabold text-2xl leading-none hero-counter" data-target="5" data-decimal="1" data-suffix="">5,0</span>
             <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
           </div>
-          <div class="text-[11px] text-white/55 uppercase tracking-[0.12em] font-medium">14 Bewertungen ↗</div>
+          <div class="text-[11px] text-white/55 uppercase tracking-[0.12em] font-medium">15 Bewertungen ↗</div>
         </a>
         <div class="w-px h-9 bg-white/10"></div>
         <div>
@@ -268,110 +276,49 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
     </div>
   </section>
 
-  <!-- WP 2 · WARUM MOBIL -->
-  <section class="sec bg-1" id="warum">
+  <!-- WP 2 · STIMMEN -->
+  <section class="sec bg-1" id="stimmen">
     <span class="node" aria-hidden="true"></span>
     <div class="jc">
-      <p class="tag reveal">Worum's wirklich geht</p>
-      <h2 class="quote reveal reveal-delay-1">Ein „Sitz" auf dem Hundeplatz bringt dir nichts, <span class="text-gradient-orange">wenn dein Hund im Alltag die Nerven verliert.</span></h2>
-      <p class="sec-sub reveal reveal-delay-2">Echte Verhaltensprobleme lassen sich nicht auf einem isolierten Hundeplatz wegtrainieren. Wir gehen genau dorthin, wo es bei euch tatsächlich knirscht. In deiner Straße, deinem Park, deinem Alltag.</p>
-
-      <div class="vs reveal reveal-delay-2">
-        {vergleich.map((v) => (
-          <div class="vs-row">
-            <div class="vs-cell lose">
-              <p class="vlabel">{v.topic}</p>
-              <p class="vs-line"><svg class="x" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>{v.hundeplatz}</p>
-            </div>
-            <div class="vs-cell win">
-              <p class="vlabel">{v.topic}</p>
-              <p class="vs-line"><svg class="ok" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" viewBox="0 0 16 16"><path d="M3 9l3.5 3.5L13 5"/></svg>{v.mobil}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      <p class="tag reveal">Erfahrungen</p>
+      <h2 class="sec-h reveal reveal-delay-1">Über 300 Teams. Hier sind ein paar.</h2>
     </div>
-  </section>
 
-  <!-- WP 3 · TRAINER (SEO-Text city-spezifisch) -->
-  <section class="sec bg-2" id="trainer">
-    <span class="node" aria-hidden="true"></span>
-    <div class="jc">
-      <p class="tag reveal">Dein Trainer in {p.city}</p>
-      <h2 class="sec-h city-h reveal reveal-delay-1" set:html={p.introH2}></h2>
-
-      <div class="trainer">
-        <figure class="trainer-photo reveal-scale">
-          <img src={p.routeImage} alt={p.routeImageAlt} loading="lazy" width="600" height="750" />
-          <figcaption class="tbadge">
-            <div class="n text-gradient-orange">200+</div>
-            <div class="l">Teams erfolgreich begleitet</div>
-          </figcaption>
-        </figure>
-        <div class="trainer-txt city-prose reveal reveal-delay-2">
-          {p.introParagraphs.map((para) => <p set:html={para}></p>)}
-
-          <div class="creds">
-            <span class="cred"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>Spezialist für Problemverhalten</span>
-            <span class="cred"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.15 12 6l7.74 4.15L12 14.3 4.26 10.15ZM6.5 11.5V16c0 1 2.5 2.5 5.5 2.5s5.5-1.5 5.5-2.5v-4.5"/></svg><a href="/vortraege/" style="color:inherit">VHS-Dozent</a></span>
-            <span class="cred"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>200+ Teams begleitet</span>
-          </div>
-          <a href="/ueber-mich/" class="trainer-more">Mehr über mich →</a>
-
-          <div class="press">
-            <p class="plabel">Bekannt aus</p>
-            <div class="press-row">
-              {pressLogos.map((logo) => (
-                <span class="press-chip"><img src={logo.src} alt={logo.alt} loading="lazy" width={logo.width} height="30" /></span>
-              ))}
-            </div>
-          </div>
+    <div class="tst-track">
+      <article class="tst tst-g">
+        <div class="gscore">
+          <svg width="30" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          <span class="num">5,0</span>
         </div>
+        <span class="stars">★★★★★</span>
+        <p>15 Bewertungen auf Google, alle mit fünf Sternen.</p>
+        <a class="glink" href="https://g.page/r/Cd7XaBPmJ5fKEAE" target="_blank" rel="noopener noreferrer">Alle Bewertungen lesen ↗</a>
+      </article>
+
+      {testimonials.map((t) => (
+        <article class="tst">
+          <span class="stars">★★★★★</span>
+          <p>„{t.text}"</p>
+          <div class="who"><span class="ava">{t.name.charAt(0)}</span><span>{t.name}</span></div>
+        </article>
+      ))}
+    </div>
+
+    <div class="jc">
+      <p class="tst-hint" aria-hidden="true">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        wischen für mehr
+      </p>
+      <div class="belt reveal">
+        <div><div class="n">300+</div><div class="l">Teams begleitet</div></div>
+        <div><div class="n">5,0 ★</div><div class="l">aus 15 Bewertungen</div></div>
+        <div><div class="n">35 km</div><div class="l">mobil um Bredenbek</div></div>
       </div>
     </div>
   </section>
 
-  <!-- WP 4 · WARUM HIER (Features, city-spezifisch, SEO) -->
-  <section class="sec bg-1" id="features">
-    <span class="node" aria-hidden="true"></span>
-    <div class="jc">
-      <p class="tag reveal">Warum es in {p.city} klappt</p>
-      <h2 class="sec-h reveal reveal-delay-1">Fünf Gründe, warum es bei dir in <span class="text-gradient-orange">{p.city}</span> klappt.</h2>
-
-      <div class="feats reveal reveal-delay-2">
-        {p.features.map((f, i) => (
-          <div class="feat">
-            <span class="fnr" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-            <span class="fcheck" aria-hidden="true">✓</span>
-            <h3 set:html={f.bold}></h3>
-            <p>{f.text}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- WP 5 · FAHRPLAN -->
-  <section class="sec bg-2" id="fahrplan">
-    <span class="node" aria-hidden="true"></span>
-    <div class="jc">
-      <p class="tag reveal">So läufts ab</p>
-      <h2 class="sec-h reveal reveal-delay-1">In <span class="text-gradient-orange">vier Schritten</span> zum entspannten Alltag.</h2>
-
-      <ol class="etappen">
-        {prozess.map((pr) => (
-          <li class="et reveal">
-            <span class="et-num" aria-hidden="true">{pr.step}</span>
-            <h3>{pr.title}{pr.free && <span class="free">kostenlos</span>}</h3>
-            <p>{pr.text}</p>
-          </li>
-        ))}
-      </ol>
-    </div>
-  </section>
-
-  <!-- WP 6 · ANGEBOTE / STARTER-PAKET (Landingpage) -->
-  <section class="sec bg-1" id={landingPage ? "starter-paket" : "angebote"}>
+  <!-- WP 3 · ANGEBOTE / STARTER-PAKET (Landingpage) -->
+  <section class="sec bg-2" id={landingPage ? "starter-paket" : "angebote"}>
     <span class="node" aria-hidden="true"></span>
     <div class="jc">
       {landingPage ? (
@@ -405,7 +352,16 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
         <>
           <p class="tag reveal">Angebote in {p.city}</p>
           <h2 class="sec-h reveal reveal-delay-1">Training, das zu euch <span class="text-gradient-orange">passt</span>.</h2>
-          <p class="sec-sub reveal reveal-delay-2">Jedes ernsthafte Training beginnt mit der Verhaltensanalyse. Wer direkt durchstarten will, nimmt das Starter-Paket.</p>
+          <p class="sec-sub reveal reveal-delay-2">Drei Einstiege, je nachdem, wo ihr gerade steht.</p>
+
+          <nav class="wegweiser reveal reveal-delay-2" aria-label="Einstieg wählen">
+            <a href="#weg-problem">Mein Hund hat ein Problem</a>
+            <a href="#weg-welpe">Ich habe einen Welpen</a>
+            <a href="#weg-alltag">Alltag und Basics</a>
+          </nav>
+
+          <h3 class="weg-h reveal" id="weg-problem">Mein Hund hat ein Problem</h3>
+          <p class="weg-sub reveal">Leinenpöbeln, Angst, Aggression: Jedes ernsthafte Training beginnt mit der Verhaltensanalyse. Wer direkt durchstarten will, nimmt das Starter-Paket.</p>
 
           <div class="offer-duo reveal reveal-delay-2">
             <article class="offer-feat relative">
@@ -415,7 +371,7 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
               </div>
               <div class="of-body">
                 <div class="of-sub">Ersttermin vor Ort</div>
-                <h3><a href="/anamnesegesprach/" class="after:absolute after:inset-0 after:content-['']">Verhaltensanalyse</a></h3>
+                <h4><a href="/anamnesegesprach/" class="after:absolute after:inset-0 after:content-['']">Verhaltensanalyse</a></h4>
                 <p class="of-txt">{p.anamneseText}</p>
                 <div class="of-price"><span class="p">130 €</span><span class="u">einmalig</span></div>
                 <span class="of-cta">Termin anfragen <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={icArrow}></svg></span>
@@ -426,7 +382,7 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
               <div class="of-body">
                 <span class="of-badge of-badge-static">Meistgekauft</span>
                 <div class="of-sub">Verhaltensanalyse + 2 Einzelstunden</div>
-                <h3><a href="/preise/#pakete" class="after:absolute after:inset-0 after:content-['']">Starter-Paket</a></h3>
+                <h4><a href="/preise/#pakete" class="after:absolute after:inset-0 after:content-['']">Starter-Paket</a></h4>
                 <p class="of-txt">Der ideale Einstieg: Analyse, Plan und zwei Trainings, als aufeinander aufbauendes Paket, das direkt Wirkung zeigt.</p>
                 <ul class="of-list">
                   <li>1× Verhaltensanalyse (90 Min.)</li>
@@ -439,23 +395,28 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
             </article>
           </div>
 
-          <div class="offers reveal reveal-delay-2">
+          <h3 class="weg-h reveal" id="weg-welpe">Ich habe einen Welpen</h3>
+          <div class="offers weg-offers reveal reveal-delay-1">
+            <a href="/welpengruppe/" class="offer">
+              <img src="/images/welpe_mit_kuscheltier.webp" alt={p.welpenAlt} loading="lazy" />
+              <span class="ot"><span class="on">Welpenkurs</span><span class="os">8 Termine in der Gruppe, oder einzeln zuhause für 80 €</span></span>
+              <span class="op">185 €</span>
+              <span class="oarr"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
+            </a>
+          </div>
+
+          <h3 class="weg-h reveal" id="weg-alltag">Alltag und Basics</h3>
+          <div class="offers weg-offers reveal reveal-delay-1">
+            <a href="/grunderziehungsgruppe/" class="offer">
+              <img src="/images/grunderziehungsgruppe.webp" alt={p.grundAlt} loading="lazy" />
+              <span class="ot"><span class="on">Grunderziehung</span><span class="os">Kleingruppe, Einstieg jederzeit</span></span>
+              <span class="op">25 €</span>
+              <span class="oarr"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
+            </a>
             <a href="/einzelstunde/" class="offer">
               <img src="/images/rene_unterordnung.webp" alt={p.einzelAlt} loading="lazy" />
               <span class="ot"><span class="on">Einzelstunde</span><span class="os">1:1 Coaching im Alltag</span></span>
               <span class="op">90 €</span>
-              <span class="oarr"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
-            </a>
-            <a href="/welpengruppe/" class="offer">
-              <img src="/images/welpe_mit_kuscheltier.webp" alt={p.welpenAlt} loading="lazy" />
-              <span class="ot"><span class="on">Welpengruppe</span><span class="os">Der perfekte Start</span></span>
-              <span class="op">ab 25 €</span>
-              <span class="oarr"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
-            </a>
-            <a href="/grunderziehungsgruppe/" class="offer">
-              <img src="/images/grunderziehungsgruppe.webp" alt={p.grundAlt} loading="lazy" />
-              <span class="ot"><span class="on">Grunderziehung</span><span class="os">Kleingruppe</span></span>
-              <span class="op">ab 25 €</span>
               <span class="oarr"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
             </a>
           </div>
@@ -465,50 +426,111 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
     </div>
   </section>
 
-  <!-- WP 7 · STIMMEN -->
-  <section class="sec bg-2" id="stimmen">
+  <!-- WP 4 · TRAINER (SEO-Text city-spezifisch) -->
+  <section class="sec bg-1" id="trainer">
     <span class="node" aria-hidden="true"></span>
     <div class="jc">
-      <p class="tag reveal">Erfahrungen</p>
-      <h2 class="sec-h reveal reveal-delay-1">Über 200 Teams. Hier sind ein paar.</h2>
-    </div>
+      <p class="tag reveal">Dein Trainer in {p.city}</p>
+      <h2 class="sec-h city-h reveal reveal-delay-1" set:html={p.introH2}></h2>
 
-    <div class="tst-track">
-      <article class="tst tst-g">
-        <div class="gscore">
-          <svg width="30" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-          <span class="num">5,0</span>
+      <div class="trainer">
+        <figure class="trainer-photo reveal-scale">
+          <img src={p.routeImage} alt={p.routeImageAlt} loading="lazy" width="600" height="750" />
+          <figcaption class="tbadge">
+            <div class="n text-gradient-orange">300+</div>
+            <div class="l">Teams erfolgreich begleitet</div>
+          </figcaption>
+        </figure>
+        <div class="trainer-txt city-prose reveal reveal-delay-2">
+          {p.introParagraphs.map((para) => <p set:html={para}></p>)}
+
+          <div class="creds">
+            <span class="cred"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>Spezialist für Problemverhalten</span>
+            <span class="cred"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.15 12 6l7.74 4.15L12 14.3 4.26 10.15ZM6.5 11.5V16c0 1 2.5 2.5 5.5 2.5s5.5-1.5 5.5-2.5v-4.5"/></svg><a href="/vortraege/" style="color:inherit">VHS-Dozent</a></span>
+            <span class="cred"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>300+ Teams begleitet</span>
+          </div>
+          <a href="/ueber-mich/" class="trainer-more">Mehr über mich →</a>
+
+          <div class="press">
+            <p class="plabel">Bekannt aus</p>
+            <div class="press-row">
+              {pressLogos.map((logo) => (
+                <span class="press-chip"><img src={logo.src} alt={logo.alt} loading="lazy" width={logo.width} height="30" /></span>
+              ))}
+            </div>
+          </div>
         </div>
-        <span class="stars">★★★★★</span>
-        <p>14 Bewertungen auf Google, alle mit fünf Sternen.</p>
-        <a class="glink" href="https://g.page/r/Cd7XaBPmJ5fKEAE" target="_blank" rel="noopener noreferrer">Alle Bewertungen lesen ↗</a>
-      </article>
-
-      {testimonials.map((t) => (
-        <article class="tst">
-          <span class="stars">★★★★★</span>
-          <p>„{t.text}"</p>
-          <div class="who"><span class="ava">{t.name.charAt(0)}</span><span>{t.name}</span></div>
-        </article>
-      ))}
-    </div>
-
-    <div class="jc">
-      <p class="tst-hint" aria-hidden="true">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-        wischen für mehr
-      </p>
-      <div class="belt reveal">
-        <div><div class="n">200+</div><div class="l">Teams begleitet</div></div>
-        <div><div class="n">5,0 ★</div><div class="l">aus 14 Bewertungen</div></div>
-        <div><div class="n">35 km</div><div class="l">mobil um Bredenbek</div></div>
       </div>
     </div>
   </section>
 
-  <!-- WP 7b · TRAININGSORTE (unique Content pro Stadt, SEO) -->
+  <!-- WP 5 · WARUM HIER (Features, city-spezifisch, SEO) -->
+  <section class="sec bg-2" id="features">
+    <span class="node" aria-hidden="true"></span>
+    <div class="jc">
+      <p class="tag reveal">Warum es in {p.city} klappt</p>
+      <h2 class="sec-h reveal reveal-delay-1">Fünf Gründe, warum es bei dir in <span class="text-gradient-orange">{p.city}</span> klappt.</h2>
+
+      <div class="feats reveal reveal-delay-2">
+        {p.features.map((f, i) => (
+          <div class="feat">
+            <span class="fnr" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <span class="fcheck" aria-hidden="true">✓</span>
+            <h3 set:html={f.bold}></h3>
+            <p>{f.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WP 6 · WARUM MOBIL -->
+  <section class="sec bg-1" id="warum">
+    <span class="node" aria-hidden="true"></span>
+    <div class="jc">
+      <p class="tag reveal">Worum's wirklich geht</p>
+      <h2 class="quote reveal reveal-delay-1">Ein „Sitz" auf dem Hundeplatz bringt dir nichts, <span class="text-gradient-orange">wenn dein Hund im Alltag die Nerven verliert.</span></h2>
+      <p class="sec-sub reveal reveal-delay-2">Echte Verhaltensprobleme lassen sich nicht auf einem isolierten Hundeplatz wegtrainieren. Wir gehen genau dorthin, wo es bei euch tatsächlich knirscht. In deiner Straße, deinem Park, deinem Alltag.</p>
+
+      <div class="vs reveal reveal-delay-2">
+        {vergleich.map((v) => (
+          <div class="vs-row">
+            <div class="vs-cell lose">
+              <p class="vlabel">{v.topic}</p>
+              <p class="vs-line"><svg class="x" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>{v.hundeplatz}</p>
+            </div>
+            <div class="vs-cell win">
+              <p class="vlabel">{v.topic}</p>
+              <p class="vs-line"><svg class="ok" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" viewBox="0 0 16 16"><path d="M3 9l3.5 3.5L13 5"/></svg>{v.mobil}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WP 7 · FAHRPLAN -->
+  <section class="sec bg-2" id="fahrplan">
+    <span class="node" aria-hidden="true"></span>
+    <div class="jc">
+      <p class="tag reveal">So läufts ab</p>
+      <h2 class="sec-h reveal reveal-delay-1">In <span class="text-gradient-orange">vier Schritten</span> zum entspannten Alltag.</h2>
+
+      <ol class="etappen">
+        {prozess.map((pr) => (
+          <li class="et reveal">
+            <span class="et-num" aria-hidden="true">{pr.step}</span>
+            <h3>{pr.title}{pr.free && <span class="free">kostenlos</span>}</h3>
+            <p>{pr.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- WP 8 · TRAININGSORTE (unique Content pro Stadt, SEO) -->
   {p.extraContent && p.extraContent.length > 0 && (
-    <section class="sec bg-2" id="trainingsorte">
+    <section class="sec bg-1" id="trainingsorte">
       <span class="node" aria-hidden="true"></span>
       <div class="jc">
         <p class="tag reveal">Training vor Ort</p>
@@ -520,8 +542,8 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
     </section>
   )}
 
-  <!-- WP 8 · STRECKE -->
-  <section class="sec bg-1" id="strecke">
+  <!-- WP 9 · STRECKE -->
+  <section class="sec bg-2" id="strecke">
     <span class="node" aria-hidden="true"></span>
     <div class="jc">
       <p class="tag reveal">Mobil unterwegs</p>
@@ -573,8 +595,8 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
     </div>
   </section>
 
-  <!-- WP 9 · FAQ -->
-  <section class="sec bg-2" id="faq">
+  <!-- WP 10 · FAQ -->
+  <section class="sec bg-1" id="faq">
     <span class="node" aria-hidden="true"></span>
     <div class="jc">
       <p class="tag reveal">Kurz vorm Ziel</p>
@@ -592,7 +614,7 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
   </section>
 
   <!-- ZIEL / KONTAKT-FORMULAR (Landingpage) -->
-  <section class="ziel bg-1" id={landingPage ? "kontakt-formular" : "ziel"}>
+  <section class="ziel bg-2" id={landingPage ? "kontakt-formular" : "ziel"}>
     <span class="node-goal" id="nodeGoal" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
     </span>
@@ -816,6 +838,15 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
   .et p { color: rgba(255,255,255,.7); font-size: 14.5px; line-height: 1.65; max-width: 48ch; }
 
   /* Angebote */
+  .wegweiser { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .wegweiser a { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; padding: 10px 18px; font-size: 14px; font-weight: 600; color: rgba(255,255,255,.88); background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 999px; transition: border-color .3s ease, color .3s ease; }
+  .wegweiser a::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--color-orange); flex-shrink: 0; }
+  .wegweiser a:hover { border-color: rgba(249,115,22,.5); color: #fff; }
+  .weg-h { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.2rem, 4.6vw, 1.55rem); letter-spacing: -0.02em; line-height: 1.2; color: #fff; margin: 48px 0 0; scroll-margin-top: 96px; }
+  .weg-sub { color: rgba(255,255,255,.7); font-size: 14.5px; line-height: 1.65; max-width: 56ch; margin-top: 8px; }
+  .weg-h + .offers { margin-top: 14px; }
+  .weg-sub + .offer-duo { margin-top: 18px; }
+  @media (min-width: 720px) { .offers.weg-offers { grid-template-columns: repeat(2, 1fr); } }
   .offer-duo { margin-top: 34px; display: grid; gap: 12px; }
   @media (min-width: 880px) { .offer-duo { grid-template-columns: 1fr 1fr; align-items: stretch; } }
   .offer-feat { display: flex; flex-direction: column; background: var(--color-anthrazit-3); border: 1px solid rgba(249,115,22,.28); border-radius: 22px; overflow: clip; box-shadow: 0 24px 60px rgba(0,0,0,.4); transition: transform .3s ease, border-color .3s ease; }
@@ -826,7 +857,7 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
   .of-body { padding: 22px 20px 24px; display: flex; flex-direction: column; align-items: flex-start; flex: 1; }
   .of-badge-static { position: static; margin-bottom: 14px; }
   .of-sub { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--color-orange-glow); font-weight: 700; margin-bottom: 8px; }
-  .of-body h3 { font-size: clamp(1.35rem, 4.5vw, 1.75rem); color: #fff; margin-bottom: 10px; }
+  .of-body h4 { font-size: clamp(1.35rem, 4.5vw, 1.75rem); color: #fff; margin-bottom: 10px; }
   .of-txt { color: rgba(255,255,255,.7); font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
   .of-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; list-style: none; padding: 0; }
   .of-list li { display: flex; align-items: baseline; gap: 9px; font-size: 13.5px; color: rgba(255,255,255,.82); }

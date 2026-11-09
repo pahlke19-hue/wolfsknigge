@@ -183,9 +183,10 @@ if (!breadcrumbItems && !noindex && path !== "/") {
     <noscript><style>.reveal,.reveal-scale{opacity:1 !important;transform:none !important;}</style></noscript>
   </head>
   <body class="bg-anthrazit text-[#e4e4e7] antialiased">
+    <a href="#inhalt" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[200] focus:rounded-full focus:bg-orange focus:text-white focus:px-5 focus:py-2.5 focus:font-semibold">Zum Inhalt springen</a>
     <div id="scroll-progress" class="scroll-progress"></div>
     <Header landingPage={landingPage} />
-    <main>
+    <main id="inhalt">
       <slot />
     </main>
     <Footer landingPage={landingPage} />

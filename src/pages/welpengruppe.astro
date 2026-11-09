@@ -83,17 +83,23 @@ const faq = [
     antwort: "Die Welpengruppe trifft sich an wechselnden Orten rund um Kiel und Rendsburg. Wohnst du in Eckernförde oder Neumünster, bin ich als mobile Hundeschule trotzdem für dich da, dann meist als Einzeltraining direkt bei dir vor Ort. Ruf kurz an, dann finden wir den passenden Weg für deinen Welpen."
   },
   {
+    frage: "Mein Welpe ist schon da, der Kurs startet erst später. Was jetzt?",
+    antwort: "Dann starten wir mit einer Welpen-Einzelstunde bei dir zuhause (60 Minuten, 80 €). Wir kümmern uns um die Themen der ersten Wochen, und sobald der nächste Kurs startet, steigst du in die Gruppe ein."
+  },
+  {
     frage: "Was kostet die Welpengruppe?",
     antwort: "Der komplette 8er-Kurs kostet 185 Euro, umgerechnet 23 Euro pro Termin, ganz ohne Vertrag und ohne Abo. Eine genaue Preisübersicht und warum eine Hundeschule mal mehr und mal weniger kostet, findest du auf meiner Preisseite."
   },
 ];
 
 const testimonials = [
-  { name: "Jori K.", text: "Die Trainingsanreize haben schnell geholfen und es wird sich wirklich Zeit genommen." },
-  { name: "Susanne H.", text: "Als Ersthundebesitzer hatten wir viele Fragen, die uns schlüssig beantwortet wurden." },
-  { name: "Daniela B.", text: "Dank des Trainings können wir endlich wieder entspannt Gassi gehen." },  { name: "Nicole H.", text: "Das Training hat schnell geholfen, sodass bei uns wieder Harmonie herrscht." },
-  { name: "Sophia S.", text: "Dank des konsequenten Trainings klappt der Rückruf jetzt perfekt." },
-  { name: "Mathias", text: "Wir lernen so viel Wichtiges, das uns super und schnell weiterhilft." },];
+  { name: "Sen H.", text: "Er ist individuell auf unseren Beauceron (Welpen) eingegangen und hat uns im Welpenkurs sehr kompetent begleitet." },
+  { name: "Gabriele B.", text: "… er hat auch ein gutes Gefühl bei den Welpen, wer zusammen passt und gut miteinander harmonieren." },
+  { name: "Mi W.", text: "René strahlt absolute Ruhe aus und überträgt das auch auf Mensch und Tier." },
+  { name: "Antje P.", text: "Seine Trainingsmethoden sind sehr verständlich und helfen uns super im Alltag." },
+  { name: "Ina L.", text: "Wir haben dir innerhalb so kurzer Zeit wirklich deutliche positive Veränderung unserer Hündin zu verdanken!" },
+  { name: "Christina M.", text: "Professionelle, freundliche Hundeschule. Gerne wieder!" },
+];
 ---
 
 <Layout title="Welpenkurs & Welpenschule Rendsburg & Kiel | WolfsKnigge" description="Welpenkurs und Welpengruppe für Rendsburg & Kiel: Sozialkontakt, Umweltgewöhnung, Grundsignale. 8 Termine, max. 7 Teams, mobil bei dir im Umland.">
@@ -188,6 +194,29 @@ const testimonials = [
           <span data-kurs-fallback hidden={kommendeKursstarts.length > 0}>Termin folgt</span>
         </span>
       </a>
+    </div>
+  </section>
+
+  <!-- WELPEN-EINZELSTUNDE -->
+  <section id="welpen-einzelstunde" class="bg-anthrazit py-12 md:py-16 scroll-mt-24">
+    <div class="max-w-[1000px] mx-auto px-5 sm:px-6 lg:px-8">
+      <div class="reveal relative overflow-hidden rounded-[24px] border border-orange/20 bg-gradient-to-br from-anthrazit-3 to-anthrazit p-7 sm:p-9 text-center">
+        <span class="inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-3">Dein Welpe ist jetzt schon da?</span>
+        <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-white tracking-tight leading-[1.1] mb-4">Welpen-Einzelstunde bei dir zuhause.</h2>
+        <p class="text-white/60 text-[15px] leading-relaxed max-w-[620px] mx-auto mb-6">Bis zum nächsten Kursstart musst du nicht warten. Ich komme zu euch: Stubenreinheit, Beißhemmung, Alleinbleiben, die ersten Spaziergänge. Genau die Themen der ersten Wochen, direkt in eurem Alltag.</p>
+        <div class="flex items-center justify-center gap-6 mb-2">
+          <span class="font-display font-extrabold text-2xl sm:text-3xl text-white">60 Minuten</span>
+          <span class="font-display font-extrabold text-2xl sm:text-3xl text-orange">80 €</span>
+        </div>
+        <p class="text-white/45 text-[13px] mb-6">Anfahrt bis 25 km frei, darüber 0,30 €/km</p>
+        <a href="https://wa.me/4915147736042?text=Hallo%20Ren%C3%A9%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Welpen-Einzelstunde.%0AAlter%20des%20Welpen%3A%20%0AWohnort%3A%20%0AZeit%20f%C3%BCr%20Anruf/Termin%3A%20" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#25D366] hover:bg-[#1ebe5d] text-white font-display font-semibold px-7 py-3.5 text-[15px] transition-all active:scale-95">
+          <svg viewBox="0 0 24 24" fill="#fff" width="20" height="20" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.528 5.845L.057 23.428a.5.5 0 0 0 .614.614l5.638-1.47A11.934 11.934 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.797 9.797 0 0 1-5.003-1.376l-.36-.214-3.724.97.993-3.63-.234-.374A9.797 9.797 0 0 1 2.182 12C2.182 6.573 6.573 2.182 12 2.182S21.818 6.573 21.818 12 17.427 21.818 12 21.818z"/></svg>
+          Welpen-Einzelstunde anfragen
+        </a>
+        <div class="mt-4">
+          <a href="/kontakt/#formular" class="text-white/50 hover:text-white text-[14px] font-medium transition-colors">oder über das Kontaktformular</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -289,7 +318,7 @@ const testimonials = [
             <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
           ))}
         </div>
-        <span class="text-white font-semibold text-sm">5,0 auf Google · 14 Bewertungen · Über 200 betreute Teams <span class="text-white/55">↗</span></span>
+        <span class="text-white font-semibold text-sm">5,0 auf Google · 15 Bewertungen · Über 300 betreute Teams <span class="text-white/55">↗</span></span>
       </a>
     </div>
     <div class="relative">
@@ -348,12 +377,12 @@ const testimonials = [
   <div class="bg-orange py-5">
     <div class="max-w-[900px] mx-auto px-5 grid grid-cols-3 gap-4 text-center text-white">
       <div>
-        <div class="font-display font-extrabold text-2xl sm:text-3xl leading-none">200+</div>
+        <div class="font-display font-extrabold text-2xl sm:text-3xl leading-none">300+</div>
         <div class="text-[11px] sm:text-xs uppercase tracking-[0.12em] font-semibold text-white/80 mt-1">Teams begleitet</div>
       </div>
       <div class="border-x border-white/20">
         <div class="font-display font-extrabold text-2xl sm:text-3xl leading-none">5,0 ★</div>
-        <div class="text-[11px] sm:text-xs uppercase tracking-[0.12em] font-semibold text-white/80 mt-1">aus 14 Bewertungen</div>
+        <div class="text-[11px] sm:text-xs uppercase tracking-[0.12em] font-semibold text-white/80 mt-1">aus 15 Bewertungen</div>
       </div>
       <div>
         <div class="font-display font-extrabold text-2xl sm:text-3xl leading-none">35 km</div>
@@ -442,7 +471,7 @@ const testimonials = [
           loading="lazy"
         />
         <div class="absolute -bottom-5 -right-5 bg-anthrazit-3 rounded-[20px] p-6 border border-white/6 max-w-[200px] hidden md:block">
-          <div class="text-gradient-orange font-display font-extrabold text-4xl">200+</div>
+          <div class="text-gradient-orange font-display font-extrabold text-4xl">300+</div>
           <div class="text-[13px] text-white/50 mt-1">Teams erfolgreich begleitet</div>
         </div>
       </div>
@@ -607,6 +636,10 @@ const testimonials = [
             </div>
           </div>
         </div>
+      </div>
+      <div class="reveal mt-4 bg-anthrazit-3 rounded-2xl border border-white/6 px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-center sm:text-left">
+        <p class="text-[14px] text-white/60"><span class="text-white font-semibold">Welpen-Einzelstunde: 80 €</span> · 60 Minuten bei dir zuhause</p>
+        <a href="#welpen-einzelstunde" class="text-orange text-sm font-semibold hover:text-orange-dark transition-colors">Mehr dazu →</a>
       </div>
     </div>
   </section>

@@ -42,7 +42,7 @@ const related = all
     description: post.data.description,
     image: `https://wolfsknigge.de${post.data.heroImage}`,
     datePublished: post.data.pubDate.toISOString(),
-    dateModified: post.data.pubDate.toISOString(),
+    dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
     author: { "@type": "Person", name: post.data.author },
     publisher: { "@type": "Organization", name: "WolfsKnigge - Mobile Hundeschule", logo: { "@type": "ImageObject", url: "https://wolfsknigge.de/images/logo.svg" } },
     mainEntityOfPage: { "@type": "WebPage", "@id": `https://wolfsknigge.de/${post.id}/` },
