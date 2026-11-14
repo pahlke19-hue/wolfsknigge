@@ -1,0 +1,310 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const waAnmeldung = "https://wa.me/4915147736042?text=Hallo%20Ren%C3%A9%2C%20ich%20m%C3%B6chte%20mich%20f%C3%BCr%20die%20Junghundegruppe%20anmelden.%0AAlter%20des%20Hundes%3A%20%0AWohnort%3A%20%0AWunschtag%20(Sa%2FSo)%3A%20";
+
+const inhalte = [
+  { icon: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>', title: "Wiederholen unter Ablenkung", text: "Was zuhause klappt, üben wir dort, wo es schwer wird: andere Hunde, neue Orte, echte Reize." },
+  { icon: '<rect x="14" y="4" width="4" height="16" rx="1"/><rect x="6" y="4" width="4" height="16" rx="1"/>', title: "Impulskontrolle", text: "Nicht sofort losstürmen, nicht jedem Reiz hinterher. Dein Hund lernt, kurz abzuwarten." },
+  { icon: '<path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>', title: "Frustration", text: "Nicht alles geht sofort. Dein Hund lernt, ein Nein auszuhalten, ohne gleich hochzufahren." },
+  { icon: '<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>', title: "Nervosität & Aufgeregtheit", text: "Zappeln, Fiepen, Hochfahren, sobald andere Hunde da sind. Wir arbeiten daran, dass er runterkommt." },
+  { icon: '<path d="M20 6 9 17l-5-5"/>', title: "Konsequenz", text: "Regeln, die heute gelten und morgen auch. Für deinen Hund und vor allem für dich." },
+  { icon: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>', title: "Konflikte", text: "Junghunde testen aus, mit Artgenossen und mit dir. Ich zeige dir, wie du fair und klar reagierst." },
+];
+
+const schritte = [
+  { step: "01", title: "WhatsApp schreiben", text: "Alter deines Hundes, Wohnort, Wunschtag. Mehr brauche ich nicht." },
+  { step: "02", title: "Treffpunkt bekommen", text: "Ich bestätige deinen Platz und schicke dir den Treffpunkt." },
+  { step: "03", title: "Mittrainieren", text: "Samstag oder Sonntag, 10:00 Uhr. Einzeln zahlen oder mit der 10er-Karte." },
+];
+
+const linkKlasse = "text-orange hover:text-orange-dark font-semibold underline decoration-orange/30 underline-offset-2 transition-colors";
+---
+
+<Layout title="Junghundekurs & Junghundegruppe | WolfsKnigge" description="Junghundegruppe für Hunde von 5 Monaten bis 2 Jahren: Impulskontrolle, Frust, Ablenkung. Sa & So 10 Uhr, wechselnde Orte um Kiel und Rendsburg. 25 € pro Termin.">
+
+  <!-- HERO -->
+  <section class="relative overflow-clip" style="min-height: 72svh; background: #000;">
+
+    <div class="absolute inset-0">
+      <img
+        src="/images/hundetraining_am_nok-1200.webp"
+        alt=""
+        aria-hidden="true"
+        fetchpriority="high"
+        decoding="async"
+        class="w-full h-full object-cover"
+        style="object-position: center 40%;"
+        width="1200" height="1600"
+      />
+    </div>
+
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-[rgba(10,10,11,0.65)] to-[rgba(10,10,11,0.15)]"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[rgba(10,10,11,0.9)] via-[rgba(10,10,11,0.35)] to-transparent"></div>
+    <div class="absolute -top-[200px] right-[-100px] w-[600px] h-[600px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(249,115,22,.15), transparent 70%);"></div>
+
+    <div class="relative flex flex-col justify-end text-white" style="min-height: 72svh; padding-bottom: env(safe-area-inset-bottom, 0px);">
+      <div class="w-full max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12 pb-20 pt-32 lg:pb-28">
+
+        <div class="hero-reveal inline-flex items-center gap-2.5 bg-white/8 backdrop-blur-md border border-white/12 text-white font-medium text-[13px] px-4 py-2 rounded-full mb-7">
+          <span class="relative flex h-2 w-2">
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-orange"></span>
+          </span>
+          Junghundegruppe · Sa &amp; So · 10:00 Uhr
+        </div>
+
+        <h1 class="font-display font-extrabold tracking-[-0.04em] leading-[0.92] mb-7">
+          <span class="hero-reveal block text-[clamp(1.125rem,2.4vw,1.5rem)] font-semibold tracking-[-0.01em] leading-tight text-white/80 mb-4">Junghundegruppe für Hunde von 5 Monaten bis 2 Jahren</span>
+          <span class="hero-reveal hero-reveal-d1 block text-[clamp(3rem,9vw,7.5rem)] text-white">Gestern saß es noch.</span>
+          <span class="hero-reveal hero-reveal-d2 block text-[clamp(3rem,9vw,7.5rem)] text-gradient-orange italic">Heute ist alles neu.</span>
+        </h1>
+
+        <p class="hero-reveal hero-reveal-d4 text-[clamp(1rem,2vw,1.25rem)] text-white/60 mb-9 leading-relaxed max-w-[560px] font-light">
+          Im Junghundealter baut sich das Gehirn deines Hundes um. Was im Welpenkurs geklappt hat, wackelt plötzlich.
+          <span class="text-white font-medium">Genau hier setzt die Gruppe an: üben unter Ablenkung, mit Ruhe und Konsequenz.</span>
+        </p>
+
+        <div class="hero-reveal hero-reveal-d5 flex flex-col sm:flex-row flex-wrap gap-3.5 mb-12">
+          <a href={waAnmeldung} target="_blank" rel="noopener noreferrer" class="group inline-flex items-center justify-center gap-2.5 rounded-full bg-[#25D366] text-white font-display font-semibold px-8 py-4 text-[15px] transition-all shadow-[0_0_60px_rgba(37,211,102,0.3)] active:scale-95 sm:hover:scale-[1.03] sm:hover:bg-[#1ebe5d]">
+            <svg class="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.528 5.845L.057 23.428a.5.5 0 0 0 .614.614l5.638-1.47A11.934 11.934 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.797 9.797 0 0 1-5.003-1.376l-.36-.214-3.724.97.993-3.63-.234-.374A9.797 9.797 0 0 1 2.182 12C2.182 6.573 6.573 2.182 12 2.182S21.818 6.573 21.818 12 17.427 21.818 12 21.818z"/>
+            </svg>
+            Per WhatsApp anmelden
+          </a>
+          <a href="#ablauf" class="inline-flex items-center justify-center gap-2 rounded-full bg-white/6 backdrop-blur border border-white/15 text-white font-display font-semibold px-8 py-4 text-[15px] transition-all sm:hover:bg-white/12">
+            Wie läuft's ab?
+          </a>
+        </div>
+
+        <div class="hero-reveal hero-reveal-d6 flex items-center gap-4 sm:gap-8 pt-7 border-t border-white/8">
+          <div>
+            <div class="text-gradient-orange font-display font-extrabold text-2xl leading-none mb-0.5">Sa &amp; So</div>
+            <div class="text-[11px] text-white/55 uppercase tracking-[0.12em] font-medium">10:00 Uhr</div>
+          </div>
+          <div class="w-px h-9 bg-white/10"></div>
+          <div>
+            <div class="font-display font-extrabold text-2xl text-white leading-none mb-0.5">5 bis 10</div>
+            <div class="text-[11px] text-white/55 uppercase tracking-[0.12em] font-medium">Teams</div>
+          </div>
+          <div class="w-px h-9 bg-white/10"></div>
+          <div>
+            <div class="font-display font-extrabold text-2xl text-white leading-none mb-0.5">25 €</div>
+            <div class="text-[11px] text-white/55 uppercase tracking-[0.12em] font-medium">Pro Termin</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (() => {
+      const els = document.querySelectorAll<HTMLElement>('.hero-reveal');
+      els.forEach((el) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(28px)';
+      });
+      const animate = () => {
+        els.forEach((el) => {
+          el.style.transition = 'opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1)';
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        });
+      };
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(() => requestAnimationFrame(animate)));
+      } else {
+        requestAnimationFrame(() => requestAnimationFrame(animate));
+      }
+    })();
+  </script>
+
+  <!-- BIG STATEMENT -->
+  <section class="relative py-24 md:py-40 bg-anthrazit overflow-hidden noise">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(249,115,22,.08), transparent 60%);"></div>
+    <div class="relative max-w-[900px] mx-auto px-5 sm:px-6 lg:px-8 text-center">
+      <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-5">Warum gerade jetzt</span>
+      <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(2rem,6vw,4.5rem)] font-display font-extrabold text-white leading-[1.05] tracking-tight mb-6">
+        Der Kopf baut um.
+        <span class="block text-gradient-orange mt-2">Das Training bleibt.</span>
+      </h2>
+      <p class="reveal reveal-delay-2 text-[clamp(1rem,2vw,1.35rem)] text-white/50 max-w-[700px] mx-auto leading-relaxed font-light">
+        Zwischen fünf Monaten und zwei Jahren ist dein Hund mitten im Umbau. Impulskontrolle fällt schwerer, Gelerntes wackelt. Wer jetzt aufhört, fängt später oft von vorn an. Deshalb üben wir weiter, in der Gruppe und unter echter Ablenkung.
+      </p>
+    </div>
+  </section>
+
+  <!-- ECKDATEN-STRIP -->
+  <section class="py-16 bg-anthrazit-2">
+    <div class="max-w-[1200px] mx-auto px-5 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {[
+          { label: "Alter", value: "5 Monate bis 2 Jahre" },
+          { label: "Termine", value: "Sa & So, 10:00 Uhr" },
+          { label: "Gruppengröße", value: "5 bis 10 Teams" },
+          { label: "Preis", value: "25 € pro Termin" },
+        ].map((d) => (
+          <div class="reveal bg-anthrazit-3 rounded-[20px] p-6 border border-white/4 text-center">
+            <div class="text-[11px] uppercase tracking-[0.2em] text-orange font-semibold mb-2">{d.label}</div>
+            <div class="font-display font-bold text-white text-lg">{d.value}</div>
+          </div>
+        ))}
+      </div>
+      <p class="mt-5 text-white/55 text-sm text-center">Wechselnde Orte. Den Treffpunkt bekommst du bei der Anmeldung.</p>
+    </div>
+  </section>
+
+  <!-- TRAININGSINHALTE -->
+  <section id="inhalte" class="py-24 md:py-32 bg-anthrazit">
+    <div class="max-w-[1200px] mx-auto px-5 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-16">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Trainingsinhalte</span>
+        <h2 class="reveal reveal-delay-1 text-4xl md:text-6xl font-display font-extrabold text-white tracking-tight leading-[1.05]">
+          Was ihr in der<br/>
+          <span class="text-gradient-orange">Junghundegruppe übt.</span>
+        </h2>
+        <p class="reveal reveal-delay-2 text-lg text-white/50 mt-6 font-light">Eine Auswahl der Themen, an denen wir arbeiten.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {inhalte.map((t, i) => (
+          <div class={`reveal reveal-delay-${(i % 4) + 1} group relative bg-anthrazit-3 rounded-[20px] p-7 border border-white/4 hover:bg-anthrazit-4 hover:-translate-y-1 transition-all duration-500 overflow-hidden`}>
+            <div class="absolute -top-8 -right-8 w-24 h-24 bg-orange/0 rounded-full group-hover:bg-orange/8 transition-colors blur-xl pointer-events-none"></div>
+            <div class="relative">
+              <svg class="w-9 h-9 mb-5 text-orange inline-block transform group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={t.icon}></svg>
+              <h3 class="font-display font-bold text-lg text-white mb-2.5 group-hover:text-orange transition-colors">{t.title}</h3>
+              <p class="text-[14px] text-white/60 leading-relaxed">{t.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FÜR WEN + ORTE -->
+  <section class="py-24 md:py-32 bg-anthrazit-2 border-t border-white/5">
+    <div class="max-w-[820px] mx-auto px-5 sm:px-6 lg:px-8">
+      <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Junghundekurs</span>
+      <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(1.8rem,5vw,3.2rem)] font-display font-extrabold text-white tracking-tight leading-[1.1] mb-8">
+        Für wen die Gruppe ist <span class="text-gradient-orange">und wo wir trainieren.</span>
+      </h2>
+      <div class="reveal reveal-delay-2 space-y-5 text-white/60 leading-relaxed text-[16px] md:text-[17px]">
+        <h3 class="font-display font-bold text-white text-xl md:text-2xl">Nach der Welpengruppe geht es hier weiter</h3>
+        <p>Die Junghundegruppe ist der direkte nächste Schritt nach meiner <a href="/welpengruppe/" class={linkKlasse}>Welpengruppe</a>. Ihr macht einfach weiter, ohne Pause und ohne neu anzufangen. Du warst nicht in meinem Welpenkurs? Dann steigst du von außen ein, das geht jederzeit.</p>
+
+        <h3 class="font-display font-bold text-white text-xl md:text-2xl pt-4">Junghundegruppe oder Grunderziehung?</h3>
+        <p>Die Junghundegruppe ist für Hunde von 5 Monaten bis 2 Jahren. Die <a href="/grunderziehungsgruppe/" class={linkKlasse}>Grunderziehungsgruppe</a> trifft sich immer in Kiel oder in Rendsburg und Umgebung, Einstieg ab 8 Monaten, auch für deutlich ältere Hunde. Welche Gruppe für euch passt, klären wir kurz per WhatsApp.</p>
+
+        <h3 class="font-display font-bold text-white text-xl md:text-2xl pt-4">Wechselnde Orte statt fester Platz</h3>
+        <p>Wir treffen uns samstags und sonntags um 10:00 Uhr, mal in Bredenbek, mal in <a href="/hundeschule-kiel/" class={linkKlasse}>Kiel</a>, mal am Nord-Ostsee-Kanal und auch an anderen Orten. Den Treffpunkt bekommst du bei der Anmeldung. Der Ortswechsel ist Absicht: Dein Hund soll nicht nur auf einem bekannten Platz funktionieren, sondern überall.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EINSTIEG / 3 STEPS -->
+  <section id="ablauf" class="py-16 md:py-32 bg-anthrazit relative overflow-hidden scroll-mt-24">
+    <div class="absolute top-0 left-1/4 w-[400px] h-[400px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(249,115,22,.06), transparent 60%);"></div>
+    <div class="relative max-w-[1200px] mx-auto px-5 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-16">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">So läuft's ab</span>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(1.8rem,5vw,3.5rem)] font-display font-extrabold text-white tracking-tight leading-[1.1]">
+          In <span class="text-gradient-orange">drei Schritten</span> dabei.
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+        <div class="hidden md:block absolute top-12 left-12 right-12 h-px bg-gradient-to-r from-transparent via-orange/30 to-transparent"></div>
+        {schritte.map((s, i) => (
+          <div class={`reveal reveal-delay-${i + 1} text-center`}>
+            <div class="relative w-24 h-24 mx-auto mb-6">
+              <div class="absolute inset-0 bg-orange/20 rounded-full blur-xl"></div>
+              <div class="relative w-24 h-24 rounded-full bg-gradient-to-br from-orange to-orange-dark flex items-center justify-center text-[28px] font-display font-extrabold text-white shadow-[0_0_60px_rgba(249,115,22,0.25)]">
+                {s.step}
+              </div>
+            </div>
+            <h3 class="font-display font-bold text-[22px] text-white mb-2">{s.title}</h3>
+            <p class="text-sm text-white/60 leading-relaxed">{s.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PREIS -->
+  <section class="py-16 md:py-24 bg-anthrazit-2">
+    <div class="max-w-[900px] mx-auto px-5 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Investition</span>
+        <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(1.8rem,5vw,3.5rem)] font-display font-extrabold text-white tracking-tight leading-[1.1]">
+          Was die Junghundegruppe kostet, <span class="text-gradient-orange">ganz ohne Kleingedrucktes.</span>
+        </h2>
+      </div>
+      <div class="reveal bg-anthrazit-3 rounded-[24px] border border-white/6 overflow-hidden">
+        <div class="p-8 md:p-12 grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <div class="text-[11px] uppercase tracking-[0.2em] text-orange font-semibold mb-4">Junghundegruppe</div>
+            <div class="space-y-4 mb-6">
+              <div>
+                <div class="flex items-end gap-2 mb-1">
+                  <span class="text-5xl font-display font-extrabold text-white">25</span>
+                  <span class="text-2xl font-display font-bold text-orange mb-1">€</span>
+                </div>
+                <div class="text-white/55 text-sm">pro Termin</div>
+              </div>
+              <div class="bg-anthrazit-4 rounded-2xl p-4 border border-orange/20">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-2xl font-display font-extrabold text-white">225 €</span>
+                  <span class="text-sm text-white/50 ml-auto">10er-Karte</span>
+                </div>
+                <div class="text-white/55 text-sm">umgerechnet 22,50 € pro Termin</div>
+              </div>
+            </div>
+            <a href={waAnmeldung} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#25D366] hover:bg-[#1ebe5d] text-white font-display font-semibold px-7 py-3.5 text-[15px] transition-all active:scale-95">
+              Per WhatsApp anmelden
+            </a>
+          </div>
+          <div class="space-y-3">
+            {[
+              "Für Hunde von 5 Monaten bis 2 Jahren",
+              "Samstags und sonntags, 10:00 Uhr",
+              "5 bis 10 Teams pro Gruppe",
+              "Wechselnde Orte, Treffpunkt bei Anmeldung",
+              "Einzeln zahlen oder mit der 10er-Karte",
+            ].map((item) => (
+              <div class="flex items-center gap-3">
+                <svg class="w-4 h-4 text-orange flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 9l3.5 3.5L13 5"/></svg>
+                <span class="text-[14px] text-white/60">{item}</span>
+              </div>
+            ))}
+            <div class="pt-3 mt-3 border-t border-white/6">
+              <a href="/preise/" class="text-orange text-sm font-semibold hover:text-orange-dark transition-colors">Alle Preise ansehen →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="relative py-32 md:py-48 bg-anthrazit text-white overflow-hidden noise">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(249,115,22,0.22),transparent_60%)]"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-orange/8 rounded-full blur-3xl"></div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="reveal inline-block text-orange font-semibold uppercase text-sm tracking-[0.3em] mb-6">Samstags und sonntags, 10:00 Uhr</span>
+      <h2 class="reveal reveal-delay-1 text-5xl md:text-7xl lg:text-8xl font-display font-extrabold mb-8 tracking-tight leading-[0.95]">
+        Jetzt<br/>
+        <span class="text-gradient-orange">dranbleiben.</span>
+      </h2>
+      <p class="reveal reveal-delay-2 text-xl md:text-2xl text-white/50 mb-12 font-light">Schreib mir kurz per WhatsApp. Du bekommst den nächsten Treffpunkt.</p>
+      <div class="reveal reveal-delay-3 flex flex-col sm:flex-row flex-wrap gap-3.5 justify-center">
+        <a href={waAnmeldung} target="_blank" rel="noopener noreferrer" class="group inline-flex items-center justify-center gap-2.5 rounded-full bg-[#25D366] hover:bg-[#1ebe5d] text-white font-display font-semibold px-10 py-[18px] text-[17px] transition-all shadow-[0_0_80px_rgba(37,211,102,0.25)] hover:scale-[1.03] active:scale-95">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.528 5.845L.057 23.428a.5.5 0 0 0 .614.614l5.638-1.47A11.934 11.934 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+          Per WhatsApp anmelden
+        </a>
+      </div>
+      <div class="reveal reveal-delay-3 mt-5">
+        <a href="tel:+4915147736042" class="text-white/50 hover:text-white text-[15px] font-medium transition-colors">oder direkt anrufen: 0151 47736042</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

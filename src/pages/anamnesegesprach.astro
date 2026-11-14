@@ -26,7 +26,7 @@ const ablauf = [
 ];
 
 const fuerWen = [
-  "Leinenaggression, Pöbeln gegen Hunde oder Menschen",
+  '<a href="/hund-poebelt-an-der-leine/" class="underline decoration-orange/60 underline-offset-4 hover:text-orange">Leinenaggression</a>, Pöbeln gegen Hunde oder Menschen',
   "Angst, Unsicherheit, Stress im Alltag",
   "Probleme beim Alleinebleiben",
   "Jagdverhalten, fehlender Rückruf",
@@ -37,6 +37,7 @@ const fuerWen = [
 ];
 
 const faq = [
+  { q: "Brauche ich einen Hundepsychologen oder einen Hundetrainer?", a: "Bei Problemverhalten wie Leinenaggression, Angst oder Stress im Alltag brauchst du jemanden, der deinen Hund in seinem Alltag erlebt und mit dir einen Trainingsplan aufbaut. Genau das passiert in der Verhaltensanalyse. „Hundepsychologe“ ist kein geschützter Begriff, ich verzichte bewusst darauf und nenne mich Hundetrainer. Steckt etwas Medizinisches dahinter, gehört dein Hund zuerst zum Tierarzt." },
   { q: "Was ist der Unterschied zur normalen Einzelstunde?", a: "Die Verhaltensanalyse ist der Einstieg: Wir analysieren, beobachten und legen fest, woran wir konkret arbeiten. Erst danach wissen wir, wo wir ansetzen. Einzelstunden bauen darauf auf." },
   { q: "Muss ich danach unbedingt Folgestunden buchen?", a: "Nein. Manche setzen den Plan komplett selbst um, die Verhaltensanalyse ist so aufgebaut, dass das funktioniert. Andere möchten gerne Begleitung. Du entscheidest, nichts ist Pflicht." },
   { q: "Was passiert beim Vorgespräch?", a: "Wir telefonieren vorab kurz. So komme ich nicht unvorbereitet zu euch, sondern kenne eure Situation schon, bevor wir starten." },
@@ -57,7 +58,7 @@ const testimonials = [
 ];
 ---
 
-<Layout title="Verhaltensberatung & Anamnese für Hunde | Kiel & Umgebung" description="Dein Hund zeigt Problemverhalten? Wir analysieren die Ursachen gemeinsam im ausführlichen Erstgespräch – der erste Schritt zum entspannten Alltag.">
+<Layout title="Verhaltensberatung Hund: Verhaltensanalyse bei dir zuhause" description="Verhaltensberatung für Hunde bei dir zuhause: Ich analysiere Problemverhalten wie Leinenaggression oder Angst. Kiel, Rendsburg, Eckernförde, Neumünster.">
 
   <section class="relative overflow-clip" style="min-height: 72svh; background: #000;">
     <div class="absolute inset-0">
@@ -78,6 +79,7 @@ const testimonials = [
         </div>
 
         <h1 class="font-display font-extrabold tracking-[-0.04em] leading-[0.92] mb-7">
+          <span class="hero-reveal block text-[clamp(1.125rem,2.4vw,1.5rem)] font-semibold tracking-[-0.01em] leading-tight text-white/80 mb-4">Verhaltensberatung & Verhaltensanalyse für Hunde</span>
           <span class="hero-reveal hero-reveal-d1 block text-[clamp(3rem,9vw,7.5rem)] text-white">Erst verstehen.</span>
           <span class="hero-reveal hero-reveal-d2 block text-[clamp(3rem,9vw,7.5rem)] text-gradient-orange italic">Dann trainieren.</span>
         </h1>
@@ -416,7 +418,7 @@ const testimonials = [
           Wann der Ersttermin der richtige Schritt ist.
         </h2>
         <p class="reveal reveal-delay-2 text-white/50 text-lg mb-8 leading-relaxed font-light">
-          Du musst nicht warten, bis es eskaliert. Je früher wir starten, desto einfacher der Weg.
+          Du musst nicht warten, bis es eskaliert. Je früher wir starten, desto einfacher der Weg. Wie ich mit Aggression und Angst arbeite, liest du im Ratgeber <a href="/problemhund/" class="underline decoration-orange/60 underline-offset-4 hover:text-orange">Problemhund</a>.
         </p>
         <ul class="space-y-4 reveal reveal-delay-3">
           {fuerWen.map((punkt) => (
@@ -424,7 +426,7 @@ const testimonials = [
               <span class="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-orange/15 border border-orange/30 flex items-center justify-center">
                 <svg class="w-3 h-3 text-orange" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3"/></svg>
               </span>
-              <span class="text-white/70 leading-relaxed text-[15px]">{punkt}</span>
+              <span class="text-white/70 leading-relaxed text-[15px]" set:html={punkt}></span>
             </li>
           ))}
         </ul>
@@ -438,6 +440,20 @@ const testimonials = [
       <div class="reveal-scale relative order-first md:order-last">
         <div class="absolute -inset-4 bg-gradient-to-br from-orange/15 to-transparent rounded-3xl blur-2xl"></div>
         <img src="/images/maulkorb_schaeferhund.webp" alt="Schäferhund mit Maulkorb, Problemverhalten gezielt angehen" class="relative rounded-3xl shadow-2xl w-full" style="aspect-ratio: 4/5; object-fit: cover;" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24 bg-anthrazit-2 border-b border-white/5">
+    <div class="max-w-[760px] mx-auto px-5 sm:px-6 lg:px-8">
+      <span class="reveal inline-block text-orange font-semibold uppercase text-[13px] tracking-[0.3em] mb-4">Hundepsychologe oder Hundetrainer?</span>
+      <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(1.8rem,5vw,3.5rem)] font-display font-extrabold text-white tracking-tight leading-[1.1] mb-8">
+        Du suchst einen Hundepsychologen?
+      </h2>
+      <div class="reveal reveal-delay-2 space-y-5 text-white/70 text-[17px] leading-relaxed">
+        <p>Viele, die bei mir landen, haben vorher nach einem Hundepsychologen oder nach Verhaltenstherapie für ihren Hund gesucht. Gemeint ist fast immer dasselbe: Jemand soll verstehen, woher das Problemverhalten kommt, ob dein Hund pöbelt, Angst hat oder nicht zur Ruhe kommt. Und dir dann zeigen, was ihr dagegen tun könnt. Genau das leistet die Verhaltensanalyse.</p>
+        <p>Damit es klar ist: Ich bin Hundetrainer, kein Psychologe und kein Tierarzt. „Hundepsychologe“ ist kein geschützter Begriff, jeder Hundetrainer dürfte sich so nennen. Ich verzichte bewusst darauf. Problemverhalten lese ich an dem ab, was dein Hund im echten Alltag zeigt, nicht in einer Praxis. Steckt etwas Körperliches dahinter, zum Beispiel Schmerzen, schicke ich euch zuerst zum Tierarzt.</p>
+        <p>Ich komme zu dir nach Hause, in <a href="/hundeschule-kiel/" class="underline decoration-orange/60 underline-offset-4 hover:text-orange">Kiel</a>, <a href="/hundeschule-rendsburg/" class="underline decoration-orange/60 underline-offset-4 hover:text-orange">Rendsburg</a>, <a href="/hundeschule-eckernfoerde/" class="underline decoration-orange/60 underline-offset-4 hover:text-orange">Eckernförde</a>, <a href="/hundeschule-neumuenster/" class="underline decoration-orange/60 underline-offset-4 hover:text-orange">Neumünster</a> und im Umland bis etwa 35 km um Bredenbek.</p>
       </div>
     </div>
   </section>

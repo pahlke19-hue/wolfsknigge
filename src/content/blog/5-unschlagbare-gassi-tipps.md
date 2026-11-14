@@ -1,6 +1,6 @@
 ---
-title: "5 unschlagbare Gassi-Tipps für entspannte Spaziergänge in Kiel und Umgebung"
-seoTitle: "5 unschlagbare Gassi-Tipps – Kiel & Umgebung | WolfsKnigge"
+title: "5 unschlagbare Gassi-Tipps für entspannte Spaziergänge"
+seoTitle: "5 Gassi-Tipps für entspannte Spaziergänge | WolfsKnigge"
 description: "5 praxiserprobte Tipps für entspannte Spaziergänge mit Hund in Kiel, Rendsburg, Eckernförde und Neumünster. Mehr Bindung, weniger Stress."
 excerpt: "5 Gassi-Tipps aus meinem Trainingsalltag in Kiel: mehr Bindung, weniger Stress auf jeder Runde."
 pubDate: 2025-07-25
@@ -45,7 +45,7 @@ Dieses kleine Umdenken weg vom reinen „Kilometerfressen" hin zum gemeinsamen E
 Nutze die natürliche Umgebung für kleine Übungen. Das macht mehr Spaß als im sterilen Wohnzimmer und bereitet deinen Hund auf den Alltag vor.
 
 - **Leinenführigkeit üben:** Bleib stehen, sobald die Leine auf Spannung gerät und geh erst weiter, wenn die Leine wieder locker ist. Ein paar Minuten konsequentes Training pro Spaziergang bewirken Wunder.
-- **Grundkommandos:** Ein „Sitz" vor dem Überqueren einer Straße, ein „Platz" auf einer Parkbank oder ein zuverlässiger Rückruf aus dem Spiel heraus – der Spaziergang ist die perfekte Generalprobe.
+- **Grundkommandos:** Ein „Sitz" vor dem Überqueren einer Straße, ein „Platz" auf einer Parkbank oder ein zuverlässiger [Rückruf](/rueckruf-hund-kommt-nicht/) aus dem Spiel heraus – der Spaziergang ist die perfekte Generalprobe.
 
 ### 4. Die Kunst der Hundebegegnung: Souverän statt gestresst
 

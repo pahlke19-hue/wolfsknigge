@@ -158,6 +158,17 @@ const gruppen = [
     badge: "Kleine Gruppe",
   },
   {
+    name: "Junghundegruppe",
+    sub: "5 Monate bis 2 Jahre",
+    umfang: "Sa & So, 10:00 Uhr",
+    preis: "25 €",
+    preisSub: "pro Termin",
+    zehnerkarte: "225 € · 10er-Karte (10% Ersparnis)",
+    text: "5 bis 10 Teams an wechselnden Orten. Direkt nach der Welpengruppe oder als Einstieg von außen.",
+    href: "/junghundegruppe/",
+    badge: "Junghunde",
+  },
+  {
     name: "Social Walk",
     sub: "Bindungsarbeit im Wald",
     umfang: "90 Min.",
@@ -280,7 +291,7 @@ const faq = [
         <h2 class="reveal reveal-delay-1 text-3xl md:text-[clamp(2rem,5vw,3.8rem)] font-display font-extrabold text-white tracking-tight leading-[1.05]">
           Einzeln buchen –<br/><span class="text-gradient-orange">ohne Verpflichtung.</span>
         </h2>
-        <p class="reveal reveal-delay-2 text-white/50 text-base md:text-lg mt-4 font-light leading-relaxed">Starte mit einem Erstgespräch oder direkt mit einer Einzelstunde. Kein Vertrag, kein Abo.</p>
+        <p class="reveal reveal-delay-2 text-white/50 text-base md:text-lg mt-4 font-light leading-relaxed">Starte mit einem Erstgespräch oder direkt mit einer Einzelstunde. Kein Vertrag, kein Abo. Wie die Preise im Vergleich liegen, liest du unter <a href="/hundeschule-kosten/" class="underline decoration-orange/60 underline-offset-4 hover:text-orange">Was kostet eine Hundeschule?</a></p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -388,7 +399,7 @@ const faq = [
         <p class="reveal reveal-delay-2 text-white/50 text-base mt-4 font-light">Kleine Gruppen, echter Kontext, fairer Preis. Für Welpen, Junghunde und alle, die im Team wachsen wollen.</p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {gruppen.map((item, i) => (
           <div class={`reveal reveal-delay-${i + 1} group relative bg-anthrazit-3 rounded-[20px] border border-white/5 hover:border-orange/25 hover:-translate-y-1 transition-all duration-500 overflow-hidden`}>
             <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>

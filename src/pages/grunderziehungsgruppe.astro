@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 
 const inhalte = [
   { icon: '<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>', title: "Zuverlässige Basics", text: "Sitz, Platz, Bleib, auch unter steigender Ablenkung." },
-  { icon: '<path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>', title: "Sicherer Rückruf", text: "Dein Hund kommt freudig und zuverlässig zurück, auch wenn Ablenkung lockt." },
+  { icon: '<path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>', title: "Sicherer Rückruf", text: 'Dein Hund kommt freudig und zuverlässig zurück, auch wenn Ablenkung lockt. <a href="/rueckruf-hund-kommt-nicht/" class="underline decoration-orange/60 underline-offset-4 hover:text-orange">Warum der Rückruf oft scheitert</a>' },
   { icon: '<circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/>', title: "Leinenführigkeit", text: "Entspannte Spaziergänge, auch bei Hundebegegnungen und anderen Reizen." },
   { icon: '<rect x="14" y="4" width="4" height="16" rx="1"/><rect x="6" y="4" width="4" height="16" rx="1"/>', title: "Impulskontrolle", text: "Warten lernen, Reizen widerstehen, Frustration aushalten." },
   { icon: '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>', title: "Klare Kommunikation", text: "Körpersprache, Abbruchsignal, Nähe & Distanz verstehen." },
@@ -92,6 +92,7 @@ const testimonials = [
         </div>
 
         <h1 class="font-display font-extrabold tracking-[-0.04em] leading-[0.92] mb-7">
+          <span class="hero-reveal block text-[clamp(1.125rem,2.4vw,1.5rem)] font-semibold tracking-[-0.01em] leading-tight text-white/80 mb-4">Grunderziehung in der Gruppe in Kiel & Rendsburg</span>
           <span class="hero-reveal hero-reveal-d1 block text-[clamp(3rem,9vw,7.5rem)] text-white">Ein Hund,</span>
           <span class="hero-reveal hero-reveal-d2 block text-[clamp(3rem,9vw,7.5rem)] text-white">mit dem man</span>
           <span class="hero-reveal hero-reveal-d3 block text-[clamp(3rem,9vw,7.5rem)] text-gradient-orange italic">überall hinkann.</span>
@@ -224,6 +225,7 @@ const testimonials = [
         ))}
       </div>
       <p class="mt-5 text-white/55 text-sm text-center">Kieler Gruppe in <a href="/hundeschule-kiel/" class="underline decoration-orange/60 underline-offset-4 hover:text-orange">Kiel</a> · Rendsburger Gruppe rund um <a href="/hundeschule-rendsburg/" class="underline decoration-orange/60 underline-offset-4 hover:text-orange">Rendsburg</a></p>
+      <p class="mt-2 text-white/55 text-sm text-center">Einstieg ab 8 Monaten, auch deutlich ältere Hunde sind willkommen. Für jüngere Hunde ab 5 Monaten gibt es die <a href="/junghundegruppe/" class="underline decoration-orange/60 underline-offset-4 hover:text-orange">Junghundegruppe</a>.</p>
     </div>
   </section>
 
@@ -290,7 +292,7 @@ const testimonials = [
             <div class="relative">
               <svg class="w-9 h-9 mb-5 text-orange inline-block transform group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={t.icon}></svg>
               <h3 class="font-display font-bold text-lg text-white mb-2.5 group-hover:text-orange transition-colors">{t.title}</h3>
-              <p class="text-[14px] text-white/60 leading-relaxed">{t.text}</p>
+              <p class="text-[14px] text-white/60 leading-relaxed" set:html={t.text}></p>
             </div>
           </div>
         ))}

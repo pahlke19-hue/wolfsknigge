@@ -6,7 +6,7 @@ const features = [
   { bold: "Mobil & Flexibel", text: "Ich komme zu dir nach Hause: Rendsburg, Büdelsdorf, Fockbek, Osterrönfeld, Westerrönfeld und das gesamte Umland." },
   { bold: 'Experte für "schwierige Felle"', text: "Echte Hilfe bei Aggression & Leinenpöbelei (kein Hundeplatz-Schema-F)." },
   { bold: "Training im realen Umfeld", text: "Wir üben dort, wo du lebst: am Kanal, in der Stadt oder im Park." },
-  { bold: "Welpenstart mit Plan", text: "Sozialisierung im echten Leben statt nur im eingezäunten Auslauf." },
+  { bold: '<a href="/welpengruppe/" class="underline decoration-orange/60 underline-offset-4 hover:text-orange">Welpenkurs Rendsburg</a> mit Plan', text: "Sozialisierung im echten Leben statt nur im eingezäunten Auslauf." },
   { bold: "Fit für den Rendsburger Alltag", text: "In kleinen Gruppen Leinenführigkeit, Rückruf & Co. meistern." },
 ];
 
@@ -24,15 +24,22 @@ const extraContent = [
   'Eine Rendsburger Eigenheit solltest du nicht unterschätzen: den Lärm. Die Eisenbahnhochbrücke, der Schiffsverkehr, die Bahnlinie mitten durch die Stadt. Manche Hunde blenden das aus, andere sind dadurch dauerhaft im Stress und explodieren dann bei der ersten Hundebegegnung. Ob das bei euch eine Rolle spielt, sehe ich mir in der Verhaltensanalyse genau an, bevor wir einen Plan bauen.',
   'Der Weg dahin ist unspektakulär und genau deshalb wirksam: Ich komme zu dir, wir gehen eure echten Runden, und ich zeige dir an jeder kritischen Stelle, was du konkret anders machst. Kein Hundeplatz-Umweg, sondern Training am Kanal, in deiner Straße, in deinem Ortsteil.',
 ];
+
+const ortsFaq = [
+  { frage: "Was kostet die Anfahrt nach Rendsburg?", antwort: 'Von Bredenbek nach Rendsburg ist es nicht weit. Die ersten 25 km ab Bredenbek sind frei, darüber kommen 30 Cent pro gefahrenem Kilometer dazu. Was das für deine Adresse heißt, sage ich dir vorher.' },
+  { frage: "Wo trainieren wir in Rendsburg?", antwort: 'Bei dir zuhause und dort, wo euer Alltag spielt: am Nord-Ostsee-Kanal, an der Obereider, in der Innenstadt. Ich komme auch nach Büdelsdorf, Fockbek, Osterrönfeld, Westerrönfeld und Nortorf.' },
+  { frage: "Gibt es Welpenkurs und Gruppentraining in Rendsburg?", antwort: 'Ja. Die <a href="/welpengruppe/" class="underline decoration-orange/60 underline-offset-4 hover:text-orange">Welpengruppe</a> trifft sich an wechselnden Orten rund um Rendsburg und Kiel, die <a href="/grunderziehungsgruppe/" class="underline decoration-orange/60 underline-offset-4 hover:text-orange">Grunderziehungsgruppe</a> hat eine eigene Rendsburger Gruppe.' },
+  { frage: "Wie schnell bekomme ich einen Termin in Rendsburg?", antwort: 'Schreib mir per WhatsApp oder ruf an. Du bekommst innerhalb von 24 Stunden eine Antwort, dann legen wir den ersten Termin gemeinsam fest. Das Kennenlerngespräch am Telefon ist kostenlos.' },
+];
 ---
 
 <Layout title="Hundeschule Rendsburg: Hundetrainer kommt zu dir" description="Leinenpöbeln, Angst oder kein Rückruf? René Pahlke trainiert mit dir in Rendsburg, Büdelsdorf und am Nord-Ostsee-Kanal. 5,0 Sterne, Kennenlernen kostenlos.">
   <script type="application/ld+json" is:inline set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://wolfsknigge.de/hundeschule-rendsburg/#localbusiness",
+    "@id": "https://wolfsknigge.de/#hundeschule",
     "name": "WolfsKnigge - Mobile Hundeschule",
-    "url": "https://wolfsknigge.de/hundeschule-rendsburg/",
+    "url": "https://wolfsknigge.de/",
     "image": "https://wolfsknigge.de/images/og-default.webp",
     "priceRange": "$$",
     "telephone": "+4915147736042",
@@ -56,12 +63,9 @@ const extraContent = [
     introParagraphs={introParagraphs}
     extraContent={extraContent}
     routeImage="/images/hundetraining_am_nok-1200.webp"
-    routeImageAlt="Welpen trainieren am Kanal in Rendsburg"
+    routeImageAlt="Gruppentraining am Nord-Ostsee-Kanal in Rendsburg"
+    ortsFaq={ortsFaq}
     anamneseText="Der erste Schritt: ausführliche Bestandsaufnahme & individuelle Trainingsplanung. Direkt in Fockbek, Büdelsdorf & Umgebung."
-    anamneseAlt="Hundetraining in Rendsburg an Aggressionsverhalten"
-    einzelAlt="Leinenführig durch den Park in Büdelsdorf"
     welpenText="Der beste Start für dich und deinen Welpen: Sozialisierung, Grunderziehung und Gewöhnung z.B. an den Nord-Ostsee-Kanal, Schiffe usw."
-    welpenAlt="Welpenschule am Nord-Ostsee-Kanal"
-    grundAlt="Gruppentraining in der Altstadt und im Stadtpark Rendsburg"
   />
 </Layout>

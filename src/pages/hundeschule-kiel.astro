@@ -24,15 +24,22 @@ const extraContent = [
   'Dazu kommt das, was Kiel eben ausmacht: Großveranstaltungen wie die Kieler Woche, volle Fördeufer im Sommer, Möwen, die sich für jede Wurstsemmel interessieren. Ein Rückruf, der nur auf der leeren Wiese klappt, hilft dir am <strong>Falckensteiner Strand</strong> herzlich wenig. Deshalb bauen wir Rückruf und Impulskontrolle genau gegen diese Reize auf, mit klarem Plan statt Hoffnung.',
   'Konkret läuft das so: Ich komme in deinen Stadtteil, wir schauen uns eure Alltagswege an und legen fest, wo das Training beginnt. Erst dort, wo dein Hund noch denken kann, dann gezielt näher an die Orte, die heute noch schwierig sind. So wird aus Vermeiden wieder normales Gassigehen, ob in Wik, Hassee, Gaarden oder direkt an der Förde.',
 ];
+
+const ortsFaq = [
+  { frage: "Fallen für Kiel Anfahrtskosten an?", antwort: "Von Bredenbek bin ich über die A210/A215 in rund 20 Minuten in Kiel. Bis 25 km Entfernung zahlst du keine Anfahrt, jeder Kilometer darüber kostet 30 Cent für Hin- und Rückweg. Den genauen Betrag für deine Kieler Adresse nenne ich dir vor dem ersten Termin." },
+  { frage: "Wo trainieren wir in Kiel?", antwort: "Dort, wo euer Alltag stattfindet: bei dir zuhause, in deinem Stadtteil und an Orten wie Kiellinie, Schrevenpark oder Düsternbrooker Gehölz. Ich komme nach Gaarden, Wik, Projensdorf, Hassee und Elmschenhagen, genauso nach Altenholz und Kronshagen." },
+  { frage: "Wo treffen sich Welpenkurs und Gruppe für Kieler Hunde?", antwort: 'Für die <a href="/grunderziehungsgruppe/" class="underline decoration-orange/60 underline-offset-4 hover:text-orange">Grunderziehungsgruppe</a> gibt es eine eigene Kieler Gruppe. Der <a href="/welpengruppe/" class="underline decoration-orange/60 underline-offset-4 hover:text-orange">Welpenkurs</a> wechselt die Orte rund um Kiel und Rendsburg, den Treffpunkt schicke ich dir vorher.' },
+  { frage: "Wie schnell kann ich in Kiel loslegen?", antwort: "Meld dich per WhatsApp oder Telefon, innerhalb von 24 Stunden hörst du von mir. Den ersten Termin bei dir in Kiel stimmen wir danach gemeinsam ab, das erste Telefonat kostet nichts." },
+];
 ---
 
 <Layout title="Hundeschule Kiel & Hundetrainer Kiel | WolfsKnigge" description="Mobile Hundeschule Kiel: 300+ Teams, 5,0 auf Google. René Pahlke kommt zu dir – Hilfe bei Leinenaggression & Angst. Training an Kiellinie & Schrevenpark.">
   <script type="application/ld+json" is:inline set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://wolfsknigge.de/hundeschule-kiel/#localbusiness",
+    "@id": "https://wolfsknigge.de/#hundeschule",
     "name": "WolfsKnigge - Mobile Hundeschule",
-    "url": "https://wolfsknigge.de/hundeschule-kiel/",
+    "url": "https://wolfsknigge.de/",
     "image": "https://wolfsknigge.de/images/og-default.webp",
     "priceRange": "$$",
     "telephone": "+4915147736042",
@@ -56,12 +63,9 @@ const extraContent = [
     introParagraphs={introParagraphs}
     extraContent={extraContent}
     routeImage="/images/rene_unterordnung.webp"
-    routeImageAlt="Hundetraining in Kiel an der Förde"
+    routeImageAlt="René beim Hundetraining mit einem Hund auf einer Wiese"
+    ortsFaq={ortsFaq}
     anamneseText="Der erste Schritt: ausführliche Bestandsaufnahme & individuelle Trainingsplanung. Direkt bei dir zuhause in Kiel."
-    anamneseAlt="Verhaltensanalyse Hundetraining in Kiel"
-    einzelAlt="Einzelstunde Hundetrainer Kiel im Schrevenpark"
     welpenText="Welpenschule Kiel mit Plan: Sozialisierung im echten Stadtleben statt isolierter Spielplatz. Gewöhnung an Joggern, Radfahrern, Stadtlärm."
-    welpenAlt="Welpenschule Kiel im Schrevenpark"
-    grundAlt="Gruppentraining Hundeschule Kiel Altstadt"
   />
 </Layout>

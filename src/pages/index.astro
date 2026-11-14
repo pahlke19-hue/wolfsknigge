@@ -5,7 +5,7 @@ import VideoIntro from "../components/VideoIntro.astro";
 // Symptom-Check (Original-Live-Texte, Reihenfolge = Hero-Chip-Deeplinks)
 const painPoints = [
   { id: "sym-leine", icon: '<path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/>', title: "Leinenpöbeln", text: "Kaum taucht ein anderer Hund auf, dreht deiner komplett durch und jeder Spaziergang wird zum Nervenspiel." },
-  { id: "sym-angst", icon: '<circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/>', title: "Angst und Panik", text: "Gewitter, Böller oder fremde Menschen: was für andere Hunde normal ist, löst bei deinem puren Stress aus." },
+  { id: "sym-angst", icon: '<circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/>', title: "Angst und Panik", text: "Gewitter, Böller oder fremde Menschen: was für andere Hunde normal ist, löst bei deinem puren Stress aus.", link: { href: "/hund-angst-silvester/", label: "Silvester steht vor der Tür: So bereitest du deinen Hund vor", bis: "2027-01-02" } },
   { id: "sym-rueckruf", icon: '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/>', title: "Kein Rückruf", text: "Er kommt schon, aber nur wenn er gerade Lust hat. Und in dem Moment, wo es wirklich zählt, ist er weg." },
   { id: "sym-stadt", icon: '<path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/>', title: "Reizüberflutung in der Stadt", text: "Radfahrer, Kinderwagen, Skater: in der Stadt ist dein Hund nur noch am Limit statt entspannt unterwegs." },
   { id: "sym-basics", icon: '<circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/>', title: "Basics funktionieren nicht", text: "Zu Hause klappt Sitz wunderbar, aber draußen auf der Straße ist dein Hund wie ausgewechselt und du weißt nicht, warum." },
@@ -31,6 +31,7 @@ const prozess = [
 // Kompakt-Angebote unter den beiden Featured-Karten (Original-Live-Copy)
 const offersCompact = [
   { group: "welpe", title: "Welpenkurs", sub: "8 Termine in der Gruppe, oder einzeln zuhause für 80 €", price: "185 €", href: "/welpengruppe/", image: "/images/welpe_mit_kuscheltier.webp", alt: "Welpe in der Welpengruppe" },
+  { group: "welpe", title: "Junghundegruppe", sub: "5 Monate bis 2 Jahre, Sa & So 10 Uhr", price: "25 €", href: "/junghundegruppe/", image: "/images/hundetraining_am_nok-1200.webp", alt: "Gruppentraining am Nord-Ostsee-Kanal" },
   { group: "alltag", title: "Grunderziehung", sub: "Kleingruppe, Einstieg jederzeit", price: "25 €", href: "/grunderziehungsgruppe/", image: "/images/grunderziehungsgruppe.webp", alt: "Grunderziehung in der Kleingruppe" },
   { group: "alltag", title: "Einzelstunde", sub: "1:1 Coaching im Alltag", price: "90 €", href: "/einzelstunde/", image: "/images/rene_unterordnung.webp", alt: "Einzeltraining mit Hund" },
 ];
@@ -247,6 +248,7 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
               </summary>
               <div class="sym-body">
                 <p>{p.text}</p>
+                {p.link && new Date() < new Date(`${p.link.bis}T00:00:00`) && <p data-bis={p.link.bis}><a href={p.link.href} class="underline decoration-orange/60 underline-offset-4 hover:text-orange">{p.link.label}</a></p>}
               </div>
             </details>
           ))}
@@ -312,7 +314,7 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
         </nav>
 
         <h3 class="weg-h reveal" id="weg-problem">Mein Hund hat ein Problem</h3>
-        <p class="weg-sub reveal">Leinenpöbeln, Angst, Aggression: Jedes ernsthafte Training beginnt mit der Verhaltensanalyse. Wer direkt durchstarten will, nimmt das Starter-Paket.</p>
+        <p class="weg-sub reveal"><a href="/hund-poebelt-an-der-leine/" class="underline decoration-orange/60 underline-offset-4 hover:text-orange">Leinenpöbeln</a>, Angst, Aggression: Jedes ernsthafte Training beginnt mit der Verhaltensanalyse. Wer direkt durchstarten will, nimmt das Starter-Paket.</p>
 
         <div class="offer-duo reveal reveal-delay-2">
           <article class="offer-feat relative">
@@ -796,6 +798,13 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
       .node-here::after { animation: none; }
     }
   </style>
+
+  <script>
+    // Saisonale Hinweise nach Ablaufdatum ausblenden, auch ohne neuen Build
+    document.querySelectorAll<HTMLElement>('[data-bis]').forEach((el) => {
+      if (new Date() >= new Date(`${el.dataset.bis}T00:00:00`)) el.remove();
+    });
+  </script>
 
   <script>
     // Hero-Reveal, Parallax, Zähler (unverändert übernommen)

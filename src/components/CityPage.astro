@@ -14,11 +14,8 @@ interface Props {
   routeImage: string;
   routeImageAlt: string;
   anamneseText: string;
-  anamneseAlt: string;
-  einzelAlt: string;
   welpenText: string;
-  welpenAlt: string;
-  grundAlt: string;
+  ortsFaq: { frage: string; antwort: string }[];
   landingPage?: boolean;
 }
 
@@ -40,22 +37,6 @@ const painPoints = [
   { id: "sym-ersthund", icon: '<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>', title: "Überfordert als Ersthundebesitzer", text: "Niemand hat dir erklärt wie das wirklich geht. YouTube-Videos bringen dich nicht weiter." },
 ];
 
-const vergleich = [
-  { topic: "Trainingsort", hundeplatz: "Immer derselbe Hundeplatz", mobil: "Bei dir vor Ort. Dort, wo Probleme entstehen." },
-  { topic: "Reizlage", hundeplatz: "Isoliert und eingezäunt", mobil: "Echter Alltag mit Joggern, Autos, anderen Hunden." },
-  { topic: "Transfer", hundeplatz: "Funktioniert oft nur auf dem Platz", mobil: "Training findet direkt im Alltag statt." },
-  { topic: "Betreuung", hundeplatz: "Große Gruppen, wenig Zeit pro Team", mobil: "1:1 oder kleine Gruppen. Voller Fokus." },
-  { topic: "Methodik", hundeplatz: "Schema F für alle Hunde", mobil: "Individueller Plan nach moderner Lerntheorie." },
-];
-
-// Fahrplan (wie Startseite); Etappe 1 kostenlos
-const prozess = [
-  { step: "1", title: "Kennenlernen", text: "Kostenloses Erstgespräch per Telefon. Wir schauen, ob wir zueinander passen.", free: true },
-  { step: "2", title: "Verhaltensanalyse", text: "Ausführliche Bestandsaufnahme bei dir vor Ort. Ich lerne euch im Alltag kennen." },
-  { step: "3", title: "Klarer Fahrplan", text: "Ich gebe dir einen klaren, logisch aufgebauten Plan mit den ersten Trainingsschritten, damit ihr direkt loslegen könnt." },
-  { step: "4", title: "Umsetzung", text: "Training dort, wo das Problem entsteht. Konsequent, fair, mit System." },
-];
-
 const testimonials = [
   { name: "Jori K.", text: "Man merkt, dass er sich wirklich für uns interessiert und helfen möchte die Problempunkte anzugehen." },
   { name: "Kim R.", text: "Wir fühlen uns nach etlichen Trainerwechseln von René wirklich verstanden und gut bei ihm aufgehoben mit unseren Problemen." },
@@ -68,10 +49,10 @@ const testimonials = [
 ];
 
 const allCities = [
-  { city: "Kiel", href: "/hundeschule-kiel/", text: "Kiellinie, Schrevenpark, Holtenauer.", image: "/images/hundeplatz_kiel.webp" },
-  { city: "Rendsburg", href: "/hundeschule-rendsburg/", text: "Nord-Ostsee-Kanal, Büdelsdorf, Fockbek.", image: "/images/rendsburg-900.webp" },
-  { city: "Eckernförde", href: "/hundeschule-eckernfoerde/", text: "Hafen, Promenade, Hundestrand.", image: "/images/social_walk_eckernfoerde-1200.webp" },
-  { city: "Neumünster", href: "/hundeschule-neumuenster/", text: "Einfelder See, Stadtwald, Großflecken.", image: "/images/neumuenster-1200.webp" },
+  { city: "Kiel", href: "/hundeschule-kiel/", text: "Training an Kiellinie und Schrevenpark.", image: "/images/hundeplatz_kiel.webp" },
+  { city: "Rendsburg", href: "/hundeschule-rendsburg/", text: "Training am Kanal und in Büdelsdorf.", image: "/images/rendsburg-900.webp" },
+  { city: "Eckernförde", href: "/hundeschule-eckernfoerde/", text: "Training an Hafen und Strand.", image: "/images/social_walk_eckernfoerde-1200.webp" },
+  { city: "Neumünster", href: "/hundeschule-neumuenster/", text: "Training am See und im Stadtwald.", image: "/images/neumuenster-1200.webp" },
 ];
 const otherCities = allCities.filter((c) => c.city !== p.city);
 
@@ -81,46 +62,13 @@ const pressLogos = [
   { src: "/images/Landeszeitung_Logo.svg", alt: "Landeszeitung", width: 140 },
 ];
 
-const faq = [
-  {
-    frage: `Ist mein Hund wirklich ein Fall für einen Trainer?`,
-    antwort: "Kurze Antwort: Ja, wahrscheinlich. Viele Halter warten zu lange. Ob Leinenpöbeln, Angst oder einfach keine Basics - je früher du anfängst, desto einfacher wird es. Ein kurzes Telefonat kostet nichts und bringt Klarheit."
-  },
-  {
-    frage: "Ich war schon woanders. Warum sollte das hier anders sein?",
-    antwort: "Weil wir nicht auf einem Hundeplatz trainieren. Dein Hund lernt genau dort, wo das Problem auftaucht: in deiner Straße, deinem Park, deiner Stadt. Kein Übungsplatz-Effekt, kein Schema F. Was hier funktioniert, funktioniert im echten Leben."
-  },
-  {
-    frage: "Mein Hund ist sehr aggressiv. Geht das überhaupt?",
-    antwort: "Genau das ist mein Schwerpunkt. Ich habe mich auf Problemverhalten spezialisiert und jahrelang in diesem Bereich gearbeitet. Aggression hat immer eine Ursache. Die finden wir, und dann gehen wir systematisch ran."
-  },
-  {
-    frage: "Wie läuft der erste Termin bei mir zuhause ab?",
-    antwort: "Ich komme zu dir nach Hause und schaue mir die Situation dort an, wo sie im Alltag passiert. Ich beobachte deinen Hund, stelle dir Fragen und mache mir daraus einen Plan. Dann probieren wir direkt erste Übungen aus. Zum Schluss stelle ich dir meine Erkenntnisse vor und wie ein sinnvoller Trainingsplan für euch aussieht."
-  },
-  {
-    frage: "Bist du eher zu hart oder zu lasch mit dem Hund?",
-    antwort: "Weder noch. Ich stimme das Training auf deinen Hund ab, nicht auf ein Schema. Was es bei mir nicht gibt: Kneifen, Schubsen, Schlagen oder andere Methoden, die dem Hund wehtun. Das ist mir wichtig und nicht verhandelbar."
-  },
-  {
-    frage: "Was kostet das Kennenlerngespräch?",
-    antwort: "Nichts. Das erste Gespräch ist kostenlos. Wir schauen gemeinsam, ob und wie ich euch helfen kann. Erst dann entscheidest du, ob du weitermachen möchtest."
-  },
-  {
-    frage: `Kommst du auch wirklich nach ${p.city}?`,
-    antwort: `Ja. Ich bin mobil in einem Umkreis von ca. 35 km rund um Bredenbek aktiv und ${p.city} liegt in meinem Einzugsgebiet. Ruf kurz an, wir klären die Details.`
-  },
-  {
-    frage: "Wie lange dauert es, bis ich Ergebnisse sehe?",
-    antwort: "Das hängt vom Problem und deiner Konsequenz ab. Erste Verbesserungen sind oft nach wenigen Einheiten spürbar. Tiefergehende Verhaltensänderungen brauchen Zeit. Ich sage dir nach der Verhaltensanalyse ehrlich, was realistisch ist."
-  },
-];
+const faq = p.ortsFaq;
 
 const icArrow = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>';
 const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.528 5.845L.057 23.428a.5.5 0 0 0 .614.614l5.638-1.47A11.934 11.934 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>';
 ---
 
-<script type="application/ld+json" is:inline set:html={JSON.stringify({"@context":"https://schema.org","@type":"FAQPage",mainEntity:faq.map((f)=>({"@type":"Question",name:f.frage,acceptedAnswer:{"@type":"Answer",text:f.antwort}}))})} />
+<script type="application/ld+json" is:inline set:html={JSON.stringify({"@context":"https://schema.org","@type":"FAQPage",mainEntity:faq.map((f)=>({"@type":"Question",name:f.frage,acceptedAnswer:{"@type":"Answer",text:f.antwort.replace(/<[^>]+>/g, "")}}))})} />
 
 <!-- HERO -->
 <section id="hero" class="relative overflow-clip" style="min-height: 72svh; background: #000;">
@@ -361,12 +309,12 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
           </nav>
 
           <h3 class="weg-h reveal" id="weg-problem">Mein Hund hat ein Problem</h3>
-          <p class="weg-sub reveal">Leinenpöbeln, Angst, Aggression: Jedes ernsthafte Training beginnt mit der Verhaltensanalyse. Wer direkt durchstarten will, nimmt das Starter-Paket.</p>
+          <p class="weg-sub reveal"><a href="/hund-poebelt-an-der-leine/" class="underline decoration-orange/60 underline-offset-4 hover:text-orange">Leinenpöbeln</a>, Angst, Aggression: Jedes ernsthafte Training beginnt mit der Verhaltensanalyse. Wer direkt durchstarten will, nimmt das Starter-Paket.</p>
 
           <div class="offer-duo reveal reveal-delay-2">
             <article class="offer-feat relative">
               <div class="of-img">
-                <img src="/images/anamnese_termin_im_park.webp" alt={p.anamneseAlt} loading="lazy" />
+                <img src="/images/anamnese_termin_im_park.webp" alt="Verhaltensanalyse: Ersttermin mit Hund im Park" loading="lazy" />
                 <span class="of-badge">Hier startet jedes Training</span>
               </div>
               <div class="of-body">
@@ -398,9 +346,15 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
           <h3 class="weg-h reveal" id="weg-welpe">Ich habe einen Welpen</h3>
           <div class="offers weg-offers reveal reveal-delay-1">
             <a href="/welpengruppe/" class="offer">
-              <img src="/images/welpe_mit_kuscheltier.webp" alt={p.welpenAlt} loading="lazy" />
+              <img src="/images/welpe_mit_kuscheltier.webp" alt="Welpe kuschelt mit einem orangen Plüschtier" loading="lazy" />
               <span class="ot"><span class="on">Welpenkurs</span><span class="os">8 Termine in der Gruppe, oder einzeln zuhause für 80 €</span></span>
               <span class="op">185 €</span>
+              <span class="oarr"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
+            </a>
+            <a href="/junghundegruppe/" class="offer">
+              <img src="/images/hundetraining_am_nok-1200.webp" alt="Gruppentraining am Nord-Ostsee-Kanal" loading="lazy" />
+              <span class="ot"><span class="on">Junghundegruppe</span><span class="os">5 Monate bis 2 Jahre, Sa & So 10 Uhr</span></span>
+              <span class="op">25 €</span>
               <span class="oarr"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
             </a>
           </div>
@@ -408,13 +362,13 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
           <h3 class="weg-h reveal" id="weg-alltag">Alltag und Basics</h3>
           <div class="offers weg-offers reveal reveal-delay-1">
             <a href="/grunderziehungsgruppe/" class="offer">
-              <img src="/images/grunderziehungsgruppe.webp" alt={p.grundAlt} loading="lazy" />
+              <img src="/images/grunderziehungsgruppe.webp" alt="Grunderziehungsgruppe: mehrere Hundeteams auf einer Wiese" loading="lazy" />
               <span class="ot"><span class="on">Grunderziehung</span><span class="os">Kleingruppe, Einstieg jederzeit</span></span>
               <span class="op">25 €</span>
               <span class="oarr"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
             </a>
             <a href="/einzelstunde/" class="offer">
-              <img src="/images/rene_unterordnung.webp" alt={p.einzelAlt} loading="lazy" />
+              <img src="/images/rene_unterordnung.webp" alt="Einzelstunde: René übt mit einem Hund auf der Wiese" loading="lazy" />
               <span class="ot"><span class="on">Einzelstunde</span><span class="os">1:1 Coaching im Alltag</span></span>
               <span class="op">90 €</span>
               <span class="oarr"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>
@@ -484,50 +438,6 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
     </div>
   </section>
 
-  <!-- WP 6 · WARUM MOBIL -->
-  <section class="sec bg-1" id="warum">
-    <span class="node" aria-hidden="true"></span>
-    <div class="jc">
-      <p class="tag reveal">Worum's wirklich geht</p>
-      <h2 class="quote reveal reveal-delay-1">Ein „Sitz" auf dem Hundeplatz bringt dir nichts, <span class="text-gradient-orange">wenn dein Hund im Alltag die Nerven verliert.</span></h2>
-      <p class="sec-sub reveal reveal-delay-2">Echte Verhaltensprobleme lassen sich nicht auf einem isolierten Hundeplatz wegtrainieren. Wir gehen genau dorthin, wo es bei euch tatsächlich knirscht. In deiner Straße, deinem Park, deinem Alltag.</p>
-
-      <div class="vs reveal reveal-delay-2">
-        {vergleich.map((v) => (
-          <div class="vs-row">
-            <div class="vs-cell lose">
-              <p class="vlabel">{v.topic}</p>
-              <p class="vs-line"><svg class="x" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>{v.hundeplatz}</p>
-            </div>
-            <div class="vs-cell win">
-              <p class="vlabel">{v.topic}</p>
-              <p class="vs-line"><svg class="ok" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" viewBox="0 0 16 16"><path d="M3 9l3.5 3.5L13 5"/></svg>{v.mobil}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- WP 7 · FAHRPLAN -->
-  <section class="sec bg-2" id="fahrplan">
-    <span class="node" aria-hidden="true"></span>
-    <div class="jc">
-      <p class="tag reveal">So läufts ab</p>
-      <h2 class="sec-h reveal reveal-delay-1">In <span class="text-gradient-orange">vier Schritten</span> zum entspannten Alltag.</h2>
-
-      <ol class="etappen">
-        {prozess.map((pr) => (
-          <li class="et reveal">
-            <span class="et-num" aria-hidden="true">{pr.step}</span>
-            <h3>{pr.title}{pr.free && <span class="free">kostenlos</span>}</h3>
-            <p>{pr.text}</p>
-          </li>
-        ))}
-      </ol>
-    </div>
-  </section>
-
   <!-- WP 8 · TRAININGSORTE (unique Content pro Stadt, SEO) -->
   {p.extraContent && p.extraContent.length > 0 && (
     <section class="sec bg-1" id="trainingsorte">
@@ -546,9 +456,9 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
   <section class="sec bg-2" id="strecke">
     <span class="node" aria-hidden="true"></span>
     <div class="jc">
-      <p class="tag reveal">Mobil unterwegs</p>
-      <h2 class="sec-h reveal reveal-delay-1">Dein Trainer, <span class="text-gradient-orange">direkt in deiner Stadt.</span></h2>
-      <p class="sec-sub reveal reveal-delay-2">Mobil im 35-km-Radius um Bredenbek. Anfahrt inklusive Kiel, Rendsburg, Eckernförde, Neumünster und das ganze Umland dazwischen.</p>
+      <p class="tag reveal">Auch in der Nachbarschaft</p>
+      <h2 class="sec-h reveal reveal-delay-1">Nicht nur in <span class="text-gradient-orange">{p.city}</span> unterwegs.</h2>
+      <p class="sec-sub reveal reveal-delay-2">Von Bredenbek aus fahre ich im Umkreis von 35 km zu dir, also auch in die Orte zwischen den vier Städten.</p>
 
       <div class="area">
         <div class="map-card reveal reveal-delay-2" role="img" aria-label="Karte des Einsatzgebiets: 35-Kilometer-Radius um Bredenbek mit Kiel, Rendsburg, Eckernförde und Neumünster">
@@ -579,7 +489,7 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
               <circle cx="225" cy="241" r="4.5" fill="#fff"/><text x="217" y="260" text-anchor="middle">Neumünster</text>
             </g>
           </svg>
-          <p class="map-note">Dein Ort liegt dazwischen? Dann komme ich sehr wahrscheinlich auch zu dir.</p>
+          <p class="map-note">Dein Ort fehlt auf der Karte? Frag kurz nach, meist liegt er im Gebiet.</p>
         </div>
 
         <div class="cities">
@@ -600,16 +510,17 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
     <span class="node" aria-hidden="true"></span>
     <div class="jc">
       <p class="tag reveal">Kurz vorm Ziel</p>
-      <h2 class="sec-h reveal reveal-delay-1">Alles, was du <span class="text-gradient-orange">wissen willst.</span></h2>
+      <h2 class="sec-h reveal reveal-delay-1">Fragen zum Training in <span class="text-gradient-orange">{p.city}</span>.</h2>
 
       <div class="faqs reveal reveal-delay-2">
         {faq.map((item) => (
           <details class="faq" name="faq">
             <summary>{item.frage}<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M12 4v16m8-8H4"/></svg></summary>
-            <p class="fa">{item.antwort}</p>
+            <p class="fa" set:html={item.antwort}></p>
           </details>
         ))}
       </div>
+      <p class="sec-sub reveal">Allgemeine Fragen zu Ablauf, Methoden und Kosten beantworte ich auf der <a href="/faq/" class="underline decoration-orange/60 underline-offset-4 hover:text-orange">FAQ-Seite</a>.</p>
     </div>
   </section>
 
@@ -626,12 +537,13 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
           <h2 class="ziel-h reveal reveal-delay-1">Starter-Paket<br /><span class="text-gradient-orange">anfragen.</span></h2>
           <p class="zsub reveal reveal-delay-2">Beschreibe kurz eure aktuelle Situation. Ich melde mich innerhalb von 24 Stunden bei dir.</p>
 
-          <form name={`kontakt-${p.city.toLowerCase()}`} method="POST" data-netlify="true" netlify-honeypot="bot-field" class="cform reveal reveal-delay-2" action="/danke/">
+          <form name={`kontakt-${p.city.toLowerCase()}`} method="POST" data-netlify="true" netlify-honeypot="bot-field" class="cform reveal reveal-delay-2" action="/thanks-formular/">
             <input type="hidden" name="form-name" value={`kontakt-${p.city.toLowerCase()}`} />
             <p class="hidden" aria-hidden="true">
               <label>Bitte dieses Feld leer lassen: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
             </p>
             <input type="hidden" name="stadt" value={p.city} />
+            <input type="hidden" name="herkunft" value="" />
             <input type="hidden" name="paket" value="Starter-Paket" />
 
             <div class="frow">
@@ -779,22 +691,6 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
   .sym-cta a { color: var(--color-orange); font-weight: 600; font-family: var(--font-display); }
   .sym-cta a:hover { color: var(--color-orange-glow); }
 
-  /* Warum mobil */
-  .quote { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; font-size: clamp(1.7rem, 6.4vw, 3rem); color: #fff; max-width: 24ch; margin-bottom: 18px; }
-  .vs { margin-top: 40px; display: flex; flex-direction: column; gap: 2px; border-radius: 20px; overflow: clip; max-width: 860px; }
-  .vs-row { display: grid; grid-template-columns: 1fr 1fr; background: var(--color-anthrazit-3); }
-  .vs-cell { padding: 16px 16px 18px; }
-  .vs-cell .vlabel { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; margin-bottom: 7px; color: rgba(255,255,255,.3); }
-  .vs-cell.win { background: linear-gradient(135deg, rgba(249,115,22,.1), rgba(249,115,22,.02)); }
-  .vs-cell.win .vlabel { color: var(--color-orange); }
-  .vs-line { display: flex; gap: 9px; align-items: flex-start; font-size: 13.5px; line-height: 1.5; }
-  .vs-cell.lose { border-right: 1px solid rgba(255,255,255,.05); }
-  .vs-cell.lose .vs-line { color: rgba(255,255,255,.5); }
-  .vs-cell.win .vs-line { color: #fff; font-weight: 500; }
-  .vs-line svg { width: 15px; height: 15px; flex-shrink: 0; margin-top: 2px; }
-  .vs-line .x { color: rgba(255,255,255,.28); }
-  .vs-line .ok { color: var(--color-orange); }
-
   /* Trainer */
   .trainer { display: grid; gap: 34px; margin-top: 8px; }
   @media (min-width: 880px) { .trainer { grid-template-columns: minmax(0,5fr) minmax(0,6fr); gap: 60px; align-items: center; } }
@@ -828,14 +724,6 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
   .feat .fcheck { display: block; color: var(--color-orange); font-weight: 800; font-size: 18px; margin-bottom: 8px; position: relative; }
   .feat h3 { font-size: 17px; color: #fff; margin-bottom: 8px; position: relative; }
   .feat p { font-size: 13.5px; color: rgba(255,255,255,.6); line-height: 1.6; position: relative; }
-
-  /* Fahrplan (Etappen auf der Route) */
-  .etappen { margin-top: 44px; display: flex; flex-direction: column; gap: 42px; max-width: 640px; }
-  .et { position: relative; }
-  .et-num { position: absolute; left: calc(-1 * var(--rail-gap)); top: -4px; transform: translateX(-50%); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; font-size: 16px; color: #fff; background: linear-gradient(135deg, var(--color-orange), var(--color-orange-dark)); box-shadow: 0 0 0 6px var(--color-anthrazit), 0 0 34px rgba(249,115,22,.4); z-index: 6; }
-  .et h3 { font-size: 19px; color: #fff; margin-bottom: 7px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-  .et .free { font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #67e8f9; background: rgba(54,255,243,.08); border: 1px solid rgba(54,255,243,.25); border-radius: 999px; padding: 4px 10px; }
-  .et p { color: rgba(255,255,255,.7); font-size: 14.5px; line-height: 1.65; max-width: 48ch; }
 
   /* Angebote */
   .wegweiser { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
@@ -996,6 +884,23 @@ const icWa = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
   .extra-prose { max-width: 720px; }
   .extra-prose p { color: rgba(255,255,255,.7); line-height: 1.7; font-size: 15.5px; margin-bottom: 14px; }
 </style>
+
+<script is:inline>
+  (function () {
+    try {
+      var f = document.querySelector('form[name^="kontakt-"]');
+      if (!f || !f.elements["herkunft"]) return;
+      var src = "direkt";
+      var ref = document.referrer || "";
+      if (ref) {
+        var u = new URL(ref);
+        src = u.hostname === location.hostname ? u.pathname : u.hostname;
+      }
+      var ad = /[?&#](gclid|gbraid|wbraid)=/i.test(ref + "&" + location.search + location.hash);
+      f.elements["herkunft"].value = src + " | Anzeige: " + (ad ? "ja" : "nein");
+    } catch (e) {}
+  })();
+</script>
 
 <script>
   // Hero-Reveal, Parallax, Zähler

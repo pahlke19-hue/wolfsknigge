@@ -629,5 +629,18 @@ const angebote = [
     </div>
   </section>
 
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "url": "https://wolfsknigge.de/ueber-mich/",
+    "mainEntity": {
+      "@type": "Person",
+      "@id": "https://wolfsknigge.de/ueber-mich/#rene",
+      "name": "René Pahlke",
+      "jobTitle": "Hundetrainer",
+      "url": "https://wolfsknigge.de/ueber-mich/",
+      "worksFor": { "@id": "https://wolfsknigge.de/#hundeschule" }
+    }
+  })} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify({"@context":"https://schema.org","@type":"FAQPage",mainEntity:faq.map((f)=>({"@type":"Question",name:f.q,acceptedAnswer:{"@type":"Answer",text:f.a}}))})} />
 </Layout>

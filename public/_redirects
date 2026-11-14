@@ -1,6 +1,3 @@
-# Netlify-Subdomain auf Hauptdomain umleiten (Duplicate Content vermeiden)
-https://wolfsknigge.netlify.app/*  https://wolfsknigge.de/:splat  301!
-
 # Review-Funnel: kurze URL für Kunden, führt direkt zum Google-Bewertungsformular
 /bewerten  https://g.page/r/Cd7XaBPmJ5fKEAE/review  302
 

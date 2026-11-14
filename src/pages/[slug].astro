@@ -17,12 +17,13 @@ const { Content } = await render(post);
 const fmt = (d: Date) =>
   d.toLocaleDateString("de-DE", { day: "2-digit", month: "long", year: "numeric" });
 
-// Related: 2 newest other posts
+// Related: gleiche Kategorie zuerst, dann neueste
 const all = await getCollection("blog", ({ data }) => !data.draft);
+const sameCat = (p: (typeof all)[number]) => Number(p.data.category === post.data.category);
 const related = all
   .filter((p) => p.id !== post.id)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 2);
+  .sort((a, b) => sameCat(b) - sameCat(a) || b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
 ---
 
 <Layout
@@ -43,8 +44,8 @@ const related = all
     image: `https://wolfsknigge.de${post.data.heroImage}`,
     datePublished: post.data.pubDate.toISOString(),
     dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
-    author: { "@type": "Person", name: post.data.author },
-    publisher: { "@type": "Organization", name: "WolfsKnigge - Mobile Hundeschule", logo: { "@type": "ImageObject", url: "https://wolfsknigge.de/images/logo.svg" } },
+    author: { "@type": "Person", "@id": "https://wolfsknigge.de/ueber-mich/#rene", name: post.data.author, url: "https://wolfsknigge.de/ueber-mich/" },
+    publisher: { "@type": "Organization", "@id": "https://wolfsknigge.de/#hundeschule", name: "WolfsKnigge - Mobile Hundeschule", logo: { "@type": "ImageObject", url: "https://wolfsknigge.de/images/logo.svg" } },
     mainEntityOfPage: { "@type": "WebPage", "@id": `https://wolfsknigge.de/${post.id}/` },
   })} />
 
@@ -143,7 +144,7 @@ const related = all
           </a>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {related.map((p) => (
             <article class="group relative flex flex-col bg-anthrazit-2 border border-white/8 rounded-2xl overflow-hidden transition-all hover:border-orange/30 hover:-translate-y-1">
               <div class="relative aspect-[16/10] overflow-hidden">

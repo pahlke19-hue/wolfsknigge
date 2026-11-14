@@ -64,7 +64,7 @@ Ein guter Trainer macht kein Geheimnis aus seiner Arbeit und versteckt sich nich
 
 - **Informative Website:** Gibt es eine klare Website, die die Philosophie und Arbeitsweise beschreibt?
 - **Vorgespräch:** Kannst du vorab unverbindlich telefonieren, um dein Problem kurz zu schildern und einen Eindruck von der Stimme und Art des Trainers zu bekommen?
-- **Preistransparenz:** Sind die Preise klar ersichtlich, oder gibt es versteckte Kosten?
+- **Preistransparenz:** Sind die Preise klar ersichtlich, oder gibt es versteckte Kosten? Was realistisch ist, habe ich unter [Was kostet eine Hundeschule?](/hundeschule-kosten/) aufgeschlüsselt.
 
 Du solltest schon vor dem ersten Treffen ein Gefühl dafür bekommen, ob die Philosophie zu dir passt. Ein seriöser Trainer wird dir am Telefon vielleicht noch keine Diagnose geben (das wäre unseriös ohne den Hund zu sehen), aber er wird dir zuhören und dir grob skizzieren können, wie eine Zusammenarbeit aussehen könnte.
 

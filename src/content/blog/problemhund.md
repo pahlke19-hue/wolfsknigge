@@ -30,7 +30,7 @@ Was bei der Leinenpöbelei gilt, gilt auch hier: Eine zu geringe Frustrationstol
 
 ## Wenn Angst das eigentliche Problem ist
 
-Bei Angsthunden ist es für mich noch einmal etwas ganz anderes. Häufig liegt hier, ähnlich wie bei vielen Aggressionsfällen, ein Deprivationsschaden zugrunde, der schon im Welpenalter entstanden ist. Der Hund hat in der entscheidenden Phase zu wenig von der Welt kennengelernt und ist mit den normalen Reizen des Alltags schlicht überfordert.
+Bei Angsthunden ist es für mich noch einmal etwas ganz anderes. Häufig liegt hier, ähnlich wie bei vielen Aggressionsfällen, ein Deprivationsschaden zugrunde, der schon im Welpenalter entstanden ist. Der Hund hat in der entscheidenden Phase zu wenig von der Welt kennengelernt und ist mit den normalen Reizen des Alltags schlicht überfordert. Wie ich bei Angst vor Feuerwerk vorgehe, steht im Artikel zur [Silvesterangst](/hund-angst-silvester/).
 
 So ein Hund lässt sich nicht mit Druck überzeugen, dass die Welt schon nicht so schlimm ist. Er muss kleinschrittig durch seinen Alltag geführt werden, und vor allem muss er Selbstvertrauen aufbauen. Dabei geht es ganz viel um Bindung und um klare Beziehungsstrukturen. Dein Hund muss wissen, wer in welcher Situation die Führung übernimmt und an wem er sich orientieren kann, wenn er unsicher wird.
 

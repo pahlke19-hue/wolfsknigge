@@ -1,9 +1,10 @@
 ---
 title: "Hund hat Angst vor Silvester? Warum die Vorbereitung im Oktober beginnt"
 seoTitle: "Hund hat Angst an Silvester? Jetzt vorbereiten | WolfsKnigge"
-description: "Dein Hund hat Angst vor Silvester und Feuerwerk? Warum die Vorbereitung schon im Oktober beginnen sollte und was du ab heute konkret tun kannst."
+description: "Dein Hund hat Angst vor Silvester und Feuerwerk? Warum die Vorbereitung gegen Silvesterangst früh beginnen sollte und was du ab heute konkret tun kannst."
 excerpt: "Für einen ängstlichen Hund ist Silvester nicht nur eine Nacht, sondern eine Erfahrung, die sich jedes Jahr tiefer eingräbt. Warum die Vorbereitung im Oktober beginnt und wie Training aussieht, das da ansetzt, wo die Angst auftritt."
 pubDate: 2026-10-01
+updatedDate: 2026-11-14
 heroImage: "/images/blog/hund-angst-silvester.webp"
 heroAlt: "Ängstlicher Hund liegt unter einer Decke auf dem Bett, seinem Rückzugsort an Silvester"
 category: "Problemverhalten"
@@ -45,7 +46,7 @@ Auf der Gassirunde arbeiten wir daran, dass dein Hund nach einem Schreckmoment s
 
 Ich sag es gleich dazu: Aus einem Hund, der seit Jahren an Silvester zittert, wird in drei Monaten kein Hund, der entspannt am Fenster dem Feuerwerk zuschaut. Das verspreche ich dir auch nicht. Ein realistisches Ziel für dieses Jahr ist oft ein kleineres: dass dein Hund einen Ort hat, an dem er die Nacht aushalten kann, und dass er danach schneller wieder in seinen Alltag findet. Aufnahmen vom Handy ersetzen außerdem kein echtes Feuerwerk, dafür fehlen die Druckwelle und der Geruch. Sie sind ein Baustein, kein Allheilmittel.
 
-### Was du ab heute anders machen kannst
+### Silvesterangst: Was du ab heute anders machen kannst
 
 Ein paar Dinge kannst du sofort angehen. Der ehrliche Rahmen vorweg: Bei echter Panik ersetzen sie kein strukturiertes Training, zum Beispiel in einer [Einzelstunde bei euch zu Hause](/einzelstunde/). Aber sie verschaffen euch einen besseren Start.
 

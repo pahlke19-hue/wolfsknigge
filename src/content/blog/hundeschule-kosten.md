@@ -82,7 +82,7 @@ Das hängt davon ab, wie oft ihr trainiert. Wer alle zwei Wochen eine Einzelstun
 Aus meiner Sicht fast immer, wenn der Trainer zu euch passt. Gutes Training spart dir später Nerven, vermeidet Stress beim Hund und im schlimmsten Fall echten Ärger. Vieles lässt sich früh mit wenig Aufwand lösen und wird teuer, wenn man es schleifen lässt.
 
 **Was kostet eine Welpenschule?**
-Welpenstunden laufen meist in der Gruppe und liegen pro Termin im ähnlichen Rahmen wie andere Gruppenstunden, also grob 15 bis 25 Euro. Ab wann und wie das sinnvoll ist, liest du bei meiner [Welpengruppe](/welpengruppe/).
+Welpenstunden laufen meist in der Gruppe und liegen pro Termin im ähnlichen Rahmen wie andere Gruppenstunden, also grob 15 bis 25 Euro. Ab wann das sinnvoll ist, liest du unter [Ab wann in die Welpenschule?](/ab-wann-welpenschule/), wie es bei mir abläuft, bei meiner [Welpengruppe](/welpengruppe/).
 
 **Warum ist mobiles Training manchmal teurer als der Hundeplatz?**
 Weil ich für jede Stunde zu dir fahre und mich nur um dein Team kümmere, statt mehrere Hunde gleichzeitig zu betreuen. Dafür trainieren wir genau dort, wo dein Problem entsteht, mitten in eurem Alltag, und das wirkt oft schneller.

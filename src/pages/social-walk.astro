@@ -32,7 +32,7 @@ const walks = [
     nr: "03",
     name: "Pöbel-Walk",
     untertitel: "Für leinenaggressive Hunde",
-    fuerWen: "Für Teams, deren Hund an der Leine eskaliert und die merken wollen: ihr seid nicht allein.",
+    fuerWen: 'Für Teams, deren Hund an der Leine eskaliert und die merken wollen: ihr seid nicht allein. Woher das kommt, erkläre ich im Artikel zur <a href="/hund-poebelt-an-der-leine/" class="underline decoration-orange/60 underline-offset-4 hover:text-orange">Leinenaggression</a>.',
     highlights: [
       "Nur 3–4 Teams · abgelegene Strecken · viel Abstand",
       "Andere Hunde mit ähnlichen Themen, kontrolliert, gewaltfrei, ohne Showdown",
@@ -115,7 +115,7 @@ const faq = [
   },
   {
     frage: "Wo finden die Walks statt?",
-    antwort: "Rund um Bredenbek, Kiel, Rendsburg und Umgebung, also im Einzugsgebiet bis ca. 35 km. Der genaue Treffpunkt richtet sich nach dem Format und steht jeweils beim Termin."
+    antwort: "Rund um Bredenbek, Kiel, Rendsburg und Umgebung, also im Einzugsgebiet bis ca. 35 km. Der genaue Treffpunkt richtet sich nach dem Format und steht jeweils beim Termin. Einzeltraining vor Ort gibt es bei der <a href=\"/hundeschule-kiel/\" class=\"underline decoration-orange/60 underline-offset-4 hover:text-orange\">Hundeschule Kiel</a> und der <a href=\"/hundeschule-rendsburg/\" class=\"underline decoration-orange/60 underline-offset-4 hover:text-orange\">Hundeschule Rendsburg</a>."
   },
 ];
 
@@ -139,7 +139,7 @@ const termine: TerminZeile[] = [
 ];
 ---
 
-<Layout title="Social Walks | WolfsKnigge Kiel & Rendsburg" description="Social Walks rund um Kiel & Rendsburg: Zusammen-Wachsen, Bindungs-Walk und Pöbel-Walk für leinenaggressive Hunde. Mehr als nur Gassi gehen.">
+<Layout title="Social Walk für Hunde & Pöbel-Walk | WolfsKnigge" description="Social Walks rund um Kiel & Rendsburg: Zusammen-Wachsen, Bindungs-Walk und Pöbel-Walk für leinenaggressive Hunde. Mehr als nur Gassi gehen.">
 
   <!-- HERO -->
   <section class="relative overflow-clip" style="min-height: 72svh; background: #000;">
@@ -173,6 +173,7 @@ const termine: TerminZeile[] = [
         </div>
 
         <h1 class="font-display font-extrabold tracking-[-0.04em] leading-[0.92] mb-7">
+          <span class="hero-reveal block text-[clamp(1.125rem,2.4vw,1.5rem)] font-semibold tracking-[-0.01em] leading-tight text-white/80 mb-4">Social Walk für Hunde in Kiel & Rendsburg</span>
           <span class="hero-reveal hero-reveal-d1 block text-[clamp(3rem,9vw,7.5rem)] text-white">Endlich</span>
           <span class="hero-reveal hero-reveal-d2 block text-[clamp(3rem,9vw,7.5rem)] text-white">Leute, die</span>
           <span class="hero-reveal hero-reveal-d3 block text-[clamp(3rem,9vw,7.5rem)] text-gradient-orange italic">dich verstehen.</span>
@@ -407,7 +408,7 @@ const termine: TerminZeile[] = [
               <div>
                 <div class="text-[11px] uppercase tracking-[0.2em] text-orange font-semibold mb-2">{w.untertitel}</div>
                 <h3 class="font-display font-extrabold text-2xl md:text-3xl text-white group-hover:text-orange transition-colors mb-3">{w.name}</h3>
-                <p class="text-white/60 leading-relaxed text-base mb-5">{w.fuerWen}</p>
+                <p class="text-white/60 leading-relaxed text-base mb-5" set:html={w.fuerWen}></p>
                 <ul class="space-y-2.5 mb-5">
                   {w.highlights.map((h) => (
                     <li class="flex items-start gap-3">
@@ -596,7 +597,7 @@ const termine: TerminZeile[] = [
               <svg class="w-5 h-5 flex-shrink-0 text-white/55 group-open:rotate-45 group-open:text-orange transition-all duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
             </summary>
             <div class="px-6 pb-6 text-white/60 leading-relaxed text-[15px]">
-              {item.antwort}
+              <Fragment set:html={item.antwort} />
             </div>
           </details>
         ))}
@@ -631,5 +632,5 @@ const termine: TerminZeile[] = [
     </div>
   </section>
 
-  <script type="application/ld+json" is:inline set:html={JSON.stringify({"@context":"https://schema.org","@type":"FAQPage",mainEntity:faq.map((f)=>({"@type":"Question",name:f.frage,acceptedAnswer:{"@type":"Answer",text:f.antwort}}))})} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({"@context":"https://schema.org","@type":"FAQPage",mainEntity:faq.map((f)=>({"@type":"Question",name:f.frage,acceptedAnswer:{"@type":"Answer",text:f.antwort.replace(/<[^>]+>/g, "")}}))})} />
 </Layout>

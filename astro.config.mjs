@@ -5,15 +5,16 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
-// lastmod für die Sitemap: Slug -> pubDate aus dem Blog-Frontmatter.
+// lastmod für die Sitemap: Slug -> updatedDate, sonst pubDate aus dem Blog-Frontmatter.
 // Statische Seiten haben keine verlässliche Datumsquelle und bleiben bewusst ohne
 // lastmod, statt ein Build-Datum zu erfinden (Google entwertet unglaubwürdige Werte).
 const blogDir = new URL('./src/content/blog/', import.meta.url);
 const postDates = new Map();
 for (const file of readdirSync(blogDir)) {
   if (!file.endsWith('.md')) continue;
-  const pubDate = readFileSync(new URL(file, blogDir), 'utf8').match(/^pubDate:\s*"?([\d-]+)"?/m);
-  if (pubDate) postDates.set(file.replace(/\.md$/, ''), pubDate[1]);
+  const src = readFileSync(new URL(file, blogDir), 'utf8');
+  const date = src.match(/^updatedDate:\s*"?([\d-]+)"?/m) ?? src.match(/^pubDate:\s*"?([\d-]+)"?/m);
+  if (date) postDates.set(file.replace(/\.md$/, ''), date[1]);
 }
 
 // https://astro.build/config
